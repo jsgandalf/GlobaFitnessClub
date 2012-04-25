@@ -3,14 +3,215 @@
 <html>
     <head>
         <title>#{get 'title' /}</title>
-        <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/globa.css'}">
         #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+		<script type="text/javascript" src="@{'/public/javascripts/jquery.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/cycle.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/slideshow.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/dropdown.js'}"></script>
+        <script src="@{'/public/javascripts/cufon/cufon-yui.js'}" type="text/javascript"></script>
+        <script src="@{'/public/javascripts/cufon/Liberation_Sans_400.font.js'}" type="text/javascript"></script>
+        <script type="text/javascript">
+            Cufon.replace('h1'); 
+            Cufon.replace('#login a', {
+                hover: true
+            });
+    
+            Cufon.replace('#login a', {
+                hover: true
+            });
+            Cufon.replace('#logo a', {
+                hover: true
+            });
+            Cufon.replace('#extra_buttons a', {
+                hover: true
+            });
+        </script>
+        <script src="@{'/public/javascripts/sessvars.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
+        <title>Globa Fitness Club</title>
     </head>
     <body>
-        #{doLayout /}
-    </body>
+	<div id="container">
+    	<div id="top_bar">
+            <div id="logo">
+                <h1>
+                    <a href="index.html">Globa Fitness Club</a>
+                </h1>
+                <small>
+                    <a href="#index.html">Learn, Share, Explore</a>
+                </small>
+            </div>
+            <div id="top_bar_right">
+            	<div id="extra_buttons">
+                	<ul>
+                        <li><a href="">Join Trainers Network</a></li>
+                    </ul>
+                </div>   
+                 <div id="login">         
+            	 #{if user?.id}
+                    <a  href="@{Application.logout()}">Log Out</a>
+                #{/if}
+                #{else}
+                	 <a href="@{register()}">Sign Up</a> &nbsp;&nbsp;&nbsp;&nbsp;<a  href="@{login_page()}">Log In</a>
+                #{/else}
+                
+                </div>
+                <div id="search">
+                
+                    <form class="search_form" method="post" action="#" name="search_form">
+                        <input class="search_input" name="search_input" type="text"  />
+                        <input class="search_hourglass" id="search_hourglass" type="image" src="@{'/public/images/search_hourglass.gif'}" name="search_hourglass" />
+                    </form>
+                </div>
+                 #{if user?.id}
+                <div id="options" class="options_logged_in">
+                    <a href="#" style="color:#FFF">Connected as ${user.email}</a>
+                    |
+                    <a href="#">Search</a>
+                    |
+                    <a href="@{Trainers.settings()}">Settings</a>
+                    |
+                    <a href="@{Application.profile()}">Profile</a>
+                    |
+                    <a href="@{Application.logout()}">Mail</a>
+                    |
+                    <a href="@{Application.logout()}">Photos</a>
+                    |
+                    <a href="@{Application.logout()}">Fitness Blog</a>
+                </div>
+            #{/if}
+            </div>
+            
+      	</div>
+        <div class="clear"></div>
+        <div class="white_background_wrapper">
+            <div id="container_main">
+                <div id="menu">
+                    <ul class="dropdown">
+                         <li id="myHome"><a href="@{home()}" >home</a></li> <!-- id="active_link"-->
+                         <li ><a href="index.html">Services</a>
+                            <ul id="dropdown1">
+                                 <li><a href="privateTraining.html">Private Training</a></li>
+                                 <li><a href="partnerTraining.html">Partner Training</a></li>
+                                 <li><a href="groupTraining.html">Group Training</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="#">Trainers</a></li>
+                        <li><a href="fitnessPrograms.html">Programs</a>
+                            <ul id="dropdown2">
+                                <li><a href="index.html">Weight Loss</a></li>
+                                <li><a href="index.html">Body Building</a></li>
+                                <li><a href="index.html">Functional Training</a></li>
+                                <li><a href="index.html">Get Toned</a></li>
+                                <li><a href="index.html">Get Yoked</a></li>
+                                <li><a href="index.html">Post injury training</a></li>
+                                <li><a href="index.html">Sports conditioning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="@{Application.consultation}">Consultation</a></li>
+                        <li><a href="getConnected.html" style="padding: 20px 20px 0;">Networking</a>
+                            <ul id="dropdown3">
+                                <li><a href="members.html">Members</a></li>
+                                <li><a href="network.html">Network</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="@{contact()}" style="padding: 20px 20px 0;">Contact Us</a></li>
+                    </ul>
+                    <div id="social">
+                        <a href="http://www.facebook.com"><div id="facebook"></div></a>
+                        <a href="http://www.twitter.com"><div id="twitter"></div></a>
+                        <a href="http://www.youtube.com"><div id="youtube"></div></a>
+                    </div>
+                </div>
+                <div class="clear"></div>       
+                <div id="content">
+                    #{doLayout /}  
+                </div>
+                <div class="footer_bg">
+                    <div class="footer">
+                        <div class="cols">
+                            <div class="col_left">
+                                <h3>Stay Active</h3>
+                                <em>&nbsp;Keep fit, stay active</em>
+                                <a href="#"><img height="69" width="69" src="@{'/public/images/other_images/fitness.jpg'}" /></a>
+                                <a href="#"><img height="69" width="69" src="@{'/public/images/other_images/man.jpg'}" /></a>
+                                <a href="#"><img height="69" width="69" src="@{'/public/images/other_images/race.jpg'}" /></a>
+                                <a href="#"><img height="69" width="69" src="@{'/public/images/other_images/rugby.jpg'}" /></a>
+                                <a href="#"><img height="69" width="69" src="@{'/public/images/other_images/running.jpg'}" /></a>
+                                <a href="#"><img height="69" width="69" src="@{'/public/images/other_images/shoes.jpg'}" /></a>
+                            </div>
+                            <div class="col_center">
+                                <h3>Fitness</h3>
+                                <em>Take Control</em>
+                                <p>Take control of your health now before it takes control of your life.
+        Globa unlocks the secrets to your fitness needs.</p>
+                                <ul>
+                                    <li>
+                                        <a href="#">Hard Work</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Motivation</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Result</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col_right">
+                                <h3>Socialize</h3>
+                                <em>Get Connected</em>
+                                <ul>
+                                    <li>
+                                        <a href="#">Share</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Connect</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Stay Live</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">And much More!</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="footer_bottom">
+                            <div class="copy">&copy; Copyright <a href="#">Globa Fitness</a></div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    	</div>
+    </div>
+    <script type="text/javascript">	Cufon.now(); </script>
+</body>
 </html>
+<script>
+	$("#splash").click(function(){
+		window.location.replace("");
+	});
+	
+	$("#splash2").click(function(){
+		window.location.replace("@{Application.consultation()}");
+	});
+	
+	$("#splash3").click(function(){
+		//window.location.replace("trainer.html");
+	});
+	
+	$("#splash4").click(function(){
+		//window.location.replace("trainer.html");
+	});
+
+</script>
+
+
+
+  

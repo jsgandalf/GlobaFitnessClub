@@ -1,4 +1,48 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+<div id="main_image_header">
+    <div id="background_image" class="switch_pictures">
+        <div id="splash" style="
+            display:block; background:url(@{'/public/images/splash/main_splash.jpg'})"><img style="visibility:hidden;left: 720px" src="@{'/public/images/splash/main_splash_mini.jpg'}" alt="Find a trainer" /></div>
+        <div id="splash2" style="display:block; background:url(@{'/public/images/splash/main_splash2.jpg'}"><img style="visibility:hidden;" src="@{'/public/images/splash/main_splash_mini2.jpg'}" alt="Schedule Fitness Orientation"/></div>
+          <div id="splash3" style="display:block; background:url(@{'/public/images/splash/get_connected.jpg'})"><img style="visibility:hidden;" src="@{'/public/images/splash/get_connected_small2.jpg'}" alt="Schedule Fitness Orientation"/></div>
+           <div id="splash4" style="display:block; background:url(@{'/public/images/splash/splash4.jpg'})"><img style="visibility:hidden;" src="@{'/public/images/splash/splash_small2.jpg'}" alt="Schedule Fitness Orientation"/></div>
+        </div>
+        <div class="splash_right">
+            <!--<div id="image_mini1"><div class="splash_text">Find a Trainer</div></div>
+            <div id="image_mini2"></div>-->
+            
+        </div>
+        <div class="shadow"></div>
+    </div>
+</div>
+
+
+<!--<div id="login">
+    
+    (try with demo/demo)
+
+    #{form @login(), id:'formLogin'}
+        <p class="field">
+            <label>Login Name:</label>
+            <input type="text" name="username" size="19" value="${flash.username}" />
+        </p>
+        <p class="field">
+            <label>Password:</label>
+            <input type="password" name="password" size="19"/>
+        </p>    
+        <p class="buttons">
+            <input type="submit" value="Account login" />
+        </p> 
+    #{/form}
+
+    <p>
+        <a href="@{register()}">Register New User</a>
+    </p>
+
+</div>
+-->
+<script type="text/javascript" charset="${_response_encoding}">
+    sessvars.$.clearMem()
+</script>
