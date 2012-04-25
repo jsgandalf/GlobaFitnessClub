@@ -1,0 +1,116 @@
+#{extends 'main.html' /}
+#{set title:'Profile' /}
+#{set 'moreScripts'}
+    <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+<div class="white_background_wrapper" style="padding-top:20px;">
+    <div class="list">
+        <h3>${user.firstName} ${user.lastName}</h3>
+        <div class="list_child" style="border:none;">
+            <table>
+                <tr>
+                   <td class="name">&nbsp;</td>
+                </tr>
+                <tr class="specs">
+                    <td>
+                        <a href="profile.html"><img height="121" width="118" src="@{'/public/images/trainers/corri_fit.jpg'}" /></a>
+                    </td>
+                    <td>
+                        <table class="Trainer_specs">
+                            <tr>
+                                <td>Location:</td>
+                                <td>Provo/Orem Utah</td>
+                            </tr>
+                            <tr>
+                                <td class="phone">Phone Number:</td>
+                                <td>801-669-4311</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>Healthcoachutah@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td>Credentials:</td>
+                                <td>BS, ISSA, CPR</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="Trainer_specialities">
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>Weight loss</li>
+                                        <li>Functional training</li>
+                                        <li>Body building</li>
+                                        <li>General fitness</li>
+                                        <li>Toned or Get Yoked</li>
+                                    </ul>                                    
+                                </td>                                
+                           </tr>
+                        </table>
+                    </td>
+                    <td>
+                                    <a href="trainer.html">&nbsp;Back to Search Results&nbsp;</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="rate_trainer" class="message_buttons">
+                            <ul style="display:block;">
+                                <li  style="display:block;">
+                                    <a>&nbsp;&nbsp;&nbsp;Rate Trainer&nbsp;&nbsp;&nbsp;</a>
+                                </li>
+                                <li  style="display:block; background:none;">
+                                    <p>10/10 Rating</p>
+                                </li>
+                            </ul>
+                        </div>       
+                    </td>
+                    <td class="profile_description" colspan="2">
+                    My name is Mike and i am a personal trainer. My training programs accommodate a variety of fitness levels and helps to promote strength , balance, endurance, speed, flexibility and an overall wellness of the body and mind. I guarantee your training experience with me will provide you with incredible benefits, including... but not limited to: building motivation and creating accountability, building confidence, building a higher level of mental toughness....and many more.
+                    </td>   
+               </tr>
+            </table>
+            
+            <div id="trainer_box_response">
+                <form id="schedule_form" name="schedule_form" method="post" action="#" style="padding-left:15px;">
+                    <ol>                         
+                        <li>
+                            <ol class="inline">
+                                <li>
+                                    <label for="name">Rate Trainer:</label>
+                               </li>
+                               <li>
+                                    <label for="name"><div id="rate2" class="rating">&nbsp;</div></label>
+                                      <!-- As you might have notice, for single star, the script works like a star/unstarl. 
+                                        For two or more stars, it works as a rating system. To value at the server end can be recieved via post variable named &quot;rating&quot;.     -->
+                               </li>
+                           </ol>
+                        </li>
+                        <li>
+                            <ol class="inline">
+                                <li>
+                                    <label for="name">First Name (required)</label>
+                                    <input id="firstName" id="name" type="text" class="text" name="text" />
+                                </li>
+                                <li style="padding-left:5px;">
+                                    <label for="name">Last Name (required)</label>
+                                    <input id="lastName" type="text" class="text" name="text" />
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <label for="name">Explanation(required)</label>
+                            <textarea id="name" class="text" name="text"></textarea>
+                        </li>
+                    </ol>
+                    <input type="image" src="images/submit.gif" class="submit" name="sendquestionaire" id="sendquestionaire">
+                </form>
+          </div>
+        </div>
+        <div class="clear"></div>
+    </div>	

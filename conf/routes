@@ -4,6 +4,14 @@
 
 # Home page
 GET     /                                       Application.index
+GET     /consultation/                          Application.consultation
+GET		/profile/								Application.profile
+GET     /register                               Application.register
+GET    /login                                   Application.login_page
+POST    /register                               Application.saveUser
+POST    /login                                  Application.login
+
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

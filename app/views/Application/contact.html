@@ -1,0 +1,68 @@
+#{extends 'main.html' /}
+#{set title:'Contact Us' /}
+
+<div id="main_image_header" style="height:100%">
+    <div id="contact_paragraph">
+        <div class="clear"></div>
+        <h2>Contact Us</h2>
+        <div id="contact_us_ref">
+            <p class="contact_info" style="width:223px; margin-top:0px; padding-top:0px;">
+            At Globa fitness, you can find what you need for all your health fitness goals
+            <br />
+            <br />
+            For general information, please don't hesitate to contact our Main office at:<br /><br />
+                  Globa Fitness Inc.<br />
+                  752 East 1180 South, Suite 100 <br />
+                   American Fork, UT. 84003 <br />
+                   US<br />
+                <br />
+                Phone: 1-888-694-8837      
+                <br />
+                Toll Free: 1-801-492-6900      
+                <br />
+                Fax: 1-801-756-0080
+                <br />
+                Email: Globafitness@gmail.com
+            </p>
+        </div>
+        <div id="trainer_picture"></div>
+        <div id="contactdiv">
+            
+            <form id="schedule_form" name="schedule_form" method="post" action="#">
+                <ol>
+                    <li>
+                    <p>Welcome to Globa Fitness.  Please fill out the form and we will contact you soon.</p>
+                    </li>
+                    <li>
+                        <ol class="inline">
+                            <li>
+                                <label for="name">First Name (required)</label>
+                                <input id="firstName" id="name" type="text" class="text" name="text" />
+                            </li>
+                            <li style="padding-left:5px;">
+                                <label for="name">Last Name (required)</label>
+                                <input id="lastName" type="text" class="text" name="text" />
+                            </li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <label for="name">Email (required)</label>
+                        <input id="name" type="text" class="text" name="text" />
+                    </li>
+                    <li>
+                        <label for="name">Phone Number</label>
+                        <input id="name" type="text" class="text" name="text" />
+                    </li>
+                    <li>
+                        <label for="name">Message (required)</label>
+                        <textarea id="name" class="text" name="text"></textarea>
+                    </li>
+                </ol>
+                <input type="image" src="@{'/public/images/submit.gif'}" class="submit" value="contact">
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>	
+</div>

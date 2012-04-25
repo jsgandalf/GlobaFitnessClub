@@ -1,0 +1,159 @@
+#{extends 'main.html' /}
+#{set title:'Join Trainers Network' /}
+
+#{set 'moreScripts'}
+    <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/ui-lightness/jquery-ui-1.7.2.custom.css'}" />
+#{/set}
+
+<div id="main_image_header" style="height:100%">
+    <div id="contact_paragraph">
+        <div class="clear"></div>
+        <h2 style="margin-bottom:27px;">Join Trainers Network</h2>
+        <p style="width: 300px">Become a member of Globa fitness Trainers Network.
+Fill out the form below, and a representative will contact you soon.</p>
+	 #{ifErrors}
+        <p class="error">
+            ${errors[0]}
+        </p>
+    #{/ifErrors}
+        <div id="joinLeft"> 
+            #{form @saveTrainer()}
+                <ol>
+                    <li>
+                        <ol class="inline">
+                            #{field 'trainer.firstName'}
+                            <li>
+                                <label for="name">First Name (required)</label>
+                                <input id="firstName" id="name" type="text" class="text" name="${field.name}" value="${trainer?.firstName}"/>
+                            </li>
+                            #{/field}
+                            #{field 'trainer.lastName'}
+                            <li style="padding-left:5px;">
+                                <label for="name">Last Name (required)</label>
+                                <input id="lastName" type="text" class="text" name="${field.name}" value="${trainer?.lastName}" />
+                            </li>
+                            #{/field}
+                        </ol>
+                    </li>
+                    <li>
+                        <ol class="inline">
+                        	#{field 'trainer.zip'}
+                            <li>
+                                <label for="name">Zip (required)</label>
+                                <input maxlength="6" id="zip" type="text" class="text" name="${field.name}" value="${trainer?.zip}"  />
+                            </li>
+                           #{/field}
+                           #{field 'trainer.gender'}
+                            <li style="padding-left:5px;">
+                                <label for="name">Gender (required)</label>
+                                <select id="gender" class="blue_select" name="gender" name="${field.name}">
+                                    <option>Please Select</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </li>
+                            #{/field}
+                        </ol>
+                    </li>
+                    #{field 'trainer.email'}
+                    <li>
+                        <label for="name">Email (required)</label>
+                        <input id="email" type="text" class="text" name="${field.name}" value="${trainer?.email}"  />
+                    </li>
+                    #{/field}
+                    #{field 'trainer.phoneNumber'}
+                    <li>
+                        <label for="name">Phone Number</label>
+                        <input maxlength="10" style="width:100px;" id="name" type="text" class="text" name="${field.name}" value="${trainer?.phoneNumber}"  />
+                    </li>
+                    #{/field}
+                    <li>
+                        <p style="padding-left:0px">I am a certified:
+                        <table style="padding-left:5px">
+                            <tr>
+                                <td><input name="question4" type="radio" name="1" /></td>
+                                <td>a. Trainer</td>
+                            </tr>
+                            <tr>
+                                <td><input name="question4" type="radio" name="2" /></td>
+                                <td>b. Nutritionist</td>
+                            </tr>
+                            <tr>
+                                <td><input name="question4" type="radio" name="3" /></td>
+                                <td>c. Trainer & Nutritionist</td>
+                            </tr>
+                        </table>
+                        </p>
+                    </li>
+                    <li> 
+                        <input type="image" src="@{'/public/images/submit.gif'}" class="submit" name="sendquestionaire" id="sendquestionaire" value="register_trainer">
+                    </li>
+                </ol>
+        </div>
+        <div id="joinRight" style="width:479px;">
+            <ol>
+                    #{field 'trainer.certifications'}
+                    <li>
+                        <label for="name">Certification(s)</label>
+                        <input id="certifications" type="text" class="text" name="${field.name}" value="${trainer?.certifications}"  />
+                    </li>
+                    #{/field}
+                    #{field 'trainer.dateOfBirth'}
+                    <li><div id="datepicker"></div></li>
+                    <li style="display:inline-block">
+                        <label for="name">Date of Birth (yyyy-mm-dd)</label>
+                        <input style="width:100px" class="text" type="text" size="10" name="${field.name}" value="${trainer?.dateOfBirth}" >
+                    </li>
+                    #{/field}
+                    #{field 'trainer.ssn'}
+                    <li>
+                        <label for="name">SSN</label>
+                        <input id="ssn" type="text" class="text" name="${field.name}" value="${trainer?.ssn}" maxlength="9"  />
+                    </li>
+                    #{/field}
+                    <li>
+                        <label for="name">Copy of Certification (pdf)</label>
+                        <input id="certification_pdf" type="text" class="text" name="text" />
+                    </li>
+                    <li>
+                        <p style="padding-left:0px">Specialties:
+                        <table id="specialties">
+                            <tr>
+                                <td><input name="question4" type="checkbox" name="1" /></td>
+                                <td>Weight Loss</td>
+                                <td><input name="question4" type="checkbox" name="1" /></td>
+                                <td>Get Tone</td>
+                                <td><input name="question4" type="checkbox" name="1" /></td>
+                                <td>Sports Condition</td>
+                            </tr>
+                            <tr>
+                                <td><input name="question4" type="checkbox" name="1" /></td>
+                                <td style="width:110px">Body Building</td>
+                                <td><input name="question4" type="checkbox" name="1" /></td>
+                                <td style="width:80px">Get Yoked</td>
+                                <td><input name="question4" type="checkbox" name="1" /></td>
+                                <td>Injury Rehab</td>
+                            </tr>
+                            <tr>
+                                <td><input name="question4" type="checkbox" name="1" /></td>
+                                <td>Certified Nutritionist</td>
+                            </tr>
+                        </table>
+                        </p>
+                   </li>
+            	#{/form}
+               </ol>
+            </div>
+        <div class="clear"></div>
+    </div>
+</div>	
+</div>
+<script type="text/javascript" charset="${_response_encoding}">
+    $(function() {
+		$(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+	});
+</script>

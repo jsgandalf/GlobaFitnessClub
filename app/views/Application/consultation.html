@@ -1,0 +1,201 @@
+#{extends 'main.html' /}
+#{set title:'Consultation' /}
+<div id="main_image_header" style="height:100%">
+    <div id="schedule">
+        <div class="clear"></div>
+        <h2>Schedule a free fitness Consultation</h2>
+        <div id="schedule_left">
+            <p style="width:275px;">Welcome to Globa Fitness.  Please fill out the form and we will contact you soon.</p>
+            <form id="schedule_form" name="schedule_form" method="post" action="#">
+                <ol>
+                    <li>
+                        <ol class="inline">
+                            <li style="display:inline-block">
+                                <label for="name">First Name (required)</label>
+                                <input id="firstName" id="name" type="text" class="text" name="text" />
+                            </li>
+                            <li style="padding-left:5px;">
+                                <label for="name">Last Name (required)</label>
+                                <input id="lastName" type="text" class="text" name="text" />
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <label for="name">Email (required)</label>
+                        <input id="name" type="text" class="text" name="text" />
+                    </li>
+                    <li>
+                        <label for="name">Contact Number (required)</label>
+                        <input id="name" type="text" class="text" name="text" />
+                    </li>
+                </ol>
+            </form>
+            <div id="questionaire">
+            <form id="questionaire_form" name="questionaire_form" method="post" action="#">
+                <ul>
+                    <li>1) What is your age?
+                        <br />
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="question1" value="1" /></td>
+                                <td>a. 11-17</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question1" value="2" /></td>
+                                <td>b. 18- 25</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question1"value="3" /></td>
+                                <td>c. 26- 35</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question1"value="3" /></td>
+                                <td>d. 36-49</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question1"value="3" /></td>
+                                <td>e. 50 and above</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>2) On a scale from 1 to 8 ( 8 being the most serious) how serious are you about accomplishing your fitness goals?
+                        <br />
+                        <select class="blue_select" name="question2">
+                            <option>a. 1</option>
+                            <option>b. 2</option>
+                            <option>c. 3</option>
+                            <option>d. 4</option>
+                            <option>e. 5</option>
+                            <option>f. 6</option>
+                            <option>g. 7</option>
+                            <option>h. 8</option>
+                        </select>
+
+                    </li>
+                    <li>3) What has prevented you from reaching your fitness goals in the past? <br />
+                                                        <table>
+                            <tr>
+                                <td><input type="radio" name="question3" value="1" /></td>
+                                <td>a. Time</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question3" value="2" /></td>
+                                <td>b. Motivation</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question3"value="3" /></td>
+                                <td>c. Results</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question3"value="4" /></td>
+                                <td>d. Commitment</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question3"value="5" /></td>
+                                <td>e. Budget</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question3"value="6" /></td>
+                                <td>f. Knowledge</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>4) What is your present physical condition?
+                        <table>
+                            <tr>
+                                <td><input name="question4" type="radio" name="1" /></td>
+                                <td>a. Poor</td>
+                            </tr>
+                            <tr>
+                                <td><input name="question4" type="radio" name="2" /></td>
+                                <td>b. Fair</td>
+                            </tr>
+                            <tr>
+                                <td><input name="question4" type="radio" name="3" /></td>
+                                <td>c. Good</td>
+                            </tr>
+                            <tr>
+                                <td><input name="question4" type="radio" name="4" /></td>
+                                <td>d. Great</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="schedule_right">
+            <div class="pics2">
+               <!-- <div id="slideshow1"></div>-->
+                <div id="slideshow2"></div>
+                <div id="slideshow3"></div>
+                <div id="slideshow4"></div>
+                <div id="slideshow5"></div>
+            </div>
+            <div class="clear"></div>
+            <div id="questionaire2">
+                <ul>
+                    <li>5) Is your job active or Sedentary? 
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="question5" value="1" /></td>
+                                <td>a. Active </td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question5" value="2" /></td>
+                                <td>b. Sedentary</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>6) On a scale from 1 to 8 (8 being the most committed), how committed are you now with your nutritional choices?
+                        <br />
+                        <select class="blue_select" name="question6">
+                            <option>a. 1</option>
+                            <option>b. 2</option>
+                            <option>c. 3</option>
+                            <option>d. 4</option>
+                            <option>e. 5</option>
+                            <option>f. 6</option>
+                            <option>g. 7</option>
+                            <option>h. 8</option>
+                        </select>
+                    </li>
+                    <li>7) How many meals are you eating per day?
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="question7" value="1" /></td>
+                                <td>a. 1-2</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question7" value="2" /></td>
+                                <td>b. 2-4</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question7"value="3" /></td>
+                                <td>c. 4-6</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>8) Are you ready to make a change today?
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="question8" value="1" /></td>
+                                <td>a. Yes</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="question8" value="2" /></td>
+                                <td>b. No</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+                <input type="image" src="@{'public/images/submit.gif'}" class="submit" name="sendquestionaire" id="sendquestionaire">
+            </div>	
+        </div>
+        </form>
+        <div class="clear"></div>
+    </div>
+</div>	
+</div>
+<script type="text/javascript">
+	$('.pics2').cycle('fade');
+</script>

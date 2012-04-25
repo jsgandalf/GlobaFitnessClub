@@ -1,0 +1,41 @@
+<div class="list">
+    <h3>Search Results</h3>
+    #{if trainers}
+    #{list trainers, as:'trainer'}
+    <div class="list_child">
+        <table>
+            <tr>
+                <td class="name"><h3><a href="profile.html">${trainer.firstName} ${trainer.lastName}</h3></td>
+            </tr>
+            <tr class="list_child_conent_tr">
+                <td><a href="profile.html"><img height="100" width="100" src="@{'/public/images/trainers/mike_fit.jpg'}" /></a></td>
+                 <td class="location"><a style="color:#333; font-weight:bold" href="#">${trainer.zip}</a></td>
+                <td style="vertical-align:middle">
+                    <div class="message_buttons">
+                        <ul>
+                            <li>
+                                <a href="profile.html">&nbsp;Contact&nbsp;</a>
+                            </li>
+                        </ul>
+                    </div>       
+                </td>
+            </tr>
+        </table>
+    </div>
+    #{/list}
+    <p>
+        <a id="nextPage" href="${page+1}">More results</a>
+    </p>
+    #{/if}
+    #{else}
+    <div class="list_child" style="border:none; margin:0px;">
+        <table>
+                <tr>
+                    <td><p>No more results</p></td>
+                </tr>
+        </table>
+    </div>
+</div>
+#{/else}      
+    <div class="clear"></div>
+</div>

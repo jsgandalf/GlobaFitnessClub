@@ -1,0 +1,98 @@
+#{extends 'main.html' /}
+#{set title:'Register' /}
+
+<div id="contact_paragraph">
+    <div class="clear"></div>
+    <h2 style="margin-bottom:27px;">Sign Up</h2>
+    <p style="width: 300px">Become a member of Globa fitness Network.  Its free to sign up!</p>
+    #{if flash.error}
+        <p class="fError">
+            <strong>${flash.error}</strong>
+        </p>
+    #{/if}
+    #{if flash.success}
+        <p class="fSuccess">
+            <strong>${flash.success}</strong>
+        </p>
+    #{/if}
+	
+	 #{ifErrors}
+        <p class="error">
+            ${errors[0]}
+        </p>
+    #{/ifErrors}
+
+    <div id="joinLeft">
+        #{form @saveUser()}
+            <ol>
+                <li> 
+                    <ol class="inline" >
+                        #{field 'user.firstName'}
+                        <li>
+                            <label for="name">First Name (required)</label>
+                            <input id="firstName" id="name" type="text" class="text" name="${field.name}" value="${user?.firstName}" />
+                        </li>
+                        #{/field}
+                        #{field 'user.lastName'}
+                        <li style="padding-left:5px;">
+                            <label for="name">Last Name (required)</label>
+                            <input id="lastName" type="text" class="text" name="${field.name}" value="${user?.lastName}" />
+                        </li>
+                        #{/field}
+                    </ol>
+                </li>
+                #{field 'user.email'}
+                <li>
+                    <label for="name">Email (required)</label>
+                    <input id="email" type="text" class="text" name="${field.name}" size="25" value="${user?.email}" />
+                    <span class="error">${field.error}</span>
+                </li>
+                #{/field}
+                #{field 'verifyEmail'}
+                <li>
+                    <label for="name">Re-enter Email</label>
+                    <input id="name" type="text" class="text"  name="${field.name}" size="25" value="${verifyEmail}" /><span class="error">${field.error}</span>
+                </li>
+                #{/field}
+                <li>
+                	<input type="image" value="Register" src="@{'/public/images/submit.gif'}" class="submit" name="sendquestionaire" id="sendquestionaire">
+                </li>
+            </ol>
+        </div>
+        <div id="joinRight">
+            <ol>
+            	#{field 'user.zip'}
+                <li>
+                    <label for="name">Location (zip)</label>
+                    <input id="zip" type="text" class="text" name="${field.name}" value="${user?.zip}" style="width:99px" maxlength="6" />
+                </li>
+                #{/field}
+                #{field 'user.password'}
+              	<li>
+                    <label for="name">Password</label>
+                    <input class="pass" type="password" name="${field.name}" size="16" value="${user?.password}">
+                    <span class="error">${field.error}</span>
+                </li>
+                #{/field}
+                #{field 'verifyPassword'}
+                    <li>
+                    <label for="name">Re-enter Password</label>
+                    <input class="pass" type="password" name="${field.name}" size="16" value="${verifyPassword}"> 
+                    	<span class="error">${field.error}</span>
+                	</li>
+                #{/field}    
+           </ol>
+        </div>
+        
+       
+                
+                
+            
+           
+                
+
+        #{/form}
+	</div>
+     <div class="clear"></div>
+    
+</div>

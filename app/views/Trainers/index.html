@@ -1,0 +1,88 @@
+#{extends 'main.html' /}
+#{set title:'Search' /}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+
+    <div id="main_image_header" style="height:100%">
+        <div id="contact_paragraph">
+            <div class="clear"></div>
+            <h2>Find Trainer</h2>
+            <div id="contactdiv" style="padding: 0 0 0 28px;">
+                <ol>
+                    <li>
+                    <p>Find trainers near you</p>
+                    </li>
+                    <input style="position: absolute; left: 220px; margin-top: 33px;" type="image" src="@{'/public/images/submit.gif'}" class="submit" id="submit">
+                    <ol class="inline">
+                        <li>
+                            <label for="name">Zip code:</label>
+                            <input  id="search_trainer" type="text" class="text" name="text" style="width:150px" /> 
+                        </li>
+                        <li style="padding-left:100px;">
+                            Maximum results: 
+                            <select id="size" class="maximum_results">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                            </select>
+                        </li>
+                      
+                    </ol>
+                </ol>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>	
+</div>
+<div class="clear"></div>
+<div class="white_background_wrapper">	
+    <div id="result">
+    </div>
+</div>
+
+<script type="text/javascript" charset="${_response_encoding}">
+
+    // Rebuild state
+    $('#search_trainer').val(sessvars.search)  ;  
+    if(sessvars.page == undefined) {
+        sessvars.page = 1;
+    }
+    if(sessvars.size == undefined) {
+        sessvars.size = 10;
+    }
+    $('#size option[value='+sessvars.size+']').attr('selected', 'true')
+    
+    // Search function
+    var search = function() {
+        sessvars.search = $('#search_trainer').val();
+        sessvars.size = $('#size').val();
+        var listAction = #{jsAction @list(':search', ':size', ':page') /};
+        $('#result').load(listAction({search: sessvars.search, size: sessvars.size, page: sessvars.page}), function() {
+            $('#content').css('visibility', 'visible');
+        })
+    }
+    
+    // Events handler
+    $('#submit').click(function() {
+        sessvars.page = 1
+        search()
+    })
+    $('#search_trainer').keyup(function() {
+        sessvars.page = 1
+        search()
+    })
+    $('#nextPage').live('click', function(e) {
+        sessvars.page = $(this).attr('href')
+        e.preventDefault()
+        search()        
+    })
+    
+    // Init
+    if(sessvars.search != undefined) {
+        $('#content').css('visibility', 'hidden')
+        search();
+    }
+    
+</script>

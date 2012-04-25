@@ -1,0 +1,71 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+<!--<div id="login">
+    
+    (try with demo/demo)
+
+    #{form @login(), id:'formLogin'}
+        <p class="field">
+            <label>Login Name:</label>
+            <input type="text" name="username" size="19" value="${flash.username}" />
+        </p>
+        <p class="field">
+            <label>Password:</label>
+            <input type="password" name="password" size="19"/>
+        </p>    
+        <p class="buttons">
+            <input type="submit" value="Account login" />
+        </p> 
+    #{/form}
+
+    <p>
+        <a href="@{register()}">Register New User</a>
+    </p>
+
+</div>
+-->
+
+
+<div id="contact_paragraph">
+    <div class="clear"></div>
+    <h2 style="margin-bottom:27px;">Login</h2>
+    <p style="width: 300px">Not a member?  <a href="@{register()}">Register here</a>. Its free to sign up!</p>
+
+	 #{ifErrors}
+        <p class="error">
+            ${errors[0]}
+        </p>
+    #{/ifErrors}
+	#{if flash.error}
+        <p class="fError">
+            <strong>${flash.error}</strong>
+        </p>
+    #{/if}
+    #{if flash.success}
+        <p class="fSuccess">
+            <strong>${flash.success}</strong>
+        </p>
+    #{/if}
+
+    <div id="joinLeft">
+        #{form @login(), id:'formLogin'}
+            <ol>
+                <li>
+                    <label for="name">Email (required)</label>
+                    <input id="email" type="text" class="text" name="email" size="19" value="${flash.email}" />
+                </li>
+                <li>
+                    <label for="name">Password (required)</label>
+                    <input class="pass" type="password" name="password" size="19" />
+                </li>
+                <li>
+                    <input type="image" value="Account login" src="@{'/public/images/submit.gif'}" class="submit" name="sendquestionaire" id="sendquestionaire">
+                </li>
+            </ol>
+        </div>
+        #{/form}
+	</div>
+     <div class="clear"></div>
+    
+</div>
