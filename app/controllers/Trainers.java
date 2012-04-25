@@ -28,29 +28,17 @@ public class Trainers extends Controller {
         return null;
     }
 	
-    @Before
+    /*@Before
     static void checkUser() {
         if(connected() == null) {
             flash.error("Please log in first");
             Application.index();
         }
-    }
+    }*/
     
     // ~~~
-    
-	public static void login_page(){
-		Application.login_page();
-	}
-	
-	public static void contact(){
-		Application.contact();
-	}
 	
 	public static void register(){
-		Application.register();
-	}
-	
-	public static void register_trainer(){
 		render();
 	}
 	
@@ -58,9 +46,10 @@ public class Trainers extends Controller {
         //List<Trainer> trainer_results = Trainer.find("byUser", connected()).fetch();
         //render(trainer_results);
 		if(connected() != null) {
-            render();
+     	   render();
         }
-		login_page();
+		flash.error("Please log in first to view trainers.");
+		Application.login_page();
     }
 
     public static void list(String search, Integer size, Integer page) {
@@ -107,7 +96,7 @@ public class Trainers extends Controller {
     public static void saveTrainer(@Valid Trainer trainer) {
 		validation.email(trainer.email);
 		if(validation.hasErrors()) {
-            render("@register_trainer", trainer);
+            render("@Trainers.register", trainer);
         }
         trainer.create();
         session.put("trainer", trainer.email);

@@ -47,9 +47,7 @@ public class Application extends Controller {
 		User user = connected();
 		render(user);
 	}
-	
-
-    
+ 
 	public static void login_page(){
 		render();
 	}

@@ -17,7 +17,6 @@
             Cufon.replace('#login a', {
                 hover: true
             });
-    
             Cufon.replace('#login a', {
                 hover: true
             });
@@ -37,24 +36,24 @@
     	<div id="top_bar">
             <div id="logo">
                 <h1>
-                    <a href="index.html">Globa Fitness Club</a>
+                    <a href="@{Application.index}">Globa Fitness Club</a>
                 </h1>
                 <small>
-                    <a href="#index.html">Learn, Share, Explore</a>
+                    <a href="@{Application.index}">Learn, Share, Explore</a>
                 </small>
             </div>
             <div id="top_bar_right">
             	<div id="extra_buttons">
                 	<ul>
-                        <li><a href="">Join Trainers Network</a></li>
+                        <li><a href="@{Trainers.register()}">Join Trainers Network</a></li>
                     </ul>
                 </div>   
-                 <div id="login">         
-            	 #{if user?.id}
+                <div id="login">         
+            	#{if user?.id}
                     <a  href="@{Application.logout()}">Log Out</a>
                 #{/if}
                 #{else}
-                	 <a href="@{register()}">Sign Up</a> &nbsp;&nbsp;&nbsp;&nbsp;<a  href="@{login_page()}">Log In</a>
+                	 <a href="@{Application.register()}">Sign Up</a> &nbsp;&nbsp;&nbsp;&nbsp;<a  href="@{Application.login_page()}">Log In</a>
                 #{/else}
                 
                 </div>
@@ -69,9 +68,9 @@
                 <div id="options" class="options_logged_in">
                     <a href="#" style="color:#FFF">Connected as ${user.email}</a>
                     |
-                    <a href="#">Search</a>
+                    <a href="@{Trainers.index()}">Search</a>
                     |
-                    <a href="#">Settings</a>
+                    <a href="@{Trainers.settings()}">Settings</a>
                     |
                     <a href="@{Application.profile()}">Profile</a>
                     |
@@ -99,7 +98,7 @@
                             </ul>
                         </li>
                         
-                        <li><a href="#">Trainers</a></li>
+                        <li><a href="@{Trainers.index()}">Trainers</a></li>
                         <li><a href="fitnessPrograms.html">Programs</a>
                             <ul id="dropdown2">
                                 <li><a href="index.html">Weight Loss</a></li>
@@ -118,7 +117,7 @@
                                 <li><a href="network.html">Network</a></li>
                             </ul>
                         </li>
-                        <li><a href="@{contact()}" style="padding: 20px 20px 0;">Contact Us</a></li>
+                        <li><a href="@{Application.contact()}" style="padding: 20px 20px 0;">Contact Us</a></li>
                     </ul>
                     <div id="social">
                         <a href="http://www.facebook.com"><div id="facebook"></div></a>
@@ -195,7 +194,7 @@
 </html>
 <script>
 	$("#splash").click(function(){
-		window.location.replace("");
+		window.location.replace("@{Trainers.index()}");
 	});
 	
 	$("#splash2").click(function(){
