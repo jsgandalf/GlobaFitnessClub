@@ -1,5 +1,6017 @@
-/*! jQuery v1.7.1 jquery.com | jquery.org/license */
-(function(a,b){function cy(a){return f.isWindow(a)?a:a.nodeType===9?a.defaultView||a.parentWindow:!1}function cv(a){if(!ck[a]){var b=c.body,d=f("<"+a+">").appendTo(b),e=d.css("display");d.remove();if(e==="none"||e===""){cl||(cl=c.createElement("iframe"),cl.frameBorder=cl.width=cl.height=0),b.appendChild(cl);if(!cm||!cl.createElement)cm=(cl.contentWindow||cl.contentDocument).document,cm.write((c.compatMode==="CSS1Compat"?"<!doctype html>":"")+"<html><body>"),cm.close();d=cm.createElement(a),cm.body.appendChild(d),e=f.css(d,"display"),b.removeChild(cl)}ck[a]=e}return ck[a]}function cu(a,b){var c={};f.each(cq.concat.apply([],cq.slice(0,b)),function(){c[this]=a});return c}function ct(){cr=b}function cs(){setTimeout(ct,0);return cr=f.now()}function cj(){try{return new a.ActiveXObject("Microsoft.XMLHTTP")}catch(b){}}function ci(){try{return new a.XMLHttpRequest}catch(b){}}function cc(a,c){a.dataFilter&&(c=a.dataFilter(c,a.dataType));var d=a.dataTypes,e={},g,h,i=d.length,j,k=d[0],l,m,n,o,p;for(g=1;g<i;g++){if(g===1)for(h in a.converters)typeof h=="string"&&(e[h.toLowerCase()]=a.converters[h]);l=k,k=d[g];if(k==="*")k=l;else if(l!=="*"&&l!==k){m=l+" "+k,n=e[m]||e["* "+k];if(!n){p=b;for(o in e){j=o.split(" ");if(j[0]===l||j[0]==="*"){p=e[j[1]+" "+k];if(p){o=e[o],o===!0?n=p:p===!0&&(n=o);break}}}}!n&&!p&&f.error("No conversion from "+m.replace(" "," to ")),n!==!0&&(c=n?n(c):p(o(c)))}}return c}function cb(a,c,d){var e=a.contents,f=a.dataTypes,g=a.responseFields,h,i,j,k;for(i in g)i in d&&(c[g[i]]=d[i]);while(f[0]==="*")f.shift(),h===b&&(h=a.mimeType||c.getResponseHeader("content-type"));if(h)for(i in e)if(e[i]&&e[i].test(h)){f.unshift(i);break}if(f[0]in d)j=f[0];else{for(i in d){if(!f[0]||a.converters[i+" "+f[0]]){j=i;break}k||(k=i)}j=j||k}if(j){j!==f[0]&&f.unshift(j);return d[j]}}function ca(a,b,c,d){if(f.isArray(b))f.each(b,function(b,e){c||bE.test(a)?d(a,e):ca(a+"["+(typeof e=="object"||f.isArray(e)?b:"")+"]",e,c,d)});else if(!c&&b!=null&&typeof b=="object")for(var e in b)ca(a+"["+e+"]",b[e],c,d);else d(a,b)}function b_(a,c){var d,e,g=f.ajaxSettings.flatOptions||{};for(d in c)c[d]!==b&&((g[d]?a:e||(e={}))[d]=c[d]);e&&f.extend(!0,a,e)}function b$(a,c,d,e,f,g){f=f||c.dataTypes[0],g=g||{},g[f]=!0;var h=a[f],i=0,j=h?h.length:0,k=a===bT,l;for(;i<j&&(k||!l);i++)l=h[i](c,d,e),typeof l=="string"&&(!k||g[l]?l=b:(c.dataTypes.unshift(l),l=b$(a,c,d,e,l,g)));(k||!l)&&!g["*"]&&(l=b$(a,c,d,e,"*",g));return l}function bZ(a){return function(b,c){typeof b!="string"&&(c=b,b="*");if(f.isFunction(c)){var d=b.toLowerCase().split(bP),e=0,g=d.length,h,i,j;for(;e<g;e++)h=d[e],j=/^\+/.test(h),j&&(h=h.substr(1)||"*"),i=a[h]=a[h]||[],i[j?"unshift":"push"](c)}}}function bC(a,b,c){var d=b==="width"?a.offsetWidth:a.offsetHeight,e=b==="width"?bx:by,g=0,h=e.length;if(d>0){if(c!=="border")for(;g<h;g++)c||(d-=parseFloat(f.css(a,"padding"+e[g]))||0),c==="margin"?d+=parseFloat(f.css(a,c+e[g]))||0:d-=parseFloat(f.css(a,"border"+e[g]+"Width"))||0;return d+"px"}d=bz(a,b,b);if(d<0||d==null)d=a.style[b]||0;d=parseFloat(d)||0;if(c)for(;g<h;g++)d+=parseFloat(f.css(a,"padding"+e[g]))||0,c!=="padding"&&(d+=parseFloat(f.css(a,"border"+e[g]+"Width"))||0),c==="margin"&&(d+=parseFloat(f.css(a,c+e[g]))||0);return d+"px"}function bp(a,b){b.src?f.ajax({url:b.src,async:!1,dataType:"script"}):f.globalEval((b.text||b.textContent||b.innerHTML||"").replace(bf,"/*$0*/")),b.parentNode&&b.parentNode.removeChild(b)}function bo(a){var b=c.createElement("div");bh.appendChild(b),b.innerHTML=a.outerHTML;return b.firstChild}function bn(a){var b=(a.nodeName||"").toLowerCase();b==="input"?bm(a):b!=="script"&&typeof a.getElementsByTagName!="undefined"&&f.grep(a.getElementsByTagName("input"),bm)}function bm(a){if(a.type==="checkbox"||a.type==="radio")a.defaultChecked=a.checked}function bl(a){return typeof a.getElementsByTagName!="undefined"?a.getElementsByTagName("*"):typeof a.querySelectorAll!="undefined"?a.querySelectorAll("*"):[]}function bk(a,b){var c;if(b.nodeType===1){b.clearAttributes&&b.clearAttributes(),b.mergeAttributes&&b.mergeAttributes(a),c=b.nodeName.toLowerCase();if(c==="object")b.outerHTML=a.outerHTML;else if(c!=="input"||a.type!=="checkbox"&&a.type!=="radio"){if(c==="option")b.selected=a.defaultSelected;else if(c==="input"||c==="textarea")b.defaultValue=a.defaultValue}else a.checked&&(b.defaultChecked=b.checked=a.checked),b.value!==a.value&&(b.value=a.value);b.removeAttribute(f.expando)}}function bj(a,b){if(b.nodeType===1&&!!f.hasData(a)){var c,d,e,g=f._data(a),h=f._data(b,g),i=g.events;if(i){delete h.handle,h.events={};for(c in i)for(d=0,e=i[c].length;d<e;d++)f.event.add(b,c+(i[c][d].namespace?".":"")+i[c][d].namespace,i[c][d],i[c][d].data)}h.data&&(h.data=f.extend({},h.data))}}function bi(a,b){return f.nodeName(a,"table")?a.getElementsByTagName("tbody")[0]||a.appendChild(a.ownerDocument.createElement("tbody")):a}function U(a){var b=V.split("|"),c=a.createDocumentFragment();if(c.createElement)while(b.length)c.createElement(b.pop());return c}function T(a,b,c){b=b||0;if(f.isFunction(b))return f.grep(a,function(a,d){var e=!!b.call(a,d,a);return e===c});if(b.nodeType)return f.grep(a,function(a,d){return a===b===c});if(typeof b=="string"){var d=f.grep(a,function(a){return a.nodeType===1});if(O.test(b))return f.filter(b,d,!c);b=f.filter(b,d)}return f.grep(a,function(a,d){return f.inArray(a,b)>=0===c})}function S(a){return!a||!a.parentNode||a.parentNode.nodeType===11}function K(){return!0}function J(){return!1}function n(a,b,c){var d=b+"defer",e=b+"queue",g=b+"mark",h=f._data(a,d);h&&(c==="queue"||!f._data(a,e))&&(c==="mark"||!f._data(a,g))&&setTimeout(function(){!f._data(a,e)&&!f._data(a,g)&&(f.removeData(a,d,!0),h.fire())},0)}function m(a){for(var b in a){if(b==="data"&&f.isEmptyObject(a[b]))continue;if(b!=="toJSON")return!1}return!0}function l(a,c,d){if(d===b&&a.nodeType===1){var e="data-"+c.replace(k,"-$1").toLowerCase();d=a.getAttribute(e);if(typeof d=="string"){try{d=d==="true"?!0:d==="false"?!1:d==="null"?null:f.isNumeric(d)?parseFloat(d):j.test(d)?f.parseJSON(d):d}catch(g){}f.data(a,c,d)}else d=b}return d}function h(a){var b=g[a]={},c,d;a=a.split(/\s+/);for(c=0,d=a.length;c<d;c++)b[a[c]]=!0;return b}var c=a.document,d=a.navigator,e=a.location,f=function(){function J(){if(!e.isReady){try{c.documentElement.doScroll("left")}catch(a){setTimeout(J,1);return}e.ready()}}var e=function(a,b){return new e.fn.init(a,b,h)},f=a.jQuery,g=a.$,h,i=/^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/,j=/\S/,k=/^\s+/,l=/\s+$/,m=/^<(\w+)\s*\/?>(?:<\/\1>)?$/,n=/^[\],:{}\s]*$/,o=/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,p=/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,q=/(?:^|:|,)(?:\s*\[)+/g,r=/(webkit)[ \/]([\w.]+)/,s=/(opera)(?:.*version)?[ \/]([\w.]+)/,t=/(msie) ([\w.]+)/,u=/(mozilla)(?:.*? rv:([\w.]+))?/,v=/-([a-z]|[0-9])/ig,w=/^-ms-/,x=function(a,b){return(b+"").toUpperCase()},y=d.userAgent,z,A,B,C=Object.prototype.toString,D=Object.prototype.hasOwnProperty,E=Array.prototype.push,F=Array.prototype.slice,G=String.prototype.trim,H=Array.prototype.indexOf,I={};e.fn=e.prototype={constructor:e,init:function(a,d,f){var g,h,j,k;if(!a)return this;if(a.nodeType){this.context=this[0]=a,this.length=1;return this}if(a==="body"&&!d&&c.body){this.context=c,this[0]=c.body,this.selector=a,this.length=1;return this}if(typeof a=="string"){a.charAt(0)!=="<"||a.charAt(a.length-1)!==">"||a.length<3?g=i.exec(a):g=[null,a,null];if(g&&(g[1]||!d)){if(g[1]){d=d instanceof e?d[0]:d,k=d?d.ownerDocument||d:c,j=m.exec(a),j?e.isPlainObject(d)?(a=[c.createElement(j[1])],e.fn.attr.call(a,d,!0)):a=[k.createElement(j[1])]:(j=e.buildFragment([g[1]],[k]),a=(j.cacheable?e.clone(j.fragment):j.fragment).childNodes);return e.merge(this,a)}h=c.getElementById(g[2]);if(h&&h.parentNode){if(h.id!==g[2])return f.find(a);this.length=1,this[0]=h}this.context=c,this.selector=a;return this}return!d||d.jquery?(d||f).find(a):this.constructor(d).find(a)}if(e.isFunction(a))return f.ready(a);a.selector!==b&&(this.selector=a.selector,this.context=a.context);return e.makeArray(a,this)},selector:"",jquery:"1.7.1",length:0,size:function(){return this.length},toArray:function(){return F.call(this,0)},get:function(a){return a==null?this.toArray():a<0?this[this.length+a]:this[a]},pushStack:function(a,b,c){var d=this.constructor();e.isArray(a)?E.apply(d,a):e.merge(d,a),d.prevObject=this,d.context=this.context,b==="find"?d.selector=this.selector+(this.selector?" ":"")+c:b&&(d.selector=this.selector+"."+b+"("+c+")");return d},each:function(a,b){return e.each(this,a,b)},ready:function(a){e.bindReady(),A.add(a);return this},eq:function(a){a=+a;return a===-1?this.slice(a):this.slice(a,a+1)},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},slice:function(){return this.pushStack(F.apply(this,arguments),"slice",F.call(arguments).join(","))},map:function(a){return this.pushStack(e.map(this,function(b,c){return a.call(b,c,b)}))},end:function(){return this.prevObject||this.constructor(null)},push:E,sort:[].sort,splice:[].splice},e.fn.init.prototype=e.fn,e.extend=e.fn.extend=function(){var a,c,d,f,g,h,i=arguments[0]||{},j=1,k=arguments.length,l=!1;typeof i=="boolean"&&(l=i,i=arguments[1]||{},j=2),typeof i!="object"&&!e.isFunction(i)&&(i={}),k===j&&(i=this,--j);for(;j<k;j++)if((a=arguments[j])!=null)for(c in a){d=i[c],f=a[c];if(i===f)continue;l&&f&&(e.isPlainObject(f)||(g=e.isArray(f)))?(g?(g=!1,h=d&&e.isArray(d)?d:[]):h=d&&e.isPlainObject(d)?d:{},i[c]=e.extend(l,h,f)):f!==b&&(i[c]=f)}return i},e.extend({noConflict:function(b){a.$===e&&(a.$=g),b&&a.jQuery===e&&(a.jQuery=f);return e},isReady:!1,readyWait:1,holdReady:function(a){a?e.readyWait++:e.ready(!0)},ready:function(a){if(a===!0&&!--e.readyWait||a!==!0&&!e.isReady){if(!c.body)return setTimeout(e.ready,1);e.isReady=!0;if(a!==!0&&--e.readyWait>0)return;A.fireWith(c,[e]),e.fn.trigger&&e(c).trigger("ready").off("ready")}},bindReady:function(){if(!A){A=e.Callbacks("once memory");if(c.readyState==="complete")return setTimeout(e.ready,1);if(c.addEventListener)c.addEventListener("DOMContentLoaded",B,!1),a.addEventListener("load",e.ready,!1);else if(c.attachEvent){c.attachEvent("onreadystatechange",B),a.attachEvent("onload",e.ready);var b=!1;try{b=a.frameElement==null}catch(d){}c.documentElement.doScroll&&b&&J()}}},isFunction:function(a){return e.type(a)==="function"},isArray:Array.isArray||function(a){return e.type(a)==="array"},isWindow:function(a){return a&&typeof a=="object"&&"setInterval"in a},isNumeric:function(a){return!isNaN(parseFloat(a))&&isFinite(a)},type:function(a){return a==null?String(a):I[C.call(a)]||"object"},isPlainObject:function(a){if(!a||e.type(a)!=="object"||a.nodeType||e.isWindow(a))return!1;try{if(a.constructor&&!D.call(a,"constructor")&&!D.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}var d;for(d in a);return d===b||D.call(a,d)},isEmptyObject:function(a){for(var b in a)return!1;return!0},error:function(a){throw new Error(a)},parseJSON:function(b){if(typeof b!="string"||!b)return null;b=e.trim(b);if(a.JSON&&a.JSON.parse)return a.JSON.parse(b);if(n.test(b.replace(o,"@").replace(p,"]").replace(q,"")))return(new Function("return "+b))();e.error("Invalid JSON: "+b)},parseXML:function(c){var d,f;try{a.DOMParser?(f=new DOMParser,d=f.parseFromString(c,"text/xml")):(d=new ActiveXObject("Microsoft.XMLDOM"),d.async="false",d.loadXML(c))}catch(g){d=b}(!d||!d.documentElement||d.getElementsByTagName("parsererror").length)&&e.error("Invalid XML: "+c);return d},noop:function(){},globalEval:function(b){b&&j.test(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(w,"ms-").replace(v,x)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toUpperCase()===b.toUpperCase()},each:function(a,c,d){var f,g=0,h=a.length,i=h===b||e.isFunction(a);if(d){if(i){for(f in a)if(c.apply(a[f],d)===!1)break}else for(;g<h;)if(c.apply(a[g++],d)===!1)break}else if(i){for(f in a)if(c.call(a[f],f,a[f])===!1)break}else for(;g<h;)if(c.call(a[g],g,a[g++])===!1)break;return a},trim:G?function(a){return a==null?"":G.call(a)}:function(a){return a==null?"":(a+"").replace(k,"").replace(l,"")},makeArray:function(a,b){var c=b||[];if(a!=null){var d=e.type(a);a.length==null||d==="string"||d==="function"||d==="regexp"||e.isWindow(a)?E.call(c,a):e.merge(c,a)}return c},inArray:function(a,b,c){var d;if(b){if(H)return H.call(b,a,c);d=b.length,c=c?c<0?Math.max(0,d+c):c:0;for(;c<d;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,c){var d=a.length,e=0;if(typeof c.length=="number")for(var f=c.length;e<f;e++)a[d++]=c[e];else while(c[e]!==b)a[d++]=c[e++];a.length=d;return a},grep:function(a,b,c){var d=[],e;c=!!c;for(var f=0,g=a.length;f<g;f++)e=!!b(a[f],f),c!==e&&d.push(a[f]);return d},map:function(a,c,d){var f,g,h=[],i=0,j=a.length,k=a instanceof e||j!==b&&typeof j=="number"&&(j>0&&a[0]&&a[j-1]||j===0||e.isArray(a));if(k)for(;i<j;i++)f=c(a[i],i,d),f!=null&&(h[h.length]=f);else for(g in a)f=c(a[g],g,d),f!=null&&(h[h.length]=f);return h.concat.apply([],h)},guid:1,proxy:function(a,c){if(typeof c=="string"){var d=a[c];c=a,a=d}if(!e.isFunction(a))return b;var f=F.call(arguments,2),g=function(){return a.apply(c,f.concat(F.call(arguments)))};g.guid=a.guid=a.guid||g.guid||e.guid++;return g},access:function(a,c,d,f,g,h){var i=a.length;if(typeof c=="object"){for(var j in c)e.access(a,j,c[j],f,g,d);return a}if(d!==b){f=!h&&f&&e.isFunction(d);for(var k=0;k<i;k++)g(a[k],c,f?d.call(a[k],k,g(a[k],c)):d,h);return a}return i?g(a[0],c):b},now:function(){return(new Date).getTime()},uaMatch:function(a){a=a.toLowerCase();var b=r.exec(a)||s.exec(a)||t.exec(a)||a.indexOf("compatible")<0&&u.exec(a)||[];return{browser:b[1]||"",version:b[2]||"0"}},sub:function(){function a(b,c){return new a.fn.init(b,c)}e.extend(!0,a,this),a.superclass=this,a.fn=a.prototype=this(),a.fn.constructor=a,a.sub=this.sub,a.fn.init=function(d,f){f&&f instanceof e&&!(f instanceof a)&&(f=a(f));return e.fn.init.call(this,d,f,b)},a.fn.init.prototype=a.fn;var b=a(c);return a},browser:{}}),e.each("Boolean Number String Function Array Date RegExp Object".split(" "),function(a,b){I["[object "+b+"]"]=b.toLowerCase()}),z=e.uaMatch(y),z.browser&&(e.browser[z.browser]=!0,e.browser.version=z.version),e.browser.webkit&&(e.browser.safari=!0),j.test(" ")&&(k=/^[\s\xA0]+/,l=/[\s\xA0]+$/),h=e(c),c.addEventListener?B=function(){c.removeEventListener("DOMContentLoaded",B,!1),e.ready()}:c.attachEvent&&(B=function(){c.readyState==="complete"&&(c.detachEvent("onreadystatechange",B),e.ready())});return e}(),g={};f.Callbacks=function(a){a=a?g[a]||h(a):{};var c=[],d=[],e,i,j,k,l,m=function(b){var d,e,g,h,i;for(d=0,e=b.length;d<e;d++)g=b[d],h=f.type(g),h==="array"?m(g):h==="function"&&(!a.unique||!o.has(g))&&c.push(g)},n=function(b,f){f=f||[],e=!a.memory||[b,f],i=!0,l=j||0,j=0,k=c.length;for(;c&&l<k;l++)if(c[l].apply(b,f)===!1&&a.stopOnFalse){e=!0;break}i=!1,c&&(a.once?e===!0?o.disable():c=[]:d&&d.length&&(e=d.shift(),o.fireWith(e[0],e[1])))},o={add:function(){if(c){var a=c.length;m(arguments),i?k=c.length:e&&e!==!0&&(j=a,n(e[0],e[1]))}return this},remove:function(){if(c){var b=arguments,d=0,e=b.length;for(;d<e;d++)for(var f=0;f<c.length;f++)if(b[d]===c[f]){i&&f<=k&&(k--,f<=l&&l--),c.splice(f--,1);if(a.unique)break}}return this},has:function(a){if(c){var b=0,d=c.length;for(;b<d;b++)if(a===c[b])return!0}return!1},empty:function(){c=[];return this},disable:function(){c=d=e=b;return this},disabled:function(){return!c},lock:function(){d=b,(!e||e===!0)&&o.disable();return this},locked:function(){return!d},fireWith:function(b,c){d&&(i?a.once||d.push([b,c]):(!a.once||!e)&&n(b,c));return this},fire:function(){o.fireWith(this,arguments);return this},fired:function(){return!!e}};return o};var i=[].slice;f.extend({Deferred:function(a){var b=f.Callbacks("once memory"),c=f.Callbacks("once memory"),d=f.Callbacks("memory"),e="pending",g={resolve:b,reject:c,notify:d},h={done:b.add,fail:c.add,progress:d.add,state:function(){return e},isResolved:b.fired,isRejected:c.fired,then:function(a,b,c){i.done(a).fail(b).progress(c);return this},always:function(){i.done.apply(i,arguments).fail.apply(i,arguments);return this},pipe:function(a,b,c){return f.Deferred(function(d){f.each({done:[a,"resolve"],fail:[b,"reject"],progress:[c,"notify"]},function(a,b){var c=b[0],e=b[1],g;f.isFunction(c)?i[a](function(){g=c.apply(this,arguments),g&&f.isFunction(g.promise)?g.promise().then(d.resolve,d.reject,d.notify):d[e+"With"](this===i?d:this,[g])}):i[a](d[e])})}).promise()},promise:function(a){if(a==null)a=h;else for(var b in h)a[b]=h[b];return a}},i=h.promise({}),j;for(j in g)i[j]=g[j].fire,i[j+"With"]=g[j].fireWith;i.done(function(){e="resolved"},c.disable,d.lock).fail(function(){e="rejected"},b.disable,d.lock),a&&a.call(i,i);return i},when:function(a){function m(a){return function(b){e[a]=arguments.length>1?i.call(arguments,0):b,j.notifyWith(k,e)}}function l(a){return function(c){b[a]=arguments.length>1?i.call(arguments,0):c,--g||j.resolveWith(j,b)}}var b=i.call(arguments,0),c=0,d=b.length,e=Array(d),g=d,h=d,j=d<=1&&a&&f.isFunction(a.promise)?a:f.Deferred(),k=j.promise();if(d>1){for(;c<d;c++)b[c]&&b[c].promise&&f.isFunction(b[c].promise)?b[c].promise().then(l(c),j.reject,m(c)):--g;g||j.resolveWith(j,b)}else j!==a&&j.resolveWith(j,d?[a]:[]);return k}}),f.support=function(){var b,d,e,g,h,i,j,k,l,m,n,o,p,q=c.createElement("div"),r=c.documentElement;q.setAttribute("className","t"),q.innerHTML="   <link/><table></table><a href='/a' style='top:1px;float:left;opacity:.55;'>a</a><input type='checkbox'/>",d=q.getElementsByTagName("*"),e=q.getElementsByTagName("a")[0];if(!d||!d.length||!e)return{};g=c.createElement("select"),h=g.appendChild(c.createElement("option")),i=q.getElementsByTagName("input")[0],b={leadingWhitespace:q.firstChild.nodeType===3,tbody:!q.getElementsByTagName("tbody").length,htmlSerialize:!!q.getElementsByTagName("link").length,style:/top/.test(e.getAttribute("style")),hrefNormalized:e.getAttribute("href")==="/a",opacity:/^0.55/.test(e.style.opacity),cssFloat:!!e.style.cssFloat,checkOn:i.value==="on",optSelected:h.selected,getSetAttribute:q.className!=="t",enctype:!!c.createElement("form").enctype,html5Clone:c.createElement("nav").cloneNode(!0).outerHTML!=="<:nav></:nav>",submitBubbles:!0,changeBubbles:!0,focusinBubbles:!1,deleteExpando:!0,noCloneEvent:!0,inlineBlockNeedsLayout:!1,shrinkWrapBlocks:!1,reliableMarginRight:!0},i.checked=!0,b.noCloneChecked=i.cloneNode(!0).checked,g.disabled=!0,b.optDisabled=!h.disabled;try{delete q.test}catch(s){b.deleteExpando=!1}!q.addEventListener&&q.attachEvent&&q.fireEvent&&(q.attachEvent("onclick",function(){b.noCloneEvent=!1}),q.cloneNode(!0).fireEvent("onclick")),i=c.createElement("input"),i.value="t",i.setAttribute("type","radio"),b.radioValue=i.value==="t",i.setAttribute("checked","checked"),q.appendChild(i),k=c.createDocumentFragment(),k.appendChild(q.lastChild),b.checkClone=k.cloneNode(!0).cloneNode(!0).lastChild.checked,b.appendChecked=i.checked,k.removeChild(i),k.appendChild(q),q.innerHTML="",a.getComputedStyle&&(j=c.createElement("div"),j.style.width="0",j.style.marginRight="0",q.style.width="2px",q.appendChild(j),b.reliableMarginRight=(parseInt((a.getComputedStyle(j,null)||{marginRight:0}).marginRight,10)||0)===0);if(q.attachEvent)for(o in{submit:1,change:1,focusin:1})n="on"+o,p=n in q,p||(q.setAttribute(n,"return;"),p=typeof q[n]=="function"),b[o+"Bubbles"]=p;k.removeChild(q),k=g=h=j=q=i=null,f(function(){var a,d,e,g,h,i,j,k,m,n,o,r=c.getElementsByTagName("body")[0];!r||(j=1,k="position:absolute;top:0;left:0;width:1px;height:1px;margin:0;",m="visibility:hidden;border:0;",n="style='"+k+"border:5px solid #000;padding:0;'",o="<div "+n+"><div></div></div>"+"<table "+n+" cellpadding='0' cellspacing='0'>"+"<tr><td></td></tr></table>",a=c.createElement("div"),a.style.cssText=m+"width:0;height:0;position:static;top:0;margin-top:"+j+"px",r.insertBefore(a,r.firstChild),q=c.createElement("div"),a.appendChild(q),q.innerHTML="<table><tr><td style='padding:0;border:0;display:none'></td><td>t</td></tr></table>",l=q.getElementsByTagName("td"),p=l[0].offsetHeight===0,l[0].style.display="",l[1].style.display="none",b.reliableHiddenOffsets=p&&l[0].offsetHeight===0,q.innerHTML="",q.style.width=q.style.paddingLeft="1px",f.boxModel=b.boxModel=q.offsetWidth===2,typeof q.style.zoom!="undefined"&&(q.style.display="inline",q.style.zoom=1,b.inlineBlockNeedsLayout=q.offsetWidth===2,q.style.display="",q.innerHTML="<div style='width:4px;'></div>",b.shrinkWrapBlocks=q.offsetWidth!==2),q.style.cssText=k+m,q.innerHTML=o,d=q.firstChild,e=d.firstChild,h=d.nextSibling.firstChild.firstChild,i={doesNotAddBorder:e.offsetTop!==5,doesAddBorderForTableAndCells:h.offsetTop===5},e.style.position="fixed",e.style.top="20px",i.fixedPosition=e.offsetTop===20||e.offsetTop===15,e.style.position=e.style.top="",d.style.overflow="hidden",d.style.position="relative",i.subtractsBorderForOverflowNotVisible=e.offsetTop===-5,i.doesNotIncludeMarginInBodyOffset=r.offsetTop!==j,r.removeChild(a),q=a=null,f.extend(b,i))});return b}();var j=/^(?:\{.*\}|\[.*\])$/,k=/([A-Z])/g;f.extend({cache:{},uuid:0,expando:"jQuery"+(f.fn.jquery+Math.random()).replace(/\D/g,""),noData:{embed:!0,object:"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000",applet:!0},hasData:function(a){a=a.nodeType?f.cache[a[f.expando]]:a[f.expando];return!!a&&!m(a)},data:function(a,c,d,e){if(!!f.acceptData(a)){var g,h,i,j=f.expando,k=typeof c=="string",l=a.nodeType,m=l?f.cache:a,n=l?a[j]:a[j]&&j,o=c==="events";if((!n||!m[n]||!o&&!e&&!m[n].data)&&k&&d===b)return;n||(l?a[j]=n=++f.uuid:n=j),m[n]||(m[n]={},l||(m[n].toJSON=f.noop));if(typeof c=="object"||typeof c=="function")e?m[n]=f.extend(m[n],c):m[n].data=f.extend(m[n].data,c);g=h=m[n],e||(h.data||(h.data={}),h=h.data),d!==b&&(h[f.camelCase(c)]=d);if(o&&!h[c])return g.events;k?(i=h[c],i==null&&(i=h[f.camelCase(c)])):i=h;return i}},removeData:function(a,b,c){if(!!f.acceptData(a)){var d,e,g,h=f.expando,i=a.nodeType,j=i?f.cache:a,k=i?a[h]:h;if(!j[k])return;if(b){d=c?j[k]:j[k].data;if(d){f.isArray(b)||(b in d?b=[b]:(b=f.camelCase(b),b in d?b=[b]:b=b.split(" ")));for(e=0,g=b.length;e<g;e++)delete d[b[e]];if(!(c?m:f.isEmptyObject)(d))return}}if(!c){delete j[k].data;if(!m(j[k]))return}f.support.deleteExpando||!j.setInterval?delete j[k]:j[k]=null,i&&(f.support.deleteExpando?delete a[h]:a.removeAttribute?a.removeAttribute(h):a[h]=null)}},_data:function(a,b,c){return f.data(a,b,c,!0)},acceptData:function(a){if(a.nodeName){var b=f.noData[a.nodeName.toLowerCase()];if(b)return b!==!0&&a.getAttribute("classid")===b}return!0}}),f.fn.extend({data:function(a,c){var d,e,g,h=null;if(typeof a=="undefined"){if(this.length){h=f.data(this[0]);if(this[0].nodeType===1&&!f._data(this[0],"parsedAttrs")){e=this[0].attributes;for(var i=0,j=e.length;i<j;i++)g=e[i].name,g.indexOf("data-")===0&&(g=f.camelCase(g.substring(5)),l(this[0],g,h[g]));f._data(this[0],"parsedAttrs",!0)}}return h}if(typeof a=="object")return this.each(function(){f.data(this,a)});d=a.split("."),d[1]=d[1]?"."+d[1]:"";if(c===b){h=this.triggerHandler("getData"+d[1]+"!",[d[0]]),h===b&&this.length&&(h=f.data(this[0],a),h=l(this[0],a,h));return h===b&&d[1]?this.data(d[0]):h}return this.each(function(){var b=f(this),e=[d[0],c];b.triggerHandler("setData"+d[1]+"!",e),f.data(this,a,c),b.triggerHandler("changeData"+d[1]+"!",e)})},removeData:function(a){return this.each(function(){f.removeData(this,a)})}}),f.extend({_mark:function(a,b){a&&(b=(b||"fx")+"mark",f._data(a,b,(f._data(a,b)||0)+1))},_unmark:function(a,b,c){a!==!0&&(c=b,b=a,a=!1);if(b){c=c||"fx";var d=c+"mark",e=a?0:(f._data(b,d)||1)-1;e?f._data(b,d,e):(f.removeData(b,d,!0),n(b,c,"mark"))}},queue:function(a,b,c){var d;if(a){b=(b||"fx")+"queue",d=f._data(a,b),c&&(!d||f.isArray(c)?d=f._data(a,b,f.makeArray(c)):d.push(c));return d||[]}},dequeue:function(a,b){b=b||"fx";var c=f.queue(a,b),d=c.shift(),e={};d==="inprogress"&&(d=c.shift()),d&&(b==="fx"&&c.unshift("inprogress"),f._data(a,b+".run",e),d.call(a,function(){f.dequeue(a,b)},e)),c.length||(f.removeData(a,b+"queue "+b+".run",!0),n(a,b,"queue"))}}),f.fn.extend({queue:function(a,c){typeof a!="string"&&(c=a,a="fx");if(c===b)return f.queue(this[0],a);return this.each(function(){var b=f.queue(this,a,c);a==="fx"&&b[0]!=="inprogress"&&f.dequeue(this,a)})},dequeue:function(a){return this.each(function(){f.dequeue(this,a)})},delay:function(a,b){a=f.fx?f.fx.speeds[a]||a:a,b=b||"fx";return this.queue(b,function(b,c){var d=setTimeout(b,a);c.stop=function(){clearTimeout(d)}})},clearQueue:function(a){return this.queue(a||"fx",[])},promise:function(a,c){function m(){--h||d.resolveWith(e,[e])}typeof a!="string"&&(c=a,a=b),a=a||"fx";var d=f.Deferred(),e=this,g=e.length,h=1,i=a+"defer",j=a+"queue",k=a+"mark",l;while(g--)if(l=f.data(e[g],i,b,!0)||(f.data(e[g],j,b,!0)||f.data(e[g],k,b,!0))&&f.data(e[g],i,f.Callbacks("once memory"),!0))h++,l.add(m);m();return d.promise()}});var o=/[\n\t\r]/g,p=/\s+/,q=/\r/g,r=/^(?:button|input)$/i,s=/^(?:button|input|object|select|textarea)$/i,t=/^a(?:rea)?$/i,u=/^(?:autofocus|autoplay|async|checked|controls|defer|disabled|hidden|loop|multiple|open|readonly|required|scoped|selected)$/i,v=f.support.getSetAttribute,w,x,y;f.fn.extend({attr:function(a,b){return f.access(this,a,b,!0,f.attr)},removeAttr:function(a){return this.each(function(){f.removeAttr(this,a)})},prop:function(a,b){return f.access(this,a,b,!0,f.prop)},removeProp:function(a){a=f.propFix[a]||a;return this.each(function(){try{this[a]=b,delete this[a]}catch(c){}})},addClass:function(a){var b,c,d,e,g,h,i;if(f.isFunction(a))return this.each(function(b){f(this).addClass(a.call(this,b,this.className))});if(a&&typeof a=="string"){b=a.split(p);for(c=0,d=this.length;c<d;c++){e=this[c];if(e.nodeType===1)if(!e.className&&b.length===1)e.className=a;else{g=" "+e.className+" ";for(h=0,i=b.length;h<i;h++)~g.indexOf(" "+b[h]+" ")||(g+=b[h]+" ");e.className=f.trim(g)}}}return this},removeClass:function(a){var c,d,e,g,h,i,j;if(f.isFunction(a))return this.each(function(b){f(this).removeClass(a.call(this,b,this.className))});if(a&&typeof a=="string"||a===b){c=(a||"").split(p);for(d=0,e=this.length;d<e;d++){g=this[d];if(g.nodeType===1&&g.className)if(a){h=(" "+g.className+" ").replace(o," ");for(i=0,j=c.length;i<j;i++)h=h.replace(" "+c[i]+" "," ");g.className=f.trim(h)}else g.className=""}}return this},toggleClass:function(a,b){var c=typeof a,d=typeof b=="boolean";if(f.isFunction(a))return this.each(function(c){f(this).toggleClass(a.call(this,c,this.className,b),b)});return this.each(function(){if(c==="string"){var e,g=0,h=f(this),i=b,j=a.split(p);while(e=j[g++])i=d?i:!h.hasClass(e),h[i?"addClass":"removeClass"](e)}else if(c==="undefined"||c==="boolean")this.className&&f._data(this,"__className__",this.className),this.className=this.className||a===!1?"":f._data(this,"__className__")||""})},hasClass:function(a){var b=" "+a+" ",c=0,d=this.length;for(;c<d;c++)if(this[c].nodeType===1&&(" "+this[c].className+" ").replace(o," ").indexOf(b)>-1)return!0;return!1},val:function(a){var c,d,e,g=this[0];{if(!!arguments.length){e=f.isFunction(a);return this.each(function(d){var g=f(this),h;if(this.nodeType===1){e?h=a.call(this,d,g.val()):h=a,h==null?h="":typeof h=="number"?h+="":f.isArray(h)&&(h=f.map(h,function(a){return a==null?"":a+""})),c=f.valHooks[this.nodeName.toLowerCase()]||f.valHooks[this.type];if(!c||!("set"in c)||c.set(this,h,"value")===b)this.value=h}})}if(g){c=f.valHooks[g.nodeName.toLowerCase()]||f.valHooks[g.type];if(c&&"get"in c&&(d=c.get(g,"value"))!==b)return d;d=g.value;return typeof d=="string"?d.replace(q,""):d==null?"":d}}}}),f.extend({valHooks:{option:{get:function(a){var b=a.attributes.value;return!b||b.specified?a.value:a.text}},select:{get:function(a){var b,c,d,e,g=a.selectedIndex,h=[],i=a.options,j=a.type==="select-one";if(g<0)return null;c=j?g:0,d=j?g+1:i.length;for(;c<d;c++){e=i[c];if(e.selected&&(f.support.optDisabled?!e.disabled:e.getAttribute("disabled")===null)&&(!e.parentNode.disabled||!f.nodeName(e.parentNode,"optgroup"))){b=f(e).val();if(j)return b;h.push(b)}}if(j&&!h.length&&i.length)return f(i[g]).val();return h},set:function(a,b){var c=f.makeArray(b);f(a).find("option").each(function(){this.selected=f.inArray(f(this).val(),c)>=0}),c.length||(a.selectedIndex=-1);return c}}},attrFn:{val:!0,css:!0,html:!0,text:!0,data:!0,width:!0,height:!0,offset:!0},attr:function(a,c,d,e){var g,h,i,j=a.nodeType;if(!!a&&j!==3&&j!==8&&j!==2){if(e&&c in f.attrFn)return f(a)[c](d);if(typeof a.getAttribute=="undefined")return f.prop(a,c,d);i=j!==1||!f.isXMLDoc(a),i&&(c=c.toLowerCase(),h=f.attrHooks[c]||(u.test(c)?x:w));if(d!==b){if(d===null){f.removeAttr(a,c);return}if(h&&"set"in h&&i&&(g=h.set(a,d,c))!==b)return g;a.setAttribute(c,""+d);return d}if(h&&"get"in h&&i&&(g=h.get(a,c))!==null)return g;g=a.getAttribute(c);return g===null?b:g}},removeAttr:function(a,b){var c,d,e,g,h=0;if(b&&a.nodeType===1){d=b.toLowerCase().split(p),g=d.length;for(;h<g;h++)e=d[h],e&&(c=f.propFix[e]||e,f.attr(a,e,""),a.removeAttribute(v?e:c),u.test(e)&&c in a&&(a[c]=!1))}},attrHooks:{type:{set:function(a,b){if(r.test(a.nodeName)&&a.parentNode)f.error("type property can't be changed");else if(!f.support.radioValue&&b==="radio"&&f.nodeName(a,"input")){var c=a.value;a.setAttribute("type",b),c&&(a.value=c);return b}}},value:{get:function(a,b){if(w&&f.nodeName(a,"button"))return w.get(a,b);return b in a?a.value:null},set:function(a,b,c){if(w&&f.nodeName(a,"button"))return w.set(a,b,c);a.value=b}}},propFix:{tabindex:"tabIndex",readonly:"readOnly","for":"htmlFor","class":"className",maxlength:"maxLength",cellspacing:"cellSpacing",cellpadding:"cellPadding",rowspan:"rowSpan",colspan:"colSpan",usemap:"useMap",frameborder:"frameBorder",contenteditable:"contentEditable"},prop:function(a,c,d){var e,g,h,i=a.nodeType;if(!!a&&i!==3&&i!==8&&i!==2){h=i!==1||!f.isXMLDoc(a),h&&(c=f.propFix[c]||c,g=f.propHooks[c]);return d!==b?g&&"set"in g&&(e=g.set(a,d,c))!==b?e:a[c]=d:g&&"get"in g&&(e=g.get(a,c))!==null?e:a[c]}},propHooks:{tabIndex:{get:function(a){var c=a.getAttributeNode("tabindex");return c&&c.specified?parseInt(c.value,10):s.test(a.nodeName)||t.test(a.nodeName)&&a.href?0:b}}}}),f.attrHooks.tabindex=f.propHooks.tabIndex,x={get:function(a,c){var d,e=f.prop(a,c);return e===!0||typeof e!="boolean"&&(d=a.getAttributeNode(c))&&d.nodeValue!==!1?c.toLowerCase():b},set:function(a,b,c){var d;b===!1?f.removeAttr(a,c):(d=f.propFix[c]||c,d in a&&(a[d]=!0),a.setAttribute(c,c.toLowerCase()));return c}},v||(y={name:!0,id:!0},w=f.valHooks.button={get:function(a,c){var d;d=a.getAttributeNode(c);return d&&(y[c]?d.nodeValue!=="":d.specified)?d.nodeValue:b},set:function(a,b,d){var e=a.getAttributeNode(d);e||(e=c.createAttribute(d),a.setAttributeNode(e));return e.nodeValue=b+""}},f.attrHooks.tabindex.set=w.set,f.each(["width","height"],function(a,b){f.attrHooks[b]=f.extend(f.attrHooks[b],{set:function(a,c){if(c===""){a.setAttribute(b,"auto");return c}}})}),f.attrHooks.contenteditable={get:w.get,set:function(a,b,c){b===""&&(b="false"),w.set(a,b,c)}}),f.support.hrefNormalized||f.each(["href","src","width","height"],function(a,c){f.attrHooks[c]=f.extend(f.attrHooks[c],{get:function(a){var d=a.getAttribute(c,2);return d===null?b:d}})}),f.support.style||(f.attrHooks.style={get:function(a){return a.style.cssText.toLowerCase()||b},set:function(a,b){return a.style.cssText=""+b}}),f.support.optSelected||(f.propHooks.selected=f.extend(f.propHooks.selected,{get:function(a){var b=a.parentNode;b&&(b.selectedIndex,b.parentNode&&b.parentNode.selectedIndex);return null}})),f.support.enctype||(f.propFix.enctype="encoding"),f.support.checkOn||f.each(["radio","checkbox"],function(){f.valHooks[this]={get:function(a){return a.getAttribute("value")===null?"on":a.value}}}),f.each(["radio","checkbox"],function(){f.valHooks[this]=f.extend(f.valHooks[this],{set:function(a,b){if(f.isArray(b))return a.checked=f.inArray(f(a).val(),b)>=0}})});var z=/^(?:textarea|input|select)$/i,A=/^([^\.]*)?(?:\.(.+))?$/,B=/\bhover(\.\S+)?\b/,C=/^key/,D=/^(?:mouse|contextmenu)|click/,E=/^(?:focusinfocus|focusoutblur)$/,F=/^(\w*)(?:#([\w\-]+))?(?:\.([\w\-]+))?$/,G=function(a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^|\\s)"+b[3]+"(?:\\s|$)"));return b},H=function(a,b){var c=a.attributes||{};return(!b[1]||a.nodeName.toLowerCase()===b[1])&&(!b[2]||(c.id||{}).value===b[2])&&(!b[3]||b[3].test((c["class"]||{}).value))},I=function(a){return f.event.special.hover?a:a.replace(B,"mouseenter$1 mouseleave$1")};
-f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3||a.nodeType===8||!c||!d||!(h=f._data(a)))){d.handler&&(p=d,d=p.handler),d.guid||(d.guid=f.guid++),j=h.events,j||(h.events=j={}),i=h.handle,i||(h.handle=i=function(a){return typeof f!="undefined"&&(!a||f.event.triggered!==a.type)?f.event.dispatch.apply(i.elem,arguments):b},i.elem=a),c=f.trim(I(c)).split(" ");for(k=0;k<c.length;k++){l=A.exec(c[k])||[],m=l[1],n=(l[2]||"").split(".").sort(),s=f.event.special[m]||{},m=(g?s.delegateType:s.bindType)||m,s=f.event.special[m]||{},o=f.extend({type:m,origType:l[1],data:e,handler:d,guid:d.guid,selector:g,quick:G(g),namespace:n.join(".")},p),r=j[m];if(!r){r=j[m]=[],r.delegateCount=0;if(!s.setup||s.setup.call(a,e,n,i)===!1)a.addEventListener?a.addEventListener(m,i,!1):a.attachEvent&&a.attachEvent("on"+m,i)}s.add&&(s.add.call(a,o),o.handler.guid||(o.handler.guid=d.guid)),g?r.splice(r.delegateCount++,0,o):r.push(o),f.event.global[m]=!0}a=null}},global:{},remove:function(a,b,c,d,e){var g=f.hasData(a)&&f._data(a),h,i,j,k,l,m,n,o,p,q,r,s;if(!!g&&!!(o=g.events)){b=f.trim(I(b||"")).split(" ");for(h=0;h<b.length;h++){i=A.exec(b[h])||[],j=k=i[1],l=i[2];if(!j){for(j in o)f.event.remove(a,j+b[h],c,d,!0);continue}p=f.event.special[j]||{},j=(d?p.delegateType:p.bindType)||j,r=o[j]||[],m=r.length,l=l?new RegExp("(^|\\.)"+l.split(".").sort().join("\\.(?:.*\\.)?")+"(\\.|$)"):null;for(n=0;n<r.length;n++)s=r[n],(e||k===s.origType)&&(!c||c.guid===s.guid)&&(!l||l.test(s.namespace))&&(!d||d===s.selector||d==="**"&&s.selector)&&(r.splice(n--,1),s.selector&&r.delegateCount--,p.remove&&p.remove.call(a,s));r.length===0&&m!==r.length&&((!p.teardown||p.teardown.call(a,l)===!1)&&f.removeEvent(a,j,g.handle),delete o[j])}f.isEmptyObject(o)&&(q=g.handle,q&&(q.elem=null),f.removeData(a,["events","handle"],!0))}},customEvent:{getData:!0,setData:!0,changeData:!0},trigger:function(c,d,e,g){if(!e||e.nodeType!==3&&e.nodeType!==8){var h=c.type||c,i=[],j,k,l,m,n,o,p,q,r,s;if(E.test(h+f.event.triggered))return;h.indexOf("!")>=0&&(h=h.slice(0,-1),k=!0),h.indexOf(".")>=0&&(i=h.split("."),h=i.shift(),i.sort());if((!e||f.event.customEvent[h])&&!f.event.global[h])return;c=typeof c=="object"?c[f.expando]?c:new f.Event(h,c):new f.Event(h),c.type=h,c.isTrigger=!0,c.exclusive=k,c.namespace=i.join("."),c.namespace_re=c.namespace?new RegExp("(^|\\.)"+i.join("\\.(?:.*\\.)?")+"(\\.|$)"):null,o=h.indexOf(":")<0?"on"+h:"";if(!e){j=f.cache;for(l in j)j[l].events&&j[l].events[h]&&f.event.trigger(c,d,j[l].handle.elem,!0);return}c.result=b,c.target||(c.target=e),d=d!=null?f.makeArray(d):[],d.unshift(c),p=f.event.special[h]||{};if(p.trigger&&p.trigger.apply(e,d)===!1)return;r=[[e,p.bindType||h]];if(!g&&!p.noBubble&&!f.isWindow(e)){s=p.delegateType||h,m=E.test(s+h)?e:e.parentNode,n=null;for(;m;m=m.parentNode)r.push([m,s]),n=m;n&&n===e.ownerDocument&&r.push([n.defaultView||n.parentWindow||a,s])}for(l=0;l<r.length&&!c.isPropagationStopped();l++)m=r[l][0],c.type=r[l][1],q=(f._data(m,"events")||{})[c.type]&&f._data(m,"handle"),q&&q.apply(m,d),q=o&&m[o],q&&f.acceptData(m)&&q.apply(m,d)===!1&&c.preventDefault();c.type=h,!g&&!c.isDefaultPrevented()&&(!p._default||p._default.apply(e.ownerDocument,d)===!1)&&(h!=="click"||!f.nodeName(e,"a"))&&f.acceptData(e)&&o&&e[h]&&(h!=="focus"&&h!=="blur"||c.target.offsetWidth!==0)&&!f.isWindow(e)&&(n=e[o],n&&(e[o]=null),f.event.triggered=h,e[h](),f.event.triggered=b,n&&(e[o]=n));return c.result}},dispatch:function(c){c=f.event.fix(c||a.event);var d=(f._data(this,"events")||{})[c.type]||[],e=d.delegateCount,g=[].slice.call(arguments,0),h=!c.exclusive&&!c.namespace,i=[],j,k,l,m,n,o,p,q,r,s,t;g[0]=c,c.delegateTarget=this;if(e&&!c.target.disabled&&(!c.button||c.type!=="click")){m=f(this),m.context=this.ownerDocument||this;for(l=c.target;l!=this;l=l.parentNode||this){o={},q=[],m[0]=l;for(j=0;j<e;j++)r=d[j],s=r.selector,o[s]===b&&(o[s]=r.quick?H(l,r.quick):m.is(s)),o[s]&&q.push(r);q.length&&i.push({elem:l,matches:q})}}d.length>e&&i.push({elem:this,matches:d.slice(e)});for(j=0;j<i.length&&!c.isPropagationStopped();j++){p=i[j],c.currentTarget=p.elem;for(k=0;k<p.matches.length&&!c.isImmediatePropagationStopped();k++){r=p.matches[k];if(h||!c.namespace&&!r.namespace||c.namespace_re&&c.namespace_re.test(r.namespace))c.data=r.data,c.handleObj=r,n=((f.event.special[r.origType]||{}).handle||r.handler).apply(p.elem,g),n!==b&&(c.result=n,n===!1&&(c.preventDefault(),c.stopPropagation()))}}return c.result},props:"attrChange attrName relatedNode srcElement altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),fixHooks:{},keyHooks:{props:"char charCode key keyCode".split(" "),filter:function(a,b){a.which==null&&(a.which=b.charCode!=null?b.charCode:b.keyCode);return a}},mouseHooks:{props:"button buttons clientX clientY fromElement offsetX offsetY pageX pageY screenX screenY toElement".split(" "),filter:function(a,d){var e,f,g,h=d.button,i=d.fromElement;a.pageX==null&&d.clientX!=null&&(e=a.target.ownerDocument||c,f=e.documentElement,g=e.body,a.pageX=d.clientX+(f&&f.scrollLeft||g&&g.scrollLeft||0)-(f&&f.clientLeft||g&&g.clientLeft||0),a.pageY=d.clientY+(f&&f.scrollTop||g&&g.scrollTop||0)-(f&&f.clientTop||g&&g.clientTop||0)),!a.relatedTarget&&i&&(a.relatedTarget=i===a.target?d.toElement:i),!a.which&&h!==b&&(a.which=h&1?1:h&2?3:h&4?2:0);return a}},fix:function(a){if(a[f.expando])return a;var d,e,g=a,h=f.event.fixHooks[a.type]||{},i=h.props?this.props.concat(h.props):this.props;a=f.Event(g);for(d=i.length;d;)e=i[--d],a[e]=g[e];a.target||(a.target=g.srcElement||c),a.target.nodeType===3&&(a.target=a.target.parentNode),a.metaKey===b&&(a.metaKey=a.ctrlKey);return h.filter?h.filter(a,g):a},special:{ready:{setup:f.bindReady},load:{noBubble:!0},focus:{delegateType:"focusin"},blur:{delegateType:"focusout"},beforeunload:{setup:function(a,b,c){f.isWindow(this)&&(this.onbeforeunload=c)},teardown:function(a,b){this.onbeforeunload===b&&(this.onbeforeunload=null)}}},simulate:function(a,b,c,d){var e=f.extend(new f.Event,c,{type:a,isSimulated:!0,originalEvent:{}});d?f.event.trigger(e,null,b):f.event.dispatch.call(b,e),e.isDefaultPrevented()&&c.preventDefault()}},f.event.handle=f.event.dispatch,f.removeEvent=c.removeEventListener?function(a,b,c){a.removeEventListener&&a.removeEventListener(b,c,!1)}:function(a,b,c){a.detachEvent&&a.detachEvent("on"+b,c)},f.Event=function(a,b){if(!(this instanceof f.Event))return new f.Event(a,b);a&&a.type?(this.originalEvent=a,this.type=a.type,this.isDefaultPrevented=a.defaultPrevented||a.returnValue===!1||a.getPreventDefault&&a.getPreventDefault()?K:J):this.type=a,b&&f.extend(this,b),this.timeStamp=a&&a.timeStamp||f.now(),this[f.expando]=!0},f.Event.prototype={preventDefault:function(){this.isDefaultPrevented=K;var a=this.originalEvent;!a||(a.preventDefault?a.preventDefault():a.returnValue=!1)},stopPropagation:function(){this.isPropagationStopped=K;var a=this.originalEvent;!a||(a.stopPropagation&&a.stopPropagation(),a.cancelBubble=!0)},stopImmediatePropagation:function(){this.isImmediatePropagationStopped=K,this.stopPropagation()},isDefaultPrevented:J,isPropagationStopped:J,isImmediatePropagationStopped:J},f.each({mouseenter:"mouseover",mouseleave:"mouseout"},function(a,b){f.event.special[a]={delegateType:b,bindType:b,handle:function(a){var c=this,d=a.relatedTarget,e=a.handleObj,g=e.selector,h;if(!d||d!==c&&!f.contains(c,d))a.type=e.origType,h=e.handler.apply(this,arguments),a.type=b;return h}}}),f.support.submitBubbles||(f.event.special.submit={setup:function(){if(f.nodeName(this,"form"))return!1;f.event.add(this,"click._submit keypress._submit",function(a){var c=a.target,d=f.nodeName(c,"input")||f.nodeName(c,"button")?c.form:b;d&&!d._submit_attached&&(f.event.add(d,"submit._submit",function(a){this.parentNode&&!a.isTrigger&&f.event.simulate("submit",this.parentNode,a,!0)}),d._submit_attached=!0)})},teardown:function(){if(f.nodeName(this,"form"))return!1;f.event.remove(this,"._submit")}}),f.support.changeBubbles||(f.event.special.change={setup:function(){if(z.test(this.nodeName)){if(this.type==="checkbox"||this.type==="radio")f.event.add(this,"propertychange._change",function(a){a.originalEvent.propertyName==="checked"&&(this._just_changed=!0)}),f.event.add(this,"click._change",function(a){this._just_changed&&!a.isTrigger&&(this._just_changed=!1,f.event.simulate("change",this,a,!0))});return!1}f.event.add(this,"beforeactivate._change",function(a){var b=a.target;z.test(b.nodeName)&&!b._change_attached&&(f.event.add(b,"change._change",function(a){this.parentNode&&!a.isSimulated&&!a.isTrigger&&f.event.simulate("change",this.parentNode,a,!0)}),b._change_attached=!0)})},handle:function(a){var b=a.target;if(this!==b||a.isSimulated||a.isTrigger||b.type!=="radio"&&b.type!=="checkbox")return a.handleObj.handler.apply(this,arguments)},teardown:function(){f.event.remove(this,"._change");return z.test(this.nodeName)}}),f.support.focusinBubbles||f.each({focus:"focusin",blur:"focusout"},function(a,b){var d=0,e=function(a){f.event.simulate(b,a.target,f.event.fix(a),!0)};f.event.special[b]={setup:function(){d++===0&&c.addEventListener(a,e,!0)},teardown:function(){--d===0&&c.removeEventListener(a,e,!0)}}}),f.fn.extend({on:function(a,c,d,e,g){var h,i;if(typeof a=="object"){typeof c!="string"&&(d=c,c=b);for(i in a)this.on(i,c,d,a[i],g);return this}d==null&&e==null?(e=c,d=c=b):e==null&&(typeof c=="string"?(e=d,d=b):(e=d,d=c,c=b));if(e===!1)e=J;else if(!e)return this;g===1&&(h=e,e=function(a){f().off(a);return h.apply(this,arguments)},e.guid=h.guid||(h.guid=f.guid++));return this.each(function(){f.event.add(this,a,e,d,c)})},one:function(a,b,c,d){return this.on.call(this,a,b,c,d,1)},off:function(a,c,d){if(a&&a.preventDefault&&a.handleObj){var e=a.handleObj;f(a.delegateTarget).off(e.namespace?e.type+"."+e.namespace:e.type,e.selector,e.handler);return this}if(typeof a=="object"){for(var g in a)this.off(g,c,a[g]);return this}if(c===!1||typeof c=="function")d=c,c=b;d===!1&&(d=J);return this.each(function(){f.event.remove(this,a,d,c)})},bind:function(a,b,c){return this.on(a,null,b,c)},unbind:function(a,b){return this.off(a,null,b)},live:function(a,b,c){f(this.context).on(a,this.selector,b,c);return this},die:function(a,b){f(this.context).off(a,this.selector||"**",b);return this},delegate:function(a,b,c,d){return this.on(b,a,c,d)},undelegate:function(a,b,c){return arguments.length==1?this.off(a,"**"):this.off(b,a,c)},trigger:function(a,b){return this.each(function(){f.event.trigger(a,b,this)})},triggerHandler:function(a,b){if(this[0])return f.event.trigger(a,b,this[0],!0)},toggle:function(a){var b=arguments,c=a.guid||f.guid++,d=0,e=function(c){var e=(f._data(this,"lastToggle"+a.guid)||0)%d;f._data(this,"lastToggle"+a.guid,e+1),c.preventDefault();return b[e].apply(this,arguments)||!1};e.guid=c;while(d<b.length)b[d++].guid=c;return this.click(e)},hover:function(a,b){return this.mouseenter(a).mouseleave(b||a)}}),f.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "),function(a,b){f.fn[b]=function(a,c){c==null&&(c=a,a=null);return arguments.length>0?this.on(b,null,a,c):this.trigger(b)},f.attrFn&&(f.attrFn[b]=!0),C.test(b)&&(f.event.fixHooks[b]=f.event.keyHooks),D.test(b)&&(f.event.fixHooks[b]=f.event.mouseHooks)}),function(){function x(a,b,c,e,f,g){for(var h=0,i=e.length;h<i;h++){var j=e[h];if(j){var k=!1;j=j[a];while(j){if(j[d]===c){k=e[j.sizset];break}if(j.nodeType===1){g||(j[d]=c,j.sizset=h);if(typeof b!="string"){if(j===b){k=!0;break}}else if(m.filter(b,[j]).length>0){k=j;break}}j=j[a]}e[h]=k}}}function w(a,b,c,e,f,g){for(var h=0,i=e.length;h<i;h++){var j=e[h];if(j){var k=!1;j=j[a];while(j){if(j[d]===c){k=e[j.sizset];break}j.nodeType===1&&!g&&(j[d]=c,j.sizset=h);if(j.nodeName.toLowerCase()===b){k=j;break}j=j[a]}e[h]=k}}}var a=/((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,d="sizcache"+(Math.random()+"").replace(".",""),e=0,g=Object.prototype.toString,h=!1,i=!0,j=/\\/g,k=/\r\n/g,l=/\W/;[0,0].sort(function(){i=!1;return 0});var m=function(b,d,e,f){e=e||[],d=d||c;var h=d;if(d.nodeType!==1&&d.nodeType!==9)return[];if(!b||typeof b!="string")return e;var i,j,k,l,n,q,r,t,u=!0,v=m.isXML(d),w=[],x=b;do{a.exec(""),i=a.exec(x);if(i){x=i[3],w.push(i[1]);if(i[2]){l=i[3];break}}}while(i);if(w.length>1&&p.exec(b))if(w.length===2&&o.relative[w[0]])j=y(w[0]+w[1],d,f);else{j=o.relative[w[0]]?[d]:m(w.shift(),d);while(w.length)b=w.shift(),o.relative[b]&&(b+=w.shift()),j=y(b,j,f)}else{!f&&w.length>1&&d.nodeType===9&&!v&&o.match.ID.test(w[0])&&!o.match.ID.test(w[w.length-1])&&(n=m.find(w.shift(),d,v),d=n.expr?m.filter(n.expr,n.set)[0]:n.set[0]);if(d){n=f?{expr:w.pop(),set:s(f)}:m.find(w.pop(),w.length===1&&(w[0]==="~"||w[0]==="+")&&d.parentNode?d.parentNode:d,v),j=n.expr?m.filter(n.expr,n.set):n.set,w.length>0?k=s(j):u=!1;while(w.length)q=w.pop(),r=q,o.relative[q]?r=w.pop():q="",r==null&&(r=d),o.relative[q](k,r,v)}else k=w=[]}k||(k=j),k||m.error(q||b);if(g.call(k)==="[object Array]")if(!u)e.push.apply(e,k);else if(d&&d.nodeType===1)for(t=0;k[t]!=null;t++)k[t]&&(k[t]===!0||k[t].nodeType===1&&m.contains(d,k[t]))&&e.push(j[t]);else for(t=0;k[t]!=null;t++)k[t]&&k[t].nodeType===1&&e.push(j[t]);else s(k,e);l&&(m(l,h,e,f),m.uniqueSort(e));return e};m.uniqueSort=function(a){if(u){h=i,a.sort(u);if(h)for(var b=1;b<a.length;b++)a[b]===a[b-1]&&a.splice(b--,1)}return a},m.matches=function(a,b){return m(a,null,null,b)},m.matchesSelector=function(a,b){return m(b,null,null,[a]).length>0},m.find=function(a,b,c){var d,e,f,g,h,i;if(!a)return[];for(e=0,f=o.order.length;e<f;e++){h=o.order[e];if(g=o.leftMatch[h].exec(a)){i=g[1],g.splice(1,1);if(i.substr(i.length-1)!=="\\"){g[1]=(g[1]||"").replace(j,""),d=o.find[h](g,b,c);if(d!=null){a=a.replace(o.match[h],"");break}}}}d||(d=typeof b.getElementsByTagName!="undefined"?b.getElementsByTagName("*"):[]);return{set:d,expr:a}},m.filter=function(a,c,d,e){var f,g,h,i,j,k,l,n,p,q=a,r=[],s=c,t=c&&c[0]&&m.isXML(c[0]);while(a&&c.length){for(h in o.filter)if((f=o.leftMatch[h].exec(a))!=null&&f[2]){k=o.filter[h],l=f[1],g=!1,f.splice(1,1);if(l.substr(l.length-1)==="\\")continue;s===r&&(r=[]);if(o.preFilter[h]){f=o.preFilter[h](f,s,d,r,e,t);if(!f)g=i=!0;else if(f===!0)continue}if(f)for(n=0;(j=s[n])!=null;n++)j&&(i=k(j,f,n,s),p=e^i,d&&i!=null?p?g=!0:s[n]=!1:p&&(r.push(j),g=!0));if(i!==b){d||(s=r),a=a.replace(o.match[h],"");if(!g)return[];break}}if(a===q)if(g==null)m.error(a);else break;q=a}return s},m.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)};var n=m.getText=function(a){var b,c,d=a.nodeType,e="";if(d){if(d===1||d===9){if(typeof a.textContent=="string")return a.textContent;if(typeof a.innerText=="string")return a.innerText.replace(k,"");for(a=a.firstChild;a;a=a.nextSibling)e+=n(a)}else if(d===3||d===4)return a.nodeValue}else for(b=0;c=a[b];b++)c.nodeType!==8&&(e+=n(c));return e},o=m.selectors={order:["ID","NAME","TAG"],match:{ID:/#((?:[\w\u00c0-\uFFFF\-]|\\.)+)/,CLASS:/\.((?:[\w\u00c0-\uFFFF\-]|\\.)+)/,NAME:/\[name=['"]*((?:[\w\u00c0-\uFFFF\-]|\\.)+)['"]*\]/,ATTR:/\[\s*((?:[\w\u00c0-\uFFFF\-]|\\.)+)\s*(?:(\S?=)\s*(?:(['"])(.*?)\3|(#?(?:[\w\u00c0-\uFFFF\-]|\\.)*)|)|)\s*\]/,TAG:/^((?:[\w\u00c0-\uFFFF\*\-]|\\.)+)/,CHILD:/:(only|nth|last|first)-child(?:\(\s*(even|odd|(?:[+\-]?\d+|(?:[+\-]?\d*)?n\s*(?:[+\-]\s*\d+)?))\s*\))?/,POS:/:(nth|eq|gt|lt|first|last|even|odd)(?:\((\d*)\))?(?=[^\-]|$)/,PSEUDO:/:((?:[\w\u00c0-\uFFFF\-]|\\.)+)(?:\((['"]?)((?:\([^\)]+\)|[^\(\)]*)+)\2\))?/},leftMatch:{},attrMap:{"class":"className","for":"htmlFor"},attrHandle:{href:function(a){return a.getAttribute("href")},type:function(a){return a.getAttribute("type")}},relative:{"+":function(a,b){var c=typeof b=="string",d=c&&!l.test(b),e=c&&!d;d&&(b=b.toLowerCase());for(var f=0,g=a.length,h;f<g;f++)if(h=a[f]){while((h=h.previousSibling)&&h.nodeType!==1);a[f]=e||h&&h.nodeName.toLowerCase()===b?h||!1:h===b}e&&m.filter(b,a,!0)},">":function(a,b){var c,d=typeof b=="string",e=0,f=a.length;if(d&&!l.test(b)){b=b.toLowerCase();for(;e<f;e++){c=a[e];if(c){var g=c.parentNode;a[e]=g.nodeName.toLowerCase()===b?g:!1}}}else{for(;e<f;e++)c=a[e],c&&(a[e]=d?c.parentNode:c.parentNode===b);d&&m.filter(b,a,!0)}},"":function(a,b,c){var d,f=e++,g=x;typeof b=="string"&&!l.test(b)&&(b=b.toLowerCase(),d=b,g=w),g("parentNode",b,f,a,d,c)},"~":function(a,b,c){var d,f=e++,g=x;typeof b=="string"&&!l.test(b)&&(b=b.toLowerCase(),d=b,g=w),g("previousSibling",b,f,a,d,c)}},find:{ID:function(a,b,c){if(typeof b.getElementById!="undefined"&&!c){var d=b.getElementById(a[1]);return d&&d.parentNode?[d]:[]}},NAME:function(a,b){if(typeof b.getElementsByName!="undefined"){var c=[],d=b.getElementsByName(a[1]);for(var e=0,f=d.length;e<f;e++)d[e].getAttribute("name")===a[1]&&c.push(d[e]);return c.length===0?null:c}},TAG:function(a,b){if(typeof b.getElementsByTagName!="undefined")return b.getElementsByTagName(a[1])}},preFilter:{CLASS:function(a,b,c,d,e,f){a=" "+a[1].replace(j,"")+" ";if(f)return a;for(var g=0,h;(h=b[g])!=null;g++)h&&(e^(h.className&&(" "+h.className+" ").replace(/[\t\n\r]/g," ").indexOf(a)>=0)?c||d.push(h):c&&(b[g]=!1));return!1},ID:function(a){return a[1].replace(j,"")},TAG:function(a,b){return a[1].replace(j,"").toLowerCase()},CHILD:function(a){if(a[1]==="nth"){a[2]||m.error(a[0]),a[2]=a[2].replace(/^\+|\s*/g,"");var b=/(-?)(\d*)(?:n([+\-]?\d*))?/.exec(a[2]==="even"&&"2n"||a[2]==="odd"&&"2n+1"||!/\D/.test(a[2])&&"0n+"+a[2]||a[2]);a[2]=b[1]+(b[2]||1)-0,a[3]=b[3]-0}else a[2]&&m.error(a[0]);a[0]=e++;return a},ATTR:function(a,b,c,d,e,f){var g=a[1]=a[1].replace(j,"");!f&&o.attrMap[g]&&(a[1]=o.attrMap[g]),a[4]=(a[4]||a[5]||"").replace(j,""),a[2]==="~="&&(a[4]=" "+a[4]+" ");return a},PSEUDO:function(b,c,d,e,f){if(b[1]==="not")if((a.exec(b[3])||"").length>1||/^\w/.test(b[3]))b[3]=m(b[3],null,null,c);else{var g=m.filter(b[3],c,d,!0^f);d||e.push.apply(e,g);return!1}else if(o.match.POS.test(b[0])||o.match.CHILD.test(b[0]))return!0;return b},POS:function(a){a.unshift(!0);return a}},filters:{enabled:function(a){return a.disabled===!1&&a.type!=="hidden"},disabled:function(a){return a.disabled===!0},checked:function(a){return a.checked===!0},selected:function(a){a.parentNode&&a.parentNode.selectedIndex;return a.selected===!0},parent:function(a){return!!a.firstChild},empty:function(a){return!a.firstChild},has:function(a,b,c){return!!m(c[3],a).length},header:function(a){return/h\d/i.test(a.nodeName)},text:function(a){var b=a.getAttribute("type"),c=a.type;return a.nodeName.toLowerCase()==="input"&&"text"===c&&(b===c||b===null)},radio:function(a){return a.nodeName.toLowerCase()==="input"&&"radio"===a.type},checkbox:function(a){return a.nodeName.toLowerCase()==="input"&&"checkbox"===a.type},file:function(a){return a.nodeName.toLowerCase()==="input"&&"file"===a.type},password:function(a){return a.nodeName.toLowerCase()==="input"&&"password"===a.type},submit:function(a){var b=a.nodeName.toLowerCase();return(b==="input"||b==="button")&&"submit"===a.type},image:function(a){return a.nodeName.toLowerCase()==="input"&&"image"===a.type},reset:function(a){var b=a.nodeName.toLowerCase();return(b==="input"||b==="button")&&"reset"===a.type},button:function(a){var b=a.nodeName.toLowerCase();return b==="input"&&"button"===a.type||b==="button"},input:function(a){return/input|select|textarea|button/i.test(a.nodeName)},focus:function(a){return a===a.ownerDocument.activeElement}},setFilters:{first:function(a,b){return b===0},last:function(a,b,c,d){return b===d.length-1},even:function(a,b){return b%2===0},odd:function(a,b){return b%2===1},lt:function(a,b,c){return b<c[3]-0},gt:function(a,b,c){return b>c[3]-0},nth:function(a,b,c){return c[3]-0===b},eq:function(a,b,c){return c[3]-0===b}},filter:{PSEUDO:function(a,b,c,d){var e=b[1],f=o.filters[e];if(f)return f(a,c,b,d);if(e==="contains")return(a.textContent||a.innerText||n([a])||"").indexOf(b[3])>=0;if(e==="not"){var g=b[3];for(var h=0,i=g.length;h<i;h++)if(g[h]===a)return!1;return!0}m.error(e)},CHILD:function(a,b){var c,e,f,g,h,i,j,k=b[1],l=a;switch(k){case"only":case"first":while(l=l.previousSibling)if(l.nodeType===1)return!1;if(k==="first")return!0;l=a;case"last":while(l=l.nextSibling)if(l.nodeType===1)return!1;return!0;case"nth":c=b[2],e=b[3];if(c===1&&e===0)return!0;f=b[0],g=a.parentNode;if(g&&(g[d]!==f||!a.nodeIndex)){i=0;for(l=g.firstChild;l;l=l.nextSibling)l.nodeType===1&&(l.nodeIndex=++i);g[d]=f}j=a.nodeIndex-e;return c===0?j===0:j%c===0&&j/c>=0}},ID:function(a,b){return a.nodeType===1&&a.getAttribute("id")===b},TAG:function(a,b){return b==="*"&&a.nodeType===1||!!a.nodeName&&a.nodeName.toLowerCase()===b},CLASS:function(a,b){return(" "+(a.className||a.getAttribute("class"))+" ").indexOf(b)>-1},ATTR:function(a,b){var c=b[1],d=m.attr?m.attr(a,c):o.attrHandle[c]?o.attrHandle[c](a):a[c]!=null?a[c]:a.getAttribute(c),e=d+"",f=b[2],g=b[4];return d==null?f==="!=":!f&&m.attr?d!=null:f==="="?e===g:f==="*="?e.indexOf(g)>=0:f==="~="?(" "+e+" ").indexOf(g)>=0:g?f==="!="?e!==g:f==="^="?e.indexOf(g)===0:f==="$="?e.substr(e.length-g.length)===g:f==="|="?e===g||e.substr(0,g.length+1)===g+"-":!1:e&&d!==!1},POS:function(a,b,c,d){var e=b[2],f=o.setFilters[e];if(f)return f(a,c,b,d)}}},p=o.match.POS,q=function(a,b){return"\\"+(b-0+1)};for(var r in o.match)o.match[r]=new RegExp(o.match[r].source+/(?![^\[]*\])(?![^\(]*\))/.source),o.leftMatch[r]=new RegExp(/(^(?:.|\r|\n)*?)/.source+o.match[r].source.replace(/\\(\d+)/g,q));var s=function(a,b){a=Array.prototype.slice.call(a,0);if(b){b.push.apply(b,a);return b}return a};try{Array.prototype.slice.call(c.documentElement.childNodes,0)[0].nodeType}catch(t){s=function(a,b){var c=0,d=b||[];if(g.call(a)==="[object Array]")Array.prototype.push.apply(d,a);else if(typeof a.length=="number")for(var e=a.length;c<e;c++)d.push(a[c]);else for(;a[c];c++)d.push(a[c]);return d}}var u,v;c.documentElement.compareDocumentPosition?u=function(a,b){if(a===b){h=!0;return 0}if(!a.compareDocumentPosition||!b.compareDocumentPosition)return a.compareDocumentPosition?-1:1;return a.compareDocumentPosition(b)&4?-1:1}:(u=function(a,b){if(a===b){h=!0;return 0}if(a.sourceIndex&&b.sourceIndex)return a.sourceIndex-b.sourceIndex;var c,d,e=[],f=[],g=a.parentNode,i=b.parentNode,j=g;if(g===i)return v(a,b);if(!g)return-1;if(!i)return 1;while(j)e.unshift(j),j=j.parentNode;j=i;while(j)f.unshift(j),j=j.parentNode;c=e.length,d=f.length;for(var k=0;k<c&&k<d;k++)if(e[k]!==f[k])return v(e[k],f[k]);return k===c?v(a,f[k],-1):v(e[k],b,1)},v=function(a,b,c){if(a===b)return c;var d=a.nextSibling;while(d){if(d===b)return-1;d=d.nextSibling}return 1}),function(){var a=c.createElement("div"),d="script"+(new Date).getTime(),e=c.documentElement;a.innerHTML="<a name='"+d+"'/>",e.insertBefore(a,e.firstChild),c.getElementById(d)&&(o.find.ID=function(a,c,d){if(typeof c.getElementById!="undefined"&&!d){var e=c.getElementById(a[1]);return e?e.id===a[1]||typeof e.getAttributeNode!="undefined"&&e.getAttributeNode("id").nodeValue===a[1]?[e]:b:[]}},o.filter.ID=function(a,b){var c=typeof a.getAttributeNode!="undefined"&&a.getAttributeNode("id");return a.nodeType===1&&c&&c.nodeValue===b}),e.removeChild(a),e=a=null}(),function(){var a=c.createElement("div");a.appendChild(c.createComment("")),a.getElementsByTagName("*").length>0&&(o.find.TAG=function(a,b){var c=b.getElementsByTagName(a[1]);if(a[1]==="*"){var d=[];for(var e=0;c[e];e++)c[e].nodeType===1&&d.push(c[e]);c=d}return c}),a.innerHTML="<a href='#'></a>",a.firstChild&&typeof a.firstChild.getAttribute!="undefined"&&a.firstChild.getAttribute("href")!=="#"&&(o.attrHandle.href=function(a){return a.getAttribute("href",2)}),a=null}(),c.querySelectorAll&&function(){var a=m,b=c.createElement("div"),d="__sizzle__";b.innerHTML="<p class='TEST'></p>";if(!b.querySelectorAll||b.querySelectorAll(".TEST").length!==0){m=function(b,e,f,g){e=e||c;if(!g&&!m.isXML(e)){var h=/^(\w+$)|^\.([\w\-]+$)|^#([\w\-]+$)/.exec(b);if(h&&(e.nodeType===1||e.nodeType===9)){if(h[1])return s(e.getElementsByTagName(b),f);if(h[2]&&o.find.CLASS&&e.getElementsByClassName)return s(e.getElementsByClassName(h[2]),f)}if(e.nodeType===9){if(b==="body"&&e.body)return s([e.body],f);if(h&&h[3]){var i=e.getElementById(h[3]);if(!i||!i.parentNode)return s([],f);if(i.id===h[3])return s([i],f)}try{return s(e.querySelectorAll(b),f)}catch(j){}}else if(e.nodeType===1&&e.nodeName.toLowerCase()!=="object"){var k=e,l=e.getAttribute("id"),n=l||d,p=e.parentNode,q=/^\s*[+~]/.test(b);l?n=n.replace(/'/g,"\\$&"):e.setAttribute("id",n),q&&p&&(e=e.parentNode);try{if(!q||p)return s(e.querySelectorAll("[id='"+n+"'] "+b),f)}catch(r){}finally{l||k.removeAttribute("id")}}}return a(b,e,f,g)};for(var e in a)m[e]=a[e];b=null}}(),function(){var a=c.documentElement,b=a.matchesSelector||a.mozMatchesSelector||a.webkitMatchesSelector||a.msMatchesSelector;if(b){var d=!b.call(c.createElement("div"),"div"),e=!1;try{b.call(c.documentElement,"[test!='']:sizzle")}catch(f){e=!0}m.matchesSelector=function(a,c){c=c.replace(/\=\s*([^'"\]]*)\s*\]/g,"='$1']");if(!m.isXML(a))try{if(e||!o.match.PSEUDO.test(c)&&!/!=/.test(c)){var f=b.call(a,c);if(f||!d||a.document&&a.document.nodeType!==11)return f}}catch(g){}return m(c,null,null,[a]).length>0}}}(),function(){var a=c.createElement("div");a.innerHTML="<div class='test e'></div><div class='test'></div>";if(!!a.getElementsByClassName&&a.getElementsByClassName("e").length!==0){a.lastChild.className="e";if(a.getElementsByClassName("e").length===1)return;o.order.splice(1,0,"CLASS"),o.find.CLASS=function(a,b,c){if(typeof b.getElementsByClassName!="undefined"&&!c)return b.getElementsByClassName(a[1])},a=null}}(),c.documentElement.contains?m.contains=function(a,b){return a!==b&&(a.contains?a.contains(b):!0)}:c.documentElement.compareDocumentPosition?m.contains=function(a,b){return!!(a.compareDocumentPosition(b)&16)}:m.contains=function(){return!1},m.isXML=function(a){var b=(a?a.ownerDocument||a:0).documentElement;return b?b.nodeName!=="HTML":!1};var y=function(a,b,c){var d,e=[],f="",g=b.nodeType?[b]:b;while(d=o.match.PSEUDO.exec(a))f+=d[0],a=a.replace(o.match.PSEUDO,"");a=o.relative[a]?a+"*":a;for(var h=0,i=g.length;h<i;h++)m(a,g[h],e,c);return m.filter(f,e)};m.attr=f.attr,m.selectors.attrMap={},f.find=m,f.expr=m.selectors,f.expr[":"]=f.expr.filters,f.unique=m.uniqueSort,f.text=m.getText,f.isXMLDoc=m.isXML,f.contains=m.contains}();var L=/Until$/,M=/^(?:parents|prevUntil|prevAll)/,N=/,/,O=/^.[^:#\[\.,]*$/,P=Array.prototype.slice,Q=f.expr.match.POS,R={children:!0,contents:!0,next:!0,prev:!0};f.fn.extend({find:function(a){var b=this,c,d;if(typeof a!="string")return f(a).filter(function(){for(c=0,d=b.length;c<d;c++)if(f.contains(b[c],this))return!0});var e=this.pushStack("","find",a),g,h,i;for(c=0,d=this.length;c<d;c++){g=e.length,f.find(a,this[c],e);if(c>0)for(h=g;h<e.length;h++)for(i=0;i<g;i++)if(e[i]===e[h]){e.splice(h--,1);break}}return e},has:function(a){var b=f(a);return this.filter(function(){for(var a=0,c=b.length;a<c;a++)if(f.contains(this,b[a]))return!0})},not:function(a){return this.pushStack(T(this,a,!1),"not",a)},filter:function(a){return this.pushStack(T(this,a,!0),"filter",a)},is:function(a){return!!a&&(typeof a=="string"?Q.test(a)?f(a,this.context).index(this[0])>=0:f.filter(a,this).length>0:this.filter(a).length>0)},closest:function(a,b){var c=[],d,e,g=this[0];if(f.isArray(a)){var h=1;while(g&&g.ownerDocument&&g!==b){for(d=0;d<a.length;d++)f(g).is(a[d])&&c.push({selector:a[d],elem:g,level:h});g=g.parentNode,h++}return c}var i=Q.test(a)||typeof a!="string"?f(a,b||this.context):0;for(d=0,e=this.length;d<e;d++){g=this[d];while(g){if(i?i.index(g)>-1:f.find.matchesSelector(g,a)){c.push(g);break}g=g.parentNode;if(!g||!g.ownerDocument||g===b||g.nodeType===11)break}}c=c.length>1?f.unique(c):c;return this.pushStack(c,"closest",a)},index:function(a){if(!a)return this[0]&&this[0].parentNode?this.prevAll().length:-1;if(typeof a=="string")return f.inArray(this[0],f(a));return f.inArray(a.jquery?a[0]:a,this)},add:function(a,b){var c=typeof a=="string"?f(a,b):f.makeArray(a&&a.nodeType?[a]:a),d=f.merge(this.get(),c);return this.pushStack(S(c[0])||S(d[0])?d:f.unique(d))},andSelf:function(){return this.add(this.prevObject)}}),f.each({parent:function(a){var b=a.parentNode;return b&&b.nodeType!==11?b:null},parents:function(a){return f.dir(a,"parentNode")},parentsUntil:function(a,b,c){return f.dir(a,"parentNode",c)},next:function(a){return f.nth(a,2,"nextSibling")},prev:function(a){return f.nth(a,2,"previousSibling")},nextAll:function(a){return f.dir(a,"nextSibling")},prevAll:function(a){return f.dir(a,"previousSibling")},nextUntil:function(a,b,c){return f.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return f.dir(a,"previousSibling",c)},siblings:function(a){return f.sibling(a.parentNode.firstChild,a)},children:function(a){return f.sibling(a.firstChild)},contents:function(a){return f.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:f.makeArray(a.childNodes)}},function(a,b){f.fn[a]=function(c,d){var e=f.map(this,b,c);L.test(a)||(d=c),d&&typeof d=="string"&&(e=f.filter(d,e)),e=this.length>1&&!R[a]?f.unique(e):e,(this.length>1||N.test(d))&&M.test(a)&&(e=e.reverse());return this.pushStack(e,a,P.call(arguments).join(","))}}),f.extend({filter:function(a,b,c){c&&(a=":not("+a+")");return b.length===1?f.find.matchesSelector(b[0],a)?[b[0]]:[]:f.find.matches(a,b)},dir:function(a,c,d){var e=[],g=a[c];while(g&&g.nodeType!==9&&(d===b||g.nodeType!==1||!f(g).is(d)))g.nodeType===1&&e.push(g),g=g[c];return e},nth:function(a,b,c,d){b=b||1;var e=0;for(;a;a=a[c])if(a.nodeType===1&&++e===b)break;return a},sibling:function(a,b){var c=[];for(;a;a=a.nextSibling)a.nodeType===1&&a!==b&&c.push(a);return c}});var V="abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",W=/ jQuery\d+="(?:\d+|null)"/g,X=/^\s+/,Y=/<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,Z=/<([\w:]+)/,$=/<tbody/i,_=/<|&#?\w+;/,ba=/<(?:script|style)/i,bb=/<(?:script|object|embed|option|style)/i,bc=new RegExp("<(?:"+V+")","i"),bd=/checked\s*(?:[^=]|=\s*.checked.)/i,be=/\/(java|ecma)script/i,bf=/^\s*<!(?:\[CDATA\[|\-\-)/,bg={option:[1,"<select multiple='multiple'>","</select>"],legend:[1,"<fieldset>","</fieldset>"],thead:[1,"<table>","</table>"],tr:[2,"<table><tbody>","</tbody></table>"],td:[3,"<table><tbody><tr>","</tr></tbody></table>"],col:[2,"<table><tbody></tbody><colgroup>","</colgroup></table>"],area:[1,"<map>","</map>"],_default:[0,"",""]},bh=U(c);bg.optgroup=bg.option,bg.tbody=bg.tfoot=bg.colgroup=bg.caption=bg.thead,bg.th=bg.td,f.support.htmlSerialize||(bg._default=[1,"div<div>","</div>"]),f.fn.extend({text:function(a){if(f.isFunction(a))return this.each(function(b){var c=f(this);c.text(a.call(this,b,c.text()))});if(typeof a!="object"&&a!==b)return this.empty().append((this[0]&&this[0].ownerDocument||c).createTextNode(a));return f.text(this)},wrapAll:function(a){if(f.isFunction(a))return this.each(function(b){f(this).wrapAll(a.call(this,b))});if(this[0]){var b=f(a,this[0].ownerDocument).eq(0).clone(!0);this[0].parentNode&&b.insertBefore(this[0]),b.map(function(){var a=this;while(a.firstChild&&a.firstChild.nodeType===1)a=a.firstChild;return a}).append(this)}return this},wrapInner:function(a){if(f.isFunction(a))return this.each(function(b){f(this).wrapInner(a.call(this,b))});return this.each(function(){var b=f(this),c=b.contents();c.length?c.wrapAll(a):b.append(a)})},wrap:function(a){var b=f.isFunction(a);return this.each(function(c){f(this).wrapAll(b?a.call(this,c):a)})},unwrap:function(){return this.parent().each(function(){f.nodeName(this,"body")||f(this).replaceWith(this.childNodes)}).end()},append:function(){return this.domManip(arguments,!0,function(a){this.nodeType===1&&this.appendChild(a)})},prepend:function(){return this.domManip(arguments,!0,function(a){this.nodeType===1&&this.insertBefore(a,this.firstChild)})},before:function(){if(this[0]&&this[0].parentNode)return this.domManip(arguments,!1,function(a){this.parentNode.insertBefore(a,this)});if(arguments.length){var a=f.clean(arguments);a.push.apply(a,this.toArray());return this.pushStack(a,"before",arguments)}},after:function(){if(this[0]&&this[0].parentNode)return this.domManip(arguments,!1,function(a){this.parentNode.insertBefore(a,this.nextSibling)});if(arguments.length){var a=this.pushStack(this,"after",arguments);a.push.apply(a,f.clean(arguments));return a}},remove:function(a,b){for(var c=0,d;(d=this[c])!=null;c++)if(!a||f.filter(a,[d]).length)!b&&d.nodeType===1&&(f.cleanData(d.getElementsByTagName("*")),f.cleanData([d])),d.parentNode&&d.parentNode.removeChild(d);return this},empty:function()
-{for(var a=0,b;(b=this[a])!=null;a++){b.nodeType===1&&f.cleanData(b.getElementsByTagName("*"));while(b.firstChild)b.removeChild(b.firstChild)}return this},clone:function(a,b){a=a==null?!1:a,b=b==null?a:b;return this.map(function(){return f.clone(this,a,b)})},html:function(a){if(a===b)return this[0]&&this[0].nodeType===1?this[0].innerHTML.replace(W,""):null;if(typeof a=="string"&&!ba.test(a)&&(f.support.leadingWhitespace||!X.test(a))&&!bg[(Z.exec(a)||["",""])[1].toLowerCase()]){a=a.replace(Y,"<$1></$2>");try{for(var c=0,d=this.length;c<d;c++)this[c].nodeType===1&&(f.cleanData(this[c].getElementsByTagName("*")),this[c].innerHTML=a)}catch(e){this.empty().append(a)}}else f.isFunction(a)?this.each(function(b){var c=f(this);c.html(a.call(this,b,c.html()))}):this.empty().append(a);return this},replaceWith:function(a){if(this[0]&&this[0].parentNode){if(f.isFunction(a))return this.each(function(b){var c=f(this),d=c.html();c.replaceWith(a.call(this,b,d))});typeof a!="string"&&(a=f(a).detach());return this.each(function(){var b=this.nextSibling,c=this.parentNode;f(this).remove(),b?f(b).before(a):f(c).append(a)})}return this.length?this.pushStack(f(f.isFunction(a)?a():a),"replaceWith",a):this},detach:function(a){return this.remove(a,!0)},domManip:function(a,c,d){var e,g,h,i,j=a[0],k=[];if(!f.support.checkClone&&arguments.length===3&&typeof j=="string"&&bd.test(j))return this.each(function(){f(this).domManip(a,c,d,!0)});if(f.isFunction(j))return this.each(function(e){var g=f(this);a[0]=j.call(this,e,c?g.html():b),g.domManip(a,c,d)});if(this[0]){i=j&&j.parentNode,f.support.parentNode&&i&&i.nodeType===11&&i.childNodes.length===this.length?e={fragment:i}:e=f.buildFragment(a,this,k),h=e.fragment,h.childNodes.length===1?g=h=h.firstChild:g=h.firstChild;if(g){c=c&&f.nodeName(g,"tr");for(var l=0,m=this.length,n=m-1;l<m;l++)d.call(c?bi(this[l],g):this[l],e.cacheable||m>1&&l<n?f.clone(h,!0,!0):h)}k.length&&f.each(k,bp)}return this}}),f.buildFragment=function(a,b,d){var e,g,h,i,j=a[0];b&&b[0]&&(i=b[0].ownerDocument||b[0]),i.createDocumentFragment||(i=c),a.length===1&&typeof j=="string"&&j.length<512&&i===c&&j.charAt(0)==="<"&&!bb.test(j)&&(f.support.checkClone||!bd.test(j))&&(f.support.html5Clone||!bc.test(j))&&(g=!0,h=f.fragments[j],h&&h!==1&&(e=h)),e||(e=i.createDocumentFragment(),f.clean(a,i,e,d)),g&&(f.fragments[j]=h?e:1);return{fragment:e,cacheable:g}},f.fragments={},f.each({appendTo:"append",prependTo:"prepend",insertBefore:"before",insertAfter:"after",replaceAll:"replaceWith"},function(a,b){f.fn[a]=function(c){var d=[],e=f(c),g=this.length===1&&this[0].parentNode;if(g&&g.nodeType===11&&g.childNodes.length===1&&e.length===1){e[b](this[0]);return this}for(var h=0,i=e.length;h<i;h++){var j=(h>0?this.clone(!0):this).get();f(e[h])[b](j),d=d.concat(j)}return this.pushStack(d,a,e.selector)}}),f.extend({clone:function(a,b,c){var d,e,g,h=f.support.html5Clone||!bc.test("<"+a.nodeName)?a.cloneNode(!0):bo(a);if((!f.support.noCloneEvent||!f.support.noCloneChecked)&&(a.nodeType===1||a.nodeType===11)&&!f.isXMLDoc(a)){bk(a,h),d=bl(a),e=bl(h);for(g=0;d[g];++g)e[g]&&bk(d[g],e[g])}if(b){bj(a,h);if(c){d=bl(a),e=bl(h);for(g=0;d[g];++g)bj(d[g],e[g])}}d=e=null;return h},clean:function(a,b,d,e){var g;b=b||c,typeof b.createElement=="undefined"&&(b=b.ownerDocument||b[0]&&b[0].ownerDocument||c);var h=[],i;for(var j=0,k;(k=a[j])!=null;j++){typeof k=="number"&&(k+="");if(!k)continue;if(typeof k=="string")if(!_.test(k))k=b.createTextNode(k);else{k=k.replace(Y,"<$1></$2>");var l=(Z.exec(k)||["",""])[1].toLowerCase(),m=bg[l]||bg._default,n=m[0],o=b.createElement("div");b===c?bh.appendChild(o):U(b).appendChild(o),o.innerHTML=m[1]+k+m[2];while(n--)o=o.lastChild;if(!f.support.tbody){var p=$.test(k),q=l==="table"&&!p?o.firstChild&&o.firstChild.childNodes:m[1]==="<table>"&&!p?o.childNodes:[];for(i=q.length-1;i>=0;--i)f.nodeName(q[i],"tbody")&&!q[i].childNodes.length&&q[i].parentNode.removeChild(q[i])}!f.support.leadingWhitespace&&X.test(k)&&o.insertBefore(b.createTextNode(X.exec(k)[0]),o.firstChild),k=o.childNodes}var r;if(!f.support.appendChecked)if(k[0]&&typeof (r=k.length)=="number")for(i=0;i<r;i++)bn(k[i]);else bn(k);k.nodeType?h.push(k):h=f.merge(h,k)}if(d){g=function(a){return!a.type||be.test(a.type)};for(j=0;h[j];j++)if(e&&f.nodeName(h[j],"script")&&(!h[j].type||h[j].type.toLowerCase()==="text/javascript"))e.push(h[j].parentNode?h[j].parentNode.removeChild(h[j]):h[j]);else{if(h[j].nodeType===1){var s=f.grep(h[j].getElementsByTagName("script"),g);h.splice.apply(h,[j+1,0].concat(s))}d.appendChild(h[j])}}return h},cleanData:function(a){var b,c,d=f.cache,e=f.event.special,g=f.support.deleteExpando;for(var h=0,i;(i=a[h])!=null;h++){if(i.nodeName&&f.noData[i.nodeName.toLowerCase()])continue;c=i[f.expando];if(c){b=d[c];if(b&&b.events){for(var j in b.events)e[j]?f.event.remove(i,j):f.removeEvent(i,j,b.handle);b.handle&&(b.handle.elem=null)}g?delete i[f.expando]:i.removeAttribute&&i.removeAttribute(f.expando),delete d[c]}}}});var bq=/alpha\([^)]*\)/i,br=/opacity=([^)]*)/,bs=/([A-Z]|^ms)/g,bt=/^-?\d+(?:px)?$/i,bu=/^-?\d/,bv=/^([\-+])=([\-+.\de]+)/,bw={position:"absolute",visibility:"hidden",display:"block"},bx=["Left","Right"],by=["Top","Bottom"],bz,bA,bB;f.fn.css=function(a,c){if(arguments.length===2&&c===b)return this;return f.access(this,a,c,!0,function(a,c,d){return d!==b?f.style(a,c,d):f.css(a,c)})},f.extend({cssHooks:{opacity:{get:function(a,b){if(b){var c=bz(a,"opacity","opacity");return c===""?"1":c}return a.style.opacity}}},cssNumber:{fillOpacity:!0,fontWeight:!0,lineHeight:!0,opacity:!0,orphans:!0,widows:!0,zIndex:!0,zoom:!0},cssProps:{"float":f.support.cssFloat?"cssFloat":"styleFloat"},style:function(a,c,d,e){if(!!a&&a.nodeType!==3&&a.nodeType!==8&&!!a.style){var g,h,i=f.camelCase(c),j=a.style,k=f.cssHooks[i];c=f.cssProps[i]||i;if(d===b){if(k&&"get"in k&&(g=k.get(a,!1,e))!==b)return g;return j[c]}h=typeof d,h==="string"&&(g=bv.exec(d))&&(d=+(g[1]+1)*+g[2]+parseFloat(f.css(a,c)),h="number");if(d==null||h==="number"&&isNaN(d))return;h==="number"&&!f.cssNumber[i]&&(d+="px");if(!k||!("set"in k)||(d=k.set(a,d))!==b)try{j[c]=d}catch(l){}}},css:function(a,c,d){var e,g;c=f.camelCase(c),g=f.cssHooks[c],c=f.cssProps[c]||c,c==="cssFloat"&&(c="float");if(g&&"get"in g&&(e=g.get(a,!0,d))!==b)return e;if(bz)return bz(a,c)},swap:function(a,b,c){var d={};for(var e in b)d[e]=a.style[e],a.style[e]=b[e];c.call(a);for(e in b)a.style[e]=d[e]}}),f.curCSS=f.css,f.each(["height","width"],function(a,b){f.cssHooks[b]={get:function(a,c,d){var e;if(c){if(a.offsetWidth!==0)return bC(a,b,d);f.swap(a,bw,function(){e=bC(a,b,d)});return e}},set:function(a,b){if(!bt.test(b))return b;b=parseFloat(b);if(b>=0)return b+"px"}}}),f.support.opacity||(f.cssHooks.opacity={get:function(a,b){return br.test((b&&a.currentStyle?a.currentStyle.filter:a.style.filter)||"")?parseFloat(RegExp.$1)/100+"":b?"1":""},set:function(a,b){var c=a.style,d=a.currentStyle,e=f.isNumeric(b)?"alpha(opacity="+b*100+")":"",g=d&&d.filter||c.filter||"";c.zoom=1;if(b>=1&&f.trim(g.replace(bq,""))===""){c.removeAttribute("filter");if(d&&!d.filter)return}c.filter=bq.test(g)?g.replace(bq,e):g+" "+e}}),f(function(){f.support.reliableMarginRight||(f.cssHooks.marginRight={get:function(a,b){var c;f.swap(a,{display:"inline-block"},function(){b?c=bz(a,"margin-right","marginRight"):c=a.style.marginRight});return c}})}),c.defaultView&&c.defaultView.getComputedStyle&&(bA=function(a,b){var c,d,e;b=b.replace(bs,"-$1").toLowerCase(),(d=a.ownerDocument.defaultView)&&(e=d.getComputedStyle(a,null))&&(c=e.getPropertyValue(b),c===""&&!f.contains(a.ownerDocument.documentElement,a)&&(c=f.style(a,b)));return c}),c.documentElement.currentStyle&&(bB=function(a,b){var c,d,e,f=a.currentStyle&&a.currentStyle[b],g=a.style;f===null&&g&&(e=g[b])&&(f=e),!bt.test(f)&&bu.test(f)&&(c=g.left,d=a.runtimeStyle&&a.runtimeStyle.left,d&&(a.runtimeStyle.left=a.currentStyle.left),g.left=b==="fontSize"?"1em":f||0,f=g.pixelLeft+"px",g.left=c,d&&(a.runtimeStyle.left=d));return f===""?"auto":f}),bz=bA||bB,f.expr&&f.expr.filters&&(f.expr.filters.hidden=function(a){var b=a.offsetWidth,c=a.offsetHeight;return b===0&&c===0||!f.support.reliableHiddenOffsets&&(a.style&&a.style.display||f.css(a,"display"))==="none"},f.expr.filters.visible=function(a){return!f.expr.filters.hidden(a)});var bD=/%20/g,bE=/\[\]$/,bF=/\r?\n/g,bG=/#.*$/,bH=/^(.*?):[ \t]*([^\r\n]*)\r?$/mg,bI=/^(?:color|date|datetime|datetime-local|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,bJ=/^(?:about|app|app\-storage|.+\-extension|file|res|widget):$/,bK=/^(?:GET|HEAD)$/,bL=/^\/\//,bM=/\?/,bN=/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,bO=/^(?:select|textarea)/i,bP=/\s+/,bQ=/([?&])_=[^&]*/,bR=/^([\w\+\.\-]+:)(?:\/\/([^\/?#:]*)(?::(\d+))?)?/,bS=f.fn.load,bT={},bU={},bV,bW,bX=["*/"]+["*"];try{bV=e.href}catch(bY){bV=c.createElement("a"),bV.href="",bV=bV.href}bW=bR.exec(bV.toLowerCase())||[],f.fn.extend({load:function(a,c,d){if(typeof a!="string"&&bS)return bS.apply(this,arguments);if(!this.length)return this;var e=a.indexOf(" ");if(e>=0){var g=a.slice(e,a.length);a=a.slice(0,e)}var h="GET";c&&(f.isFunction(c)?(d=c,c=b):typeof c=="object"&&(c=f.param(c,f.ajaxSettings.traditional),h="POST"));var i=this;f.ajax({url:a,type:h,dataType:"html",data:c,complete:function(a,b,c){c=a.responseText,a.isResolved()&&(a.done(function(a){c=a}),i.html(g?f("<div>").append(c.replace(bN,"")).find(g):c)),d&&i.each(d,[c,b,a])}});return this},serialize:function(){return f.param(this.serializeArray())},serializeArray:function(){return this.map(function(){return this.elements?f.makeArray(this.elements):this}).filter(function(){return this.name&&!this.disabled&&(this.checked||bO.test(this.nodeName)||bI.test(this.type))}).map(function(a,b){var c=f(this).val();return c==null?null:f.isArray(c)?f.map(c,function(a,c){return{name:b.name,value:a.replace(bF,"\r\n")}}):{name:b.name,value:c.replace(bF,"\r\n")}}).get()}}),f.each("ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxSend".split(" "),function(a,b){f.fn[b]=function(a){return this.on(b,a)}}),f.each(["get","post"],function(a,c){f[c]=function(a,d,e,g){f.isFunction(d)&&(g=g||e,e=d,d=b);return f.ajax({type:c,url:a,data:d,success:e,dataType:g})}}),f.extend({getScript:function(a,c){return f.get(a,b,c,"script")},getJSON:function(a,b,c){return f.get(a,b,c,"json")},ajaxSetup:function(a,b){b?b_(a,f.ajaxSettings):(b=a,a=f.ajaxSettings),b_(a,b);return a},ajaxSettings:{url:bV,isLocal:bJ.test(bW[1]),global:!0,type:"GET",contentType:"application/x-www-form-urlencoded",processData:!0,async:!0,accepts:{xml:"application/xml, text/xml",html:"text/html",text:"text/plain",json:"application/json, text/javascript","*":bX},contents:{xml:/xml/,html:/html/,json:/json/},responseFields:{xml:"responseXML",text:"responseText"},converters:{"* text":a.String,"text html":!0,"text json":f.parseJSON,"text xml":f.parseXML},flatOptions:{context:!0,url:!0}},ajaxPrefilter:bZ(bT),ajaxTransport:bZ(bU),ajax:function(a,c){function w(a,c,l,m){if(s!==2){s=2,q&&clearTimeout(q),p=b,n=m||"",v.readyState=a>0?4:0;var o,r,u,w=c,x=l?cb(d,v,l):b,y,z;if(a>=200&&a<300||a===304){if(d.ifModified){if(y=v.getResponseHeader("Last-Modified"))f.lastModified[k]=y;if(z=v.getResponseHeader("Etag"))f.etag[k]=z}if(a===304)w="notmodified",o=!0;else try{r=cc(d,x),w="success",o=!0}catch(A){w="parsererror",u=A}}else{u=w;if(!w||a)w="error",a<0&&(a=0)}v.status=a,v.statusText=""+(c||w),o?h.resolveWith(e,[r,w,v]):h.rejectWith(e,[v,w,u]),v.statusCode(j),j=b,t&&g.trigger("ajax"+(o?"Success":"Error"),[v,d,o?r:u]),i.fireWith(e,[v,w]),t&&(g.trigger("ajaxComplete",[v,d]),--f.active||f.event.trigger("ajaxStop"))}}typeof a=="object"&&(c=a,a=b),c=c||{};var d=f.ajaxSetup({},c),e=d.context||d,g=e!==d&&(e.nodeType||e instanceof f)?f(e):f.event,h=f.Deferred(),i=f.Callbacks("once memory"),j=d.statusCode||{},k,l={},m={},n,o,p,q,r,s=0,t,u,v={readyState:0,setRequestHeader:function(a,b){if(!s){var c=a.toLowerCase();a=m[c]=m[c]||a,l[a]=b}return this},getAllResponseHeaders:function(){return s===2?n:null},getResponseHeader:function(a){var c;if(s===2){if(!o){o={};while(c=bH.exec(n))o[c[1].toLowerCase()]=c[2]}c=o[a.toLowerCase()]}return c===b?null:c},overrideMimeType:function(a){s||(d.mimeType=a);return this},abort:function(a){a=a||"abort",p&&p.abort(a),w(0,a);return this}};h.promise(v),v.success=v.done,v.error=v.fail,v.complete=i.add,v.statusCode=function(a){if(a){var b;if(s<2)for(b in a)j[b]=[j[b],a[b]];else b=a[v.status],v.then(b,b)}return this},d.url=((a||d.url)+"").replace(bG,"").replace(bL,bW[1]+"//"),d.dataTypes=f.trim(d.dataType||"*").toLowerCase().split(bP),d.crossDomain==null&&(r=bR.exec(d.url.toLowerCase()),d.crossDomain=!(!r||r[1]==bW[1]&&r[2]==bW[2]&&(r[3]||(r[1]==="http:"?80:443))==(bW[3]||(bW[1]==="http:"?80:443)))),d.data&&d.processData&&typeof d.data!="string"&&(d.data=f.param(d.data,d.traditional)),b$(bT,d,c,v);if(s===2)return!1;t=d.global,d.type=d.type.toUpperCase(),d.hasContent=!bK.test(d.type),t&&f.active++===0&&f.event.trigger("ajaxStart");if(!d.hasContent){d.data&&(d.url+=(bM.test(d.url)?"&":"?")+d.data,delete d.data),k=d.url;if(d.cache===!1){var x=f.now(),y=d.url.replace(bQ,"$1_="+x);d.url=y+(y===d.url?(bM.test(d.url)?"&":"?")+"_="+x:"")}}(d.data&&d.hasContent&&d.contentType!==!1||c.contentType)&&v.setRequestHeader("Content-Type",d.contentType),d.ifModified&&(k=k||d.url,f.lastModified[k]&&v.setRequestHeader("If-Modified-Since",f.lastModified[k]),f.etag[k]&&v.setRequestHeader("If-None-Match",f.etag[k])),v.setRequestHeader("Accept",d.dataTypes[0]&&d.accepts[d.dataTypes[0]]?d.accepts[d.dataTypes[0]]+(d.dataTypes[0]!=="*"?", "+bX+"; q=0.01":""):d.accepts["*"]);for(u in d.headers)v.setRequestHeader(u,d.headers[u]);if(d.beforeSend&&(d.beforeSend.call(e,v,d)===!1||s===2)){v.abort();return!1}for(u in{success:1,error:1,complete:1})v[u](d[u]);p=b$(bU,d,c,v);if(!p)w(-1,"No Transport");else{v.readyState=1,t&&g.trigger("ajaxSend",[v,d]),d.async&&d.timeout>0&&(q=setTimeout(function(){v.abort("timeout")},d.timeout));try{s=1,p.send(l,w)}catch(z){if(s<2)w(-1,z);else throw z}}return v},param:function(a,c){var d=[],e=function(a,b){b=f.isFunction(b)?b():b,d[d.length]=encodeURIComponent(a)+"="+encodeURIComponent(b)};c===b&&(c=f.ajaxSettings.traditional);if(f.isArray(a)||a.jquery&&!f.isPlainObject(a))f.each(a,function(){e(this.name,this.value)});else for(var g in a)ca(g,a[g],c,e);return d.join("&").replace(bD,"+")}}),f.extend({active:0,lastModified:{},etag:{}});var cd=f.now(),ce=/(\=)\?(&|$)|\?\?/i;f.ajaxSetup({jsonp:"callback",jsonpCallback:function(){return f.expando+"_"+cd++}}),f.ajaxPrefilter("json jsonp",function(b,c,d){var e=b.contentType==="application/x-www-form-urlencoded"&&typeof b.data=="string";if(b.dataTypes[0]==="jsonp"||b.jsonp!==!1&&(ce.test(b.url)||e&&ce.test(b.data))){var g,h=b.jsonpCallback=f.isFunction(b.jsonpCallback)?b.jsonpCallback():b.jsonpCallback,i=a[h],j=b.url,k=b.data,l="$1"+h+"$2";b.jsonp!==!1&&(j=j.replace(ce,l),b.url===j&&(e&&(k=k.replace(ce,l)),b.data===k&&(j+=(/\?/.test(j)?"&":"?")+b.jsonp+"="+h))),b.url=j,b.data=k,a[h]=function(a){g=[a]},d.always(function(){a[h]=i,g&&f.isFunction(i)&&a[h](g[0])}),b.converters["script json"]=function(){g||f.error(h+" was not called");return g[0]},b.dataTypes[0]="json";return"script"}}),f.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/javascript|ecmascript/},converters:{"text script":function(a){f.globalEval(a);return a}}}),f.ajaxPrefilter("script",function(a){a.cache===b&&(a.cache=!1),a.crossDomain&&(a.type="GET",a.global=!1)}),f.ajaxTransport("script",function(a){if(a.crossDomain){var d,e=c.head||c.getElementsByTagName("head")[0]||c.documentElement;return{send:function(f,g){d=c.createElement("script"),d.async="async",a.scriptCharset&&(d.charset=a.scriptCharset),d.src=a.url,d.onload=d.onreadystatechange=function(a,c){if(c||!d.readyState||/loaded|complete/.test(d.readyState))d.onload=d.onreadystatechange=null,e&&d.parentNode&&e.removeChild(d),d=b,c||g(200,"success")},e.insertBefore(d,e.firstChild)},abort:function(){d&&d.onload(0,1)}}}});var cf=a.ActiveXObject?function(){for(var a in ch)ch[a](0,1)}:!1,cg=0,ch;f.ajaxSettings.xhr=a.ActiveXObject?function(){return!this.isLocal&&ci()||cj()}:ci,function(a){f.extend(f.support,{ajax:!!a,cors:!!a&&"withCredentials"in a})}(f.ajaxSettings.xhr()),f.support.ajax&&f.ajaxTransport(function(c){if(!c.crossDomain||f.support.cors){var d;return{send:function(e,g){var h=c.xhr(),i,j;c.username?h.open(c.type,c.url,c.async,c.username,c.password):h.open(c.type,c.url,c.async);if(c.xhrFields)for(j in c.xhrFields)h[j]=c.xhrFields[j];c.mimeType&&h.overrideMimeType&&h.overrideMimeType(c.mimeType),!c.crossDomain&&!e["X-Requested-With"]&&(e["X-Requested-With"]="XMLHttpRequest");try{for(j in e)h.setRequestHeader(j,e[j])}catch(k){}h.send(c.hasContent&&c.data||null),d=function(a,e){var j,k,l,m,n;try{if(d&&(e||h.readyState===4)){d=b,i&&(h.onreadystatechange=f.noop,cf&&delete ch[i]);if(e)h.readyState!==4&&h.abort();else{j=h.status,l=h.getAllResponseHeaders(),m={},n=h.responseXML,n&&n.documentElement&&(m.xml=n),m.text=h.responseText;try{k=h.statusText}catch(o){k=""}!j&&c.isLocal&&!c.crossDomain?j=m.text?200:404:j===1223&&(j=204)}}}catch(p){e||g(-1,p)}m&&g(j,k,m,l)},!c.async||h.readyState===4?d():(i=++cg,cf&&(ch||(ch={},f(a).unload(cf)),ch[i]=d),h.onreadystatechange=d)},abort:function(){d&&d(0,1)}}}});var ck={},cl,cm,cn=/^(?:toggle|show|hide)$/,co=/^([+\-]=)?([\d+.\-]+)([a-z%]*)$/i,cp,cq=[["height","marginTop","marginBottom","paddingTop","paddingBottom"],["width","marginLeft","marginRight","paddingLeft","paddingRight"],["opacity"]],cr;f.fn.extend({show:function(a,b,c){var d,e;if(a||a===0)return this.animate(cu("show",3),a,b,c);for(var g=0,h=this.length;g<h;g++)d=this[g],d.style&&(e=d.style.display,!f._data(d,"olddisplay")&&e==="none"&&(e=d.style.display=""),e===""&&f.css(d,"display")==="none"&&f._data(d,"olddisplay",cv(d.nodeName)));for(g=0;g<h;g++){d=this[g];if(d.style){e=d.style.display;if(e===""||e==="none")d.style.display=f._data(d,"olddisplay")||""}}return this},hide:function(a,b,c){if(a||a===0)return this.animate(cu("hide",3),a,b,c);var d,e,g=0,h=this.length;for(;g<h;g++)d=this[g],d.style&&(e=f.css(d,"display"),e!=="none"&&!f._data(d,"olddisplay")&&f._data(d,"olddisplay",e));for(g=0;g<h;g++)this[g].style&&(this[g].style.display="none");return this},_toggle:f.fn.toggle,toggle:function(a,b,c){var d=typeof a=="boolean";f.isFunction(a)&&f.isFunction(b)?this._toggle.apply(this,arguments):a==null||d?this.each(function(){var b=d?a:f(this).is(":hidden");f(this)[b?"show":"hide"]()}):this.animate(cu("toggle",3),a,b,c);return this},fadeTo:function(a,b,c,d){return this.filter(":hidden").css("opacity",0).show().end().animate({opacity:b},a,c,d)},animate:function(a,b,c,d){function g(){e.queue===!1&&f._mark(this);var b=f.extend({},e),c=this.nodeType===1,d=c&&f(this).is(":hidden"),g,h,i,j,k,l,m,n,o;b.animatedProperties={};for(i in a){g=f.camelCase(i),i!==g&&(a[g]=a[i],delete a[i]),h=a[g],f.isArray(h)?(b.animatedProperties[g]=h[1],h=a[g]=h[0]):b.animatedProperties[g]=b.specialEasing&&b.specialEasing[g]||b.easing||"swing";if(h==="hide"&&d||h==="show"&&!d)return b.complete.call(this);c&&(g==="height"||g==="width")&&(b.overflow=[this.style.overflow,this.style.overflowX,this.style.overflowY],f.css(this,"display")==="inline"&&f.css(this,"float")==="none"&&(!f.support.inlineBlockNeedsLayout||cv(this.nodeName)==="inline"?this.style.display="inline-block":this.style.zoom=1))}b.overflow!=null&&(this.style.overflow="hidden");for(i in a)j=new f.fx(this,b,i),h=a[i],cn.test(h)?(o=f._data(this,"toggle"+i)||(h==="toggle"?d?"show":"hide":0),o?(f._data(this,"toggle"+i,o==="show"?"hide":"show"),j[o]()):j[h]()):(k=co.exec(h),l=j.cur(),k?(m=parseFloat(k[2]),n=k[3]||(f.cssNumber[i]?"":"px"),n!=="px"&&(f.style(this,i,(m||1)+n),l=(m||1)/j.cur()*l,f.style(this,i,l+n)),k[1]&&(m=(k[1]==="-="?-1:1)*m+l),j.custom(l,m,n)):j.custom(l,h,""));return!0}var e=f.speed(b,c,d);if(f.isEmptyObject(a))return this.each(e.complete,[!1]);a=f.extend({},a);return e.queue===!1?this.each(g):this.queue(e.queue,g)},stop:function(a,c,d){typeof a!="string"&&(d=c,c=a,a=b),c&&a!==!1&&this.queue(a||"fx",[]);return this.each(function(){function h(a,b,c){var e=b[c];f.removeData(a,c,!0),e.stop(d)}var b,c=!1,e=f.timers,g=f._data(this);d||f._unmark(!0,this);if(a==null)for(b in g)g[b]&&g[b].stop&&b.indexOf(".run")===b.length-4&&h(this,g,b);else g[b=a+".run"]&&g[b].stop&&h(this,g,b);for(b=e.length;b--;)e[b].elem===this&&(a==null||e[b].queue===a)&&(d?e[b](!0):e[b].saveState(),c=!0,e.splice(b,1));(!d||!c)&&f.dequeue(this,a)})}}),f.each({slideDown:cu("show",1),slideUp:cu("hide",1),slideToggle:cu("toggle",1),fadeIn:{opacity:"show"},fadeOut:{opacity:"hide"},fadeToggle:{opacity:"toggle"}},function(a,b){f.fn[a]=function(a,c,d){return this.animate(b,a,c,d)}}),f.extend({speed:function(a,b,c){var d=a&&typeof a=="object"?f.extend({},a):{complete:c||!c&&b||f.isFunction(a)&&a,duration:a,easing:c&&b||b&&!f.isFunction(b)&&b};d.duration=f.fx.off?0:typeof d.duration=="number"?d.duration:d.duration in f.fx.speeds?f.fx.speeds[d.duration]:f.fx.speeds._default;if(d.queue==null||d.queue===!0)d.queue="fx";d.old=d.complete,d.complete=function(a){f.isFunction(d.old)&&d.old.call(this),d.queue?f.dequeue(this,d.queue):a!==!1&&f._unmark(this)};return d},easing:{linear:function(a,b,c,d){return c+d*a},swing:function(a,b,c,d){return(-Math.cos(a*Math.PI)/2+.5)*d+c}},timers:[],fx:function(a,b,c){this.options=b,this.elem=a,this.prop=c,b.orig=b.orig||{}}}),f.fx.prototype={update:function(){this.options.step&&this.options.step.call(this.elem,this.now,this),(f.fx.step[this.prop]||f.fx.step._default)(this)},cur:function(){if(this.elem[this.prop]!=null&&(!this.elem.style||this.elem.style[this.prop]==null))return this.elem[this.prop];var a,b=f.css(this.elem,this.prop);return isNaN(a=parseFloat(b))?!b||b==="auto"?0:b:a},custom:function(a,c,d){function h(a){return e.step(a)}var e=this,g=f.fx;this.startTime=cr||cs(),this.end=c,this.now=this.start=a,this.pos=this.state=0,this.unit=d||this.unit||(f.cssNumber[this.prop]?"":"px"),h.queue=this.options.queue,h.elem=this.elem,h.saveState=function(){e.options.hide&&f._data(e.elem,"fxshow"+e.prop)===b&&f._data(e.elem,"fxshow"+e.prop,e.start)},h()&&f.timers.push(h)&&!cp&&(cp=setInterval(g.tick,g.interval))},show:function(){var a=f._data(this.elem,"fxshow"+this.prop);this.options.orig[this.prop]=a||f.style(this.elem,this.prop),this.options.show=!0,a!==b?this.custom(this.cur(),a):this.custom(this.prop==="width"||this.prop==="height"?1:0,this.cur()),f(this.elem).show()},hide:function(){this.options.orig[this.prop]=f._data(this.elem,"fxshow"+this.prop)||f.style(this.elem,this.prop),this.options.hide=!0,this.custom(this.cur(),0)},step:function(a){var b,c,d,e=cr||cs(),g=!0,h=this.elem,i=this.options;if(a||e>=i.duration+this.startTime){this.now=this.end,this.pos=this.state=1,this.update(),i.animatedProperties[this.prop]=!0;for(b in i.animatedProperties)i.animatedProperties[b]!==!0&&(g=!1);if(g){i.overflow!=null&&!f.support.shrinkWrapBlocks&&f.each(["","X","Y"],function(a,b){h.style["overflow"+b]=i.overflow[a]}),i.hide&&f(h).hide();if(i.hide||i.show)for(b in i.animatedProperties)f.style(h,b,i.orig[b]),f.removeData(h,"fxshow"+b,!0),f.removeData(h,"toggle"+b,!0);d=i.complete,d&&(i.complete=!1,d.call(h))}return!1}i.duration==Infinity?this.now=e:(c=e-this.startTime,this.state=c/i.duration,this.pos=f.easing[i.animatedProperties[this.prop]](this.state,c,0,1,i.duration),this.now=this.start+(this.end-this.start)*this.pos),this.update();return!0}},f.extend(f.fx,{tick:function(){var a,b=f.timers,c=0;for(;c<b.length;c++)a=b[c],!a()&&b[c]===a&&b.splice(c--,1);b.length||f.fx.stop()},interval:13,stop:function(){clearInterval(cp),cp=null},speeds:{slow:600,fast:200,_default:400},step:{opacity:function(a){f.style(a.elem,"opacity",a.now)},_default:function(a){a.elem.style&&a.elem.style[a.prop]!=null?a.elem.style[a.prop]=a.now+a.unit:a.elem[a.prop]=a.now}}}),f.each(["width","height"],function(a,b){f.fx.step[b]=function(a){f.style(a.elem,b,Math.max(0,a.now)+a.unit)}}),f.expr&&f.expr.filters&&(f.expr.filters.animated=function(a){return f.grep(f.timers,function(b){return a===b.elem}).length});var cw=/^t(?:able|d|h)$/i,cx=/^(?:body|html)$/i;"getBoundingClientRect"in c.documentElement?f.fn.offset=function(a){var b=this[0],c;if(a)return this.each(function(b){f.offset.setOffset(this,a,b)});if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return f.offset.bodyOffset(b);try{c=b.getBoundingClientRect()}catch(d){}var e=b.ownerDocument,g=e.documentElement;if(!c||!f.contains(g,b))return c?{top:c.top,left:c.left}:{top:0,left:0};var h=e.body,i=cy(e),j=g.clientTop||h.clientTop||0,k=g.clientLeft||h.clientLeft||0,l=i.pageYOffset||f.support.boxModel&&g.scrollTop||h.scrollTop,m=i.pageXOffset||f.support.boxModel&&g.scrollLeft||h.scrollLeft,n=c.top+l-j,o=c.left+m-k;return{top:n,left:o}}:f.fn.offset=function(a){var b=this[0];if(a)return this.each(function(b){f.offset.setOffset(this,a,b)});if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return f.offset.bodyOffset(b);var c,d=b.offsetParent,e=b,g=b.ownerDocument,h=g.documentElement,i=g.body,j=g.defaultView,k=j?j.getComputedStyle(b,null):b.currentStyle,l=b.offsetTop,m=b.offsetLeft;while((b=b.parentNode)&&b!==i&&b!==h){if(f.support.fixedPosition&&k.position==="fixed")break;c=j?j.getComputedStyle(b,null):b.currentStyle,l-=b.scrollTop,m-=b.scrollLeft,b===d&&(l+=b.offsetTop,m+=b.offsetLeft,f.support.doesNotAddBorder&&(!f.support.doesAddBorderForTableAndCells||!cw.test(b.nodeName))&&(l+=parseFloat(c.borderTopWidth)||0,m+=parseFloat(c.borderLeftWidth)||0),e=d,d=b.offsetParent),f.support.subtractsBorderForOverflowNotVisible&&c.overflow!=="visible"&&(l+=parseFloat(c.borderTopWidth)||0,m+=parseFloat(c.borderLeftWidth)||0),k=c}if(k.position==="relative"||k.position==="static")l+=i.offsetTop,m+=i.offsetLeft;f.support.fixedPosition&&k.position==="fixed"&&(l+=Math.max(h.scrollTop,i.scrollTop),m+=Math.max(h.scrollLeft,i.scrollLeft));return{top:l,left:m}},f.offset={bodyOffset:function(a){var b=a.offsetTop,c=a.offsetLeft;f.support.doesNotIncludeMarginInBodyOffset&&(b+=parseFloat(f.css(a,"marginTop"))||0,c+=parseFloat(f.css(a,"marginLeft"))||0);return{top:b,left:c}},setOffset:function(a,b,c){var d=f.css(a,"position");d==="static"&&(a.style.position="relative");var e=f(a),g=e.offset(),h=f.css(a,"top"),i=f.css(a,"left"),j=(d==="absolute"||d==="fixed")&&f.inArray("auto",[h,i])>-1,k={},l={},m,n;j?(l=e.position(),m=l.top,n=l.left):(m=parseFloat(h)||0,n=parseFloat(i)||0),f.isFunction(b)&&(b=b.call(a,c,g)),b.top!=null&&(k.top=b.top-g.top+m),b.left!=null&&(k.left=b.left-g.left+n),"using"in b?b.using.call(a,k):e.css(k)}},f.fn.extend({position:function(){if(!this[0])return null;var a=this[0],b=this.offsetParent(),c=this.offset(),d=cx.test(b[0].nodeName)?{top:0,left:0}:b.offset();c.top-=parseFloat(f.css(a,"marginTop"))||0,c.left-=parseFloat(f.css(a,"marginLeft"))||0,d.top+=parseFloat(f.css(b[0],"borderTopWidth"))||0,d.left+=parseFloat(f.css(b[0],"borderLeftWidth"))||0;return{top:c.top-d.top,left:c.left-d.left}},offsetParent:function(){return this.map(function(){var a=this.offsetParent||c.body;while(a&&!cx.test(a.nodeName)&&f.css(a,"position")==="static")a=a.offsetParent;return a})}}),f.each(["Left","Top"],function(a,c){var d="scroll"+c;f.fn[d]=function(c){var e,g;if(c===b){e=this[0];if(!e)return null;g=cy(e);return g?"pageXOffset"in g?g[a?"pageYOffset":"pageXOffset"]:f.support.boxModel&&g.document.documentElement[d]||g.document.body[d]:e[d]}return this.each(function(){g=cy(this),g?g.scrollTo(a?f(g).scrollLeft():c,a?c:f(g).scrollTop()):this[d]=c})}}),f.each(["Height","Width"],function(a,c){var d=c.toLowerCase();f.fn["inner"+c]=function(){var a=this[0];return a?a.style?parseFloat(f.css(a,d,"padding")):this[d]():null},f.fn["outer"+c]=function(a){var b=this[0];return b?b.style?parseFloat(f.css(b,d,a?"margin":"border")):this[d]():null},f.fn[d]=function(a){var e=this[0];if(!e)return a==null?null:this;if(f.isFunction(a))return this.each(function(b){var c=f(this);c[d](a.call(this,b,c[d]()))});if(f.isWindow(e)){var g=e.document.documentElement["client"+c],h=e.document.body;return e.document.compatMode==="CSS1Compat"&&g||h&&h["client"+c]||g}if(e.nodeType===9)return Math.max(e.documentElement["client"+c],e.body["scroll"+c],e.documentElement["scroll"+c],e.body["offset"+c],e.documentElement["offset"+c]);if(a===b){var i=f.css(e,d),j=parseFloat(i);return f.isNumeric(j)?j:i}return this.css(d,typeof a=="string"?a:a+"px")}}),a.jQuery=a.$=f,typeof define=="function"&&define.amd&&define.amd.jQuery&&define("jquery",[],function(){return f})})(window);
+/*
+ * jQuery - New Wave Javascript
+ *
+ * Copyright (c) 2006 John Resig (jquery.com)
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and GPL (GPL-LICENSE.txt) licenses.
+ *
+ * $Date: 2006-09-07 10:12:12 +0200 (Do, 07 Sep 2006) $
+ * $Rev: 276 $
+ */
 
+// Global undefined variable
+window.undefined = window.undefined;
+
+/**
+ * Create a new jQuery Object
+ *
+ * @test ok( Array.prototype.push, "Array.push()" );
+ * @test ok( Function.prototype.apply, "Function.apply()" );
+ * @test ok( document.getElementById, "getElementById" );
+ * @test ok( document.getElementsByTagName, "getElementsByTagName" );
+ * @test ok( RegExp, "RegExp" );
+ * @test ok( jQuery, "jQuery" );
+ * @test ok( $, "$()" );
+ *
+ * @constructor
+ * @private
+ * @name jQuery
+ * @cat Core
+ */
+function jQuery(a,c) {
+
+	// Shortcut for document ready (because $(document).each() is silly)
+	if ( a && a.constructor == Function && jQuery.fn.ready )
+		return jQuery(document).ready(a);
+
+	// Make sure that a selection was provided
+	a = a || jQuery.context || document;
+
+	// Watch for when a jQuery object is passed as the selector
+	if ( a.jquery )
+		return jQuery( jQuery.merge( a, [] ) );
+
+	// Watch for when a jQuery object is passed at the context
+	if ( c && c.jquery )
+		return jQuery( c ).find(a);
+
+	// If the context is global, return a new object
+	if ( window == this )
+		return new jQuery(a,c);
+
+	// Handle HTML strings
+	var m = /^[^<]*(<.+>)[^>]*$/.exec(a);
+	if ( m ) a = jQuery.clean( [ m[1] ] );
+
+	// Watch for when an array is passed in
+	this.get( a.constructor == Array || a.length && !a.nodeType && a[0] != undefined && a[0].nodeType ?
+		// Assume that it is an array of DOM Elements
+		jQuery.merge( a, [] ) :
+
+		// Find the matching elements and save them for later
+		jQuery.find( a, c ) );
+
+  // See if an extra function was provided
+	var fn = arguments[ arguments.length - 1 ];
+
+	// If so, execute it in context
+	if ( fn && fn.constructor == Function )
+		this.each(fn);
+}
+
+// Map over the $ in case of overwrite
+if ( typeof $ != "undefined" )
+	jQuery._$ = $;
+
+/**
+ * This function accepts a string containing a CSS selector,
+ * basic XPath, or raw HTML, which is then used to match a set of elements.
+ * The HTML string is different from the traditional selectors in that
+ * it creates the DOM elements representing that HTML string, on the fly,
+ * to be (assumedly) inserted into the document later.
+ *
+ * The core functionality of jQuery centers around this function.
+ * Everything in jQuery is based upon this, or uses this in some way.
+ * The most basic use of this function is to pass in an expression
+ * (usually consisting of CSS or XPath), which then finds all matching
+ * elements and remembers them for later use.
+ *
+ * By default, $() looks for DOM elements within the context of the
+ * current HTML document.
+ *
+ * @example $("div > p")
+ * @desc This finds all p elements that are children of a div element.
+ * @before <p>one</p> <div><p>two</p></div> <p>three</p>
+ * @result [ <p>two</p> ]
+ *
+ * @example $("<div><p>Hello</p></div>").appendTo("#body")
+ * @desc Creates a div element (and all of its contents) dynamically, and appends it to the element with the ID of body.
+ *
+ * @name $
+ * @param String expr An expression to search with, or a string of HTML to create on the fly.
+ * @cat Core
+ * @type jQuery
+ */
+
+/**
+ * This function accepts a string containing a CSS selector, or
+ * basic XPath, which is then used to match a set of elements with the
+ * context of the specified DOM element, or document
+ *
+ * @example $("div", xml.responseXML)
+ * @desc This finds all div elements within the specified XML document.
+ *
+ * @name $
+ * @param String expr An expression to search with.
+ * @param Element context A DOM Element, or Document, representing the base context.
+ * @cat Core
+ * @type jQuery
+ */
+
+/**
+ * Wrap jQuery functionality around a specific DOM Element.
+ * This function also accepts XML Documents and Window objects
+ * as valid arguments (even though they are not DOM Elements).
+ *
+ * @example $(document).find("div > p")
+ * @before <p>one</p> <div><p>two</p></div> <p>three</p>
+ * @result [ <p>two</p> ]
+ *
+ * @example $(document.body).background( "black" );
+ * @desc Sets the background color of the page to black.
+ *
+ * @name $
+ * @param Element elem A DOM element to be encapsulated by a jQuery object.
+ * @cat Core
+ * @type jQuery
+ */
+
+/**
+ * Wrap jQuery functionality around a set of DOM Elements.
+ *
+ * @example $( myForm.elements ).hide()
+ * @desc Hides all the input elements within a form
+ *
+ * @name $
+ * @param Array<Element> elems An array of DOM elements to be encapsulated by a jQuery object.
+ * @cat Core
+ * @type jQuery
+ */
+
+/**
+ * A shorthand for $(document).ready(), allowing you to bind a function
+ * to be executed when the DOM document has finished loading. This function
+ * behaves just like $(document).ready(), in that it should be used to wrap
+ * all of the other $() operations on your page. While this function is,
+ * technically, chainable - there really isn't much use for chaining against it.
+ *
+ * @example $(function(){
+ *   // Document is ready
+ * });
+ * @desc Executes the function when the DOM is ready to be used.
+ *
+ * @name $
+ * @param Function fn The function to execute when the DOM is ready.
+ * @cat Core
+ * @type jQuery
+ */
+
+/**
+ * A means of creating a cloned copy of a jQuery object. This function
+ * copies the set of matched elements from one jQuery object and creates
+ * another, new, jQuery object containing the same elements.
+ *
+ * @example var div = $("div");
+ * $( div ).find("p");
+ * @desc Locates all p elements with all div elements, without disrupting the original jQuery object contained in 'div' (as would normally be the case if a simple div.find("p") was done).
+ *
+ * @name $
+ * @param jQuery obj The jQuery object to be cloned.
+ * @cat Core
+ * @type jQuery
+ */
+
+// Map the jQuery namespace to the '$' one
+var $ = jQuery;
+
+jQuery.fn = jQuery.prototype = {
+	/**
+	 * The current SVN version of jQuery.
+	 *
+	 * @private
+	 * @property
+	 * @name jquery
+	 * @type String
+	 * @cat Core
+	 */
+	jquery: "$Rev: 276 $",
+
+	/**
+	 * The number of elements currently matched.
+	 *
+	 * @example $("img").length;
+	 * @before <img src="test1.jpg"/> <img src="test2.jpg"/>
+	 * @result 2
+	 *
+	 * @test cmpOK( $("div").length, "==", 2, "Get Number of Elements Found" );
+	 *
+	 * @property
+	 * @name length
+	 * @type Number
+	 * @cat Core
+	 */
+
+	/**
+	 * The number of elements currently matched.
+	 *
+	 * @example $("img").size();
+	 * @before <img src="test1.jpg"/> <img src="test2.jpg"/>
+	 * @result 2
+	 *
+	 * @test cmpOK( $("div").size(), "==", 2, "Get Number of Elements Found" );
+	 *
+	 * @name size
+	 * @type Number
+	 * @cat Core
+	 */
+	size: function() {
+		return this.length;
+	},
+
+	/**
+	 * Access all matched elements. This serves as a backwards-compatible
+	 * way of accessing all matched elements (other than the jQuery object
+	 * itself, which is, in fact, an array of elements).
+	 *
+	 * @example $("img").get();
+	 * @before <img src="test1.jpg"/> <img src="test2.jpg"/>
+	 * @result [ <img src="test1.jpg"/> <img src="test2.jpg"/> ]
+	 *
+	 * @test isSet( $("div").get(), q("main","foo"), "Get All Elements" );
+	 *
+	 * @name get
+	 * @type Array<Element>
+	 * @cat Core
+	 */
+
+	/**
+	 * Access a single matched element. num is used to access the
+	 * Nth element matched.
+	 *
+	 * @example $("img").get(1);
+	 * @before <img src="test1.jpg"/> <img src="test2.jpg"/>
+	 * @result [ <img src="test1.jpg"/> ]
+	 *
+	 * @test cmpOK( $("div").get(0), "==", document.getElementById("main"), "Get A Single Element" );
+	 *
+	 * @name get
+	 * @type Element
+	 * @param Number num Access the element in the Nth position.
+	 * @cat Core
+	 */
+
+	/**
+	 * Set the jQuery object to an array of elements.
+	 *
+	 * @example $("img").get([ document.body ]);
+	 * @result $("img").get() == [ document.body ]
+	 *
+	 * @private
+	 * @name get
+	 * @type jQuery
+	 * @param Elements elems An array of elements
+	 * @cat Core
+	 */
+	get: function( num ) {
+		// Watch for when an array (of elements) is passed in
+		if ( num && num.constructor == Array ) {
+
+			// Use a tricky hack to make the jQuery object
+			// look and feel like an array
+			this.length = 0;
+			[].push.apply( this, num );
+
+			return this;
+		} else
+			return num == undefined ?
+
+				// Return a 'clean' array
+				jQuery.merge( this, [] ) :
+
+				// Return just the object
+				this[num];
+	},
+
+	/**
+	 * Execute a function within the context of every matched element.
+	 * This means that every time the passed-in function is executed
+	 * (which is once for every element matched) the 'this' keyword
+	 * points to the specific element.
+	 *
+	 * Additionally, the function, when executed, is passed a single
+	 * argument representing the position of the element in the matched
+	 * set.
+	 *
+	 * @example $("img").each(function(){
+	 *   this.src = "test.jpg";
+	 * });
+	 * @before <img/> <img/>
+	 * @result <img src="test.jpg"/> <img src="test.jpg"/>
+	 *
+	 * @example $("img").each(function(i){
+	 *   alert( "Image #" + i + " is " + this );
+	 * });
+	 * @before <img/> <img/>
+	 * @result <img src="test.jpg"/> <img src="test.jpg"/>
+	 *
+	 * @test var div = $("div");
+	 * div.each(function(){this.foo = 'zoo';});
+	 * var pass = true;
+	 * for ( var i = 0; i < div.size(); i++ ) {
+	 *   if ( div.get(i).foo != "zoo" ) pass = false;
+	 * }
+	 * ok( pass, "Execute a function, Relative" );
+	 *
+	 * @name each
+	 * @type jQuery
+	 * @param Function fn A function to execute
+	 * @cat Core
+	 */
+	each: function( fn, args ) {
+		return jQuery.each( this, fn, args );
+	},
+
+	/**
+	 * Searches every matched element for the object and returns
+	 * the index of the element, if found, starting with zero. 
+	 * Returns -1 if the object wasn't found.
+	 *
+	 * @example $("*").index(document.getElementById('foobar')) 
+	 * @before <div id="foobar"></div><b></b><span id="foo"></span>
+	 * @result 0
+	 *
+	 * @example $("*").index(document.getElementById('foo')) 
+	 * @before <div id="foobar"></div><b></b><span id="foo"></span>
+	 * @result 2
+	 *
+	 * @example $("*").index(document.getElementById('bar')) 
+	 * @before <div id="foobar"></div><b></b><span id="foo"></span>
+	 * @result -1
+	 *
+	 * @test ok( $([window, document]).index(window) == 0, "Check for index of elements" );
+	 * @test ok( $([window, document]).index(document) == 1, "Check for index of elements" );
+	 * @test var inputElements = $('#radio1,#radio2,#check1,#check2');
+	 * @test ok( inputElements.index(document.getElementById('radio1')) == 0, "Check for index of elements" );
+	 * @test ok( inputElements.index(document.getElementById('radio2')) == 1, "Check for index of elements" );
+	 * @test ok( inputElements.index(document.getElementById('check1')) == 2, "Check for index of elements" );
+	 * @test ok( inputElements.index(document.getElementById('check2')) == 3, "Check for index of elements" );
+	 * @test ok( inputElements.index(window) == -1, "Check for not found index" );
+	 * @test ok( inputElements.index(document) == -1, "Check for not found index" );
+	 * 
+	 * @name index
+	 * @type Number
+	 * @param Object obj Object to search for
+	 * @cat Core
+	 */
+	index: function( obj ) {
+		var pos = -1;
+		this.each(function(i){
+			if ( this == obj ) pos = i;
+		});
+		return pos;
+	},
+
+	/**
+	 * Access a property on the first matched element.
+	 * This method makes it easy to retrieve a property value
+	 * from the first matched element.
+	 *
+	 * @example $("img").attr("src");
+	 * @before <img src="test.jpg"/>
+	 * @result test.jpg
+	 *
+	 * @test ok( $('#text1').attr('value') == "Test", 'Check for value attribute' );
+	 * @test ok( $('#text1').attr('type') == "text", 'Check for type attribute' );
+	 * @test ok( $('#radio1').attr('type') == "radio", 'Check for type attribute' );
+	 * @test ok( $('#check1').attr('type') == "checkbox", 'Check for type attribute' );
+	 * @test ok( $('#simon1').attr('rel') == "bookmark", 'Check for rel attribute' );
+	 * @test ok( $('#google').attr('title') == "Google!", 'Check for title attribute' );
+	 * @test ok( $('#mark').attr('hreflang') == "en", 'Check for hreflang attribute' );
+	 * @test ok( $('#en').attr('lang') == "en", 'Check for lang attribute' );
+	 * @test ok( $('#simon').attr('class') == "blog link", 'Check for class attribute' );
+	 * @test ok( $('#name').attr('name') == "name", 'Check for name attribute' );
+	 * 
+	 * @name attr
+	 * @type Object
+	 * @param String name The name of the property to access.
+	 * @cat DOM
+	 */
+
+	/**
+	 * Set a hash of key/value object properties to all matched elements.
+	 * This serves as the best way to set a large number of properties
+	 * on all matched elements.
+	 *
+	 * @example $("img").attr({ src: "test.jpg", alt: "Test Image" });
+	 * @before <img/>
+	 * @result <img src="test.jpg" alt="Test Image"/>
+	 *
+	 * @test var pass = true;
+	 * $("div").attr({foo: 'baz', zoo: 'ping'}).each(function(){
+	 *   if ( this.getAttribute('foo') != "baz" && this.getAttribute('zoo') != "ping" ) pass = false;
+	 * });
+	 * ok( pass, "Set Multiple Attributes" );
+	 *
+	 * @name attr
+	 * @type jQuery
+	 * @param Hash prop A set of key/value pairs to set as object properties.
+	 * @cat DOM
+	 */
+
+	/**
+	 * Set a single property to a value, on all matched elements.
+	 *
+	 * @example $("img").attr("src","test.jpg");
+	 * @before <img/>
+	 * @result <img src="test.jpg"/>
+	 *
+	 * @test var div = $("div");
+	 * div.attr("foo", "bar");
+	 * var pass = true;
+	 * for ( var i = 0; i < div.size(); i++ ) {
+	 *   if ( div.get(i).getAttribute('foo') != "bar" ) pass = false;
+	 * }
+	 * ok( pass, "Set Attribute" );
+	 *
+	 * @test $("#name").attr('name', 'something');
+	 * ok( $("#name").name() == 'something', 'Set name attribute' );
+	 *
+	 * @name attr
+	 * @type jQuery
+	 * @param String key The name of the property to set.
+	 * @param Object value The value to set the property to.
+	 * @cat DOM
+	 */
+	attr: function( key, value, type ) {
+		// Check to see if we're setting style values
+		return key.constructor != String || value != undefined ?
+			this.each(function(){
+				// See if we're setting a hash of styles
+				if ( value == undefined )
+					// Set all the styles
+					for ( var prop in key )
+						jQuery.attr(
+							type ? this.style : this,
+							prop, key[prop]
+						);
+
+				// See if we're setting a single key/value style
+				else
+					jQuery.attr(
+						type ? this.style : this,
+						key, value
+					);
+			}) :
+
+			// Look for the case where we're accessing a style value
+			jQuery[ type || "attr" ]( this[0], key );
+	},
+
+	/**
+	 * Access a style property on the first matched element.
+	 * This method makes it easy to retrieve a style property value
+	 * from the first matched element.
+	 *
+	 * @example $("p").css("color");
+	 * @before <p style="color:red;">Test Paragraph.</p>
+	 * @result red
+	 * @desc Retrieves the color style of the first paragraph
+	 *
+	 * @example $("p").css("fontWeight");
+	 * @before <p style="font-weight: bold;">Test Paragraph.</p>
+	 * @result bold
+	 * @desc Retrieves the font-weight style of the first paragraph.
+	 * Note that for all style properties with a dash (like 'font-weight'), you have to
+	 * write it in camelCase. In other words: Every time you have a '-' in a 
+	 * property, remove it and replace the next character with an uppercase 
+	 * representation of itself. Eg. fontWeight, fontSize, fontFamily, borderWidth,
+	 * borderStyle, borderBottomWidth etc.
+	 *
+	 * @test ok( $('#foo').css("display") == 'block', 'Check for css property "display"');
+	 *
+	 * @name css
+	 * @type Object
+	 * @param String name The name of the property to access.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set a hash of key/value style properties to all matched elements.
+	 * This serves as the best way to set a large number of style properties
+	 * on all matched elements.
+	 *
+	 * @example $("p").css({ color: "red", background: "blue" });
+	 * @before <p>Test Paragraph.</p>
+	 * @result <p style="color:red; background:blue;">Test Paragraph.</p>
+	 *
+	 * @test ok( $('#foo').is(':visible'), 'Modifying CSS display: Assert element is visible');
+	 * @test $('#foo').css({display: 'none'});
+	 * ok( !$('#foo').is(':visible'), 'Modified CSS display: Assert element is hidden');
+	 * @test $('#foo').css({display: 'block'});
+	 * ok( $('#foo').is(':visible'), 'Modified CSS display: Assert element is visible');
+	 * 
+	 * @name css
+	 * @type jQuery
+	 * @param Hash prop A set of key/value pairs to set as style properties.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set a single style property to a value, on all matched elements.
+	 *
+	 * @example $("p").css("color","red");
+	 * @before <p>Test Paragraph.</p>
+	 * @result <p style="color:red;">Test Paragraph.</p>
+	 * @desc Changes the color of all paragraphs to red
+	 *
+	 *
+	 * @test ok( $('#foo').is(':visible'), 'Modifying CSS display: Assert element is visible');
+	 * @test $('#foo').css('display', 'none');
+	 * ok( !$('#foo').is(':visible'), 'Modified CSS display: Assert element is hidden');
+	 * @test $('#foo').css('display', 'block');
+	 * ok( $('#foo').is(':visible'), 'Modified CSS display: Assert element is visible');
+	 *
+	 * @name css
+	 * @type jQuery
+	 * @param String key The name of the property to set.
+	 * @param Object value The value to set the property to.
+	 * @cat CSS
+	 */
+	css: function( key, value ) {
+		return this.attr( key, value, "curCSS" );
+	},
+
+	/**
+	 * Retrieve the text contents of all matched elements. The result is
+	 * a string that contains the combined text contents of all matched
+	 * elements. This method works on both HTML and XML documents.
+	 *
+	 * @example $("p").text();
+	 * @before <p>Test Paragraph.</p>
+	 * @result Test Paragraph.
+	 *
+	 * @test var expected = "This link has class=\"blog\": Simon Willison's Weblog";
+	 * ok( $('#sap').text() == expected, 'Check for merged text of more then one element.' );
+	 *
+	 * @name text
+	 * @type String
+	 * @cat DOM
+	 */
+	text: function(e) {
+		e = e || this;
+		var t = "";
+		for ( var j = 0; j < e.length; j++ ) {
+			var r = e[j].childNodes;
+			for ( var i = 0; i < r.length; i++ )
+				if ( r[i].nodeType != 8 )
+					t += r[i].nodeType != 1 ?
+						r[i].nodeValue : jQuery.fn.text([ r[i] ]);
+		}
+		return t;
+	},
+
+	/**
+	 * Wrap all matched elements with a structure of other elements.
+	 * This wrapping process is most useful for injecting additional
+	 * stucture into a document, without ruining the original semantic
+	 * qualities of a document.
+	 *
+	 * This works by going through the first element
+	 * provided (which is generated, on the fly, from the provided HTML)
+	 * and finds the deepest ancestor element within its
+	 * structure - it is that element that will en-wrap everything else.
+	 *
+	 * @example $("p").wrap("<div class='wrap'></div>");
+	 * @before <p>Test Paragraph.</p>
+	 * @result <div class='wrap'><p>Test Paragraph.</p></div>
+	 * 
+	 * @test var defaultText = 'Try them out:'
+	 * var result = $('#first').wrap('<div class="red"><span></span></div>').text();
+	 * ok( defaultText == result, 'Check for simple wrapping' );
+	 * ok( $('#first').parent().parent().is('.red'), 'Check if wrapper div has class "red"' );
+	 *
+	 * @test var defaultText = 'Try them out:'
+	 * var result = $('#first').wrap('<div class="red">xx<span></span>yy</div>').text()
+	 * ok( 'xx' + defaultText + 'yy' == result, 'Check for wrapping' );
+	 * ok( $('#first').parent().parent().is('.red'), 'Check if wrapper div has class "red"' );
+	 *
+	 * @name wrap
+	 * @type jQuery
+	 * @param String html A string of HTML, that will be created on the fly and wrapped around the target.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Wrap all matched elements with a structure of other elements.
+	 * This wrapping process is most useful for injecting additional
+	 * stucture into a document, without ruining the original semantic
+	 * qualities of a document.
+	 *
+	 * This works by going through the first element
+	 * provided and finding the deepest ancestor element within its
+	 * structure - it is that element that will en-wrap everything else.
+	 *
+	 * @example $("p").wrap("<div class='wrap'></div>");
+	 * @before <p>Test Paragraph.</p>
+	 * @result <div class='wrap'><p>Test Paragraph.</p></div>
+	 *
+	 * @name wrap
+	 * @type jQuery
+	 * @param Element elem A DOM element that will be wrapped.
+	 * @cat DOM/Manipulation
+	 */
+	wrap: function() {
+		// The elements to wrap the target around
+		var a = jQuery.clean(arguments);
+
+		// Wrap each of the matched elements individually
+		return this.each(function(){
+			// Clone the structure that we're using to wrap
+			var b = a[0].cloneNode(true);
+
+			// Insert it before the element to be wrapped
+			this.parentNode.insertBefore( b, this );
+
+			// Find he deepest point in the wrap structure
+			while ( b.firstChild )
+				b = b.firstChild;
+
+			// Move the matched element to within the wrap structure
+			b.appendChild( this );
+		});
+	},
+
+	/**
+	 * Append any number of elements to the inside of every matched elements,
+	 * generated from the provided HTML.
+	 * This operation is similar to doing an appendChild to all the
+	 * specified elements, adding them into the document.
+	 *
+	 * @example $("p").append("<b>Hello</b>");
+	 * @before <p>I would like to say: </p>
+	 * @result <p>I would like to say: <b>Hello</b></p>
+	 *
+	 * @test var defaultText = 'Try them out:'
+	 * var result = $('#first').append('<b>buga</b>');
+	 * ok( result.text() == defaultText + 'buga', 'Check if text appending works' );
+	 *
+	 * @name append
+	 * @type jQuery
+	 * @param String html A string of HTML, that will be created on the fly and appended to the target.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Append an element to the inside of all matched elements.
+	 * This operation is similar to doing an appendChild to all the
+	 * specified elements, adding them into the document.
+	 *
+	 * @example $("p").append( $("#foo")[0] );
+	 * @before <p>I would like to say: </p><b id="foo">Hello</b>
+	 * @result <p>I would like to say: <b id="foo">Hello</b></p>
+	 *
+	 * @test var expected = "This link has class=\"blog\": Simon Willison's WeblogTry them out:";
+	 * $('#sap').append(document.getElementById('first'));
+	 * ok( expected == $('#sap').text(), "Check for appending of element" );
+	 *
+	 * @name append
+	 * @type jQuery
+	 * @param Element elem A DOM element that will be appended.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Append any number of elements to the inside of all matched elements.
+	 * This operation is similar to doing an appendChild to all the
+	 * specified elements, adding them into the document.
+	 *
+	 * @example $("p").append( $("b") );
+	 * @before <p>I would like to say: </p><b>Hello</b>
+	 * @result <p>I would like to say: <b>Hello</b></p>
+	 *
+	 * @test var expected = "This link has class=\"blog\": Simon Willison's WeblogTry them out:Yahoo";
+	 * $('#sap').append([document.getElementById('first'), document.getElementById('yahoo')]);
+	 * ok( expected == $('#sap').text(), "Check for appending of array of elements" );
+	 *
+	 * @name append
+	 * @type jQuery
+	 * @param Array<Element> elems An array of elements, all of which will be appended.
+	 * @cat DOM/Manipulation
+	 */
+	append: function() {
+		return this.domManip(arguments, true, 1, function(a){
+			this.appendChild( a );
+		});
+	},
+
+	/**
+	 * Prepend any number of elements to the inside of every matched elements,
+	 * generated from the provided HTML.
+	 * This operation is the best way to insert dynamically created elements
+	 * inside, at the beginning, of all the matched element.
+	 *
+	 * @example $("p").prepend("<b>Hello</b>");
+	 * @before <p>I would like to say: </p>
+	 * @result <p><b>Hello</b>I would like to say: </p>
+	 *
+ 	 * @test var defaultText = 'Try them out:'
+	 * var result = $('#first').prepend('<b>buga</b>');
+	 * ok( result.text() == 'buga' + defaultText, 'Check if text prepending works' );
+	 *
+	 * @name prepend
+	 * @type jQuery
+	 * @param String html A string of HTML, that will be created on the fly and appended to the target.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Prepend an element to the inside of all matched elements.
+	 * This operation is the best way to insert an element inside, at the
+	 * beginning, of all the matched element.
+	 *
+	 * @example $("p").prepend( $("#foo")[0] );
+	 * @before <p>I would like to say: </p><b id="foo">Hello</b>
+	 * @result <p><b id="foo">Hello</b>I would like to say: </p>
+	 *	 
+	 * @test var expected = "Try them out:This link has class=\"blog\": Simon Willison's Weblog";
+	 * $('#sap').prepend(document.getElementById('first'));
+	 * ok( expected == $('#sap').text(), "Check for prepending of element" );
+	 *
+	 * @name prepend
+	 * @type jQuery
+	 * @param Element elem A DOM element that will be appended.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Prepend any number of elements to the inside of all matched elements.
+	 * This operation is the best way to insert a set of elements inside, at the
+	 * beginning, of all the matched element.
+	 *
+	 * @example $("p").prepend( $("b") );
+	 * @before <p>I would like to say: </p><b>Hello</b>
+	 * @result <p><b>Hello</b>I would like to say: </p>
+	 *
+	 * @test var expected = "Try them out:YahooThis link has class=\"blog\": Simon Willison's Weblog";
+	 * $('#sap').prepend([document.getElementById('first'), document.getElementById('yahoo')]);
+	 * ok( expected == $('#sap').text(), "Check for prepending of array of elements" );
+	 *
+	 * @name prepend
+	 * @type jQuery
+	 * @param Array<Element> elems An array of elements, all of which will be appended.
+	 * @cat DOM/Manipulation
+	 */
+	prepend: function() {
+		return this.domManip(arguments, true, -1, function(a){
+			this.insertBefore( a, this.firstChild );
+		});
+	},
+
+	/**
+	 * Insert any number of dynamically generated elements before each of the
+	 * matched elements.
+	 *
+	 * @example $("p").before("<b>Hello</b>");
+	 * @before <p>I would like to say: </p>
+	 * @result <b>Hello</b><p>I would like to say: </p>
+	 *
+	 * @test var expected = 'This is a normal link: bugaYahoo';
+	 * $('#yahoo').before('<b>buga</b>');
+	 * ok( expected == $('#en').text(), 'Insert String before' );
+	 *
+	 * @name before
+	 * @type jQuery
+	 * @param String html A string of HTML, that will be created on the fly and appended to the target.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Insert an element before each of the matched elements.
+	 *
+	 * @example $("p").before( $("#foo")[0] );
+	 * @before <p>I would like to say: </p><b id="foo">Hello</b>
+	 * @result <b id="foo">Hello</b><p>I would like to say: </p>
+	 *
+	 * @test var expected = "This is a normal link: Try them out:Yahoo";
+	 * $('#yahoo').before(document.getElementById('first'));
+	 * ok( expected == $('#en').text(), "Insert element before" );
+	 *
+	 * @name before
+	 * @type jQuery
+	 * @param Element elem A DOM element that will be appended.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Insert any number of elements before each of the matched elements.
+	 *
+	 * @example $("p").before( $("b") );
+	 * @before <p>I would like to say: </p><b>Hello</b>
+	 * @result <b>Hello</b><p>I would like to say: </p>
+	 *
+	 * @test var expected = "This is a normal link: Try them out:diveintomarkYahoo";
+	 * $('#yahoo').before([document.getElementById('first'), document.getElementById('mark')]);
+	 * ok( expected == $('#en').text(), "Insert array of elements before" );
+	 *
+	 * @name before
+	 * @type jQuery
+	 * @param Array<Element> elems An array of elements, all of which will be appended.
+	 * @cat DOM/Manipulation
+	 */
+	before: function() {
+		return this.domManip(arguments, false, 1, function(a){
+			this.parentNode.insertBefore( a, this );
+		});
+	},
+
+	/**
+	 * Insert any number of dynamically generated elements after each of the
+	 * matched elements.
+	 *
+	 * @example $("p").after("<b>Hello</b>");
+	 * @before <p>I would like to say: </p>
+	 * @result <p>I would like to say: </p><b>Hello</b>
+	 *
+	 * @test var expected = 'This is a normal link: Yahoobuga';
+	 * $('#yahoo').after('<b>buga</b>');
+	 * ok( expected == $('#en').text(), 'Insert String after' );
+	 *
+	 * @name after
+	 * @type jQuery
+	 * @param String html A string of HTML, that will be created on the fly and appended to the target.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Insert an element after each of the matched elements.
+	 *
+	 * @example $("p").after( $("#foo")[0] );
+	 * @before <b id="foo">Hello</b><p>I would like to say: </p>
+	 * @result <p>I would like to say: </p><b id="foo">Hello</b>
+	 *
+	 * @test var expected = "This is a normal link: YahooTry them out:";
+	 * $('#yahoo').after(document.getElementById('first'));
+	 * ok( expected == $('#en').text(), "Insert element after" );
+	 *
+	 * @name after
+	 * @type jQuery
+	 * @param Element elem A DOM element that will be appended.
+	 * @cat DOM/Manipulation
+	 */
+
+	/**
+	 * Insert any number of elements after each of the matched elements.
+	 *
+	 * @example $("p").after( $("b") );
+	 * @before <b>Hello</b><p>I would like to say: </p>
+	 * @result <p>I would like to say: </p><b>Hello</b>
+	 *
+	 * @test var expected = "This is a normal link: YahooTry them out:diveintomark";
+	 * $('#yahoo').after([document.getElementById('first'), document.getElementById('mark')]);
+	 * ok( expected == $('#en').text(), "Insert array of elements after" );
+	 *
+	 * @name after
+	 * @type jQuery
+	 * @param Array<Element> elems An array of elements, all of which will be appended.
+	 * @cat DOM/Manipulation
+	 */
+	after: function() {
+		return this.domManip(arguments, false, -1, function(a){
+			this.parentNode.insertBefore( a, this.nextSibling );
+		});
+	},
+
+	/**
+	 * End the most recent 'destructive' operation, reverting the list of matched elements
+	 * back to its previous state. After an end operation, the list of matched elements will
+	 * revert to the last state of matched elements.
+	 *
+	 * @example $("p").find("span").end();
+	 * @before <p><span>Hello</span>, how are you?</p>
+	 * @result $("p").find("span").end() == [ <p>...</p> ]
+	 *
+	 * @test ok( 'Yahoo' == $('#yahoo').parent().end().text(), 'Check for end' );
+	 *
+	 * @name end
+	 * @type jQuery
+	 * @cat DOM/Traversing
+	 */
+	end: function() {
+		return this.get( this.stack.pop() );
+	},
+
+	/**
+	 * Searches for all elements that match the specified expression.
+	 * This method is the optimal way of finding additional descendant
+	 * elements with which to process.
+	 *
+	 * All searching is done using a jQuery expression. The expression can be
+	 * written using CSS 1-3 Selector syntax, or basic XPath.
+	 *
+	 * @example $("p").find("span");
+	 * @before <p><span>Hello</span>, how are you?</p>
+	 * @result $("p").find("span") == [ <span>Hello</span> ]
+	 *
+	 * @test ok( 'Yahoo' == $('#foo').find('.blogTest').text(), 'Check for find' );
+	 *
+	 * @name find
+	 * @type jQuery
+	 * @param String expr An expression to search with.
+	 * @cat DOM/Traversing
+	 */
+	find: function(t) {
+		return this.pushStack( jQuery.map( this, function(a){
+			return jQuery.find(t,a);
+		}), arguments );
+	},
+
+	/**
+	 * Create cloned copies of all matched DOM Elements. This does
+	 * not create a cloned copy of this particular jQuery object,
+	 * instead it creates duplicate copies of all DOM Elements.
+	 * This is useful for moving copies of the elements to another
+	 * location in the DOM.
+	 *
+	 * @example $("b").clone().prependTo("p");
+	 * @before <b>Hello</b><p>, how are you?</p>
+	 * @result <b>Hello</b><p><b>Hello</b>, how are you?</p>
+	 *
+	 * @test ok( 'This is a normal link: Yahoo' == $('#en').text(), 'Assert text for #en' );
+	 * var clone = $('#yahoo').clone();
+	 * ok( 'Try them out:Yahoo' == $('#first').append(clone).text(), 'Check for clone' );
+	 * ok( 'This is a normal link: Yahoo' == $('#en').text(), 'Reassert text for #en' );
+	 *
+	 * @name clone
+	 * @type jQuery
+	 * @cat DOM/Manipulation
+	 */
+	clone: function(deep) {
+		return this.pushStack( jQuery.map( this, function(a){
+			return a.cloneNode( deep != undefined ? deep : true );
+		}), arguments );
+	},
+
+	/**
+	 * Removes all elements from the set of matched elements that do not
+	 * match the specified expression. This method is used to narrow down
+	 * the results of a search.
+	 *
+	 * All searching is done using a jQuery expression. The expression
+	 * can be written using CSS 1-3 Selector syntax, or basic XPath.
+	 *
+	 * @example $("p").filter(".selected")
+	 * @before <p class="selected">Hello</p><p>How are you?</p>
+	 * @result $("p").filter(".selected") == [ <p class="selected">Hello</p> ]
+	 *
+	 * @test isSet( $("input").filter(":checked").get(), q("radio2", "check1"), "Filter elements" );
+	 *
+	 * @name filter
+	 * @type jQuery
+	 * @param String expr An expression to search with.
+	 * @cat DOM/Traversing
+	 */
+
+	/**
+	 * Removes all elements from the set of matched elements that do not
+	 * match at least one of the expressions passed to the function. This
+	 * method is used when you want to filter the set of matched elements
+	 * through more than one expression.
+	 *
+	 * Elements will be retained in the jQuery object if they match at
+	 * least one of the expressions passed.
+	 *
+	 * @example $("p").filter([".selected", ":first"])
+	 * @before <p>Hello</p><p>Hello Again</p><p class="selected">And Again</p>
+	 * @result $("p").filter([".selected", ":first"]) == [ <p>Hello</p>, <p class="selected">And Again</p> ]
+	 *
+	 * @name filter
+	 * @type jQuery
+	 * @param Array<String> exprs A set of expressions to evaluate against
+	 * @cat DOM/Traversing
+	 */
+	filter: function(t) {
+		return this.pushStack(
+			t.constructor == Array &&
+			jQuery.map(this,function(a){
+				for ( var i = 0; i < t.length; i++ )
+					if ( jQuery.filter(t[i],[a]).r.length )
+						return a;
+			}) ||
+
+			t.constructor == Boolean &&
+			( t ? this.get() : [] ) ||
+
+			t.constructor == Function &&
+			jQuery.grep( this, t ) ||
+
+			jQuery.filter(t,this).r, arguments );
+	},
+
+	/**
+	 * Removes the specified Element from the set of matched elements. This
+	 * method is used to remove a single Element from a jQuery object.
+	 *
+	 * @example $("p").not( document.getElementById("selected") )
+	 * @before <p>Hello</p><p id="selected">Hello Again</p>
+	 * @result [ <p>Hello</p> ]
+	 *
+	 * @name not
+	 * @type jQuery
+	 * @param Element el An element to remove from the set
+	 * @cat DOM/Traversing
+	 */
+
+	/**
+	 * Removes elements matching the specified expression from the set
+	 * of matched elements. This method is used to remove one or more
+	 * elements from a jQuery object.
+	 *
+	 * @example $("p").not("#selected")
+	 * @before <p>Hello</p><p id="selected">Hello Again</p>
+	 * @result [ <p>Hello</p> ]
+	 * @test cmpOK($("#main > p#ap > a").not("#google").length, "==", 2, ".not")
+	 *
+	 * @name not
+	 * @type jQuery
+	 * @param String expr An expression with which to remove matching elements
+	 * @cat DOM/Traversing
+	 */
+	not: function(t) {
+		return this.pushStack( t.constructor == String ?
+			jQuery.filter(t,this,false).r :
+			jQuery.grep(this,function(a){ return a != t; }), arguments );
+	},
+
+	/**
+	 * Adds the elements matched by the expression to the jQuery object. This
+	 * can be used to concatenate the result sets of two expressions.
+	 *
+	 * @example $("p").add("span")
+	 * @before <p>Hello</p><p><span>Hello Again</span></p>
+	 * @result [ <p>Hello</p>, <span>Hello Again</span> ]
+	 *
+	 * @name add
+	 * @type jQuery
+	 * @param String expr An expression whose matched elements are added
+	 * @cat DOM/Traversing
+	 */
+
+	/**
+	 * Adds each of the Elements in the array to the set of matched elements.
+	 * This is used to add a set of Elements to a jQuery object.
+	 *
+	 * @example $("p").add([document.getElementById("a"), document.getElementById("b")])
+	 * @before <p>Hello</p><p><span id="a">Hello Again</span><span id="b">And Again</span></p>
+	 * @result [ <p>Hello</p>, <span id="a">Hello Again</span>, <span id="b">And Again</span> ]
+	 *
+	 * @name add
+	 * @type jQuery
+	 * @param Array<Element> els An array of Elements to add
+	 * @cat DOM/Traversing
+	 */
+
+	/**
+	 * Adds a single Element to the set of matched elements. This is used to
+	 * add a single Element to a jQuery object.
+	 *
+	 * @example $("p").add( document.getElementById("a") )
+	 * @before <p>Hello</p><p><span id="a">Hello Again</span></p>
+	 * @result [ <p>Hello</p>, <span id="a">Hello Again</span> ]
+	 *
+	 * @name add
+	 * @type jQuery
+	 * @param Element el An Element to add
+	 * @cat DOM/Traversing
+	 */
+	add: function(t) {
+		return this.pushStack( jQuery.merge( this, t.constructor == String ?
+			jQuery.find(t) : t.constructor == Array ? t : [t] ), arguments );
+	},
+
+	/**
+	 * Checks the current selection against an expression and returns true,
+	 * if the selection fits the given expression. Does return false, if the
+	 * selection does not fit or the expression is not valid.
+	 *
+	 * @example $("input[@type='checkbox']").parent().is("form")
+	 * @before <form><input type="checkbox" /></form>
+	 * @result true
+	 * @desc Returns true, because the parent of the input is a form element
+	 * 
+	 * @example $("input[@type='checkbox']").parent().is("form")
+	 * @before <form><p><input type="checkbox" /></p></form>
+	 * @result false
+	 * @desc Returns false, because the parent of the input is a p element
+	 *
+	 * @example $("form").is(null)
+	 * @before <form></form>
+	 * @result false
+	 * @desc An invalid expression always returns false.
+	 *
+	 * @test ok( $('#form').is('form'), 'Check for element: A form must be a form' );
+	 * @test ok( !$('#form').is('div'), 'Check for element: A form is not a div' );
+	 * @test ok( $('#mark').is('.blog'), 'Check for class: Expected class "blog"' );
+	 * @test ok( !$('#mark').is('.link'), 'Check for class: Did not expect class "link"' );
+	 * @test ok( $('#simon').is('.blog.link'), 'Check for multiple classes: Expected classes "blog" and "link"' );
+	 * @test ok( !$('#simon').is('.blogTest'), 'Check for multiple classes: Expected classes "blog" and "link", but not "blogTest"' );
+	 * @test ok( $('#en').is('[@lang="en"]'), 'Check for attribute: Expected attribute lang to be "en"' );
+	 * @test ok( !$('#en').is('[@lang="de"]'), 'Check for attribute: Expected attribute lang to be "en", not "de"' );
+	 * @test ok( $('#text1').is('[@type="text"]'), 'Check for attribute: Expected attribute type to be "text"' );
+	 * @test ok( !$('#text1').is('[@type="radio"]'), 'Check for attribute: Expected attribute type to be "text", not "radio"' );
+	 * @test ok( $('#text2').is(':disabled'), 'Check for pseudoclass: Expected to be disabled' );
+	 * @test ok( !$('#text1').is(':disabled'), 'Check for pseudoclass: Expected not disabled' );
+	 * @test ok( $('#radio2').is(':checked'), 'Check for pseudoclass: Expected to be checked' );
+	 * @test ok( !$('#radio1').is(':checked'), 'Check for pseudoclass: Expected not checked' );
+	 * @test ok( $('#foo').is('[p]'), 'Check for child: Expected a child "p" element' );
+	 * @test ok( !$('#foo').is('[ul]'), 'Check for child: Did not expect "ul" element' );
+	 * @test ok( $('#foo').is('[p][a][code]'), 'Check for childs: Expected "p", "a" and "code" child elements' );
+	 * @test ok( !$('#foo').is('[p][a][code][ol]'), 'Check for childs: Expected "p", "a" and "code" child elements, but no "ol"' );
+	 * @test ok( !$('#foo').is(0), 'Expected false for an invalid expression - 0' );
+	 * @test ok( !$('#foo').is(null), 'Expected false for an invalid expression - null' );
+	 * @test ok( !$('#foo').is(''), 'Expected false for an invalid expression - ""' );
+	 * @test ok( !$('#foo').is(undefined), 'Expected false for an invalid expression - undefined' );
+	 *
+	 * @name is
+	 * @type Boolean
+	 * @param String expr The expression with which to filter
+	 * @cat DOM/Traversing
+	 */
+	is: function(expr) {
+		return expr ? jQuery.filter(expr,this).r.length > 0 : false;
+	},
+
+	/**
+	 *
+	 *
+	 * @private
+	 * @name domManip
+	 * @param Array args
+	 * @param Boolean table
+	 * @param Number int
+	 * @param Function fn The function doing the DOM manipulation.
+	 * @type jQuery
+	 * @cat Core
+	 */
+	domManip: function(args, table, dir, fn){
+		var clone = this.size() > 1;
+		var a = jQuery.clean(args);
+
+		return this.each(function(){
+			var obj = this;
+
+			if ( table && this.nodeName == "TABLE" && a[0].nodeName != "THEAD" ) {
+				var tbody = this.getElementsByTagName("tbody");
+
+				if ( !tbody.length ) {
+					obj = document.createElement("tbody");
+					this.appendChild( obj );
+				} else
+					obj = tbody[0];
+			}
+
+			for ( var i = ( dir < 0 ? a.length - 1 : 0 );
+				i != ( dir < 0 ? dir : a.length ); i += dir ) {
+					fn.apply( obj, [ clone ? a[i].cloneNode(true) : a[i] ] );
+			}
+		});
+	},
+
+	/**
+	 *
+	 *
+	 * @private
+	 * @name pushStack
+	 * @param Array a
+	 * @param Array args
+	 * @type jQuery
+	 * @cat Core
+	 */
+	pushStack: function(a,args) {
+		var fn = args && args[args.length-1];
+
+		if ( !fn || fn.constructor != Function ) {
+			if ( !this.stack ) this.stack = [];
+			this.stack.push( this.get() );
+			this.get( a );
+		} else {
+			var old = this.get();
+			this.get( a );
+			if ( fn.constructor == Function )
+				this.each( fn );
+			this.get( old );
+		}
+
+		return this;
+	}
+};
+
+/**
+ *
+ *
+ * @private
+ * @name extend
+ * @param Object obj
+ * @type Object
+ * @cat Core
+ */
+
+/**
+ * Extend one object with another, returning the original,
+ * modified, object. This is a great utility for simple inheritance.
+ * 
+ * @example var settings = { validate: false, limit: 5, name: "foo" };
+ * var options = { validate: true, name: "bar" };
+ * jQuery.extend(settings, options);
+ * @result settings == { validate: true, limit: 5, name: "bar" }
+ *
+ * @test var settings = { xnumber1: 5, xnumber2: 7, xstring1: "peter", xstring2: "pan" };
+ * var options =     { xnumber2: 1, xstring2: "x", xxx: "newstring" };
+ * var optionsCopy = { xnumber2: 1, xstring2: "x", xxx: "newstring" };
+ * var merged = { xnumber1: 5, xnumber2: 1, xstring1: "peter", xstring2: "x", xxx: "newstring" };
+ * jQuery.extend(settings, options);
+ * isSet( settings, merged, "Check if extended: settings must be extended" );
+ * isSet ( options, optionsCopy, "Check if not modified: options must not be modified" );
+ *
+ * @name $.extend
+ * @param Object obj The object to extend
+ * @param Object prop The object that will be merged into the first.
+ * @type Object
+ * @cat Javascript
+ */
+jQuery.extend = jQuery.fn.extend = function(obj,prop) {
+	if ( !prop ) { prop = obj; obj = this; }
+	for ( var i in prop ) obj[i] = prop[i];
+	return obj;
+};
+
+jQuery.extend({
+	/**
+	 * @private
+	 * @name init
+	 * @type undefined
+	 * @cat Core
+	 */
+	init: function(){
+		jQuery.initDone = true;
+
+		jQuery.each( jQuery.macros.axis, function(i,n){
+			jQuery.fn[ i ] = function(a) {
+				var ret = jQuery.map(this,n);
+				if ( a && a.constructor == String )
+					ret = jQuery.filter(a,ret).r;
+				return this.pushStack( ret, arguments );
+			};
+		});
+
+		jQuery.each( jQuery.macros.to, function(i,n){
+			jQuery.fn[ i ] = function(){
+				var a = arguments;
+				return this.each(function(){
+					for ( var j = 0; j < a.length; j++ )
+						jQuery(a[j])[n]( this );
+				});
+			};
+		});
+
+		jQuery.each( jQuery.macros.each, function(i,n){
+			jQuery.fn[ i ] = function() {
+				return this.each( n, arguments );
+			};
+		});
+
+		jQuery.each( jQuery.macros.filter, function(i,n){
+			jQuery.fn[ n ] = function(num,fn) {
+				return this.filter( ":" + n + "(" + num + ")", fn );
+			};
+		});
+
+		jQuery.each( jQuery.macros.attr, function(i,n){
+			n = n || i;
+			jQuery.fn[ i ] = function(h) {
+				return h == undefined ?
+					this.length ? this[0][n] : null :
+					this.attr( n, h );
+			};
+		});
+
+		jQuery.each( jQuery.macros.css, function(i,n){
+			jQuery.fn[ n ] = function(h) {
+				return h == undefined ?
+					( this.length ? jQuery.css( this[0], n ) : null ) :
+					this.css( n, h );
+			};
+		});
+
+	},
+
+	/**
+	 * A generic iterator function, which can be used to seemlessly
+	 * iterate over both objects and arrays. This function is not the same
+	 * as $().each() - which is used to iterate, exclusively, over a jQuery
+	 * object. This function can be used to iterate over anything.
+	 *
+	 * @example $.each( [0,1,2], function(i){
+	 *   alert( "Item #" + i + ": " + this );
+	 * });
+	 * @desc This is an example of iterating over the items in an array, accessing both the current item and its index.
+	 *
+	 * @example $.each( { name: "John", lang: "JS" }, function(i){
+	 *   alert( "Name: " + i + ", Value: " + this );
+	 * });
+	 * @desc This is an example of iterating over the properties in an Object, accessing both the current item and its key.
+	 *
+	 * @name $.each
+	 * @param Object obj The object, or array, to iterate over.
+	 * @param Function fn The function that will be executed on every object.
+	 * @type Object
+	 * @cat Javascript
+	 */
+	each: function( obj, fn, args ) {
+		if ( obj.length == undefined )
+			for ( var i in obj )
+				fn.apply( obj[i], args || [i, obj[i]] );
+		else
+			for ( var i = 0; i < obj.length; i++ )
+				fn.apply( obj[i], args || [i, obj[i]] );
+		return obj;
+	},
+
+	className: {
+		add: function(o,c){
+			if (jQuery.className.has(o,c)) return;
+			o.className += ( o.className ? " " : "" ) + c;
+		},
+		remove: function(o,c){
+			o.className = !c ? "" :
+				o.className.replace(
+					new RegExp("(^|\\s*\\b[^-])"+c+"($|\\b(?=[^-]))", "g"), "");
+		},
+		has: function(e,a) {
+			if ( e.className != undefined )
+				e = e.className;
+			return new RegExp("(^|\\s)" + a + "(\\s|$)").test(e);
+		}
+	},
+
+	/**
+	 * Swap in/out style options.
+	 * @private
+	 */
+	swap: function(e,o,f) {
+		for ( var i in o ) {
+			e.style["old"+i] = e.style[i];
+			e.style[i] = o[i];
+		}
+		f.apply( e, [] );
+		for ( var i in o )
+			e.style[i] = e.style["old"+i];
+	},
+
+	css: function(e,p) {
+		if ( p == "height" || p == "width" ) {
+			var old = {}, oHeight, oWidth, d = ["Top","Bottom","Right","Left"];
+
+			for ( var i in d ) {
+				old["padding" + d[i]] = 0;
+				old["border" + d[i] + "Width"] = 0;
+			}
+
+			jQuery.swap( e, old, function() {
+				if (jQuery.css(e,"display") != "none") {
+					oHeight = e.offsetHeight;
+					oWidth = e.offsetWidth;
+				} else {
+					e = jQuery(e.cloneNode(true)).css({
+						visibility: "hidden", position: "absolute", display: "block", right: "0", left: "0"
+					}).appendTo(e.parentNode)[0];
+
+					var parPos = jQuery.css(e.parentNode,"position");
+					if ( parPos == "" || parPos == "static" )
+						e.parentNode.style.position = "relative";
+
+					oHeight = e.clientHeight;
+					oWidth = e.clientWidth;
+
+					if ( parPos == "" || parPos == "static" )
+						e.parentNode.style.position = "static";
+
+					e.parentNode.removeChild(e);
+				}
+			});
+
+			return p == "height" ? oHeight : oWidth;
+		} else if ( p == "opacity" && jQuery.browser.msie )
+			return parseFloat( jQuery.curCSS(e,"filter").replace(/[^0-9.]/,"") ) || 1;
+
+		return jQuery.curCSS( e, p );
+	},
+
+	curCSS: function(elem, prop, force) {
+		var ret;
+
+		if (!force && elem.style[prop]) {
+
+			ret = elem.style[prop];
+
+		} else if (elem.currentStyle) {
+
+			var newProp = prop.replace(/\-(\w)/g,function(m,c){return c.toUpperCase();});
+			ret = elem.currentStyle[prop] || elem.currentStyle[newProp];
+
+		} else if (document.defaultView && document.defaultView.getComputedStyle) {
+
+			prop = prop.replace(/([A-Z])/g,"-$1").toLowerCase();
+			var cur = document.defaultView.getComputedStyle(elem, null);
+
+			if ( cur )
+				ret = cur.getPropertyValue(prop);
+			else if ( prop == 'display' )
+				ret = 'none';
+			else
+				jQuery.swap(elem, { display: 'block' }, function() {
+					ret = document.defaultView.getComputedStyle(this,null).getPropertyValue(prop);
+				});
+
+		}
+
+		return ret;
+	},
+
+	clean: function(a) {
+		var r = [];
+		for ( var i = 0; i < a.length; i++ ) {
+			if ( a[i].constructor == String ) {
+
+				var table = "";
+
+				if ( !a[i].indexOf("<thead") || !a[i].indexOf("<tbody") ) {
+					table = "thead";
+					a[i] = "<table>" + a[i] + "</table>";
+				} else if ( !a[i].indexOf("<tr") ) {
+					table = "tr";
+					a[i] = "<table>" + a[i] + "</table>";
+				} else if ( !a[i].indexOf("<td") || !a[i].indexOf("<th") ) {
+					table = "td";
+					a[i] = "<table><tbody><tr>" + a[i] + "</tr></tbody></table>";
+				}
+
+				var div = document.createElement("div");
+				div.innerHTML = a[i];
+
+				if ( table ) {
+					div = div.firstChild;
+					if ( table != "thead" ) div = div.firstChild;
+					if ( table == "td" ) div = div.firstChild;
+				}
+
+				for ( var j = 0; j < div.childNodes.length; j++ )
+					r.push( div.childNodes[j] );
+				} else if ( a[i].jquery || a[i].length && !a[i].nodeType )
+					for ( var k = 0; k < a[i].length; k++ )
+						r.push( a[i][k] );
+				else if ( a[i] !== null )
+					r.push(	a[i].nodeType ? a[i] : document.createTextNode(a[i].toString()) );
+		}
+		return r;
+	},
+
+	expr: {
+		"": "m[2]== '*'||a.nodeName.toUpperCase()==m[2].toUpperCase()",
+		"#": "a.getAttribute('id')&&a.getAttribute('id')==m[2]",
+		":": {
+			// Position Checks
+			lt: "i<m[3]-0",
+			gt: "i>m[3]-0",
+			nth: "m[3]-0==i",
+			eq: "m[3]-0==i",
+			first: "i==0",
+			last: "i==r.length-1",
+			even: "i%2==0",
+			odd: "i%2",
+
+			// Child Checks
+			"nth-child": "jQuery.sibling(a,m[3]).cur",
+			"first-child": "jQuery.sibling(a,0).cur",
+			"last-child": "jQuery.sibling(a,0).last",
+			"only-child": "jQuery.sibling(a).length==1",
+
+			// Parent Checks
+			parent: "a.childNodes.length",
+			empty: "!a.childNodes.length",
+
+			// Text Check
+			contains: "(a.innerText||a.innerHTML).indexOf(m[3])>=0",
+
+			// Visibility
+			visible: "a.type!='hidden'&&jQuery.css(a,'display')!='none'&&jQuery.css(a,'visibility')!='hidden'",
+			hidden: "a.type=='hidden'||jQuery.css(a,'display')=='none'||jQuery.css(a,'visibility')=='hidden'",
+
+			// Form elements
+			enabled: "!a.disabled",
+			disabled: "a.disabled",
+			checked: "a.checked",
+			selected: "a.selected"
+		},
+		".": "jQuery.className.has(a,m[2])",
+		"@": {
+			"=": "z==m[4]",
+			"!=": "z!=m[4]",
+			"^=": "!z.indexOf(m[4])",
+			"$=": "z.substr(z.length - m[4].length,m[4].length)==m[4]",
+			"*=": "z.indexOf(m[4])>=0",
+			"": "z"
+		},
+		"[": "jQuery.find(m[2],a).length"
+	},
+
+	token: [
+		"\\.\\.|/\\.\\.", "a.parentNode",
+		">|/", "jQuery.sibling(a.firstChild)",
+		"\\+", "jQuery.sibling(a).next",
+		"~", function(a){
+			var r = [];
+			var s = jQuery.sibling(a);
+			if ( s.n > 0 )
+				for ( var i = s.n; i < s.length; i++ )
+					r.push( s[i] );
+			return r;
+		}
+	],
+
+	/**
+	 *
+	 * @test t( "Element Selector", "div", ["main","foo"] );
+	 * @test t( "Element Selector", "body", ["body"] );
+	 * @test t( "Element Selector", "html", ["html"] );
+	 * @test cmpOK( $("*").size(), ">=", 30, "Element Selector" );
+	 * @test t( "Parent Element", "div div", ["foo"] );
+	 *
+	 * @test t( "ID Selector", "#body", ["body"] );
+	 * @test t( "ID Selector w/ Element", "body#body", ["body"] );
+	 * @test t( "ID Selector w/ Element", "ul#first", [] );
+	 *
+	 * @test t( "Class Selector", ".blog", ["mark","simon"] );
+	 * @test t( "Class Selector", ".blog.link", ["simon"] );
+	 * @test t( "Class Selector w/ Element", "a.blog", ["mark","simon"] );
+	 * @test t( "Parent Class Selector", "p .blog", ["mark","simon"] );
+	 *
+	 * @test t( "Comma Support", "a.blog, div", ["mark","simon","main","foo"] );
+	 * @test t( "Comma Support", "a.blog , div", ["mark","simon","main","foo"] );
+	 * @test t( "Comma Support", "a.blog ,div", ["mark","simon","main","foo"] );
+	 * @test t( "Comma Support", "a.blog,div", ["mark","simon","main","foo"] );
+	 *
+	 * @test t( "Child", "p > a", ["simon1","google","groups","mark","yahoo","simon"] );
+	 * @test t( "Child", "p> a", ["simon1","google","groups","mark","yahoo","simon"] );
+	 * @test t( "Child", "p >a", ["simon1","google","groups","mark","yahoo","simon"] );
+	 * @test t( "Child", "p>a", ["simon1","google","groups","mark","yahoo","simon"] );
+	 * @test t( "Child w/ Class", "p > a.blog", ["mark","simon"] );
+	 * @test t( "All Children", "code > *", ["anchor1","anchor2"] );
+	 * @test t( "All Grandchildren", "p > * > *", ["anchor1","anchor2"] );
+	 * @test t( "Adjacent", "a + a", ["groups"] );
+	 * @test t( "Adjacent", "a +a", ["groups"] );
+	 * @test t( "Adjacent", "a+ a", ["groups"] );
+	 * @test t( "Adjacent", "a+a", ["groups"] );
+	 * @test t( "Adjacent", "p + p", ["ap","en","sap"] );
+	 * @test t( "Comma, Child, and Adjacent", "a + a, code > a", ["groups","anchor1","anchor2"] );
+	 * @test t( "First Child", "p:first-child", ["firstp","sndp"] );
+	 * @test t( "Attribute Exists", "a[@title]", ["google"] );
+	 * @test t( "Attribute Exists", "*[@title]", ["google"] );
+	 * @test t( "Attribute Exists", "[@title]", ["google"] );
+	 * @test t( "Attribute Equals", "a[@rel='bookmark']", ["simon1"] );
+	 * @test t( "Attribute Equals", 'a[@rel="bookmark"]', ["simon1"] );
+	 * @test t( "Attribute Equals", "a[@rel=bookmark]", ["simon1"] );
+	 * @test t( "Multiple Attribute Equals", "input[@type='hidden'],input[@type='radio']", ["hidden1","radio1","radio2"] );
+	 * @test t( "Multiple Attribute Equals", "input[@type=\"hidden\"],input[@type='radio']", ["hidden1","radio1","radio2"] );
+	 * @test t( "Multiple Attribute Equals", "input[@type=hidden],input[@type=radio]", ["hidden1","radio1","radio2"] );
+	 *
+	 * @test t( "Attribute Begins With", "a[@href ^= 'http://www']", ["google","yahoo"] );
+	 * @test t( "Attribute Ends With", "a[@href $= 'org/']", ["mark"] );
+	 * @test t( "Attribute Contains", "a[@href *= 'google']", ["google","groups"] );
+	 * @test t( "First Child", "p:first-child", ["firstp","sndp"] );
+	 * @test t( "Last Child", "p:last-child", ["sap"] );
+	 * @test t( "Only Child", "a:only-child", ["simon1","anchor1","yahoo","anchor2"] );
+	 * @test t( "Empty", "ul:empty", ["firstUL"] );
+	 * @test t( "Enabled UI Element", "input:enabled", ["text1","radio1","radio2","check1","check2","hidden1","hidden2","name"] );
+	 * @test t( "Disabled UI Element", "input:disabled", ["text2"] );
+	 * @test t( "Checked UI Element", "input:checked", ["radio2","check1"] );
+	 * @test t( "Selected Option Element", "option:selected", ["option1a","option2d","option3b","option3c"] );
+	 * @test t( "Text Contains", "a:contains('Google')", ["google","groups"] );
+	 * @test t( "Text Contains", "a:contains('Google Groups')", ["groups"] );
+	 * @test t( "Element Preceded By", "p ~ div", ["foo"] );
+	 * @test t( "Not", "a.blog:not(.link)", ["mark"] );
+	 *
+	 * @test cmpOK( jQuery.find("//*").length, ">=", 30, "All Elements (//*)" );
+	 * @test t( "All Div Elements", "//div", ["main","foo"] );
+	 * @test t( "Absolute Path", "/html/body", ["body"] );
+	 * @test t( "Absolute Path w/ *", "/* /body", ["body"] );
+	 * @test t( "Long Absolute Path", "/html/body/dl/div/div/p", ["sndp","en","sap"] );
+	 * @test t( "Absolute and Relative Paths", "/html//div", ["main","foo"] );
+	 * @test t( "All Children, Explicit", "//code/*", ["anchor1","anchor2"] );
+	 * @test t( "All Children, Implicit", "//code/", ["anchor1","anchor2"] );
+	 * @test t( "Attribute Exists", "//a[@title]", ["google"] );
+	 * @test t( "Attribute Equals", "//a[@rel='bookmark']", ["simon1"] );
+	 * @test t( "Parent Axis", "//p/..", ["main","foo"] );
+	 * @test t( "Sibling Axis", "//p/../", ["firstp","ap","foo","first","firstUL","empty","form","sndp","en","sap"] );
+	 * @test t( "Sibling Axis", "//p/../*", ["firstp","ap","foo","first","firstUL","empty","form","sndp","en","sap"] );
+	 * @test t( "Has Children", "//p[a]", ["firstp","ap","en","sap"] );
+	 *
+	 * @test t( "nth Element", "p:nth(1)", ["ap"] );
+	 * @test t( "First Element", "p:first", ["firstp"] );
+	 * @test t( "Last Element", "p:last", ["first"] );
+	 * @test t( "Even Elements", "p:even", ["firstp","sndp","sap"] );
+	 * @test t( "Odd Elements", "p:odd", ["ap","en","first"] );
+	 * @test t( "Position Equals", "p:eq(1)", ["ap"] );
+	 * @test t( "Position Greater Than", "p:gt(0)", ["ap","sndp","en","sap","first"] );
+	 * @test t( "Position Less Than", "p:lt(3)", ["firstp","ap","sndp"] );
+	 * @test t( "Is A Parent", "p:parent", ["firstp","ap","sndp","en","sap","first"] );
+	 * @test t( "Is Visible", "input:visible", ["text1","text2","radio1","radio2","check1","check2","name"] );
+	 * @test t( "Is Hidden", "input:hidden", ["hidden1","hidden2"] );
+	 *
+	 * @name $.find
+	 * @type Array<Element>
+	 * @private
+	 * @cat Core
+	 */
+	find: function( t, context ) {
+		// Make sure that the context is a DOM Element
+		if ( context && context.nodeType == undefined )
+			context = null;
+
+		// Set the correct context (if none is provided)
+		context = context || jQuery.context || document;
+
+		if ( t.constructor != String ) return [t];
+
+		if ( !t.indexOf("//") ) {
+			context = context.documentElement;
+			t = t.substr(2,t.length);
+		} else if ( !t.indexOf("/") ) {
+			context = context.documentElement;
+			t = t.substr(1,t.length);
+			// FIX Assume the root element is right :(
+			if ( t.indexOf("/") >= 1 )
+				t = t.substr(t.indexOf("/"),t.length);
+		}
+
+		var ret = [context];
+		var done = [];
+		var last = null;
+
+		while ( t.length > 0 && last != t ) {
+			var r = [];
+			last = t;
+
+			t = jQuery.trim(t).replace( /^\/\//i, "" );
+
+			var foundToken = false;
+
+			for ( var i = 0; i < jQuery.token.length; i += 2 ) {
+				if ( foundToken ) continue;
+
+				var re = new RegExp("^(" + jQuery.token[i] + ")");
+				var m = re.exec(t);
+
+				if ( m ) {
+					r = ret = jQuery.map( ret, jQuery.token[i+1] );
+					t = jQuery.trim( t.replace( re, "" ) );
+					foundToken = true;
+				}
+			}
+
+			if ( !foundToken ) {
+				if ( !t.indexOf(",") || !t.indexOf("|") ) {
+					if ( ret[0] == context ) ret.shift();
+					done = jQuery.merge( done, ret );
+					r = ret = [context];
+					t = " " + t.substr(1,t.length);
+				} else {
+					var re2 = /^([#.]?)([a-z0-9\\*_-]*)/i;
+					var m = re2.exec(t);
+
+					if ( m[1] == "#" ) {
+						// Ummm, should make this work in all XML docs
+						var oid = document.getElementById(m[2]);
+						r = ret = oid ? [oid] : [];
+						t = t.replace( re2, "" );
+					} else {
+						if ( !m[2] || m[1] == "." ) m[2] = "*";
+
+						for ( var i = 0; i < ret.length; i++ )
+							r = jQuery.merge( r,
+								m[2] == "*" ?
+									jQuery.getAll(ret[i]) :
+									ret[i].getElementsByTagName(m[2])
+							);
+					}
+				}
+
+			}
+
+			if ( t ) {
+				var val = jQuery.filter(t,r);
+				ret = r = val.r;
+				t = jQuery.trim(val.t);
+			}
+		}
+
+		if ( ret && ret[0] == context ) ret.shift();
+		done = jQuery.merge( done, ret );
+
+		return done;
+	},
+
+	getAll: function(o,r) {
+		r = r || [];
+		var s = o.childNodes;
+		for ( var i = 0; i < s.length; i++ )
+			if ( s[i].nodeType == 1 ) {
+				r.push( s[i] );
+				jQuery.getAll( s[i], r );
+			}
+		return r;
+	},
+
+	attr: function(elem, name, value){
+		var fix = {
+			"for": "htmlFor",
+			"class": "className",
+			"float": "cssFloat",
+			innerHTML: "innerHTML",
+			className: "className",
+			value: "value",
+			disabled: "disabled",
+			checked: "checked"
+		};
+
+		if ( fix[name] ) {
+			if ( value != undefined ) elem[fix[name]] = value;
+			return elem[fix[name]];
+		} else if ( elem.getAttribute ) {
+			if ( value != undefined ) elem.setAttribute( name, value );
+			return elem.getAttribute( name, 2 );
+		} else {
+			name = name.replace(/-([a-z])/ig,function(z,b){return b.toUpperCase();});
+			if ( value != undefined ) elem[name] = value;
+			return elem[name];
+		}
+	},
+
+	// The regular expressions that power the parsing engine
+	parse: [
+		// Match: [@value='test'], [@foo]
+		[ "\\[ *(@)S *([!*$^=]*) *Q\\]", 1 ],
+
+		// Match: [div], [div p]
+		[ "(\\[)Q\\]", 0 ],
+
+		// Match: :contains('foo')
+		[ "(:)S\\(Q\\)", 0 ],
+
+		// Match: :even, :last-chlid
+		[ "([:.#]*)S", 0 ]
+	],
+
+	filter: function(t,r,not) {
+		// Figure out if we're doing regular, or inverse, filtering
+		var g = not !== false ? jQuery.grep :
+			function(a,f) {return jQuery.grep(a,f,true);};
+
+		while ( t && /^[a-z[({<*:.#]/i.test(t) ) {
+
+			var p = jQuery.parse;
+
+			for ( var i = 0; i < p.length; i++ ) {
+				var re = new RegExp( "^" + p[i][0]
+
+					// Look for a string-like sequence
+					.replace( 'S', "([a-z*_-][a-z0-9_-]*)" )
+
+					// Look for something (optionally) enclosed with quotes
+					.replace( 'Q', " *'?\"?([^'\"]*?)'?\"? *" ), "i" );
+
+				var m = re.exec( t );
+
+				if ( m ) {
+					// Re-organize the match
+					if ( p[i][1] )
+						m = ["", m[1], m[3], m[2], m[4]];
+
+					// Remove what we just matched
+					t = t.replace( re, "" );
+
+					break;
+				}
+			}
+
+			// :not() is a special case that can be optomized by
+			// keeping it out of the expression list
+			if ( m[1] == ":" && m[2] == "not" )
+				r = jQuery.filter(m[3],r,false).r;
+
+			// Otherwise, find the expression to execute
+			else {
+				var f = jQuery.expr[m[1]];
+				if ( f.constructor != String )
+					f = jQuery.expr[m[1]][m[2]];
+
+				// Build a custom macro to enclose it
+				eval("f = function(a,i){" +
+					( m[1] == "@" ? "z=jQuery.attr(a,m[3]);" : "" ) +
+					"return " + f + "}");
+
+				// Execute it against the current filter
+				r = g( r, f );
+			}
+		}
+
+		// Return an array of filtered elements (r)
+		// and the modified expression string (t)
+		return { r: r, t: t };
+	},
+
+	/**
+	 * Remove the whitespace from the beginning and end of a string.
+	 *
+	 * @example $.trim("  hello, how are you?  ");
+	 * @result "hello, how are you?"
+	 *
+	 * @name $.trim
+	 * @type String
+	 * @param String str The string to trim.
+	 * @cat Javascript
+	 */
+	trim: function(t){
+		return t.replace(/^\s+|\s+$/g, "");
+	},
+
+	/**
+	 * All ancestors of a given element.
+	 *
+	 * @private
+	 * @name $.parents
+	 * @type Array<Element>
+	 * @param Element elem The element to find the ancestors of.
+	 * @cat DOM/Traversing
+	 */
+	parents: function( elem ){
+		var matched = [];
+		var cur = elem.parentNode;
+		while ( cur && cur != document ) {
+			matched.push( cur );
+			cur = cur.parentNode;
+		}
+		return matched;
+	},
+
+	/**
+	 * All elements on a specified axis.
+	 *
+	 * @private
+	 * @name $.sibling
+	 * @type Array
+	 * @param Element elem The element to find all the siblings of (including itself).
+	 * @cat DOM/Traversing
+	 */
+	sibling: function(elem, pos, not) {
+		var elems = [];
+
+		var siblings = elem.parentNode.childNodes;
+		for ( var i = 0; i < siblings.length; i++ ) {
+			if ( not === true && siblings[i] == elem ) continue;
+
+			if ( siblings[i].nodeType == 1 )
+				elems.push( siblings[i] );
+			if ( siblings[i] == elem )
+				elems.n = elems.length - 1;
+		}
+
+		return jQuery.extend( elems, {
+			last: elems.n == elems.length - 1,
+			cur: pos == "even" && elems.n % 2 == 0 || pos == "odd" && elems.n % 2 || elems[pos] == elem,
+			prev: elems[elems.n - 1],
+			next: elems[elems.n + 1]
+		});
+	},
+
+	/**
+	 * Merge two arrays together, removing all duplicates. The final order
+	 * or the new array is: All the results from the first array, followed
+	 * by the unique results from the second array.
+	 *
+	 * @example $.merge( [0,1,2], [2,3,4] )
+	 * @result [0,1,2,3,4]
+	 *
+	 * @example $.merge( [3,2,1], [4,3,2] )
+	 * @result [3,2,1,4]
+	 *
+	 * @name $.merge
+	 * @type Array
+	 * @param Array first The first array to merge.
+	 * @param Array second The second array to merge.
+	 * @cat Javascript
+	 */
+	merge: function(first, second) {
+		var result = [];
+
+		// Move b over to the new array (this helps to avoid
+		// StaticNodeList instances)
+		for ( var k = 0; k < first.length; k++ )
+			result[k] = first[k];
+
+		// Now check for duplicates between a and b and only
+		// add the unique items
+		for ( var i = 0; i < second.length; i++ ) {
+			var noCollision = true;
+
+			// The collision-checking process
+			for ( var j = 0; j < first.length; j++ )
+				if ( second[i] == first[j] )
+					noCollision = false;
+
+			// If the item is unique, add it
+			if ( noCollision )
+				result.push( second[i] );
+		}
+
+		return result;
+	},
+
+	/**
+	 * Filter items out of an array, by using a filter function.
+	 * The specified function will be passed two arguments: The
+	 * current array item and the index of the item in the array. The
+	 * function should return 'true' if you wish to keep the item in
+	 * the array, false if it should be removed.
+	 *
+	 * @example $.grep( [0,1,2], function(i){
+	 *   return i > 0;
+	 * });
+	 * @result [1, 2]
+	 *
+	 * @name $.grep
+	 * @type Array
+	 * @param Array array The Array to find items in.
+	 * @param Function fn The function to process each item against.
+	 * @param Boolean inv Invert the selection - select the opposite of the function.
+	 * @cat Javascript
+	 */
+	grep: function(elems, fn, inv) {
+		// If a string is passed in for the function, make a function
+		// for it (a handy shortcut)
+		if ( fn.constructor == String )
+			fn = new Function("a","i","return " + fn);
+
+		var result = [];
+
+		// Go through the array, only saving the items
+		// that pass the validator function
+		for ( var i = 0; i < elems.length; i++ )
+			if ( !inv && fn(elems[i],i) || inv && !fn(elems[i],i) )
+				result.push( elems[i] );
+
+		return result;
+	},
+
+	/**
+	 * Translate all items in an array to another array of items. 
+	 * The translation function that is provided to this method is 
+	 * called for each item in the array and is passed one argument: 
+	 * The item to be translated. The function can then return:
+	 * The translated value, 'null' (to remove the item), or 
+	 * an array of values - which will be flattened into the full array.
+	 *
+	 * @example $.map( [0,1,2], function(i){
+	 *   return i + 4;
+	 * });
+	 * @result [4, 5, 6]
+	 *
+	 * @example $.map( [0,1,2], function(i){
+	 *   return i > 0 ? i + 1 : null;
+	 * });
+	 * @result [2, 3]
+	 * 
+	 * @example $.map( [0,1,2], function(i){
+	 *   return [ i, i + 1 ];
+	 * });
+	 * @result [0, 1, 1, 2, 2, 3]
+	 *
+	 * @name $.map
+	 * @type Array
+	 * @param Array array The Array to translate.
+	 * @param Function fn The function to process each item against.
+	 * @cat Javascript
+	 */
+	map: function(elems, fn) {
+		// If a string is passed in for the function, make a function
+		// for it (a handy shortcut)
+		if ( fn.constructor == String )
+			fn = new Function("a","return " + fn);
+
+		var result = [];
+
+		// Go through the array, translating each of the items to their
+		// new value (or values).
+		for ( var i = 0; i < elems.length; i++ ) {
+			var val = fn(elems[i],i);
+
+			if ( val !== null && val != undefined ) {
+				if ( val.constructor != Array ) val = [val];
+				result = jQuery.merge( result, val );
+			}
+		}
+
+		return result;
+	},
+
+	/*
+	 * A number of helper functions used for managing events.
+	 * Many of the ideas behind this code orignated from Dean Edwards' addEvent library.
+	 */
+	event: {
+
+		// Bind an event to an element
+		// Original by Dean Edwards
+		add: function(element, type, handler) {
+			// For whatever reason, IE has trouble passing the window object
+			// around, causing it to be cloned in the process
+			if ( jQuery.browser.msie && element.setInterval != undefined )
+				element = window;
+
+			// Make sure that the function being executed has a unique ID
+			if ( !handler.guid )
+				handler.guid = this.guid++;
+
+			// Init the element's event structure
+			if (!element.events)
+				element.events = {};
+
+			// Get the current list of functions bound to this event
+			var handlers = element.events[type];
+
+			// If it hasn't been initialized yet
+			if (!handlers) {
+				// Init the event handler queue
+				handlers = element.events[type] = {};
+
+				// Remember an existing handler, if it's already there
+				if (element["on" + type])
+					handlers[0] = element["on" + type];
+			}
+
+			// Add the function to the element's handler list
+			handlers[handler.guid] = handler;
+
+			// And bind the global event handler to the element
+			element["on" + type] = this.handle;
+
+			// Remember the function in a global list (for triggering)
+			if (!this.global[type])
+				this.global[type] = [];
+			this.global[type].push( element );
+		},
+
+		guid: 1,
+		global: {},
+
+		// Detach an event or set of events from an element
+		remove: function(element, type, handler) {
+			if (element.events)
+				if (type && element.events[type])
+					if ( handler )
+						delete element.events[type][handler.guid];
+					else
+						for ( var i in element.events[type] )
+							delete element.events[type][i];
+				else
+					for ( var j in element.events )
+						this.remove( element, j );
+		},
+
+		trigger: function(type,data,element) {
+			// Touch up the incoming data
+			data = data || [];
+
+			// Handle a global trigger
+			if ( !element ) {
+				var g = this.global[type];
+				if ( g )
+					for ( var i = 0; i < g.length; i++ )
+						this.trigger( type, data, g[i] );
+
+			// Handle triggering a single element
+			} else if ( element["on" + type] ) {
+				// Pass along a fake event
+				data.unshift( this.fix({ type: type, target: element }) );
+
+				// Trigger the event
+				element["on" + type].apply( element, data );
+			}
+		},
+
+		handle: function(event) {
+			if ( typeof jQuery == "undefined" ) return;
+
+			event = event || jQuery.event.fix( window.event );
+
+			// If no correct event was found, fail
+			if ( !event ) return;
+
+			var returnValue = true;
+
+			var c = this.events[event.type];
+
+			for ( var j in c ) {
+				if ( c[j].apply( this, [event] ) === false ) {
+					event.preventDefault();
+					event.stopPropagation();
+					returnValue = false;
+				}
+			}
+
+			return returnValue;
+		},
+
+		fix: function(event) {
+			if ( event ) {
+				event.preventDefault = function() {
+					this.returnValue = false;
+				};
+
+				event.stopPropagation = function() {
+					this.cancelBubble = true;
+				};
+			}
+
+			return event;
+		}
+
+	}
+});
+
+new function() {
+	var b = navigator.userAgent.toLowerCase();
+
+	// Figure out what browser is being used
+	jQuery.browser = {
+		safari: /webkit/.test(b),
+		opera: /opera/.test(b),
+		msie: /msie/.test(b) && !/opera/.test(b),
+		mozilla: /mozilla/.test(b) && !/(compatible|webkit)/.test(b)
+	};
+
+	// Check to see if the W3C box model is being used
+	jQuery.boxModel = !jQuery.browser.msie || document.compatMode == "CSS1Compat";
+};
+
+jQuery.macros = {
+	to: {
+		/**
+		 * Append all of the matched elements to another, specified, set of elements.
+		 * This operation is, essentially, the reverse of doing a regular
+		 * $(A).append(B), in that instead of appending B to A, you're appending
+		 * A to B.
+		 *
+		 * @example $("p").appendTo("#foo");
+		 * @before <p>I would like to say: </p><div id="foo"></div>
+		 * @result <div id="foo"><p>I would like to say: </p></div>
+		 *
+		 * @name appendTo
+		 * @type jQuery
+		 * @param String expr A jQuery expression of elements to match.
+		 * @cat DOM/Manipulation
+		 */
+		appendTo: "append",
+
+		/**
+		 * Prepend all of the matched elements to another, specified, set of elements.
+		 * This operation is, essentially, the reverse of doing a regular
+		 * $(A).prepend(B), in that instead of prepending B to A, you're prepending
+		 * A to B.
+		 *
+		 * @example $("p").prependTo("#foo");
+		 * @before <p>I would like to say: </p><div id="foo"><b>Hello</b></div>
+		 * @result <div id="foo"><p>I would like to say: </p><b>Hello</b></div>
+		 *
+		 * @name prependTo
+		 * @type jQuery
+		 * @param String expr A jQuery expression of elements to match.
+		 * @cat DOM/Manipulation
+		 */
+		prependTo: "prepend",
+
+		/**
+		 * Insert all of the matched elements before another, specified, set of elements.
+		 * This operation is, essentially, the reverse of doing a regular
+		 * $(A).before(B), in that instead of inserting B before A, you're inserting
+		 * A before B.
+		 *
+		 * @example $("p").insertBefore("#foo");
+		 * @before <div id="foo">Hello</div><p>I would like to say: </p>
+		 * @result <p>I would like to say: </p><div id="foo">Hello</div>
+		 *
+		 * @name insertBefore
+		 * @type jQuery
+		 * @param String expr A jQuery expression of elements to match.
+		 * @cat DOM/Manipulation
+		 */
+		insertBefore: "before",
+
+		/**
+		 * Insert all of the matched elements after another, specified, set of elements.
+		 * This operation is, essentially, the reverse of doing a regular
+		 * $(A).after(B), in that instead of inserting B after A, you're inserting
+		 * A after B.
+		 *
+		 * @example $("p").insertAfter("#foo");
+		 * @before <p>I would like to say: </p><div id="foo">Hello</div>
+		 * @result <div id="foo">Hello</div><p>I would like to say: </p>
+		 *
+		 * @name insertAfter
+		 * @type jQuery
+		 * @param String expr A jQuery expression of elements to match.
+		 * @cat DOM/Manipulation
+		 */
+		insertAfter: "after"
+	},
+
+	/**
+	 * Get the current CSS width of the first matched element.
+	 *
+	 * @example $("p").width();
+	 * @before <p>This is just a test.</p>
+	 * @result "300px"
+	 *
+	 * @name width
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS width of every matched element. Be sure to include
+	 * the "px" (or other unit of measurement) after the number that you
+	 * specify, otherwise you might get strange results.
+	 *
+	 * @example $("p").width("20px");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="width:20px;">This is just a test.</p>
+	 *
+	 * @name width
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS height of the first matched element.
+	 *
+	 * @example $("p").height();
+	 * @before <p>This is just a test.</p>
+	 * @result "14px"
+	 *
+	 * @name height
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS height of every matched element. Be sure to include
+	 * the "px" (or other unit of measurement) after the number that you
+	 * specify, otherwise you might get strange results.
+	 *
+	 * @example $("p").height("20px");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="height:20px;">This is just a test.</p>
+	 *
+	 * @name height
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS top of the first matched element.
+	 *
+	 * @example $("p").top();
+	 * @before <p>This is just a test.</p>
+	 * @result "0px"
+	 *
+	 * @name top
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS top of every matched element. Be sure to include
+	 * the "px" (or other unit of measurement) after the number that you
+	 * specify, otherwise you might get strange results.
+	 *
+	 * @example $("p").top("20px");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="top:20px;">This is just a test.</p>
+	 *
+	 * @name top
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS left of the first matched element.
+	 *
+	 * @example $("p").left();
+	 * @before <p>This is just a test.</p>
+	 * @result "0px"
+	 *
+	 * @name left
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS left of every matched element. Be sure to include
+	 * the "px" (or other unit of measurement) after the number that you
+	 * specify, otherwise you might get strange results.
+	 *
+	 * @example $("p").left("20px");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="left:20px;">This is just a test.</p>
+	 *
+	 * @name left
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS position of the first matched element.
+	 *
+	 * @example $("p").position();
+	 * @before <p>This is just a test.</p>
+	 * @result "static"
+	 *
+	 * @name position
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS position of every matched element.
+	 *
+	 * @example $("p").position("relative");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="position:relative;">This is just a test.</p>
+	 *
+	 * @name position
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS float of the first matched element.
+	 *
+	 * @example $("p").float();
+	 * @before <p>This is just a test.</p>
+	 * @result "none"
+	 *
+	 * @name float
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS float of every matched element.
+	 *
+	 * @example $("p").float("left");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="float:left;">This is just a test.</p>
+	 *
+	 * @name float
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS overflow of the first matched element.
+	 *
+	 * @example $("p").overflow();
+	 * @before <p>This is just a test.</p>
+	 * @result "none"
+	 *
+	 * @name overflow
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS overflow of every matched element.
+	 *
+	 * @example $("p").overflow("auto");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="overflow:auto;">This is just a test.</p>
+	 *
+	 * @name overflow
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS color of the first matched element.
+	 *
+	 * @example $("p").color();
+	 * @before <p>This is just a test.</p>
+	 * @result "black"
+	 *
+	 * @name color
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS color of every matched element.
+	 *
+	 * @example $("p").color("blue");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="color:blue;">This is just a test.</p>
+	 *
+	 * @name color
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	/**
+	 * Get the current CSS background of the first matched element.
+	 *
+	 * @example $("p").background();
+	 * @before <p style="background:blue;">This is just a test.</p>
+	 * @result "blue"
+	 *
+	 * @name background
+	 * @type String
+	 * @cat CSS
+	 */
+
+	/**
+	 * Set the CSS background of every matched element.
+	 *
+	 * @example $("p").background("blue");
+	 * @before <p>This is just a test.</p>
+	 * @result <p style="background:blue;">This is just a test.</p>
+	 *
+	 * @name background
+	 * @type jQuery
+	 * @param String val Set the CSS property to the specified value.
+	 * @cat CSS
+	 */
+
+	css: "width,height,top,left,position,float,overflow,color,background".split(","),
+
+	/**
+	 * Reduce the set of matched elements to a single element.
+	 * The position of the element in the set of matched elements
+	 * starts at 0 and goes to length - 1.
+	 *
+	 * @example $("p").eq(1)
+	 * @before <p>This is just a test.</p><p>So is this</p>
+	 * @result [ <p>So is this</p> ]
+	 *
+	 * @name eq
+	 * @type jQuery
+	 * @param Number pos The index of the element that you wish to limit to.
+	 * @cat Core
+	 */
+
+	/**
+	 * Reduce the set of matched elements to all elements before a given position.
+	 * The position of the element in the set of matched elements
+	 * starts at 0 and goes to length - 1.
+	 *
+	 * @example $("p").lt(1)
+	 * @before <p>This is just a test.</p><p>So is this</p>
+	 * @result [ <p>This is just a test.</p> ]
+	 *
+	 * @name lt
+	 * @type jQuery
+	 * @param Number pos Reduce the set to all elements below this position.
+	 * @cat Core
+	 */
+
+	/**
+	 * Reduce the set of matched elements to all elements after a given position.
+	 * The position of the element in the set of matched elements
+	 * starts at 0 and goes to length - 1.
+	 *
+	 * @example $("p").gt(0)
+	 * @before <p>This is just a test.</p><p>So is this</p>
+	 * @result [ <p>So is this</p> ]
+	 *
+	 * @name gt
+	 * @type jQuery
+	 * @param Number pos Reduce the set to all elements after this position.
+	 * @cat Core
+	 */
+
+	/**
+	 * Filter the set of elements to those that contain the specified text.
+	 *
+	 * @example $("p").contains("test")
+	 * @before <p>This is just a test.</p><p>So is this</p>
+	 * @result [ <p>This is just a test.</p> ]
+	 *
+	 * @name contains
+	 * @type jQuery
+	 * @param String str The string that will be contained within the text of an element.
+	 * @cat DOM/Traversing
+	 */
+
+	filter: [ "eq", "lt", "gt", "contains" ],
+
+	attr: {
+		/**
+		 * Get the current value of the first matched element.
+		 *
+		 * @example $("input").val();
+		 * @before <input type="text" value="some text"/>
+		 * @result "some text"
+		 *
+ 		 * @test ok( $("#text1").val() == "Test", "Check for value of input element" );
+		 * @test ok( !$("#text1").val() == "", "Check for value of input element" );
+		 *
+		 * @name val
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the value of every matched element.
+		 *
+		 * @example $("input").value("test");
+		 * @before <input type="text" value="some text"/>
+		 * @result <input type="text" value="test"/>
+		 *
+		 * @test document.getElementById('text1').value = "bla";
+		 * ok( $("#text1").val() == "bla", "Check for modified value of input element" );
+		 * $("#text1").val('test');
+		 * ok ( document.getElementById('text1').value == "test", "Check for modified (via val(String)) value of input element" );
+		 *
+		 * @name val
+		 * @type jQuery
+		 * @param String val Set the property to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		val: "value",
+
+		/**
+		 * Get the html contents of the first matched element.
+		 *
+		 * @example $("div").html();
+		 * @before <div><input/></div>
+		 * @result <input/>
+		 *
+		 * @name html
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the html contents of every matched element.
+		 *
+		 * @example $("div").html("<b>new stuff</b>");
+		 * @before <div><input/></div>
+		 * @result <div><b>new stuff</b></div>
+		 *
+		 * @test var div = $("div");
+		 * div.html("<b>test</b>");
+		 * var pass = true;
+		 * for ( var i = 0; i < div.size(); i++ ) {
+		 *   if ( div.get(i).childNodes.length == 0 ) pass = false;
+		 * }
+		 * ok( pass, "Set HTML" );
+		 *
+		 * @name html
+		 * @type jQuery
+		 * @param String val Set the html contents to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		html: "innerHTML",
+
+		/**
+		 * Get the current id of the first matched element.
+		 *
+		 * @example $("input").id();
+		 * @before <input type="text" id="test" value="some text"/>
+		 * @result "test"
+		 *
+		 * @name id
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the id of every matched element.
+		 *
+		 * @example $("input").id("newid");
+		 * @before <input type="text" id="test" value="some text"/>
+		 * @result <input type="text" id="newid" value="some text"/>
+		 *
+		 * @name id
+		 * @type jQuery
+		 * @param String val Set the property to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		id: null,
+
+		/**
+		 * Get the current title of the first matched element.
+		 *
+		 * @example $("img").title();
+		 * @before <img src="test.jpg" title="my image"/>
+		 * @result "my image"
+		 *
+		 * @name title
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the title of every matched element.
+		 *
+		 * @example $("img").title("new title");
+		 * @before <img src="test.jpg" title="my image"/>
+		 * @result <img src="test.jpg" title="new image"/>
+		 *
+		 * @name title
+		 * @type jQuery
+		 * @param String val Set the property to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		title: null,
+
+		/**
+		 * Get the current name of the first matched element.
+		 *
+		 * @example $("input").name();
+		 * @before <input type="text" name="username"/>
+		 * @result "username"
+		 *
+		 * @name name
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the name of every matched element.
+		 *
+		 * @example $("input").name("user");
+		 * @before <input type="text" name="username"/>
+		 * @result <input type="text" name="user"/>
+		 *
+		 * @name name
+		 * @type jQuery
+		 * @param String val Set the property to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		name: null,
+
+		/**
+		 * Get the current href of the first matched element.
+		 *
+		 * @example $("a").href();
+		 * @before <a href="test.html">my link</a>
+		 * @result "test.html"
+		 *
+		 * @name href
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the href of every matched element.
+		 *
+		 * @example $("a").href("test2.html");
+		 * @before <a href="test.html">my link</a>
+		 * @result <a href="test2.html">my link</a>
+		 *
+		 * @name href
+		 * @type jQuery
+		 * @param String val Set the property to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		href: null,
+
+		/**
+		 * Get the current src of the first matched element.
+		 *
+		 * @example $("img").src();
+		 * @before <img src="test.jpg" title="my image"/>
+		 * @result "test.jpg"
+		 *
+		 * @name src
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the src of every matched element.
+		 *
+		 * @example $("img").src("test2.jpg");
+		 * @before <img src="test.jpg" title="my image"/>
+		 * @result <img src="test2.jpg" title="my image"/>
+		 *
+		 * @name src
+		 * @type jQuery
+		 * @param String val Set the property to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		src: null,
+
+		/**
+		 * Get the current rel of the first matched element.
+		 *
+		 * @example $("a").rel();
+		 * @before <a href="test.html" rel="nofollow">my link</a>
+		 * @result "nofollow"
+		 *
+		 * @name rel
+		 * @type String
+		 * @cat DOM/Attributes
+		 */
+
+		/**
+		 * Set the rel of every matched element.
+		 *
+		 * @example $("a").rel("nofollow");
+		 * @before <a href="test.html">my link</a>
+		 * @result <a href="test.html" rel="nofollow">my link</a>
+		 *
+		 * @name rel
+		 * @type jQuery
+		 * @param String val Set the property to the specified value.
+		 * @cat DOM/Attributes
+		 */
+		rel: null
+	},
+
+	axis: {
+		/**
+		 * Get a set of elements containing the unique parents of the matched
+		 * set of elements.
+		 *
+		 * @example $("p").parent()
+		 * @before <div><p>Hello</p><p>Hello</p></div>
+		 * @result [ <div><p>Hello</p><p>Hello</p></div> ]
+		 *
+		 * @name parent
+		 * @type jQuery
+		 * @cat DOM/Traversing
+		 */
+
+		/**
+		 * Get a set of elements containing the unique parents of the matched
+		 * set of elements, and filtered by an expression.
+		 *
+		 * @example $("p").parent(".selected")
+		 * @before <div><p>Hello</p></div><div class="selected"><p>Hello Again</p></div>
+		 * @result [ <div class="selected"><p>Hello Again</p></div> ]
+		 *
+		 * @name parent
+		 * @type jQuery
+		 * @param String expr An expression to filter the parents with
+		 * @cat DOM/Traversing
+		 */
+		parent: "a.parentNode",
+
+		/**
+		 * Get a set of elements containing the unique ancestors of the matched
+		 * set of elements (except for the root element).
+		 *
+		 * @example $("span").ancestors()
+		 * @before <html><body><div><p><span>Hello</span></p><span>Hello Again</span></div></body></html>
+		 * @result [ <body>...</body>, <div>...</div>, <p><span>Hello</span></p> ]
+		 *
+		 * @name ancestors
+		 * @type jQuery
+		 * @cat DOM/Traversing
+		 */
+
+		/**
+		 * Get a set of elements containing the unique ancestors of the matched
+		 * set of elements, and filtered by an expression.
+		 *
+		 * @example $("span").ancestors("p")
+		 * @before <html><body><div><p><span>Hello</span></p><span>Hello Again</span></div></body></html>
+		 * @result [ <p><span>Hello</span></p> ]
+		 *
+		 * @name ancestors
+		 * @type jQuery
+		 * @param String expr An expression to filter the ancestors with
+		 * @cat DOM/Traversing
+		 */
+		ancestors: jQuery.parents,
+
+		/**
+		 * Get a set of elements containing the unique ancestors of the matched
+		 * set of elements (except for the root element).
+		 *
+		 * @example $("span").ancestors()
+		 * @before <html><body><div><p><span>Hello</span></p><span>Hello Again</span></div></body></html>
+		 * @result [ <body>...</body>, <div>...</div>, <p><span>Hello</span></p> ]
+		 *
+		 * @name parents
+		 * @type jQuery
+		 * @cat DOM/Traversing
+		 */
+
+		/**
+		 * Get a set of elements containing the unique ancestors of the matched
+		 * set of elements, and filtered by an expression.
+		 *
+		 * @example $("span").ancestors("p")
+		 * @before <html><body><div><p><span>Hello</span></p><span>Hello Again</span></div></body></html>
+		 * @result [ <p><span>Hello</span></p> ]
+		 *
+		 * @name parents
+		 * @type jQuery
+		 * @param String expr An expression to filter the ancestors with
+		 * @cat DOM/Traversing
+		 */
+		parents: jQuery.parents,
+
+		/**
+		 * Get a set of elements containing the unique next siblings of each of the
+		 * matched set of elements.
+		 *
+		 * It only returns the very next sibling, not all next siblings.
+		 *
+		 * @example $("p").next()
+		 * @before <p>Hello</p><p>Hello Again</p><div><span>And Again</span></div>
+		 * @result [ <p>Hello Again</p>, <div><span>And Again</span></div> ]
+		 *
+		 * @name next
+		 * @type jQuery
+		 * @cat DOM/Traversing
+		 */
+
+		/**
+		 * Get a set of elements containing the unique next siblings of each of the
+		 * matched set of elements, and filtered by an expression.
+		 *
+		 * It only returns the very next sibling, not all next siblings.
+		 *
+		 * @example $("p").next(".selected")
+		 * @before <p>Hello</p><p class="selected">Hello Again</p><div><span>And Again</span></div>
+		 * @result [ <p class="selected">Hello Again</p> ]
+		 *
+		 * @name next
+		 * @type jQuery
+		 * @param String expr An expression to filter the next Elements with
+		 * @cat DOM/Traversing
+		 */
+		next: "jQuery.sibling(a).next",
+
+		/**
+		 * Get a set of elements containing the unique previous siblings of each of the
+		 * matched set of elements.
+		 *
+		 * It only returns the immediately previous sibling, not all previous siblings.
+		 *
+		 * @example $("p").previous()
+		 * @before <p>Hello</p><div><span>Hello Again</span></div><p>And Again</p>
+		 * @result [ <div><span>Hello Again</span></div> ]
+		 *
+		 * @name prev
+		 * @type jQuery
+		 * @cat DOM/Traversing
+		 */
+
+		/**
+		 * Get a set of elements containing the unique previous siblings of each of the
+		 * matched set of elements, and filtered by an expression.
+		 *
+		 * It only returns the immediately previous sibling, not all previous siblings.
+		 *
+		 * @example $("p").previous(".selected")
+		 * @before <div><span>Hello</span></div><p class="selected">Hello Again</p><p>And Again</p>
+		 * @result [ <div><span>Hello</span></div> ]
+		 *
+		 * @name prev
+		 * @type jQuery
+		 * @param String expr An expression to filter the previous Elements with
+		 * @cat DOM/Traversing
+		 */
+		prev: "jQuery.sibling(a).prev",
+
+		/**
+		 * Get a set of elements containing all of the unique siblings of each of the
+		 * matched set of elements.
+		 *
+		 * @example $("div").siblings()
+		 * @before <p>Hello</p><div><span>Hello Again</span></div><p>And Again</p>
+		 * @result [ <p>Hello</p>, <p>And Again</p> ]
+		 *
+		 * @name siblings
+		 * @type jQuery
+		 * @cat DOM/Traversing
+		 */
+
+		/**
+		 * Get a set of elements containing all of the unique siblings of each of the
+		 * matched set of elements, and filtered by an expression.
+		 *
+		 * @example $("div").siblings(".selected")
+		 * @before <div><span>Hello</span></div><p class="selected">Hello Again</p><p>And Again</p>
+		 * @result [ <p class="selected">Hello Again</p> ]
+		 *
+		 * @name siblings
+		 * @type jQuery
+		 * @param String expr An expression to filter the sibling Elements with
+		 * @cat DOM/Traversing
+		 */
+		siblings: jQuery.sibling,
+
+
+		/**
+		 * Get a set of elements containing all of the unique children of each of the
+		 * matched set of elements.
+		 *
+		 * @example $("div").children()
+		 * @before <p>Hello</p><div><span>Hello Again</span></div><p>And Again</p>
+		 * @result [ <span>Hello Again</span> ]
+		 *
+		 * @name children
+		 * @type jQuery
+		 * @cat DOM/Traversing
+		 */
+
+		/**
+		 * Get a set of elements containing all of the unique children of each of the
+		 * matched set of elements, and filtered by an expression.
+		 *
+		 * @example $("div").children(".selected")
+		 * @before <div><span>Hello</span><p class="selected">Hello Again</p><p>And Again</p></div>
+		 * @result [ <p class="selected">Hello Again</p> ]
+		 *
+		 * @name children
+		 * @type jQuery
+		 * @param String expr An expression to filter the child Elements with
+		 * @cat DOM/Traversing
+		 */
+		children: "jQuery.sibling(a.firstChild)"
+	},
+
+	each: {
+
+		/**
+		 * Remove an attribute from each of the matched elements.
+		 *
+		 * @example $("input").removeAttr("disabled")
+		 * @before <input disabled="disabled"/>
+		 * @result <input/>
+		 *
+		 * @name removeAttr
+		 * @type jQuery
+		 * @param String name The name of the attribute to remove.
+		 * @cat DOM
+		 */
+		removeAttr: function( key ) {
+			this.removeAttribute( key );
+		},
+
+		/**
+		 * Displays each of the set of matched elements if they are hidden.
+		 *
+		 * @example $("p").show()
+		 * @before <p style="display: none">Hello</p>
+		 * @result [ <p style="display: block">Hello</p> ]
+		 *
+		 * @test var pass = true, div = $("div");
+		 * div.show().each(function(){
+		 *   if ( this.style.display == "none" ) pass = false;
+		 * });
+		 * ok( pass, "Show" );
+		 *
+		 * @name show
+		 * @type jQuery
+		 * @cat Effects
+		 */
+		show: function(){
+			this.style.display = this.oldblock ? this.oldblock : "";
+			if ( jQuery.css(this,"display") == "none" )
+				this.style.display = "block";
+		},
+
+		/**
+		 * Hides each of the set of matched elements if they are shown.
+		 *
+		 * @example $("p").hide()
+		 * @before <p>Hello</p>
+		 * @result [ <p style="display: none">Hello</p> ]
+		 *
+		 * var pass = true, div = $("div");
+		 * div.hide().each(function(){
+		 *   if ( this.style.display != "none" ) pass = false;
+		 * });
+		 * ok( pass, "Hide" );
+		 *
+		 * @name hide
+		 * @type jQuery
+		 * @cat Effects
+		 */
+		hide: function(){
+			this.oldblock = this.oldblock || jQuery.css(this,"display");
+			if ( this.oldblock == "none" )
+				this.oldblock = "block";
+			this.style.display = "none";
+		},
+
+		/**
+		 * Toggles each of the set of matched elements. If they are shown,
+		 * toggle makes them hidden. If they are hidden, toggle
+		 * makes them shown.
+		 *
+		 * @example $("p").toggle()
+		 * @before <p>Hello</p><p style="display: none">Hello Again</p>
+		 * @result [ <p style="display: none">Hello</p>, <p style="display: block">Hello Again</p> ]
+		 *
+		 * @name toggle
+		 * @type jQuery
+		 * @cat Effects
+		 */
+		toggle: function(){
+			jQuery(this)[ jQuery(this).is(":hidden") ? "show" : "hide" ].apply( jQuery(this), arguments );
+		},
+
+		/**
+		 * Adds the specified class to each of the set of matched elements.
+		 *
+		 * @example $("p").addClass("selected")
+		 * @before <p>Hello</p>
+		 * @result [ <p class="selected">Hello</p> ]
+		 *
+		 * @test var div = $("div");
+		 * div.addClass("test");
+		 * var pass = true;
+		 * for ( var i = 0; i < div.size(); i++ ) {
+		 *  if ( div.get(i).className.indexOf("test") == -1 ) pass = false;
+		 * }
+		 * ok( pass, "Add Class" );
+		 *
+		 * @name addClass
+		 * @type jQuery
+		 * @param String class A CSS class to add to the elements
+		 * @cat DOM
+		 */
+		addClass: function(c){
+			jQuery.className.add(this,c);
+		},
+
+		/**
+		 * Removes the specified class from the set of matched elements.
+		 *
+		 * @example $("p").removeClass("selected")
+		 * @before <p class="selected">Hello</p>
+		 * @result [ <p>Hello</p> ]
+		 *
+		 * @test var div = $("div").addClass("test");
+		 * div.removeClass("test");
+		 * var pass = true;
+		 * for ( var i = 0; i < div.size(); i++ ) {
+		 *  if ( div.get(i).className.indexOf("test") != -1 ) pass = false;
+		 * }
+		 * ok( pass, "Remove Class" );
+		 *
+		 * @name removeClass
+		 * @type jQuery
+		 * @param String class A CSS class to remove from the elements
+		 * @cat DOM
+		 */
+		removeClass: function(c){
+			jQuery.className.remove(this,c);
+		},
+
+		/**
+		 * Adds the specified class if it is present, removes it if it is
+		 * not present.
+		 *
+		 * @example $("p").toggleClass("selected")
+		 * @before <p>Hello</p><p class="selected">Hello Again</p>
+		 * @result [ <p class="selected">Hello</p>, <p>Hello Again</p> ]
+		 *
+		 * @name toggleClass
+		 * @type jQuery
+		 * @param String class A CSS class with which to toggle the elements
+		 * @cat DOM
+		 */
+		toggleClass: function( c ){
+			jQuery.className[ jQuery.className.has(this,c) ? "remove" : "add" ](this,c);
+		},
+
+		/**
+		 * Removes all matched elements from the DOM. This does NOT remove them from the
+		 * jQuery object, allowing you to use the matched elements further.
+		 *
+		 * @example $("p").remove();
+		 * @before <p>Hello</p> how are <p>you?</p>
+		 * @result how are
+		 *
+		 * @name remove
+		 * @type jQuery
+		 * @cat DOM/Manipulation
+		 */
+
+		/**
+		 * Removes only elements (out of the list of matched elements) that match
+		 * the specified jQuery expression. This does NOT remove them from the
+		 * jQuery object, allowing you to use the matched elements further.
+		 *
+		 * @example $("p").remove(".hello");
+		 * @before <p class="hello">Hello</p> how are <p>you?</p>
+		 * @result how are <p>you?</p>
+		 *
+		 * @name remove
+		 * @type jQuery
+		 * @param String expr A jQuery expression to filter elements by.
+		 * @cat DOM/Manipulation
+		 */
+		remove: function(a){
+			if ( !a || jQuery.filter( a, [this] ).r )
+				this.parentNode.removeChild( this );
+		},
+
+		/**
+		 * Removes all child nodes from the set of matched elements.
+		 *
+		 * @example $("p").empty()
+		 * @before <p>Hello, <span>Person</span> <a href="#">and person</a></p>
+		 * @result [ <p></p> ]
+		 *
+		 * @name empty
+		 * @type jQuery
+		 * @cat DOM/Manipulation
+		 */
+		empty: function(){
+			while ( this.firstChild )
+				this.removeChild( this.firstChild );
+		},
+
+		/**
+		 * Binds a particular event (like click) to a each of a set of match elements.
+		 *
+		 * @example $("p").bind( "click", function() { alert("Hello"); } )
+		 * @before <p>Hello</p>
+		 * @result [ <p>Hello</p> ]
+		 *
+		 * Cancel a default action and prevent it from bubbling by returning false
+		 * from your function.
+		 *
+		 * @example $("form").bind( "submit", function() { return false; } )
+		 *
+		 * Cancel a default action by using the preventDefault method.
+		 *
+		 * @example $("form").bind( "submit", function() { e.preventDefault(); } )
+		 *
+		 * Stop an event from bubbling by using the stopPropogation method.
+		 *
+		 * @example $("form").bind( "submit", function() { e.stopPropogation(); } )
+		 *
+		 * @name bind
+		 * @type jQuery
+		 * @param String type An event type
+		 * @param Function fn A function to bind to the event on each of the set of matched elements
+		 * @cat Events
+		 */
+		bind: function( type, fn ) {
+			if ( fn.constructor == String )
+				fn = new Function("e", ( !fn.indexOf(".") ? "jQuery(this)" : "return " ) + fn);
+			jQuery.event.add( this, type, fn );
+		},
+
+		/**
+		 * The opposite of bind, removes a bound event from each of the matched
+		 * elements. You must pass the identical function that was used in the original
+		 * bind method.
+		 *
+		 * @example $("p").unbind( "click", function() { alert("Hello"); } )
+		 * @before <p onclick="alert('Hello');">Hello</p>
+		 * @result [ <p>Hello</p> ]
+		 *
+		 * @name unbind
+		 * @type jQuery
+		 * @param String type An event type
+		 * @param Function fn A function to unbind from the event on each of the set of matched elements
+		 * @cat Events
+		 */
+
+		/**
+		 * Removes all bound events of a particular type from each of the matched
+		 * elements.
+		 *
+		 * @example $("p").unbind( "click" )
+		 * @before <p onclick="alert('Hello');">Hello</p>
+		 * @result [ <p>Hello</p> ]
+		 *
+		 * @name unbind
+		 * @type jQuery
+		 * @param String type An event type
+		 * @cat Events
+		 */
+
+		/**
+		 * Removes all bound events from each of the matched elements.
+		 *
+		 * @example $("p").unbind()
+		 * @before <p onclick="alert('Hello');">Hello</p>
+		 * @result [ <p>Hello</p> ]
+		 *
+		 * @name unbind
+		 * @type jQuery
+		 * @cat Events
+		 */
+		unbind: function( type, fn ) {
+			jQuery.event.remove( this, type, fn );
+		},
+
+		/**
+		 * Trigger a type of event on every matched element.
+		 *
+		 * @example $("p").trigger("click")
+		 * @before <p click="alert('hello')">Hello</p>
+		 * @result alert('hello')
+		 *
+		 * @name trigger
+		 * @type jQuery
+		 * @param String type An event type to trigger.
+		 * @cat Events
+		 */
+		trigger: function( type, data ) {
+			jQuery.event.trigger( type, data, this );
+		}
+	}
+};
+
+jQuery.init();
+jQuery.fn.extend({
+
+	// We're overriding the old toggle function, so
+	// remember it for later
+	_toggle: jQuery.fn.toggle,
+	
+	/**
+	 * Toggle between two function calls every other click.
+	 * Whenever a matched element is clicked, the first specified function 
+	 * is fired, when clicked again, the second is fired. All subsequent 
+	 * clicks continue to rotate through the two functions.
+	 *
+	 * @example $("p").toggle(function(){
+	 *   $(this).addClass("selected");
+	 * },function(){
+	 *   $(this).removeClass("selected");
+	 * });
+	 * 
+	 * var count = 0;
+	 * var fn1 = function() { count++; }
+	 * var fn2 = function() { count--; }
+	 * var link = $('#mark');
+	 * link.click().toggle(fn1, fn2).click().click().click().click().click();
+	 * ok( count == 1, "Check for toggle(fn, fn)" );
+	 *
+	 * @name toggle
+	 * @type jQuery
+	 * @param Function even The function to execute on every even click.
+	 * @param Function odd The function to execute on every odd click.
+	 * @cat Events
+	 */
+	toggle: function(a,b) {
+		// If two functions are passed in, we're
+		// toggling on a click
+		return a && b && a.constructor == Function && b.constructor == Function ? this.click(function(e){
+			// Figure out which function to execute
+			this.last = this.last == a ? b : a;
+			
+			// Make sure that clicks stop
+			e.preventDefault();
+			
+			// and execute the function
+			return this.last.apply( this, [e] ) || false;
+		}) :
+		
+		// Otherwise, execute the old toggle function
+		this._toggle.apply( this, arguments );
+	},
+	
+	/**
+	 * A method for simulating hovering (moving the mouse on, and off,
+	 * an object). This is a custom method which provides an 'in' to a 
+	 * frequent task.
+	 *
+	 * Whenever the mouse cursor is moved over a matched 
+	 * element, the first specified function is fired. Whenever the mouse 
+	 * moves off of the element, the second specified function fires. 
+	 * Additionally, checks are in place to see if the mouse is still within 
+	 * the specified element itself (for example, an image inside of a div), 
+	 * and if it is, it will continue to 'hover', and not move out 
+	 * (a common error in using a mouseout event handler).
+	 *
+	 * @example $("p").hover(function(){
+	 *   $(this).addClass("over");
+	 * },function(){
+	 *   $(this).addClass("out");
+	 * });
+	 *
+	 * @name hover
+	 * @type jQuery
+	 * @param Function over The function to fire whenever the mouse is moved over a matched element.
+	 * @param Function out The function to fire whenever the mouse is moved off of a matched element.
+	 * @cat Events
+	 */
+	hover: function(f,g) {
+		
+		// A private function for haandling mouse 'hovering'
+		function handleHover(e) {
+			// Check if mouse(over|out) are still within the same parent element
+			var p = (e.type == "mouseover" ? e.fromElement : e.toElement) || e.relatedTarget;
+	
+			// Traverse up the tree
+			while ( p && p != this ) p = p.parentNode;
+			
+			// If we actually just moused on to a sub-element, ignore it
+			if ( p == this ) return false;
+			
+			// Execute the right function
+			return (e.type == "mouseover" ? f : g).apply(this, [e]);
+		}
+		
+		// Bind the function to the two event listeners
+		return this.mouseover(handleHover).mouseout(handleHover);
+	},
+	
+	/**
+	 * Bind a function to be executed whenever the DOM is ready to be
+	 * traversed and manipulated. This is probably the most important 
+	 * function included in the event module, as it can greatly improve
+	 * the response times of your web applications.
+	 *
+	 * In a nutshell, this is a solid replacement for using window.onload, 
+	 * and attaching a function to that. By using this method, your bound Function 
+	 * will be called the instant the DOM is ready to be read and manipulated, 
+	 * which is exactly what 99.99% of all Javascript code needs to run.
+	 * 
+	 * Please ensure you have no code in your &lt;body&gt; onload event handler, 
+	 * otherwise $(document).ready() may not fire.
+	 *
+	 * @example $(document).ready(function(){ Your code here... });
+	 *
+	 * @name ready
+	 * @type jQuery
+	 * @param Function fn The function to be executed when the DOM is ready.
+	 * @cat Events
+	 */
+	ready: function(f) {
+		// If the DOM is already ready
+		if ( jQuery.isReady )
+			// Execute the function immediately
+			f.apply( document );
+			
+		// Otherwise, remember the function for later
+		else {
+			// Add the function to the wait list
+			jQuery.readyList.push( f );
+		}
+	
+		return this;
+	}
+});
+
+jQuery.extend({
+	/*
+	 * All the code that makes DOM Ready work nicely.
+	 */
+	isReady: false,
+	readyList: [],
+	
+	// Handle when the DOM is ready
+	ready: function() {
+		// Make sure that the DOM is not already loaded
+		if ( !jQuery.isReady ) {
+			// Remember that the DOM is ready
+			jQuery.isReady = true;
+			
+			// If there are functions bound, to execute
+			if ( jQuery.readyList ) {
+				// Execute all of them
+				for ( var i = 0; i < jQuery.readyList.length; i++ )
+					jQuery.readyList[i].apply( document );
+				
+				// Reset the list of functions
+				jQuery.readyList = null;
+			}
+		}
+	}
+});
+
+new function(){
+
+		/**
+		 * Bind a function to the scroll event of each matched element.
+		 *
+		 * @example $("p").scroll( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onscroll="alert('Hello');">Hello</p>
+		 *
+		 * @name scroll
+		 * @type jQuery
+		 * @param Function fn A function to bind to the scroll event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Trigger the scroll event of each matched element. This causes all of the functions
+		 * that have been bound to thet scroll event to be executed.
+		 *
+		 * @example $("p").scroll();
+		 * @before <p onscroll="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name scroll
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the scroll event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .scroll() method, calling .onescroll() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onescroll( function() { alert("Hello"); } );
+		 * @before <p onscroll="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first scroll
+		 *
+		 * @name onescroll
+		 * @type jQuery
+		 * @param Function fn A function to bind to the scroll event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes a bound scroll event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unscroll( myFunction );
+		 * @before <p onscroll="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unscroll
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the scroll event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes all bound scroll events from each of the matched elements.
+		 *
+		 * @example $("p").unscroll();
+		 * @before <p onscroll="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unscroll
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the submit event of each matched element.
+		 *
+		 * @example $("p").submit( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onsubmit="alert('Hello');">Hello</p>
+		 *
+		 * @name submit
+		 * @type jQuery
+		 * @param Function fn A function to bind to the submit event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Trigger the submit event of each matched element. This causes all of the functions
+		 * that have been bound to thet submit event to be executed.
+		 *
+		 * @example $("p").submit();
+		 * @before <p onsubmit="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name submit
+		 * @type jQuery
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Bind a function to the submit event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .submit() method, calling .onesubmit() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onesubmit( function() { alert("Hello"); } );
+		 * @before <p onsubmit="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first submit
+		 *
+		 * @name onesubmit
+		 * @type jQuery
+		 * @param Function fn A function to bind to the submit event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Removes a bound submit event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unsubmit( myFunction );
+		 * @before <p onsubmit="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unsubmit
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the submit event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Removes all bound submit events from each of the matched elements.
+		 *
+		 * @example $("p").unsubmit();
+		 * @before <p onsubmit="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unsubmit
+		 * @type jQuery
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Bind a function to the focus event of each matched element.
+		 *
+		 * @example $("p").focus( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onfocus="alert('Hello');">Hello</p>
+		 *
+		 * @name focus
+		 * @type jQuery
+		 * @param Function fn A function to bind to the focus event on each of the matched elements.
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Trigger the focus event of each matched element. This causes all of the functions
+		 * that have been bound to thet focus event to be executed.
+		 *
+		 * @example $("p").focus();
+		 * @before <p onfocus="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name focus
+		 * @type jQuery
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Bind a function to the focus event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .focus() method, calling .onefocus() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onefocus( function() { alert("Hello"); } );
+		 * @before <p onfocus="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first focus
+		 *
+		 * @name onefocus
+		 * @type jQuery
+		 * @param Function fn A function to bind to the focus event on each of the matched elements.
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Removes a bound focus event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unfocus( myFunction );
+		 * @before <p onfocus="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unfocus
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the focus event on each of the matched elements.
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Removes all bound focus events from each of the matched elements.
+		 *
+		 * @example $("p").unfocus();
+		 * @before <p onfocus="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unfocus
+		 * @type jQuery
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Bind a function to the keydown event of each matched element.
+		 *
+		 * @example $("p").keydown( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onkeydown="alert('Hello');">Hello</p>
+		 *
+		 * @name keydown
+		 * @type jQuery
+		 * @param Function fn A function to bind to the keydown event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Trigger the keydown event of each matched element. This causes all of the functions
+		 * that have been bound to thet keydown event to be executed.
+		 *
+		 * @example $("p").keydown();
+		 * @before <p onkeydown="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name keydown
+		 * @type jQuery
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Bind a function to the keydown event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .keydown() method, calling .onekeydown() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onekeydown( function() { alert("Hello"); } );
+		 * @before <p onkeydown="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first keydown
+		 *
+		 * @name onekeydown
+		 * @type jQuery
+		 * @param Function fn A function to bind to the keydown event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Removes a bound keydown event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unkeydown( myFunction );
+		 * @before <p onkeydown="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unkeydown
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the keydown event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Removes all bound keydown events from each of the matched elements.
+		 *
+		 * @example $("p").unkeydown();
+		 * @before <p onkeydown="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unkeydown
+		 * @type jQuery
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Bind a function to the dblclick event of each matched element.
+		 *
+		 * @example $("p").dblclick( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p ondblclick="alert('Hello');">Hello</p>
+		 *
+		 * @name dblclick
+		 * @type jQuery
+		 * @param Function fn A function to bind to the dblclick event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Trigger the dblclick event of each matched element. This causes all of the functions
+		 * that have been bound to thet dblclick event to be executed.
+		 *
+		 * @example $("p").dblclick();
+		 * @before <p ondblclick="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name dblclick
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the dblclick event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .dblclick() method, calling .onedblclick() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onedblclick( function() { alert("Hello"); } );
+		 * @before <p ondblclick="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first dblclick
+		 *
+		 * @name onedblclick
+		 * @type jQuery
+		 * @param Function fn A function to bind to the dblclick event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes a bound dblclick event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").undblclick( myFunction );
+		 * @before <p ondblclick="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name undblclick
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the dblclick event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes all bound dblclick events from each of the matched elements.
+		 *
+		 * @example $("p").undblclick();
+		 * @before <p ondblclick="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name undblclick
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the keypress event of each matched element.
+		 *
+		 * @example $("p").keypress( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onkeypress="alert('Hello');">Hello</p>
+		 *
+		 * @name keypress
+		 * @type jQuery
+		 * @param Function fn A function to bind to the keypress event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Trigger the keypress event of each matched element. This causes all of the functions
+		 * that have been bound to thet keypress event to be executed.
+		 *
+		 * @example $("p").keypress();
+		 * @before <p onkeypress="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name keypress
+		 * @type jQuery
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Bind a function to the keypress event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .keypress() method, calling .onekeypress() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onekeypress( function() { alert("Hello"); } );
+		 * @before <p onkeypress="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first keypress
+		 *
+		 * @name onekeypress
+		 * @type jQuery
+		 * @param Function fn A function to bind to the keypress event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Removes a bound keypress event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unkeypress( myFunction );
+		 * @before <p onkeypress="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unkeypress
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the keypress event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Removes all bound keypress events from each of the matched elements.
+		 *
+		 * @example $("p").unkeypress();
+		 * @before <p onkeypress="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unkeypress
+		 * @type jQuery
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Bind a function to the error event of each matched element.
+		 *
+		 * @example $("p").error( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onerror="alert('Hello');">Hello</p>
+		 *
+		 * @name error
+		 * @type jQuery
+		 * @param Function fn A function to bind to the error event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Trigger the error event of each matched element. This causes all of the functions
+		 * that have been bound to thet error event to be executed.
+		 *
+		 * @example $("p").error();
+		 * @before <p onerror="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name error
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the error event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .error() method, calling .oneerror() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").oneerror( function() { alert("Hello"); } );
+		 * @before <p onerror="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first error
+		 *
+		 * @name oneerror
+		 * @type jQuery
+		 * @param Function fn A function to bind to the error event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes a bound error event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unerror( myFunction );
+		 * @before <p onerror="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unerror
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the error event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes all bound error events from each of the matched elements.
+		 *
+		 * @example $("p").unerror();
+		 * @before <p onerror="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unerror
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the blur event of each matched element.
+		 *
+		 * @example $("p").blur( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onblur="alert('Hello');">Hello</p>
+		 *
+		 * @name blur
+		 * @type jQuery
+		 * @param Function fn A function to bind to the blur event on each of the matched elements.
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Trigger the blur event of each matched element. This causes all of the functions
+		 * that have been bound to thet blur event to be executed.
+		 *
+		 * @example $("p").blur();
+		 * @before <p onblur="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name blur
+		 * @type jQuery
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Bind a function to the blur event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .blur() method, calling .oneblur() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").oneblur( function() { alert("Hello"); } );
+		 * @before <p onblur="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first blur
+		 *
+		 * @name oneblur
+		 * @type jQuery
+		 * @param Function fn A function to bind to the blur event on each of the matched elements.
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Removes a bound blur event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unblur( myFunction );
+		 * @before <p onblur="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unblur
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the blur event on each of the matched elements.
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Removes all bound blur events from each of the matched elements.
+		 *
+		 * @example $("p").unblur();
+		 * @before <p onblur="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unblur
+		 * @type jQuery
+		 * @cat Events/UI
+		 */
+
+		/**
+		 * Bind a function to the load event of each matched element.
+		 *
+		 * @example $("p").load( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onload="alert('Hello');">Hello</p>
+		 *
+		 * @name load
+		 * @type jQuery
+		 * @param Function fn A function to bind to the load event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Trigger the load event of each matched element. This causes all of the functions
+		 * that have been bound to thet load event to be executed.
+		 *
+		 * @example $("p").load();
+		 * @before <p onload="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name load
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the load event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .load() method, calling .oneload() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").oneload( function() { alert("Hello"); } );
+		 * @before <p onload="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first load
+		 *
+		 * @name oneload
+		 * @type jQuery
+		 * @param Function fn A function to bind to the load event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes a bound load event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unload( myFunction );
+		 * @before <p onload="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unload
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the load event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes all bound load events from each of the matched elements.
+		 *
+		 * @example $("p").unload();
+		 * @before <p onload="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unload
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the select event of each matched element.
+		 *
+		 * @example $("p").select( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onselect="alert('Hello');">Hello</p>
+		 *
+		 * @name select
+		 * @type jQuery
+		 * @param Function fn A function to bind to the select event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Trigger the select event of each matched element. This causes all of the functions
+		 * that have been bound to thet select event to be executed.
+		 *
+		 * @example $("p").select();
+		 * @before <p onselect="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name select
+		 * @type jQuery
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Bind a function to the select event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .select() method, calling .oneselect() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").oneselect( function() { alert("Hello"); } );
+		 * @before <p onselect="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first select
+		 *
+		 * @name oneselect
+		 * @type jQuery
+		 * @param Function fn A function to bind to the select event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Removes a bound select event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unselect( myFunction );
+		 * @before <p onselect="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unselect
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the select event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Removes all bound select events from each of the matched elements.
+		 *
+		 * @example $("p").unselect();
+		 * @before <p onselect="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unselect
+		 * @type jQuery
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Bind a function to the mouseup event of each matched element.
+		 *
+		 * @example $("p").mouseup( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onmouseup="alert('Hello');">Hello</p>
+		 *
+		 * @name mouseup
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mouseup event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Trigger the mouseup event of each matched element. This causes all of the functions
+		 * that have been bound to thet mouseup event to be executed.
+		 *
+		 * @example $("p").mouseup();
+		 * @before <p onmouseup="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name mouseup
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the mouseup event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .mouseup() method, calling .onemouseup() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onemouseup( function() { alert("Hello"); } );
+		 * @before <p onmouseup="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first mouseup
+		 *
+		 * @name onemouseup
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mouseup event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes a bound mouseup event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unmouseup( myFunction );
+		 * @before <p onmouseup="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmouseup
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the mouseup event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes all bound mouseup events from each of the matched elements.
+		 *
+		 * @example $("p").unmouseup();
+		 * @before <p onmouseup="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmouseup
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the unload event of each matched element.
+		 *
+		 * @example $("p").unload( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onunload="alert('Hello');">Hello</p>
+		 *
+		 * @name unload
+		 * @type jQuery
+		 * @param Function fn A function to bind to the unload event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Trigger the unload event of each matched element. This causes all of the functions
+		 * that have been bound to thet unload event to be executed.
+		 *
+		 * @example $("p").unload();
+		 * @before <p onunload="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name unload
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the unload event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .unload() method, calling .oneunload() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").oneunload( function() { alert("Hello"); } );
+		 * @before <p onunload="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first unload
+		 *
+		 * @name oneunload
+		 * @type jQuery
+		 * @param Function fn A function to bind to the unload event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes a bound unload event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").ununload( myFunction );
+		 * @before <p onunload="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name ununload
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the unload event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes all bound unload events from each of the matched elements.
+		 *
+		 * @example $("p").ununload();
+		 * @before <p onunload="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name ununload
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the change event of each matched element.
+		 *
+		 * @example $("p").change( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onchange="alert('Hello');">Hello</p>
+		 *
+		 * @name change
+		 * @type jQuery
+		 * @param Function fn A function to bind to the change event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Trigger the change event of each matched element. This causes all of the functions
+		 * that have been bound to thet change event to be executed.
+		 *
+		 * @example $("p").change();
+		 * @before <p onchange="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name change
+		 * @type jQuery
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Bind a function to the change event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .change() method, calling .onechange() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onechange( function() { alert("Hello"); } );
+		 * @before <p onchange="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first change
+		 *
+		 * @name onechange
+		 * @type jQuery
+		 * @param Function fn A function to bind to the change event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Removes a bound change event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unchange( myFunction );
+		 * @before <p onchange="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unchange
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the change event on each of the matched elements.
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Removes all bound change events from each of the matched elements.
+		 *
+		 * @example $("p").unchange();
+		 * @before <p onchange="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unchange
+		 * @type jQuery
+		 * @cat Events/Form
+		 */
+
+		/**
+		 * Bind a function to the mouseout event of each matched element.
+		 *
+		 * @example $("p").mouseout( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onmouseout="alert('Hello');">Hello</p>
+		 *
+		 * @name mouseout
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mouseout event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Trigger the mouseout event of each matched element. This causes all of the functions
+		 * that have been bound to thet mouseout event to be executed.
+		 *
+		 * @example $("p").mouseout();
+		 * @before <p onmouseout="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name mouseout
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the mouseout event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .mouseout() method, calling .onemouseout() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onemouseout( function() { alert("Hello"); } );
+		 * @before <p onmouseout="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first mouseout
+		 *
+		 * @name onemouseout
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mouseout event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes a bound mouseout event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unmouseout( myFunction );
+		 * @before <p onmouseout="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmouseout
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the mouseout event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes all bound mouseout events from each of the matched elements.
+		 *
+		 * @example $("p").unmouseout();
+		 * @before <p onmouseout="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmouseout
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the keyup event of each matched element.
+		 *
+		 * @example $("p").keyup( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onkeyup="alert('Hello');">Hello</p>
+		 *
+		 * @name keyup
+		 * @type jQuery
+		 * @param Function fn A function to bind to the keyup event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Trigger the keyup event of each matched element. This causes all of the functions
+		 * that have been bound to thet keyup event to be executed.
+		 *
+		 * @example $("p").keyup();
+		 * @before <p onkeyup="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name keyup
+		 * @type jQuery
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Bind a function to the keyup event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .keyup() method, calling .onekeyup() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onekeyup( function() { alert("Hello"); } );
+		 * @before <p onkeyup="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first keyup
+		 *
+		 * @name onekeyup
+		 * @type jQuery
+		 * @param Function fn A function to bind to the keyup event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Removes a bound keyup event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unkeyup( myFunction );
+		 * @before <p onkeyup="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unkeyup
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the keyup event on each of the matched elements.
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Removes all bound keyup events from each of the matched elements.
+		 *
+		 * @example $("p").unkeyup();
+		 * @before <p onkeyup="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unkeyup
+		 * @type jQuery
+		 * @cat Events/Keyboard
+		 */
+
+		/**
+		 * Bind a function to the click event of each matched element.
+		 *
+		 * @example $("p").click( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onclick="alert('Hello');">Hello</p>
+		 *
+		 * @name click
+		 * @type jQuery
+		 * @param Function fn A function to bind to the click event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Trigger the click event of each matched element. This causes all of the functions
+		 * that have been bound to thet click event to be executed.
+		 *
+		 * @example $("p").click();
+		 * @before <p onclick="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name click
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the click event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .click() method, calling .oneclick() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").oneclick( function() { alert("Hello"); } );
+		 * @before <p onclick="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first click
+		 *
+		 * @name oneclick
+		 * @type jQuery
+		 * @param Function fn A function to bind to the click event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes a bound click event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unclick( myFunction );
+		 * @before <p onclick="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unclick
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the click event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes all bound click events from each of the matched elements.
+		 *
+		 * @example $("p").unclick();
+		 * @before <p onclick="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unclick
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the resize event of each matched element.
+		 *
+		 * @example $("p").resize( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onresize="alert('Hello');">Hello</p>
+		 *
+		 * @name resize
+		 * @type jQuery
+		 * @param Function fn A function to bind to the resize event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Trigger the resize event of each matched element. This causes all of the functions
+		 * that have been bound to thet resize event to be executed.
+		 *
+		 * @example $("p").resize();
+		 * @before <p onresize="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name resize
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the resize event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .resize() method, calling .oneresize() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").oneresize( function() { alert("Hello"); } );
+		 * @before <p onresize="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first resize
+		 *
+		 * @name oneresize
+		 * @type jQuery
+		 * @param Function fn A function to bind to the resize event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes a bound resize event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unresize( myFunction );
+		 * @before <p onresize="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unresize
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the resize event on each of the matched elements.
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Removes all bound resize events from each of the matched elements.
+		 *
+		 * @example $("p").unresize();
+		 * @before <p onresize="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unresize
+		 * @type jQuery
+		 * @cat Events/Browser
+		 */
+
+		/**
+		 * Bind a function to the mousemove event of each matched element.
+		 *
+		 * @example $("p").mousemove( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onmousemove="alert('Hello');">Hello</p>
+		 *
+		 * @name mousemove
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mousemove event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Trigger the mousemove event of each matched element. This causes all of the functions
+		 * that have been bound to thet mousemove event to be executed.
+		 *
+		 * @example $("p").mousemove();
+		 * @before <p onmousemove="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name mousemove
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the mousemove event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .mousemove() method, calling .onemousemove() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onemousemove( function() { alert("Hello"); } );
+		 * @before <p onmousemove="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first mousemove
+		 *
+		 * @name onemousemove
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mousemove event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes a bound mousemove event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unmousemove( myFunction );
+		 * @before <p onmousemove="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmousemove
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the mousemove event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes all bound mousemove events from each of the matched elements.
+		 *
+		 * @example $("p").unmousemove();
+		 * @before <p onmousemove="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmousemove
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the mousedown event of each matched element.
+		 *
+		 * @example $("p").mousedown( function() { alert("Hello"); } );
+		 * @before <p>Hello</p>
+		 * @result <p onmousedown="alert('Hello');">Hello</p>
+		 *
+		 * @name mousedown
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mousedown event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Trigger the mousedown event of each matched element. This causes all of the functions
+		 * that have been bound to thet mousedown event to be executed.
+		 *
+		 * @example $("p").mousedown();
+		 * @before <p onmousedown="alert('Hello');">Hello</p>
+		 * @result alert('Hello');
+		 *
+		 * @name mousedown
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Bind a function to the mousedown event of each matched element, which will only be executed once.
+		 * Unlike a call to the normal .mousedown() method, calling .onemousedown() causes the bound function to be
+		 * only executed the first time it is triggered, and never again (unless it is re-bound).
+		 *
+		 * @example $("p").onemousedown( function() { alert("Hello"); } );
+		 * @before <p onmousedown="alert('Hello');">Hello</p>
+		 * @result alert('Hello'); // Only executed for the first mousedown
+		 *
+		 * @name onemousedown
+		 * @type jQuery
+		 * @param Function fn A function to bind to the mousedown event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes a bound mousedown event from each of the matched
+		 * elements. You must pass the identical function that was used in the original 
+		 * bind method.
+		 *
+		 * @example $("p").unmousedown( myFunction );
+		 * @before <p onmousedown="myFunction">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmousedown
+		 * @type jQuery
+		 * @param Function fn A function to unbind from the mousedown event on each of the matched elements.
+		 * @cat Events/Mouse
+		 */
+
+		/**
+		 * Removes all bound mousedown events from each of the matched elements.
+		 *
+		 * @example $("p").unmousedown();
+		 * @before <p onmousedown="alert('Hello');">Hello</p>
+		 * @result <p>Hello</p>
+		 *
+		 * @name unmousedown
+		 * @type jQuery
+		 * @cat Events/Mouse
+		 */
+		 
+		 /**
+		  * @test var count;
+		  * var e = ("blur,focus,load,resize,scroll,unload,click,dblclick," +
+		  * 		"mousedown,mouseup,mousemove,mouseover,mouseout,change,reset,select," + 
+		  * 		"submit,keydown,keypress,keyup,error").split(",");
+		  * var handler1 = function(event) {
+		  * 	count++;
+		  * };
+		  * var handler2 = function(event) {
+		  * 	count++;
+		  * };
+		  * for( var i=0; i < e.length; i++) {
+		  * 	var event = e[i];
+		  * 	count = 0;
+		  * 	// bind handler
+		  * 	$(document)[event](handler1);
+		  *		$(document)[event](handler2);
+		  * 	$(document)["one"+event](handler1);
+		  * 	
+		  * 	// call event two times
+		  * 	$(document)[event]();
+		  * 	$(document)[event]();
+		  * 	
+		  * 	// unbind events
+		  * 	$(document)["un"+event](handler1);
+		  * 	// call once more
+		  * 	$(document)[event]();
+		  *
+		  * 	// remove all handlers
+		  *		$(document)["un"+event]();
+		  *
+		  * 	// call once more
+		  * 	$(document)[event]();
+		  * 	
+		  * 	// assert count
+		  * @test ok( count == 6, 'Checking event ' + event);
+		  * }
+		  *
+		  * @private
+		  * @name eventTesting
+		  */
+
+	var e = ("blur,focus,load,resize,scroll,unload,click,dblclick," +
+		"mousedown,mouseup,mousemove,mouseover,mouseout,change,reset,select," + 
+		"submit,keydown,keypress,keyup,error").split(",");
+
+	// Go through all the event names, but make sure that
+	// it is enclosed properly
+	for ( var i = 0; i < e.length; i++ ) new function(){
+			
+		var o = e[i];
+		
+		// Handle event binding
+		jQuery.fn[o] = function(f){
+			return f ? this.bind(o, f) : this.trigger(o);
+		};
+		
+		// Handle event unbinding
+		jQuery.fn["un"+o] = function(f){ return this.unbind(o, f); };
+		
+		// Finally, handle events that only fire once
+		jQuery.fn["one"+o] = function(f){
+			// Attach the event listener
+			return this.each(function(){
+
+				var count = 0;
+
+				// Add the event
+				jQuery.event.add( this, o, function(e){
+					// If this function has already been executed, stop
+					if ( count++ ) return;
+				
+					// And execute the bound function
+					return f.apply(this, [e]);
+				});
+			});
+		};
+			
+	};
+	
+	// If Mozilla is used
+	if ( jQuery.browser.mozilla || jQuery.browser.opera ) {
+		// Use the handy event callback
+		document.addEventListener( "DOMContentLoaded", jQuery.ready, false );
+	
+	// If IE is used, use the excellent hack by Matthias Miller
+	// http://www.outofhanwell.com/blog/index.php?title=the_window_onload_problem_revisited
+	} else if ( jQuery.browser.msie ) {
+	
+		// Only works if you document.write() it
+		document.write("<scr" + "ipt id=__ie_init defer=true " + 
+			"src=//:><\/script>");
+	
+		// Use the defer script hack
+		var script = document.getElementById("__ie_init");
+		script.onreadystatechange = function() {
+			if ( this.readyState != "complete" ) return;
+			this.parentNode.removeChild( this );
+			jQuery.ready();
+		};
+	
+		// Clear from memory
+		script = null;
+	
+	// If Safari  is used
+	} else if ( jQuery.browser.safari ) {
+		// Continually check to see if the document.readyState is valid
+		jQuery.safariTimer = setInterval(function(){
+			// loaded and complete are both valid states
+			if ( document.readyState == "loaded" || 
+				document.readyState == "complete" ) {
+	
+				// If either one are found, remove the timer
+				clearInterval( jQuery.safariTimer );
+				jQuery.safariTimer = null;
+	
+				// and execute any waiting functions
+				jQuery.ready();
+			}
+		}, 10);
+	} 
+
+	// A fallback to window.onload, that will always work
+	jQuery.event.add( window, "load", jQuery.ready );
+	
+};
+jQuery.fn.extend({
+
+	// overwrite the old show method
+	_show: jQuery.fn.show,
+	
+	/**
+	 * Show all matched elements using a graceful animation.
+	 * The height, width, and opacity of each of the matched elements 
+	 * are changed dynamically according to the specified speed.
+	 *
+	 * @example $("p").show("slow");
+	 *
+	 * @name show
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Show all matched elements using a graceful animation and firing a callback
+	 * function after completion.
+	 * The height, width, and opacity of each of the matched elements 
+	 * are changed dynamically according to the specified speed.
+	 *
+	 * @example $("p").show("slow",function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name show
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	show: function(speed,callback){
+		return speed ? this.animate({
+			height: "show", width: "show", opacity: "show"
+		}, speed, callback) : this._show();
+	},
+	
+	// Overwrite the old hide method
+	_hide: jQuery.fn.hide,
+	
+	/**
+	 * Hide all matched elements using a graceful animation.
+	 * The height, width, and opacity of each of the matched elements 
+	 * are changed dynamically according to the specified speed.
+	 *
+	 * @example $("p").hide("slow");
+	 *
+	 * @name hide
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Hide all matched elements using a graceful animation and firing a callback
+	 * function after completion.
+	 * The height, width, and opacity of each of the matched elements 
+	 * are changed dynamically according to the specified speed.
+	 *
+	 * @example $("p").hide("slow",function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name hide
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	hide: function(speed,callback){
+		return speed ? this.animate({
+			height: "hide", width: "hide", opacity: "hide"
+		}, speed, callback) : this._hide();
+	},
+	
+	/**
+	 * Reveal all matched elements by adjusting their height.
+	 * Only the height is adjusted for this animation, causing all matched
+	 * elements to be revealed in a "sliding" manner.
+	 *
+	 * @example $("p").slideDown("slow");
+	 *
+	 * @name slideDown
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Reveal all matched elements by adjusting their height and firing a callback
+	 * function after completion.
+	 * Only the height is adjusted for this animation, causing all matched
+	 * elements to be revealed in a "sliding" manner.
+	 *
+	 * @example $("p").slideDown("slow",function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name slideDown
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	slideDown: function(speed,callback){
+		return this.animate({height: "show"}, speed, callback);
+	},
+	
+	/**
+	 * Hide all matched elements by adjusting their height.
+	 * Only the height is adjusted for this animation, causing all matched
+	 * elements to be hidden in a "sliding" manner.
+	 *
+	 * @example $("p").slideUp("slow");
+	 *
+	 * @name slideUp
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Hide all matched elements by adjusting their height and firing a callback
+	 * function after completion.
+	 * Only the height is adjusted for this animation, causing all matched
+	 * elements to be hidden in a "sliding" manner.
+	 *
+	 * @example $("p").slideUp("slow",function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name slideUp
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	slideUp: function(speed,callback){
+		return this.animate({height: "hide"}, speed, callback);
+	},
+
+	/**
+	 * Toggle the visibility of all matched elements by adjusting their height.
+	 * Only the height is adjusted for this animation, causing all matched
+	 * elements to be hidden in a "sliding" manner.
+	 *
+	 * @example $("p").slideToggle("slow");
+	 *
+	 * @name slideToggle
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Toggle the visibility of all matched elements by adjusting their height
+	 * and firing a callback function after completion.
+	 * Only the height is adjusted for this animation, causing all matched
+	 * elements to be hidden in a "sliding" manner.
+	 *
+	 * @example $("p").slideToggle("slow",function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name slideToggle
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	slideToggle: function(speed,callback){
+		return this.each(function(){
+			var state = $(this).is(":hidden") ? "show" : "hide";
+			$(this).animate({height: state}, speed, callback);
+		});
+	},
+	
+	/**
+	 * Fade in all matched elements by adjusting their opacity.
+	 * Only the opacity is adjusted for this animation, meaning that
+	 * all of the matched elements should already have some form of height
+	 * and width associated with them.
+	 *
+	 * @example $("p").fadeIn("slow");
+	 *
+	 * @name fadeIn
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Fade in all matched elements by adjusting their opacity and firing a 
+	 * callback function after completion.
+	 * Only the opacity is adjusted for this animation, meaning that
+	 * all of the matched elements should already have some form of height
+	 * and width associated with them.
+	 *
+	 * @example $("p").fadeIn("slow",function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name fadeIn
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	fadeIn: function(speed,callback){
+		return this.animate({opacity: "show"}, speed, callback);
+	},
+	
+	/**
+	 * Fade out all matched elements by adjusting their opacity.
+	 * Only the opacity is adjusted for this animation, meaning that
+	 * all of the matched elements should already have some form of height
+	 * and width associated with them.
+	 *
+	 * @example $("p").fadeOut("slow");
+	 *
+	 * @name fadeOut
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Fade out all matched elements by adjusting their opacity and firing a 
+	 * callback function after completion.
+	 * Only the opacity is adjusted for this animation, meaning that
+	 * all of the matched elements should already have some form of height
+	 * and width associated with them.
+	 *
+	 * @example $("p").fadeOut("slow",function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name fadeOut
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	fadeOut: function(speed,callback){
+		return this.animate({opacity: "hide"}, speed, callback);
+	},
+	
+	/**
+	 * Fade the opacity of all matched elements to a specified opacity.
+	 * Only the opacity is adjusted for this animation, meaning that
+	 * all of the matched elements should already have some form of height
+	 * and width associated with them.
+	 *
+	 * @example $("p").fadeTo("slow", 0.5);
+	 *
+	 * @name fadeTo
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Number opacity The opacity to fade to (a number from 0 to 1).
+	 * @cat Effects/Animations
+	 */
+	 
+	/**
+	 * Fade the opacity of all matched elements to a specified opacity and 
+	 * firing a callback function after completion.
+	 * Only the opacity is adjusted for this animation, meaning that
+	 * all of the matched elements should already have some form of height
+	 * and width associated with them.
+	 *
+	 * @example $("p").fadeTo("slow", 0.5, function(){
+	 *   alert("Animation Done.");
+	 * });
+	 *
+	 * @name fadeTo
+	 * @type jQuery
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Number opacity The opacity to fade to (a number from 0 to 1).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	fadeTo: function(speed,to,callback){
+		return this.animate({opacity: to}, speed, callback);
+	},
+	
+	/**
+	 * A function for making your own, custom, animations. The key aspect of
+	 * this function is the object of style properties that will be animated,
+	 * and to what end. Each key within the object represents a style property
+	 * that will also be animated (for example: "height", "top", or "opacity").
+	 *
+	 * The value associated with the key represents to what end the property
+	 * will be animated. If a number is provided as the value, then the style
+	 * property will be transitioned from its current state to that new number.
+	 * Oterwise if the string "hide", "show", or "toggle" is provided, a default
+	 * animation will be constructed for that property.
+	 *
+	 * @example $("p").animate({
+	 *   height: 'toggle', opacity: 'toggle'
+	 * }, "slow");
+	 *
+	 * @example $("p").animate({
+	 *   left: 50, opacity: 'show'
+	 * }, 500);
+	 *
+	 * @name animate
+	 * @type jQuery
+	 * @param Hash params A set of style attributes that you wish to animate, and to what end.
+	 * @param Object speed A string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).
+	 * @param Function callback A function to be executed whenever the animation completes.
+	 * @cat Effects/Animations
+	 */
+	animate: function(prop,speed,callback) {
+		return this.queue(function(){
+		
+			this.curAnim = prop;
+			
+			for ( var p in prop ) {
+				var e = new jQuery.fx( this, jQuery.speed(speed,callback), p );
+				if ( prop[p].constructor == Number )
+					e.custom( e.cur(), prop[p] );
+				else
+					e[ prop[p] ]( prop );
+			}
+			
+		});
+	},
+	
+	/**
+	 *
+	 * @private
+	 */
+	queue: function(type,fn){
+		if ( !fn ) {
+			fn = type;
+			type = "fx";
+		}
+	
+		return this.each(function(){
+			if ( !this.queue )
+				this.queue = {};
+	
+			if ( !this.queue[type] )
+				this.queue[type] = [];
+	
+			this.queue[type].push( fn );
+		
+			if ( this.queue[type].length == 1 )
+				fn.apply(this);
+		});
+	}
+
+});
+
+jQuery.extend({
+
+	setAuto: function(e,p) {
+		if ( e.notAuto ) return;
+
+		if ( p == "height" && e.scrollHeight != parseInt(jQuery.curCSS(e,p)) ) return;
+		if ( p == "width" && e.scrollWidth != parseInt(jQuery.curCSS(e,p)) ) return;
+
+		// Remember the original height
+		var a = e.style[p];
+
+		// Figure out the size of the height right now
+		var o = jQuery.curCSS(e,p,1);
+
+		if ( p == "height" && e.scrollHeight != o ||
+			p == "width" && e.scrollWidth != o ) return;
+
+		// Set the height to auto
+		e.style[p] = e.currentStyle ? "" : "auto";
+
+		// See what the size of "auto" is
+		var n = jQuery.curCSS(e,p,1);
+
+		// Revert back to the original size
+		if ( o != n && n != "auto" ) {
+			e.style[p] = a;
+			e.notAuto = true;
+		}
+	},
+	
+	speed: function(s,o) {
+		o = o || {};
+		
+		if ( o.constructor == Function )
+			o = { complete: o };
+		
+		var ss = { slow: 600, fast: 200 };
+		o.duration = (s && s.constructor == Number ? s : ss[s]) || 400;
+	
+		// Queueing
+		o.oldComplete = o.complete;
+		o.complete = function(){
+			jQuery.dequeue(this, "fx");
+			if ( o.oldComplete && o.oldComplete.constructor == Function )
+				o.oldComplete.apply( this );
+		};
+	
+		return o;
+	},
+	
+	queue: {},
+	
+	dequeue: function(elem,type){
+		type = type || "fx";
+	
+		if ( elem.queue && elem.queue[type] ) {
+			// Remove self
+			elem.queue[type].shift();
+	
+			// Get next function
+			var f = elem.queue[type][0];
+		
+			if ( f ) f.apply( elem );
+		}
+	},
+
+	/*
+	 * I originally wrote fx() as a clone of moo.fx and in the process
+	 * of making it small in size the code became illegible to sane
+	 * people. You've been warned.
+	 */
+	
+	fx: function( elem, options, prop ){
+	
+		var z = this;
+	
+		// The users options
+		z.o = {
+			duration: options.duration || 400,
+			complete: options.complete,
+			step: options.step
+		};
+	
+		// The element
+		z.el = elem;
+	
+		// The styles
+		var y = z.el.style;
+	
+		// Simple function for setting a style value
+		z.a = function(){
+			if ( options.step )
+				options.step.apply( elem, [ z.now ] );
+
+			if ( prop == "opacity" ) {
+				if (jQuery.browser.mozilla && z.now == 1) z.now = 0.9999;
+				if (window.ActiveXObject)
+					y.filter = "alpha(opacity=" + z.now*100 + ")";
+				else
+					y.opacity = z.now;
+
+			// My hate for IE will never die
+			} else if ( parseInt(z.now) )
+				y[prop] = parseInt(z.now) + "px";
+				
+			y.display = "block";
+		};
+	
+		// Figure out the maximum number to run to
+		z.max = function(){
+			return parseFloat( jQuery.css(z.el,prop) );
+		};
+	
+		// Get the current size
+		z.cur = function(){
+			var r = parseFloat( jQuery.curCSS(z.el, prop) );
+			return r && r > -10000 ? r : z.max();
+		};
+	
+		// Start an animation from one number to another
+		z.custom = function(from,to){
+			z.startTime = (new Date()).getTime();
+			z.now = from;
+			z.a();
+	
+			z.timer = setInterval(function(){
+				z.step(from, to);
+			}, 13);
+		};
+	
+		// Simple 'show' function
+		z.show = function( p ){
+			if ( !z.el.orig ) z.el.orig = {};
+
+			// Remember where we started, so that we can go back to it later
+			z.el.orig[prop] = this.cur();
+
+			z.custom( 0, z.el.orig[prop] );
+
+			// Stupid IE, look what you made me do
+			if ( prop != "opacity" )
+				y[prop] = "1px";
+		};
+	
+		// Simple 'hide' function
+		z.hide = function(){
+			if ( !z.el.orig ) z.el.orig = {};
+
+			// Remember where we started, so that we can go back to it later
+			z.el.orig[prop] = this.cur();
+
+			z.o.hide = true;
+
+			// Begin the animation
+			z.custom(z.el.orig[prop], 0);
+		};
+	
+		// IE has trouble with opacity if it does not have layout
+		if ( jQuery.browser.msie && !z.el.currentStyle.hasLayout )
+			y.zoom = "1";
+	
+		// Remember  the overflow of the element
+		if ( !z.el.oldOverlay )
+			z.el.oldOverflow = jQuery.css( z.el, "overflow" );
+	
+		// Make sure that nothing sneaks out
+		y.overflow = "hidden";
+	
+		// Each step of an animation
+		z.step = function(firstNum, lastNum){
+			var t = (new Date()).getTime();
+	
+			if (t > z.o.duration + z.startTime) {
+				// Stop the timer
+				clearInterval(z.timer);
+				z.timer = null;
+
+				z.now = lastNum;
+				z.a();
+
+				z.el.curAnim[ prop ] = true;
+				
+				var done = true;
+				for ( var i in z.el.curAnim )
+					if ( z.el.curAnim[i] !== true )
+						done = false;
+						
+				if ( done ) {
+					// Reset the overflow
+					y.overflow = z.el.oldOverflow;
+				
+					// Hide the element if the "hide" operation was done
+					if ( z.o.hide ) 
+						y.display = 'none';
+					
+					// Reset the property, if the item has been hidden
+					if ( z.o.hide ) {
+						for ( var p in z.el.curAnim ) {
+							y[ p ] = z.el.orig[p] + ( p == "opacity" ? "" : "px" );
+	
+							// set its height and/or width to auto
+							if ( p == 'height' || p == 'width' )
+								jQuery.setAuto( z.el, p );
+						}
+					}
+				}
+
+				// If a callback was provided, execute it
+				if( done && z.o.complete && z.o.complete.constructor == Function )
+					// Execute the complete function
+					z.o.complete.apply( z.el );
+			} else {
+				// Figure out where in the animation we are and set the number
+				var p = (t - this.startTime) / z.o.duration;
+				z.now = ((-Math.cos(p*Math.PI)/2) + 0.5) * (lastNum-firstNum) + firstNum;
+	
+				// Perform the next step of the animation
+				z.a();
+			}
+		};
+	
+	}
+
+});
+// AJAX Plugin
+// Docs Here:
+// http://jquery.com/docs/ajax/
+
+/**
+ * Load HTML from a remote file and inject it into the DOM, only if it's
+ * been modified by the server.
+ *
+ * @example $("#feeds").loadIfModified("feeds.html")
+ * @before <div id="feeds"></div>
+ * @result <div id="feeds"><b>45</b> feeds found.</div>
+ *
+ * @name loadIfModified
+ * @type jQuery
+ * @param String url The URL of the HTML file to load.
+ * @param Hash params A set of key/value pairs that will be sent to the server.
+ * @param Function callback A function to be executed whenever the data is loaded.
+ * @cat AJAX
+ */
+jQuery.fn.loadIfModified = function( url, params, callback ) {
+	this.load( url, params, callback, 1 );
+};
+
+/**
+ * Load HTML from a remote file and inject it into the DOM.
+ *
+ * @example $("#feeds").load("feeds.html")
+ * @before <div id="feeds"></div>
+ * @result <div id="feeds"><b>45</b> feeds found.</div>
+ *
+ * @name load
+ * @type jQuery
+ * @param String url The URL of the HTML file to load.
+ * @param Hash params A set of key/value pairs that will be sent to the server.
+ * @param Function callback A function to be executed whenever the data is loaded.
+ * @cat AJAX
+ */
+jQuery.fn.load = function( url, params, callback, ifModified ) {
+	if ( url.constructor == Function )
+		return this.bind("load", url);
+
+	callback = callback || function(){};
+
+	// Default to a GET request
+	var type = "GET";
+
+	// If the second parameter was provided
+	if ( params ) {
+		// If it's a function
+		if ( params.constructor == Function ) {
+			// We assume that it's the callback
+			callback = params;
+			params = null;
+			
+		// Otherwise, build a param string
+		} else {
+			params = jQuery.param( params );
+			type = "POST";
+		}
+	}
+	
+	var self = this;
+	
+	// Request the remote document
+	jQuery.ajax( type, url, params,function(res, status){
+		
+		if ( status == "success" || !ifModified && status == "notmodified" ) {
+			// Inject the HTML into all the matched elements
+			self.html(res.responseText).each( callback, [res.responseText, status] );
+			
+			// Execute all the scripts inside of the newly-injected HTML
+			$("script", self).each(function(){
+				if ( this.src )
+					$.getScript( this.src );
+				else
+					eval.call( window, this.text || this.textContent || this.innerHTML || "" );
+			});
+		} else
+			callback.apply( self, [res.responseText, status] );
+
+	}, ifModified);
+	
+	return this;
+};
+
+/**
+ * A function for serializing a set of input elements into
+ * a string of data.
+ *
+ * @example $("input[@type=text]").serialize();
+ * @before <input type='text' name='name' value='John'/>
+ * <input type='text' name='location' value='Boston'/>
+ * @after name=John&location=Boston
+ * @desc Serialize a selection of input elements to a string
+ *
+ * @name serialize
+ * @type String
+ * @cat AJAX
+ */
+jQuery.fn.serialize = function(){
+	return $.param( this );
+};
+
+// If IE is used, create a wrapper for the XMLHttpRequest object
+if ( jQuery.browser.msie && typeof XMLHttpRequest == "undefined" )
+	XMLHttpRequest = function(){
+		return new ActiveXObject(
+			navigator.userAgent.indexOf("MSIE 5") >= 0 ?
+			"Microsoft.XMLHTTP" : "Msxml2.XMLHTTP"
+		);
+	};
+
+// Attach a bunch of functions for handling common AJAX events
+
+/**
+ * Attach a function to be executed whenever an AJAX request begins.
+ *
+ * @example $("#loading").ajaxStart(function(){
+ *   $(this).show();
+ * });
+ * @desc Show a loading message whenever an AJAX request starts.
+ *
+ * @name ajaxStart
+ * @type jQuery
+ * @param Function callback The function to execute.
+ * @cat AJAX
+ */
+ 
+/**
+ * Attach a function to be executed whenever all AJAX requests have ended.
+ *
+ * @example $("#loading").ajaxStop(function(){
+ *   $(this).hide();
+ * });
+ * @desc Hide a loading message after all the AJAX requests have stopped.
+ *
+ * @name ajaxStop
+ * @type jQuery
+ * @param Function callback The function to execute.
+ * @cat AJAX
+ */
+ 
+/**
+ * Attach a function to be executed whenever an AJAX request completes.
+ *
+ * @example $("#msg").ajaxComplete(function(){
+ *   $(this).append("<li>Request Complete.</li>");
+ * });
+ * @desc Show a message when an AJAX request completes.
+ *
+ * @name ajaxComplete
+ * @type jQuery
+ * @param Function callback The function to execute.
+ * @cat AJAX
+ */
+ 
+/**
+ * Attach a function to be executed whenever an AJAX request completes
+ * successfully.
+ *
+ * @example $("#msg").ajaxSuccess(function(){
+ *   $(this).append("<li>Successful Request!</li>");
+ * });
+ * @desc Show a message when an AJAX request completes successfully.
+ *
+ * @name ajaxSuccess
+ * @type jQuery
+ * @param Function callback The function to execute.
+ * @cat AJAX
+ */
+ 
+/**
+ * Attach a function to be executed whenever an AJAX request fails.
+ *
+ * @example $("#msg").ajaxError(function(){
+ *   $(this).append("<li>Error requesting page.</li>");
+ * });
+ * @desc Show a message when an AJAX request fails.
+ *
+ * @name ajaxError
+ * @type jQuery
+ * @param Function callback The function to execute.
+ * @cat AJAX
+ */
+
+new function(){
+	var e = "ajaxStart,ajaxStop,ajaxComplete,ajaxError,ajaxSuccess".split(",");
+	
+	for ( var i = 0; i < e.length; i++ ) new function(){
+		var o = e[i];
+		jQuery.fn[o] = function(f){
+			return this.bind(o, f);
+		};
+	};
+};
+
+jQuery.extend({
+
+	/**
+	 * Load a remote page using an HTTP GET request. All of the arguments to
+	 * the method (except URL) are optional.
+	 *
+	 * @example $.get("test.cgi")
+	 *
+	 * @example $.get("test.cgi", { name: "John", time: "2pm" } )
+	 *
+	 * @example $.get("test.cgi", function(data){
+	 *   alert("Data Loaded: " + data);
+	 * })
+	 *
+	 * @example $.get("test.cgi",
+	 *   { name: "John", time: "2pm" },
+	 *   function(data){
+	 *     alert("Data Loaded: " + data);
+	 *   }
+	 * )
+	 *
+	 * @name $.get
+	 * @type jQuery
+	 * @param String url The URL of the page to load.
+	 * @param Hash params A set of key/value pairs that will be sent to the server.
+	 * @param Function callback A function to be executed whenever the data is loaded.
+	 * @cat AJAX
+	 */
+	get: function( url, data, callback, type, ifModified ) {
+		if ( data.constructor == Function ) {
+			type = callback;
+			callback = data;
+			data = null;
+		}
+		
+		if ( data ) url += "?" + jQuery.param(data);
+		
+		// Build and start the HTTP Request
+		jQuery.ajax( "GET", url, null, function(r, status) {
+			if ( callback ) callback( jQuery.httpData(r,type), status );
+		}, ifModified);
+	},
+	
+	/**
+	 * Load a remote page using an HTTP GET request, only if it hasn't
+	 * been modified since it was last retrieved. All of the arguments to
+	 * the method (except URL) are optional.
+	 *
+	 * @example $.getIfModified("test.html")
+	 *
+	 * @example $.getIfModified("test.html", { name: "John", time: "2pm" } )
+	 *
+	 * @example $.getIfModified("test.cgi", function(data){
+	 *   alert("Data Loaded: " + data);
+	 * })
+	 *
+	 * @example $.getifModified("test.cgi",
+	 *   { name: "John", time: "2pm" },
+	 *   function(data){
+	 *     alert("Data Loaded: " + data);
+	 *   }
+	 * )
+	 *
+	 * @name $.getIfModified
+	 * @type jQuery
+	 * @param String url The URL of the page to load.
+	 * @param Hash params A set of key/value pairs that will be sent to the server.
+	 * @param Function callback A function to be executed whenever the data is loaded.
+	 * @cat AJAX
+	 */
+	getIfModified: function( url, data, callback, type ) {
+		jQuery.get(url, data, callback, type, 1);
+	},
+
+	/**
+	 * Loads, and executes, a remote JavaScript file using an HTTP GET request.
+	 * All of the arguments to the method (except URL) are optional.
+	 *
+	 * @example $.getScript("test.js")
+	 *
+	 * @example $.getScript("test.js", function(){
+	 *   alert("Script loaded and executed.");
+	 * })
+	 *
+	 *
+	 * @name $.getScript
+	 * @type jQuery
+	 * @param String url The URL of the page to load.
+	 * @param Function callback A function to be executed whenever the data is loaded.
+	 * @cat AJAX
+	 */
+	getScript: function( url, data, callback ) {
+		jQuery.get(url, data, callback, "script");
+	},
+	
+	/**
+	 * Load a remote JSON object using an HTTP GET request.
+	 * All of the arguments to the method (except URL) are optional.
+	 *
+	 * @example $.getJSON("test.js", function(json){
+	 *   alert("JSON Data: " + json.users[3].name);
+	 * })
+	 *
+	 * @example $.getJSON("test.js",
+	 *   { name: "John", time: "2pm" },
+	 *   function(json){
+	 *     alert("JSON Data: " + json.users[3].name);
+	 *   }
+	 * )
+	 *
+	 * @name $.getJSON
+	 * @type jQuery
+	 * @param String url The URL of the page to load.
+	 * @param Hash params A set of key/value pairs that will be sent to the server.
+	 * @param Function callback A function to be executed whenever the data is loaded.
+	 * @cat AJAX
+	 */
+	getJSON: function( url, data, callback ) {
+		jQuery.get(url, data, callback, "json");
+	},
+	
+	/**
+	 * Load a remote page using an HTTP POST request. All of the arguments to
+	 * the method (except URL) are optional.
+	 *
+	 * @example $.post("test.cgi")
+	 *
+	 * @example $.post("test.cgi", { name: "John", time: "2pm" } )
+	 *
+	 * @example $.post("test.cgi", function(data){
+	 *   alert("Data Loaded: " + data);
+	 * })
+	 *
+	 * @example $.post("test.cgi",
+	 *   { name: "John", time: "2pm" },
+	 *   function(data){
+	 *     alert("Data Loaded: " + data);
+	 *   }
+	 * )
+	 *
+	 * @name $.post
+	 * @type jQuery
+	 * @param String url The URL of the page to load.
+	 * @param Hash params A set of key/value pairs that will be sent to the server.
+	 * @param Function callback A function to be executed whenever the data is loaded.
+	 * @cat AJAX
+	 */
+	post: function( url, data, callback, type ) {
+		// Build and start the HTTP Request
+		jQuery.ajax( "POST", url, jQuery.param(data), function(r, status) {
+			if ( callback ) callback( jQuery.httpData(r,type), status );
+		});
+	},
+	
+	// timeout (ms)
+	timeout: 0,
+
+	/**
+	 * Set the timeout of all AJAX requests to a specific amount of time.
+	 * This will make all future AJAX requests timeout after a specified amount
+	 * of time (the default is no timeout).
+	 *
+	 * @example $.ajaxTimeout( 5000 );
+	 * @desc Make all AJAX requests timeout after 5 seconds.
+	 *
+	 * @name $.ajaxTimeout
+	 * @type jQuery
+	 * @param Number time How long before an AJAX request times out.
+	 * @cat AJAX
+	 */
+	ajaxTimeout: function(timeout) {
+		jQuery.timeout = timeout;
+	},
+
+	// Last-Modified header cache for next request
+	lastModified: {},
+	
+	/**
+	 * Load a remote page using an HTTP request. This function is the primary
+	 * means of making AJAX requests using jQuery. $.ajax() takes one property,
+	 * an object of key/value pairs, that're are used to initalize the request.
+	 *
+	 * These are all the key/values that can be passed in to 'prop':
+	 *
+	 * (String) type - The type of request to make (e.g. "POST" or "GET").
+	 *
+	 * (String) url - The URL of the page to request.
+	 * 
+	 * (String) data - A string of data to be sent to the server (POST only).
+	 *
+	 * (String) dataType - The type of data that you're expecting back from
+	 * the server (e.g. "xml", "html", "script", or "json").
+	 *
+	 * (Function) error - A function to be called if the request fails. The
+	 * function gets passed two arguments: The XMLHttpRequest object and a
+	 * string describing the type of error that occurred.
+	 *
+	 * (Function) success - A function to be called if the request succeeds. The
+	 * function gets passed one argument: The data returned from the server,
+	 * formatted according to the 'dataType' parameter.
+	 *
+	 * (Function) complete - A function to be called when the request finishes. The
+	 * function gets passed two arguments: The XMLHttpRequest object and a
+	 * string describing the type the success of the request.
+	 *
+	 * @example $.ajax({
+	 *   type: "GET",
+	 *   url: "test.js",
+	 *   dataType: "script"
+	 * })
+	 * @desc Load and execute a JavaScript file.
+	 *
+	 * @example $.ajax({
+	 *   type: "POST",
+	 *   url: "some.php",
+	 *   data: "name=John&location=Boston",
+	 *   success: function(msg){
+	 *     alert( "Data Saved: " + msg );
+	 *   }
+	 * });
+	 * @desc Save some data to the server and notify the user once its complete.
+	 *
+	 * @name $.ajax
+	 * @type jQuery
+	 * @param Hash prop A set of properties to initialize the request with.
+	 * @cat AJAX
+	 */
+	ajax: function( type, url, data, ret, ifModified ) {
+		// If only a single argument was passed in,
+		// assume that it is a object of key/value pairs
+		if ( !url ) {
+			ret = type.complete;
+			var success = type.success;
+			var error = type.error;
+			var dataType = type.dataType;
+			data = type.data;
+			url = type.url;
+			type = type.type;
+		}
+		
+		// Watch for a new set of requests
+		if ( ! jQuery.active++ )
+			jQuery.event.trigger( "ajaxStart" );
+
+		var requestDone = false;
+	
+		// Create the request object
+		var xml = new XMLHttpRequest();
+	
+		// Open the socket
+		xml.open(type || "GET", url, true);
+		
+		// Set the correct header, if data is being sent
+		if ( data )
+			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		
+		// Set the If-Modified-Since header, if ifModified mode.
+		if ( ifModified )
+			xml.setRequestHeader("If-Modified-Since",
+				jQuery.lastModified[url] || "Thu, 01 Jan 1970 00:00:00 GMT" );
+		
+		// Set header so calling script knows that it's an XMLHttpRequest
+		xml.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	
+		// Make sure the browser sends the right content length
+		if ( xml.overrideMimeType )
+			xml.setRequestHeader("Connection", "close");
+		
+		// Wait for a response to come back
+		var onreadystatechange = function(istimeout){
+			// The transfer is complete and the data is available, or the request timed out
+			if ( xml && (xml.readyState == 4 || istimeout == "timeout") ) {
+				requestDone = true;
+
+				var status = jQuery.httpSuccess( xml ) && istimeout != "timeout" ?
+					ifModified && jQuery.httpNotModified( xml, url ) ? "notmodified" : "success" : "error";
+				
+				// Make sure that the request was successful or notmodified
+				if ( status != "error" ) {
+					// Cache Last-Modified header, if ifModified mode.
+					var modRes = xml.getResponseHeader("Last-Modified");
+					if ( ifModified && modRes ) jQuery.lastModified[url] = modRes;
+					
+					// If a local callback was specified, fire it
+					if ( success )
+						success( jQuery.httpData( xml, dataType ), status );
+					
+					// Fire the global callback
+					jQuery.event.trigger( "ajaxSuccess" );
+				
+				// Otherwise, the request was not successful
+				} else {
+					// If a local callback was specified, fire it
+					if ( error ) error( xml, status );
+					
+					// Fire the global callback
+					jQuery.event.trigger( "ajaxError" );
+				}
+				
+				// The request was completed
+				jQuery.event.trigger( "ajaxComplete" );
+				
+				// Handle the global AJAX counter
+				if ( ! --jQuery.active )
+					jQuery.event.trigger( "ajaxStop" );
+	
+				// Process result
+				if ( ret ) ret(xml, status);
+				
+				// Stop memory leaks
+				xml.onreadystatechange = function(){};
+				xml = null;
+				
+			}
+		};
+		xml.onreadystatechange = onreadystatechange;
+		
+		// Timeout checker
+		if(jQuery.timeout > 0)
+			setTimeout(function(){
+				// Check to see if the request is still happening
+				if (xml) {
+					// Cancel the request
+					xml.abort();
+
+					if ( !requestDone ) onreadystatechange( "timeout" );
+
+					// Clear from memory
+					xml = null;
+				}
+			}, jQuery.timeout);
+		
+		// Send the data
+		xml.send(data);
+	},
+	
+	// Counter for holding the number of active queries
+	active: 0,
+	
+	// Determines if an XMLHttpRequest was successful or not
+	httpSuccess: function(r) {
+		try {
+			return !r.status && location.protocol == "file:" ||
+				( r.status >= 200 && r.status < 300 ) || r.status == 304 ||
+				jQuery.browser.safari && r.status == undefined;
+		} catch(e){}
+
+		return false;
+	},
+
+	// Determines if an XMLHttpRequest returns NotModified
+	httpNotModified: function(xml, url) {
+		try {
+			var xmlRes = xml.getResponseHeader("Last-Modified");
+
+			// Firefox always returns 200. check Last-Modified date
+			return xml.status == 304 || xmlRes == jQuery.lastModified[url] ||
+				jQuery.browser.safari && xml.status == undefined;
+		} catch(e){}
+
+		return false;
+	},
+	
+	/* Get the data out of an XMLHttpRequest.
+	 * Return parsed XML if content-type header is "xml" and type is "xml" or omitted,
+	 * otherwise return plain text.
+	 * (String) data - The type of data that you're expecting back,
+	 * (e.g. "xml", "html", "script")
+	 */
+	httpData: function(r,type) {
+		var ct = r.getResponseHeader("content-type");
+		var data = !type && ct && ct.indexOf("xml") >= 0;
+		data = type == "xml" || data ? r.responseXML : r.responseText;
+
+		// If the type is "script", eval it
+		if ( type == "script" ) eval.call( window, data );
+
+		// Get the JavaScript object, if JSON is used.
+		if ( type == "json" ) eval( "data = " + data );
+
+		return data;
+	},
+	
+	// Serialize an array of form elements or a set of
+	// key/values into a query string
+	param: function(a) {
+		var s = [];
+		
+		// If an array was passed in, assume that it is an array
+		// of form elements
+		if ( a.constructor == Array || a.jquery ) {
+			// Serialize the form elements
+			for ( var i = 0; i < a.length; i++ )
+				s.push( a[i].name + "=" + encodeURIComponent( a[i].value ) );
+			
+		// Otherwise, assume that it's an object of key/value pairs
+		} else {
+			// Serialize the key/values
+			for ( var j in a )
+				s.push( j + "=" + encodeURIComponent( a[j] ) );
+		}
+		
+		// Return the resulting serialization
+		return s.join("&");
+	}
+
+});

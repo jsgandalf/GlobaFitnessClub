@@ -1,10 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'Profile' /}
 #{set 'moreScripts'}
-    <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/jquery.js'}"></script>
+    <script type="text/javascript" src="js/rating.js"></script>
 #{/set}
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/rating.css'}" />
 #{/set}
 <div class="white_background_wrapper" style="padding-top:20px;">
     <div class="list">
@@ -16,7 +18,7 @@
                 </tr>
                 <tr class="specs">
                     <td>
-                        <a href="profile.html"><img height="121" width="118" src="@{'/public/images/trainers/corri_fit.jpg'}" /></a>
+                        <a href="profile.html"><img height="121" width="118" src="@{'/public/images/trainers/mike_fit.jpg'}" /></a>
                     </td>
                     <td>
                         <table class="Trainer_specs">
@@ -114,3 +116,15 @@
         </div>
         <div class="clear"></div>
     </div>	
+<script type="text/javascript">
+
+$('.pics').cycle('fade');
+		
+$('#rate2').rating('www.url.php', {maxvalue:5, curvalue:3});
+
+$('#rate_trainer').click(function(){
+	$('#trainer_box_response').css("height","334px").toggle('fast');
+});
+
+$('#trainer_box_response').hide();
+</script>

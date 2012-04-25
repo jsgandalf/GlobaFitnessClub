@@ -6,7 +6,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/globa.css'}">
         #{get 'moreStyles' /}
-		<script type="text/javascript" src="@{'/public/javascripts/jquery.js'}"></script>
+		<script type="text/javascript" src="@{'/public/javascripts/jquery-1.6.4.min.js'}"></script>
+		<script type="text/javascript" src="@{'/public/javascripts/rating.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/cycle.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/slideshow.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/dropdown.js'}"></script>
@@ -192,7 +193,7 @@
     <script type="text/javascript">	Cufon.now(); </script>
 </body>
 </html>
-<script>
+<script type="text/javascript">
 	$("#splash").click(function(){
 		window.location.replace("@{Trainers.index()}");
 	});
