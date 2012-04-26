@@ -1,20 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'Profile' /}
 #{set 'moreScripts'}
-    <script type="text/javascript" src="@{'/public/javascripts/jquery.js'}"></script>
-    <script type="text/javascript" src="js/rating.js"></script>
+
 #{/set}
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
-    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/rating.css'}" />
 #{/set}
-<div class="white_background_wrapper" style="padding-top:20px;">
     <div class="list">
-        <h3>${user.firstName} ${user.lastName}</h3>
+        <h3>${user.fullName()} &nbsp;<a style="font-size:12px" href="#">Edit</a></h3>
         <div class="list_child" style="border:none;">
             <table>
                 <tr>
-                   <td class="name">&nbsp;</td>
+                   <td class="name"><a href="#">Edit Profile Pic</a></td>
+                   <td>&nbsp;</td>
                 </tr>
                 <tr class="specs">
                     <td>
@@ -24,19 +22,19 @@
                         <table class="Trainer_specs">
                             <tr>
                                 <td>Location:</td>
-                                <td>Provo/Orem Utah</td>
+                                <td>Not yet defined:</td>
                             </tr>
                             <tr>
                                 <td class="phone">Phone Number:</td>
-                                <td>801-669-4311</td>
+                                <td>Not yet defined:</td>
                             </tr>
                             <tr>
                                 <td>Email:</td>
-                                <td>Healthcoachutah@gmail.com</td>
+                                <td>${user.email}</td>
                             </tr>
                             <tr>
                                 <td>Credentials:</td>
-                                <td>BS, ISSA, CPR</td>
+                                <td>Not yet defined:</td>
                             </tr>
                         </table>
                     </td>
@@ -56,7 +54,7 @@
                         </table>
                     </td>
                     <td>
-                                    <a href="trainer.html">&nbsp;Back to Search Results&nbsp;</a>
+                                    <!--<a href="trainer.html">&nbsp;Back to Search Results&nbsp;</a>-->
                     </td>
                 </tr>
                 <tr>
@@ -87,9 +85,7 @@
                                     <label for="name">Rate Trainer:</label>
                                </li>
                                <li>
-                                    <label for="name"><div id="rate2" class="rating">&nbsp;</div></label>
-                                      <!-- As you might have notice, for single star, the script works like a star/unstarl. 
-                                        For two or more stars, it works as a rating system. To value at the server end can be recieved via post variable named &quot;rating&quot;.     -->
+                                    <label for="name"><div id="rate2" class="rating"></div></label>
                                </li>
                            </ol>
                         </li>
@@ -110,18 +106,18 @@
                             <textarea id="name" class="text" name="text"></textarea>
                         </li>
                     </ol>
-                    <input type="image" src="images/submit.gif" class="submit" name="sendquestionaire" id="sendquestionaire">
+                    <input type="image" src="@{'/public/images/submit.gif'}" class="submit" name="sendquestionaire" id="sendquestionaire">
                 </form>
           </div>
-        </div>
+        </div>  
         <div class="clear"></div>
     </div>	
+</div>
+
 <script type="text/javascript">
 
 $('.pics').cycle('fade');
 		
-$('#rate2').rating('www.url.php', {maxvalue:5, curvalue:3});
-
 $('#rate_trainer').click(function(){
 	$('#trainer_box_response').css("height","334px").toggle('fast');
 });

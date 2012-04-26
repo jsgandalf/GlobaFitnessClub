@@ -9,7 +9,7 @@ GET		/profile/								Application.profile
 GET     /register                               Application.register
 GET     /login                                  Application.login_page
 GET     /trainers                               Trainers.index
-GET     /trainers/register                      Trainers.register
+GET     /joinTrainersNetwork                    Trainers.register
 GET     /contact                                Application.contact
 POST    /register                               Application.saveUser
 POST    /login                                  Application.login

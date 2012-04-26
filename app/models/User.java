@@ -8,11 +8,12 @@ import javax.persistence.*;
 @Table(name="Customer")
 public class User extends Model {
     
+	@Email
     @Required(message = "Email is required!")
     @MaxSize(100)
     @MinSize(4)
     public String email;
-    
+
     @Required(message = "Password is required")
     @MaxSize(15)
     @MinSize(5)
@@ -20,9 +21,11 @@ public class User extends Model {
     
     @Required(message = "First name is required!")
     @MaxSize(100)
+    @Match(value="^\\w*$", message="First name cannot contain special characters")
     public String firstName;
 	
 	@Required(message = "Last name is required!")
+    @Match(value="^\\w*$", message="Last name cannot contain special characters")
     @MaxSize(100)
     public String lastName;
    
@@ -45,4 +48,8 @@ public class User extends Model {
         return "User(" + firstName + " "+ lastName +")";
     }
     
+	public String fullName(){
+		return firstName + " "+ lastName;
+	}
+	
 }

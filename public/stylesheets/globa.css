@@ -1391,3 +1391,11 @@ outline-style:none;
     text-decoration: none;
 	font-weight:bold;
 }
+
+#state{
+	width: 25px;
+}
+
+#city{
+	width: 225px;
+}

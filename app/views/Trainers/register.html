@@ -24,47 +24,47 @@ Fill out the form below, and a representative will contact you soon.</p>
             #{form @saveTrainer()}
                 <ol>
                     <li>
+                        #{field 'trainer.address'}
+                        <li>
+                            <label for="name">Address</label>
+                            <input maxlength="100" type="text" class="text" name="${field.name}" value="${trainer?.address}"  />
+                        </li>
+                       #{/field}             
+                    </li>
+                    <li>
                         <ol class="inline">
-                            #{field 'trainer.firstName'}
+                        	#{field 'trainer.city'}
                             <li>
-                                <label for="name">First Name (required)</label>
-                                <input id="firstName" id="name" type="text" class="text" name="${field.name}" value="${trainer?.firstName}"/>
+                                <label for="name">City</label>
+                                <input maxlength="40" id="city" type="text" class="text" name="${field.name}" value="${trainer?.city}"  />
                             </li>
-                            #{/field}
-                            #{field 'trainer.lastName'}
-                            <li style="padding-left:5px;">
-                                <label for="name">Last Name (required)</label>
-                                <input id="lastName" type="text" class="text" name="${field.name}" value="${trainer?.lastName}" />
+                           #{/field}
+                           #{field 'trainer.state'}
+                            <li>
+                                <label for="name">State</label>
+                                <input min="2" maxlength="2" id="state" type="text" class="text" name="${field.name}" value="${trainer?.state}"  />
                             </li>
-                            #{/field}
+                           #{/field}
                         </ol>
                     </li>
                     <li>
                         <ol class="inline">
                         	#{field 'trainer.zip'}
                             <li>
-                                <label for="name">Zip (required)</label>
+                                <label for="name">Zip</label>
                                 <input maxlength="6" id="zip" type="text" class="text" name="${field.name}" value="${trainer?.zip}"  />
                             </li>
                            #{/field}
-                           #{field 'trainer.gender'}
                             <li style="padding-left:5px;">
-                                <label for="name">Gender (required)</label>
-                                <select id="gender" class="blue_select" name="gender" name="${field.name}">
-                                    <option>Please Select</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
+                                <label for="name">Gender</label>
+                                #{select 'trainer.gender', value:trainer?.gender, class:"blue_select", id:"gender"}
+                                    #{option 'Please Select'}Please Select#{/option}
+                                    #{option 'Male'}Male#{/option}
+                                    #{option 'Female'}Female#{/option}
+                                #{/select}
                             </li>
-                            #{/field}
                         </ol>
                     </li>
-                    #{field 'trainer.email'}
-                    <li>
-                        <label for="name">Email (required)</label>
-                        <input id="email" type="text" class="text" name="${field.name}" value="${trainer?.email}"  />
-                    </li>
-                    #{/field}
                     #{field 'trainer.phoneNumber'}
                     <li>
                         <label for="name">Phone Number</label>
@@ -156,4 +156,5 @@ Fill out the form below, and a representative will contact you soon.</p>
     $(function() {
 		$(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
 	});
+
 </script>

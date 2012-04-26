@@ -39,7 +39,11 @@ public class Trainers extends Controller {
     // ~~~
 	
 	public static void register(){
-		render();
+		if(connected() != null) {
+     	   render();
+        }
+		flash.error("Please log in first to join trainers network.");
+		Application.login_page();
 	}
 	
     public static void index() {
@@ -94,13 +98,13 @@ public class Trainers extends Controller {
     }
     
     public static void saveTrainer(@Valid Trainer trainer) {
-		validation.email(trainer.email);
+		trainer.user = connected();
 		if(validation.hasErrors()) {
             render("@Trainers.register", trainer);
         }
         trainer.create();
-        session.put("trainer", trainer.email);
-        flash.success("Welcome, " + trainer.firstName);
+        session.put("trainer", trainer.user.email);
+        flash.success("Welcome, " + trainer.user.firstName);
         result();
     }
 	public static void logout() {
