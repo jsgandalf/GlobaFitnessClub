@@ -5,7 +5,7 @@
 # Home page
 GET     /                                       Application.index
 GET     /consultation/                          Application.consultation
-GET		/profile/								Application.profile
+GET		/profile/{firstName}					Application.profile
 GET     /register                               Application.register
 GET     /login                                  Application.login_page
 GET     /trainers                               Trainers.index

@@ -6,7 +6,7 @@ import play.data.validation.*;
 import models.*;
 
 public class Application extends Controller {
-    
+	
     @Before
     static void addUser() {
         User user = connected();
@@ -33,7 +33,7 @@ public class Application extends Controller {
             Trainers.index();
         }*/
 		render();
-    }
+	}
     
 	public static void home(){
 		Application.index();
@@ -73,6 +73,7 @@ public class Application extends Controller {
         index();
     }
     public static void register() {
+		siteDown();
         render();
     }
 	
@@ -82,6 +83,7 @@ public class Application extends Controller {
 	}
  
 	public static void login_page(){
+		siteDown();
 		render();
 	}
 	
@@ -104,5 +106,9 @@ public class Application extends Controller {
 		myUser.email = user.email;
 		myUser.save();
 		profile();
+	}
+	
+	public static void siteDown(){
+		render();
 	}
 }
