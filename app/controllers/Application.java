@@ -98,7 +98,11 @@ public class Application extends Controller {
 	}
 	
 	public static void saveProfile(User user){
-		user.save();
+		User myUser = connected();
+		myUser.city = user.city;
+		myUser.state = user.state;
+		myUser.email = user.email;
+		myUser.save();
 		profile();
 	}
 }

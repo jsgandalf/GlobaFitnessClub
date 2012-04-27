@@ -29,15 +29,18 @@
                         </tr>
                         <tr>
                             <td>Location:</td>
-                            <td>#{if user.city}${user.city}, ${user.state} #{/if} #{else}Not defined <a style="font-size:12px" class="submit" href="@{editProfile()}">Edit here</a> #{/else}</td>
+                            <td>#{if user.city}${user.city}#{/if}
+                            	#{else}<span class="error">(City not defined)</span><a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}
+                                #{if user.state}, ${user.state}#{/if}#{else}<span class="error">(State not defined)</span> <a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}
+                            	</td>
                         </tr>
                         <tr>
                             <td class="phone">Phone Number:</td>
-                            <td>${user.phoneNumber}</td>
+                            <td>#{if user.phoneNumber}${user.phoneNumber}#{/if} #{else}Not defined <a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}</td>
                         </tr>
                         <tr>
                             <td>Email:</td>
-                            <td>${user.email}</td>
+                            <td>#{if user.email}${user.email}#{/if} #{else}Not defined <a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}</td>
                         </tr>
                         <tr>
                             <td>Credentials:</td>

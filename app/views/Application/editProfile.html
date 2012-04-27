@@ -30,20 +30,20 @@
                         </tr>
                         <tr>
                             <td>City:</td>
-                            #{field 'user.firstName'}
-                            <td><input maxlength="40" id="city" type="text" class="inputcolor width100" name="${field.name}" value="${user?.city}"  /></td>
-                            #{/field}
+                            #{field 'user.city'}
+                            <td><input maxlength="40" type="text" class="inputcolor profile_city" name="${field.name}" value="${user?.city}"  />#{/field}#{field 'user.state'} State: <input maxlength="40" type="text" class="inputcolor" id="state"name="${field.name}" value="${user?.state}"  />#{/field}</td>
+                            
                         </tr>
                         <tr>
                             <td class="phone">Phone Number:</td>
                             #{field 'user.phoneNumber'}
-                            <td><input maxlength="40" id="city" type="text" class="inputcolor width100" name="${field.name}" value="${user?.phoneNumber}"  /></td>
+                            <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.phoneNumber}"  /></td>
                             #{/field}
                         </tr>
                         <tr>
                             <td>Email:</td>
                             #{field 'user.email'}
-                            <td><input maxlength="40" id="city" type="text" class="inputcolor width100" name="${field.name}" value="${user?.email}" /></td>
+                            <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.email}" /></td>
                             #{/field}
                         </tr>
                         <tr>
@@ -51,8 +51,9 @@
                             <td>Not yet defined:</td>
                         </tr>
                         <tr>
+                        	<td> Bio:</td>
                             <td class="bio" colspan="2">
-                             Bio:
+                            
                              <textarea id="name" class="text" name="text"> My name is Mike and i am a personal trainer. My training programs accommodate a variety of fitness levels and helps to promote strength , balance, endurance, speed, flexibility and an overall wellness of the body and mind. I guarantee your training experience with me will provide you with incredible benefits, including... but not limited to: building motivation and creating accountability, building confidence, building a higher level of mental toughness....and many more.</textarea>
                             </td>   
                        </tr>
