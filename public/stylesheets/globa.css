@@ -4,7 +4,7 @@ For more information, see http://andreasviklund.com/templates/variant-multi/
 */
 
 *{margin:0;padding:0; border:0 none; font-family: /*"Liberation Sans",*/Arial,Helvetica,sans-serif;}
-body{background: url(../images/bg.jpg) no-repeat scroll center top transparent; background-color:#F0F0F0;/*background:#1a1a1a*/;color:#444;font:70% Verdana,Helvetica,sans-serif;}
+body{background: url(../images/bg.jpg) no-repeat scroll center top transparent; background-color:#F0F0F0;/*background:#1a1a1a;*/color:#444;font:70% Verdana,Helvetica,sans-serif;}
 p{line-height:1.7em;margin-bottom:15px;}
 a{
 	color: #DA4348;
@@ -32,7 +32,9 @@ p{color:#555454;}
 	color: #FFF;
 }
 
-
+.options_logged_in a:hover{
+	color: white;
+}
 
 
 ul.dropdown                         { position: relative; z-index:5; list-style:none; color: #717171; float:left; }
@@ -514,7 +516,7 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 
 
 /* For the HOME link only*/
-#active_link{
+.active_link{
 	-moz-border-radius-bottomleft: 14px;
     -moz-border-radius-topleft: 14px;
 	border-top-left-radius: 14px;
@@ -523,7 +525,7 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 	background: #e9545a;
 }
 
-#active_link a{
+.active_link a{
 	color: #FFF;
 	-moz-border-radius-bottomleft: 14px;
     -moz-border-radius-topleft: 14px;
@@ -531,7 +533,7 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 	border-bottom-left-radius: 14px;
 }
 
-#active_link:hover{
+.active_link:hover{
 	-moz-border-radius-bottomleft: 14px;
     -moz-border-radius-topleft: 14px;
 	border-top-left-radius: 14px;
@@ -540,18 +542,18 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 }
 
 /* any other menu link*/
-#active_link2{
+.active_link2{
 	background: #e9545a;
 	color: #FFF;
 }
 
-#active_a{
+.active_a{
 	 padding: 10px 20px 10px; 
 	 color:#FFF;
 	 background: #e9545a;
 }
 
-#active_a2{
+.active_a2{
 	color:#FFF;
 	 background: #e9545a;
 }
@@ -1123,6 +1125,16 @@ ol li textarea{
 	font-size: 12px;
 }
 
+.bio textarea{
+	background-color: #E0ECF3;
+    border: 1px solid #A8CEE2;
+    height: 16px;
+    padding: 5px 2px;
+    width: 100%;
+	height: 132px;
+	font-size: 12px;
+}
+
 #contact_wrapper{
 	margin-top:10px;
 }
@@ -1398,4 +1410,122 @@ outline-style:none;
 
 #city{
 	width: 225px;
+}
+
+
+.profile_table ul li{list-style-type:none; display:block; padding: 0; margin: 0; }
+.profile_table ul a.submit2 {padding: 5px; display: block; }
+
+.submit2{
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+	cursor:pointer;
+	color: #000;
+	border: 1px #CCCCCC solid;
+	background-color: #FAFAFA;
+	text-transform: uppercase;
+}
+
+.submit2:hover{
+	opacity:0.5; filter:alpha(opacity=50);	
+	border: 1px #999999 solid;
+	color: #000;
+}
+
+.submit:hover{
+	opacity:0.8; filter:alpha(opacity=80);	
+}
+
+.inputcolor{
+	background-color: #E0ECF3;
+    border: 1px solid #A8CEE2;
+    height: 16px;
+	z-index: 0;
+}
+
+.profile_banner{
+	background: none repeat scroll 0 0 #FAFAFA;
+	border: 1px solid #CCCCCC;
+    clear: both;
+    margin-bottom: 40px;
+    padding: 0;
+	display: block;
+	color: #333333;
+    font-size: 14px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	width: 812px;
+	height: 100px;
+	display:block;
+}
+
+.profile_banner_col1{
+	border-right: 1px solid #CCCCCC;
+    float: left;
+    width: 596px;
+	display:block;
+	height: 100px;
+}
+
+
+.profile_banner_col2{
+	float: right;
+    width: 215px;
+	height: 100px;
+	display:block;
+}
+
+.left_pad{
+	padding: 15px 20px;
+}
+
+.left_pad h1{
+	font-size: 16px;
+    font-weight: bold;
+}
+
+.pad_five{
+	padding: 7px 23px
+}
+
+#profile_pic{
+	background:url("../images/trainers/mike.jpg") no-repeat scroll center center #FFFFFF;
+    border: 1px solid #C5C9CF;
+    margin: 0 3px 3px 0;
+    padding: 3px;
+    width:  275px; 
+    height: 275px; 	
+	float:left;
+}
+
+#profile_content{
+	display:inline-block;
+	float:left;
+	padding-left: 25px;
+}
+
+
+#profile_content a.submit2{
+	background-color: #FAFAFA;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+#profile_content a.submit2:hover{
+	opacity:0.5; filter:alpha(opacity=50);	
+	border: 1px #999999 solid;
+	color: #000;
+	text-decoration:none;
+}
+
+.profile_table h1{
+	display:inline-block;
+}
+
+.width100{
+	width: 100%;
 }

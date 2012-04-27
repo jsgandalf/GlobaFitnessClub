@@ -39,27 +39,6 @@ public class Application extends Controller {
 		Application.index();
 	}
 	
-    public static void register() {
-        render();
-    }
-	
-	public static void profile(){
-		User user = connected();
-		render(user);
-	}
- 
-	public static void login_page(){
-		render();
-	}
-	
-	public static void contact(){
-		render();
-	}
-	
-	public static void consultation(){
-		render();
-	}
-	
     public static void saveUser(@Valid User user,
 								@Required(message="Re-enter Your password") String verifyPassword, 
 								@Required(message="Re-enter your email") String verifyEmail) {
@@ -81,7 +60,7 @@ public class Application extends Controller {
         if(user != null) {
             session.put("user", user.email);
             flash.success("Welcome, " + user.firstName);
-            index();         
+            profile();         
         }
         // Oops
         flash.put("email", email);
@@ -93,5 +72,33 @@ public class Application extends Controller {
         session.clear();
         index();
     }
-
+    public static void register() {
+        render();
+    }
+	
+	public static void profile(){
+		User user = connected();
+		render(user);
+	}
+ 
+	public static void login_page(){
+		render();
+	}
+	
+	public static void contact(){
+		render();
+	}
+	
+	public static void consultation(){
+		render();
+	}
+	
+	public static void editProfile(){
+		render();
+	}
+	
+	public static void saveProfile(User user){
+		user.save();
+		profile();
+	}
 }

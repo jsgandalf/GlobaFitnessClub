@@ -49,7 +49,7 @@ h2{
 .list_child{
     border-bottom: 1px solid #E5E5E5;/*#BDBDBD;*/
     width: 100%;
-	margin: 0 0 20px 0px;
+	margin: 0 0 0px 0px;
 	font-size: 12px;
 }
 
@@ -159,11 +159,11 @@ h2{
 }
 
 .Trainer_specs td{
-	padding:5px;
+	padding:5px 0 5px 5px;
 }
 
 .Trainer_specs ul{
-	margin-left: 15px;
+	display:inline-block;
 }
 
 .Trainer_specs td{
@@ -190,6 +190,11 @@ h2{
 .specs{
 	padding-top:0px;
 	vertical-align:top;
+}
+
+.specs td{
+	width: 295px;
+	padding: 0 27px 0 0;
 }
 
 
@@ -263,4 +268,15 @@ h2{
 .profile_description{
 	width: 200px;
 	padding: 0 5px 0 10px;
+}
+
+.profile_table{
+    width: 100%;
+}
+
+.profile_table h1{
+	color: #555454;
+    font-weight: normal;
+    text-transform: uppercase;
+	font-size: 35px;
 }

@@ -24,40 +24,40 @@ Fill out the form below, and a representative will contact you soon.</p>
             #{form @saveTrainer()}
                 <ol>
                     <li>
-                        #{field 'trainer.address'}
+                        #{field 'trainer.user.address'}
                         <li>
                             <label for="name">Address</label>
-                            <input maxlength="100" type="text" class="text" name="${field.name}" value="${trainer?.address}"  />
+                            <input maxlength="100" type="text" class="text" name="${field.name}" value="${trainer?.user?.address}"  />
                         </li>
                        #{/field}             
                     </li>
                     <li>
                         <ol class="inline">
-                        	#{field 'trainer.city'}
+                        	#{field 'trainer.user.city'}
                             <li>
                                 <label for="name">City</label>
-                                <input maxlength="40" id="city" type="text" class="text" name="${field.name}" value="${trainer?.city}"  />
+                                <input maxlength="40" id="city" type="text" class="text" name="${field.name}" value="${trainer?.user?.city}"  />
                             </li>
                            #{/field}
-                           #{field 'trainer.state'}
+                           #{field 'trainer.user.state'}
                             <li>
                                 <label for="name">State</label>
-                                <input min="2" maxlength="2" id="state" type="text" class="text" name="${field.name}" value="${trainer?.state}"  />
+                                <input min="2" maxlength="2" id="state" type="text" class="text" name="${field.name}" value="${trainer?.user?.state}"  />
                             </li>
                            #{/field}
                         </ol>
                     </li>
                     <li>
                         <ol class="inline">
-                        	#{field 'trainer.zip'}
+                        	#{field 'trainer.user.zip'}
                             <li>
                                 <label for="name">Zip</label>
-                                <input maxlength="6" id="zip" type="text" class="text" name="${field.name}" value="${trainer?.zip}"  />
+                                <input maxlength="6" id="zip" type="text" class="text" name="${field.name}" value="${trainer?.user?.zip}"  />
                             </li>
                            #{/field}
                             <li style="padding-left:5px;">
                                 <label for="name">Gender</label>
-                                #{select 'trainer.gender', value:trainer?.gender, class:"blue_select", id:"gender"}
+                                #{select 'trainer.user.gender', value:trainer?.user?.gender, class:"blue_select", id:"gender"}
                                     #{option 'Please Select'}Please Select#{/option}
                                     #{option 'Male'}Male#{/option}
                                     #{option 'Female'}Female#{/option}
@@ -65,10 +65,10 @@ Fill out the form below, and a representative will contact you soon.</p>
                             </li>
                         </ol>
                     </li>
-                    #{field 'trainer.phoneNumber'}
+                    #{field 'trainer.user.phoneNumber'}
                     <li>
                         <label for="name">Phone Number</label>
-                        <input maxlength="10" style="width:100px;" id="name" type="text" class="text" name="${field.name}" value="${trainer?.phoneNumber}"  />
+                        <input maxlength="10" style="width:100px;" id="name" type="text" class="text" name="${field.name}" value="${trainer?.user?.phoneNumber}"  />
                     </li>
                     #{/field}
                     <li>
@@ -102,11 +102,11 @@ Fill out the form below, and a representative will contact you soon.</p>
                         <input id="certifications" type="text" class="text" name="${field.name}" value="${trainer?.certifications}"  />
                     </li>
                     #{/field}
-                    #{field 'trainer.dateOfBirth'}
+                    #{field 'trainer.user.dateOfBirth'}
                     <li><div id="datepicker"></div></li>
                     <li style="display:inline-block">
                         <label for="name">Date of Birth (yyyy-mm-dd)</label>
-                        <input style="width:100px" class="text" type="text" size="10" name="${field.name}" value="${trainer?.dateOfBirth}" >
+                        <input style="width:100px" class="text" type="text" size="10" name="${field.name}" value="${trainer?.user?.dateOfBirth}" >
                     </li>
                     #{/field}
                     #{field 'trainer.ssn'}

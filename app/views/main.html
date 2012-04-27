@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-<html>
     <head>
         <title>#{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}">
@@ -30,7 +28,6 @@
         </script>
         <script src="@{'/public/javascripts/sessvars.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
-        <title>Globa Fitness Club</title>
     </head>
     <body>
 	<div id="container">
@@ -99,7 +96,7 @@
                             </ul>
                         </li>
                         
-                        <li><a href="@{Trainers.index()}">Trainers</a></li>
+                        <li id="Trainers"><a href="@{Trainers.index()}">Trainers</a></li>
                         <li><a href="fitnessPrograms.html">Programs</a>
                             <ul id="dropdown2">
                                 <li><a href="index.html">Weight Loss</a></li>
@@ -111,14 +108,14 @@
                                 <li><a href="index.html">Sports conditioning</a></li>
                             </ul>
                         </li>
-                        <li><a href="@{Application.consultation}">Consultation</a></li>
+                        <li id="Consultation"><a href="@{Application.consultation}">Consultation</a></li>
                         <li><a href="getConnected.html" style="padding: 20px 20px 0;">Networking</a>
                             <ul id="dropdown3">
                                 <li><a href="members.html">Members</a></li>
                                 <li><a href="network.html">Network</a></li>
                             </ul>
                         </li>
-                        <li><a href="@{Application.contact()}" style="padding: 20px 20px 0;">Contact Us</a></li>
+                        <li id="Contact"><a href="@{Application.contact()}" style="padding: 20px 20px 0;">Contact Us</a></li>
                     </ul>
                     <div id="social">
                         <a href="http://www.facebook.com"><div id="facebook"></div></a>
@@ -209,6 +206,20 @@
 	$("#splash4").click(function(){
 		//window.location.replace("trainer.html");
 	});
+	
+	var setActiveLink = "";
+	switch("#{get 'title' /}"){
+		case 'Home': 
+			setActiveLink = "myHome";
+			$('#'+setActiveLink).addClass("active_link");
+			break;
+		default:
+			setActiveLink = "#{get 'title' /}";
+			$('#'+setActiveLink).addClass("active_link2");
+			break;
+	}
+	$('#'+setActiveLink+' a').css("color",'#FFF');
+	
 
 </script>
 

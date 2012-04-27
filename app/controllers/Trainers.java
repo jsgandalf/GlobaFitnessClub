@@ -40,7 +40,8 @@ public class Trainers extends Controller {
 	
 	public static void register(){
 		if(connected() != null) {
-     	   render();
+			Trainer trainer = new Trainer("","",connected());
+     		render(trainer);
         }
 		flash.error("Please log in first to join trainers network.");
 		Application.login_page();
@@ -63,17 +64,12 @@ public class Trainers extends Controller {
             //trainers = Trainer.all().fetch(page, size);
         } else {
             search = search.toLowerCase();
-           trainers = Trainer.find("lower(zip) like ? OR lower(firstName) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
+            trainers = Trainer.find("lower(zip) like ? OR lower(firstName) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
 			//trainers = Trainer.find("lower(name) like ? OR lower(city) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
         }
         render(trainers, search, size, page);
     }
     
-    public static void show(Long id) {
-        Trainer trainer = Trainer.findById(id);
-        render(trainer);
-    }
-        
     
     public static void settings() {
         render();
@@ -98,10 +94,27 @@ public class Trainers extends Controller {
     }
     
     public static void saveTrainer(@Valid Trainer trainer) {
-		trainer.user = connected();
+		validation.required(trainer.user.address).message("Address is required.");
+		validation.required(trainer.user.state).message("State is required.");
+		validation.required(trainer.user.city).message("City is required.");
+		validation.required(trainer.user.zip).message("Zip is required.");
+		validation.required(trainer.user.phoneNumber).message("Phone number is required.");
+		validation.required(trainer.user.dateOfBirth).message("Date of Birth is required.");
+		validation.min(trainer.user.zip, 5).message("Zip must be 5 digits");
+		validation.min(trainer.user.phoneNumber, 10).message("Phone number must be 10 digits (make sure to include your area code).");
 		if(validation.hasErrors()) {
             render("@Trainers.register", trainer);
         }
+		//Update users as well
+		User user = connected();
+		user.address = trainer.user.address;
+		user.city = trainer.user.city;
+		user.state = trainer.user.state;
+		user.zip = trainer.user.zip;
+		user.phoneNumber = trainer.user.phoneNumber;
+		user.gender = trainer.user.gender;
+		trainer.user = user;
+		user.save();
         trainer.create();
         session.put("trainer", trainer.user.email);
         flash.success("Welcome, " + trainer.user.firstName);
@@ -114,5 +127,9 @@ public class Trainers extends Controller {
 	public static void home(){
 		Application.index();
 	}
+	public static void show(Long id){
+		Trainer trainer = Trainer.findById(id);
+		render(trainer);
+	}	
 }
 

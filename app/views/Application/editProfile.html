@@ -21,39 +21,48 @@
         <div class="list_child" style="border:none;">
         	<div id="profile_pic"></div>
             <div id="profile_content">
+            	#{form @saveProfile()}
                 <table class="profile_table Trainer_specs">
                         <tr>
                             <td colspan="2" style="padding-top:0px">
-                                <h1>${user.fullName()} &nbsp;<a style="font-size:12px" class="submit2" href="@{editProfile()}">Edit</a></h1>
+                                <h1>${user.fullName()} &nbsp;<ul><li><input type="submit" src="@{'/public/images/save.gif'}" value="Save" class="submit2"></li></ul></h1>
                             </td>
                         </tr>
                         <tr>
-                            <td>Location:</td>
-                            <td>#{if user.city}${user.city}, ${user.state} #{/if} #{else}Not defined <a style="font-size:12px" class="submit" href="@{editProfile()}">Edit here</a> #{/else}</td>
+                            <td>City:</td>
+                            #{field 'user.firstName'}
+                            <td><input maxlength="40" id="city" type="text" class="inputcolor width100" name="${field.name}" value="${user?.city}"  /></td>
+                            #{/field}
                         </tr>
                         <tr>
                             <td class="phone">Phone Number:</td>
-                            <td>${user.phoneNumber}</td>
+                            #{field 'user.phoneNumber'}
+                            <td><input maxlength="40" id="city" type="text" class="inputcolor width100" name="${field.name}" value="${user?.phoneNumber}"  /></td>
+                            #{/field}
                         </tr>
                         <tr>
                             <td>Email:</td>
-                            <td>${user.email}</td>
+                            #{field 'user.email'}
+                            <td><input maxlength="40" id="city" type="text" class="inputcolor width100" name="${field.name}" value="${user?.email}" /></td>
+                            #{/field}
                         </tr>
                         <tr>
                             <td>Credentials:</td>
                             <td>Not yet defined:</td>
                         </tr>
                         <tr>
-                            <td class="profile_description" colspan="2">
-                            My name is Mike and i am a personal trainer. My training programs accommodate a variety of fitness levels and helps to promote strength , balance, endurance, speed, flexibility and an overall wellness of the body and mind. I guarantee your training experience with me will provide you with incredible benefits, including... but not limited to: building motivation and creating accountability, building confidence, building a higher level of mental toughness....and many more.
-                            </td>  
-                        </tr>
+                            <td class="bio" colspan="2">
+                             Bio:
+                             <textarea id="name" class="text" name="text"> My name is Mike and i am a personal trainer. My training programs accommodate a variety of fitness levels and helps to promote strength , balance, endurance, speed, flexibility and an overall wellness of the body and mind. I guarantee your training experience with me will provide you with incredible benefits, including... but not limited to: building motivation and creating accountability, building confidence, building a higher level of mental toughness....and many more.</textarea>
+                            </td>   
+                       </tr>
                         <tr> 
                             <td>
                               <p>10/10 Rating</p>
                             </td>
                         </tr>
 					</table>
+                    #{/form}
                        <!-- <td>
                             <table class="Trainer_specialities">
                                 <tr>

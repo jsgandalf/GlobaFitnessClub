@@ -7,7 +7,16 @@ import javax.persistence.*;
 @Entity
 @Table(name="Customer")
 public class User extends Model {
-    
+	
+	public String gender;
+	public String phoneNumber;
+	public String dateOfBirth;
+	public String address;
+	public String city;
+	
+	@MinSize(value=2, message="State must be 2 letters")
+	public String state;
+	
 	@Email
     @Required(message = "Email is required!")
     @MaxSize(100)
@@ -34,14 +43,24 @@ public class User extends Model {
     @MinSize(value = 5, message = "Zip code must be 5 numbers")
     public String zip;
    
+    @Lob
+    public String bio;
+   
     public boolean isAdmin;   
    
-    public User(String firstName, String lastName, String password, String email, String zip) {
+    public User(String firstName, String lastName, String password, String email, String zip, String address, String state, String city,String gender, String dateOfBirth, String phoneNumber, String bio) {
         this.firstName = firstName;
 		this.lastName = lastName;
         this.password = password;
 		this.email = email;
 		this.zip = zip;
+		this.address = address;
+		this.state = state;
+		this.city = city;
+		this.gender = gender;
+		this.dateOfBirth = dateOfBirth;
+		this.phoneNumber = phoneNumber;
+		this.bio = bio;
     }
 
     public String toString()  {

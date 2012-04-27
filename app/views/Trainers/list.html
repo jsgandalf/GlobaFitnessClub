@@ -5,20 +5,20 @@
     <div class="list_child">
         <table>
             <tr>
-                <td class="name"><h3><a href="profile.html">${trainer.toString()}</h3></td>
+                <td class="name"><h3><a href="@{Trainers.show(trainer.id)}">${trainer.toString()}</h3></td>
             </tr>
             <tr class="list_child_conent_tr">
-                <td><a href="profile.html"><img height="100" width="100" src="@{'/public/images/trainers/mike_fit.jpg'}" /></a></td>
-                 <td class="location"><a style="color:#333; font-weight:bold" href="#">${trainer.zip}</a></td>
-                <td style="vertical-align:middle">
+                <td><a href="@{Trainers.show(trainer.id)}"><img height="100" width="100" src="@{'/public/images/trainers/mike_fit.jpg'}" /></a></td>
+                 <td class="location"><a style="color:#333; font-weight:bold" href="@{Trainers.show(trainer.id)}">${trainer.city}, ${trainer.state}</a></td>
+                 <td style="vertical-align:middle">
                     <div class="message_buttons">
                         <ul>
                             <li>
-                                <a href="profile.html">&nbsp;Contact&nbsp;</a>
+                                <a href="@{Trainers.show(trainer.id)}">&nbsp;Contact&nbsp;</a>
                             </li>
                         </ul>
                     </div>       
-                </td>
+                 </td>
             </tr>
         </table>
     </div>
