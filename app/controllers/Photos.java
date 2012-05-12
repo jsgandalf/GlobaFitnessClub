@@ -1,5 +1,12 @@
  package controllers;
 
+ import com.amazonaws.auth.BasicAWSCredentials;
+ import com.amazonaws.services.s3.AmazonS3;
+ import com.amazonaws.services.s3.AmazonS3Client;
+ import com.amazonaws.services.s3.model.CannedAccessControlList;
+ import com.amazonaws.services.s3.model.ObjectMetadata;
+ import com.amazonaws.services.s3.model.PutObjectRequest;
+
  import models.User;
  import play.Logger;
  import play.Play;
@@ -11,12 +18,7 @@
  import java.util.List;
 
 
- import com.amazonaws.auth.BasicAWSCredentials;
- import com.amazonaws.services.s3.AmazonS3;
- import com.amazonaws.services.s3.AmazonS3Client;
- import com.amazonaws.services.s3.model.CannedAccessControlList;
- import com.amazonaws.services.s3.model.ObjectMetadata;
- import com.amazonaws.services.s3.model.PutObjectRequest;
+
 
 
  public class Photos extends Controller {
