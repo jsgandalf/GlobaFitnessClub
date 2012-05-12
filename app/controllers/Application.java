@@ -99,6 +99,7 @@ public class Application extends Controller{
         index();
     }
     public static void register() {
+        Application.siteDown();
         render();
     }
 	
