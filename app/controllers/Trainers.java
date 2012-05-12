@@ -27,14 +27,6 @@ public class Trainers extends Controller {
         }
         return null;
     }
-	
-    /*@Before
-    static void checkUser() {
-        if(connected() == null) {
-            flash.error("Please log in first");
-            Application.index();
-        }
-    }*/
     
     // ~~~
 	
@@ -64,7 +56,7 @@ public class Trainers extends Controller {
             //trainers = Trainer.all().fetch(page, size);
         } else {
             search = search.toLowerCase();
-            trainers = Trainer.find("lower(zip) like ? OR lower(firstName) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
+            trainers = Trainer.find("lower(user.zip) like ? OR lower(user.firstName) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
 			//trainers = Trainer.find("lower(name) like ? OR lower(city) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
         }
         render(trainers, search, size, page);

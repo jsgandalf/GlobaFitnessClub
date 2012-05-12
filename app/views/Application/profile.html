@@ -1,10 +1,13 @@
 #{extends 'main.html' /}
 #{set title:'Profile' /}
 #{set 'moreScripts'}
-
+<script type="text/javascript" src="js/jquery.galleriffic.js"></script>
+<script type="text/javascript" src="js/jquery.opacityrollover.js"></script>
 #{/set}
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+    <link rel="stylesheet" href="css/basic.css" type="text/css" />
+    <link rel="stylesheet" href="css/galleriffic-2.css" type="text/css" />
 #{/set}
     <div class="list">
         <div class="profile_banner">
@@ -18,62 +21,15 @@
                 <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
             </div>
         </div>
+        #{flash /}
         <div class="list_child" style="border:none;">
-        	<div id="profile_pic"></div>
             <div id="profile_content">
-                <table class="profile_table Trainer_specs">
-                        <tr>
-                            <td colspan="2" style="padding-top:0px">
-                                <h1>${user.fullName()} &nbsp;<a style="font-size:12px" class="submit2" href="@{editProfile()}">Edit</a></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Location:</td>
-                            <td>#{if user.city}${user.city}#{/if}
-                            	#{else}<span class="error">(City not defined)</span><a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}
-                                #{if user.state}, ${user.state}#{/if}#{else}<span class="error">(State not defined)</span> <a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}
-                            	</td>
-                        </tr>
-                        <tr>
-                            <td class="phone">Phone Number:</td>
-                            <td>#{if user.phoneNumber}${user.phoneNumber}#{/if} #{else}Not defined <a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}</td>
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            <td>#{if user.email}${user.email}#{/if} #{else}Not defined <a style="font-size:12px" class="submit" href="@{editProfile()}">[Edit]</a> #{/else}</td>
-                        </tr>
-                        <tr>
-                            <td>Credentials:</td>
-                            <td>Not yet defined:</td>
-                        </tr>
-                        <tr>
-                            <td class="profile_description" colspan="2">
-                            My name is Mike and i am a personal trainer. My training programs accommodate a variety of fitness levels and helps to promote strength , balance, endurance, speed, flexibility and an overall wellness of the body and mind. I guarantee your training experience with me will provide you with incredible benefits, including... but not limited to: building motivation and creating accountability, building confidence, building a higher level of mental toughness....and many more.
-                            </td>  
-                        </tr>
-                        <tr> 
-                            <td>
-                              <p>10/10 Rating</p>
-                            </td>
-                        </tr>
-					</table>
-                       <!-- <td>
-                            <table class="Trainer_specialities">
-                                <tr>
-                                    <td>
-                                        <ul>
-                                            <li>Weight loss</li>
-                                            <li>Functional training</li>
-                                            <li>Body building</li>
-                                            <li>General fitness</li>
-                                            <li>Toned or Get Yoked</li>
-                                        </ul>                                    
-                                    </td>                                
-                               </tr>
-                            </table>
-                        </td>
-                        -->
+                #{form @Photos.uploadPhoto(), enctype:'multipart/form-data'}
+                    <input type="file" id="photo" name="photo" />
+                    <div id="profile_save"><input type="submit" src="@{'/public/images/save.gif'}" value="Upload" class="submit2"></div>
+                #{/}
             </div>
+            <div class="clear"></div>
         </div>  
         <div class="clear"></div>
     </div>	

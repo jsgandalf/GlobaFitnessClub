@@ -4,24 +4,7 @@
 <div id="contact_paragraph">
     <div class="clear"></div>
     <h2 style="margin-bottom:27px;">Login</h2>
-	#{if flash.error}
-        <p class="fError">
-            <strong>${flash.error}</strong>
-        </p>
-    #{/if}
-    #{if flash.success}
-        <p class="fSuccess">
-            <strong>${flash.success}</strong>
-        </p>
-    #{/if}
-    <p style="width: 300px">Not a member?  <a href="@{register()}">Register here</a>. Its free to sign up!</p>
-	 #{ifErrors}
-        <p class="error">
-            ${errors[0]}
-        </p>
-    #{/ifErrors}
-
-
+    #{flash /}
     <div id="joinLeft">
         #{form @login(), id:'formLogin'}
             <ol>
@@ -34,8 +17,12 @@
                     <input class="pass" type="password" name="password" size="19" />
                 </li>
                 <li>
-                    <input type="image" value="Account login" src="@{'/public/images/submit.gif'}" class="submit" name="sendquestionaire" id="sendquestionaire">
+                	<p style="padding:10px 0 0 0; margin:0;">Forgot Password? <a href="@{resetPassword}">Reset your password here.</a></p>
+                </li>	
+                <li>
+                    <input type="image" value="Account login" src="@{'/public/images/submit.gif'}" class="submit">
                 </li>
+                
             </ol>
         </div>
         #{/form}

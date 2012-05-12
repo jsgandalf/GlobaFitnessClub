@@ -5,17 +5,35 @@
 # Home page
 GET     /                                       Application.index
 GET     /consultation/                          Application.consultation
-GET		/profile/{firstName}					Application.profile
+GET		/profile								Application.profile
+GET		/profile               					Application.profile
 GET     /register                               Application.register
 GET     /login                                  Application.login_page
+GET     /logout                                 Application.logout
 GET     /trainers                               Trainers.index
 GET     /joinTrainersNetwork                    Trainers.register
-GET     /contact                                Application.contact
+GET     /contact                                Aplication.contact
+POST    /sendContact                            Application.sendContactForm
 GET     /trainers/contact/{id}                  Trainers.show
 POST    /register                               Application.saveUser
 POST    /login                                  Application.login
-
-
+GET     /settings                               Application.settings
+POST    /SaveSettings                           Application.saveSettings
+GET     /createPost                             Application.createPost
+POST    /resetPassword                          Application.resetPasswordFunction
+GET     /                                       Application.home
+GET     /FitnessBlog                            Application.posts
+GET     /posts/{<[0-9]+>id}                     Application.showPost
+GET     /posts/{tag}                            Application.listTagged
+POST    /posts/{<[0-9]+>postId}/comments        Application.postComment
+GET     /captcha                                Application.captcha
+GET     /thankyou                               Application.thankyou
+GET     /photos                                 Photos.index
+POST    /upload                                 Photos.upload
+GET     /photos/addAlbum                        Photos.addAlbum
+POST    /photos/addAlbums                       Photos.addAlbumFunction
+# Administration
+*       /admin                                  module:crud
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Globa Fitness Club</title>
+<link rel="stylesheet" type="text/css" media="screen" href="@@{'/public/stylesheets/globa.css'}">
+</head>
+<body>
+<p>Name: <b>${firstName} ${lastName}</b>, 
+<br /><br />
+Email: <b>${email}</b><br /><br />
+</p>
+<div id="main_image_header" style="height:100%">
+    <div id="schedule">
+        <div id="schedule_left">
+            <p style="width:275px;">Welcome to Globa Fitness.  Please fill out the form and we a representative contact you soon.</p>
+			#{form @sendConsultationForm()}
+                <ol style="list-style: none">
+                    <li style="margin:0; padding: 0">
+                        <ol style="display:inline-block; list-style: none; padding:0px; margin:0px;">
+                         	#{field 'firstName'}
+                            <li style="display:inline-block">
+                                <label for="name">First Name (required)</label>
+                                <input  id="firstName" type="text" style="background-color: #E0ECF3;
+		border: 1px solid #A8CEE2;
+		height: 16px;
+		padding: 5px 2px;
+		width: 275px;
+		z-index: 0;" name="${field.name}" value="${firstName}" />
+                            </li>
+                            #{/field}
+                            #{field 'lastName'}
+                            <li style=";margin:0; padding: 0">
+                                <label for="name">Last Name (required)</label>
+                                <input id="lastName" type="text" style="background-color: #E0ECF3;
+		border: 1px solid #A8CEE2;
+		height: 16px;
+		padding: 5px 2px;
+		width: 275px;
+		z-index: 0;" name="${field.name}" value="${lastName}" />
+                            </li>
+                            #{/field}
+                        </ol>
+                    </li>
+                    #{field 'email'}
+                    <li>
+                        <label for="name">Email (required)</label>
+                        <input id="name" type="text" style="background-color: #E0ECF3;
+		border: 1px solid #A8CEE2;
+		height: 16px;
+		padding: 5px 2px;
+		width: 275px;
+		z-index: 0;" name="${field.name}" value="${email}" />
+                    </li>
+                    #{/field}
+                    #{field 'phoneNumber'}
+                    <li>
+                        <label for="name">Phone Number (required)</label>
+                        <input id="name" type="text" style="background-color: #E0ECF3;
+		border: 1px solid #A8CEE2;
+		height: 16px;
+		padding: 5px 2px;
+		width: 275px;
+		z-index: 0;" name="${field.name}" value="${phoneNumber}" />
+                    </li>
+                    #{/field}
+                </ol>
+            <div id="questionaire">
+                <ul style="list-style: none">
+                	#{field 'question1'}
+                    <li>1) What is your age?
+                        <br />
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="11-17" ${question1=='11-17'?'checked="checked"':''} /></td>
+                                <td>a. 11-17</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="18-25" ${question1=='18-25'?'checked="checked"':''} /></td>
+                                <td>b. 18-25</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="26-35" ${question1=='26-35'?'checked="checked"':''} /></td>
+                                <td>c. 26-35</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="36-49" ${question1=='36-49'?'checked="checked"':''} /></td>
+                                <td>d. 36-49</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="50 and above" ${question1=='50 and above'?'checked="checked"':''} /></td>
+                                <td>e. 50 and above</td>
+                            </tr>
+                        </table>
+                    </li>
+                    #{/field}
+                    <li>2) On a scale from 1 to 8 ( 8 being the most serious) how serious are you about accomplishing your fitness goals?
+                        <br />
+                        #{select 'question2', class:"blue_select", id:"fitnessGoals"}
+                            #{option '1'}a. 1#{/option}
+                            #{option '2'}b. 2#{/option}
+                            #{option '3'}c. 3#{/option}
+                            #{option '4'}d. 4#{/option}
+                            #{option '5'}e. 5#{/option}
+                            #{option '6'}f. 6#{/option}
+                            #{option '7'}g. 7#{/option}
+                            #{option '8'}h. 8#{/option}
+                        #{/select}
+                    </li>
+                    #{field 'question3'}
+                    <li>3) What has prevented you from reaching your fitness goals in the past? <br />
+                       <table>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Time" ${question3=='Time'?'checked="checked"':''} /></td>
+                                <td>a. Time</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Motivation" ${question3=='Motivation'?'checked="checked"':''} /></td>
+                                <td>b. Motivation</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Results" ${question3=='Results'?'checked="checked"':''}/></td>
+                                <td>c. Results</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Commitment" ${question3=='Commitment'?'checked="checked"':''} /></td>
+                                <td>d. Commitment</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Budget" ${question3=='Budget'?'checked="checked"':''}/></td>
+                                <td>e. Budget</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Knowledge" ${question3=='Knowledge'?'checked="checked"':''}/></td>
+                                <td>f. Knowledge</td>
+                            </tr>
+                        </table>
+                    </li>
+                    #{/field}
+                    #{field 'question4'}
+                    <li>4) What is your present physical condition?
+                        <table>
+                            <tr>
+                                <td><input name="${field.name}" type="radio" value="Poor" ${question4=='Poor'?'checked="checked"':''} /></td>
+                                <td>a. Poor</td>
+                            </tr>
+                            <tr>
+                                <td><input name="${field.name}" type="radio"  value="Fair" ${question4=='Fair'?'checked="checked"':''}/></td>
+                                <td>b. Fair</td>
+                            </tr>
+                            <tr>
+                                <td><input name="${field.name}" type="radio" value="Good" ${question4=='Good'?'checked="checked"':''} /></td>
+                                <td>c. Good</td>
+                            </tr>
+                            <tr>
+                                <td><input name="${field.name}" type="radio" value="Great" ${question4=='Great'?'checked="checked"':''} /></td>
+                                <td>d. Great</td>
+                            </tr>
+                        </table>
+                    </li>
+                    #{/field}
+                </ul>
+            </div>
+        </div>
+        <div id="schedule_right">
+            <div class="pics2">
+               <!-- <div id="slideshow1"></div>-->
+                <div id="slideshow2"></div>
+                <div id="slideshow3"></div>
+                <div id="slideshow4"></div>
+                <div id="slideshow5"></div>
+            </div>
+            <div class="clear"></div>
+            <div id="questionaire2">
+                <ul style="list-style: none">
+                	#{field 'question5'}
+                    <li>5) Is your job active or Sedentary? 
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Active" ${question5=='Active'?'checked="checked"':''}  /></td>
+                                <td>a. Active </td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Sedentary" ${question5=='Sedentary'?'checked="checked"':''}  /></td>
+                                <td>b. Sedentary</td>
+                            </tr>
+                        </table>
+                    </li>
+                    #{/field}
+                    <li>6) On a scale from 1 to 8 (8 being the most committed), how committed are you now with your nutritional choices?
+                        <br />
+                         #{select 'question6', class:"blue_select", id:"question6"}
+                            #{option '1'}a. 1#{/option}
+                            #{option '2'}b. 2#{/option}
+                            #{option '3'}c. 3#{/option}
+                            #{option '4'}d. 4#{/option}
+                            #{option '5'}e. 5#{/option}
+                            #{option '6'}f. 6#{/option}
+                            #{option '7'}g. 7#{/option}
+                            #{option '8'}h. 8#{/option}
+                        #{/select}
+                    </li>
+                    #{field 'question7'}
+                    <li>7) How many meals are you eating per day?
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="1-2" ${question5=='1-2'?'checked="checked"':''} /></td>
+                                <td>a. 1-2</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="2-4" ${question7=='2-4'?'checked="checked"':''} /></td>
+                                <td>b. 2-4</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="4-6" ${question7=='4-6'?'checked="checked"':''} /></td>
+                                <td>c. 4-6</td>
+                            </tr>
+                        </table>
+                    </li>
+                    #{/field}
+                    #{field 'question8'}
+                    <li>8) Are you ready to make a change today?
+                        <table>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="Yes" ${question8=='Yes'?'checked="checked"':''} /></td>
+                                <td>a. Yes</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="${field.name}" value="No" ${question8=='No'?'checked="checked"':''} /></td>
+                                <td>b. No</td>
+                            </tr>
+                        </table>
+                    </li>
+                    #{/field}
+                </ul>
+            </div>	
+        </div>
+        #{/form}
+        <div class="clear"></div>
+    </div>
+</div>	
+</div>
+
+
+</body>
+</html>

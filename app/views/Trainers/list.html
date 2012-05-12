@@ -9,7 +9,7 @@
             </tr>
             <tr class="list_child_conent_tr">
                 <td><a href="@{Trainers.show(trainer.id)}"><img height="100" width="100" src="@{'/public/images/trainers/mike_fit.jpg'}" /></a></td>
-                 <td class="location"><a style="color:#333; font-weight:bold" href="@{Trainers.show(trainer.id)}">${trainer.city}, ${trainer.state}</a></td>
+                 <td class="location"><a style="color:#333; font-weight:bold" href="@{Trainers.show(trainer.id)}">${trainer.user.city}, ${trainer.user.state}</a></td>
                  <td style="vertical-align:middle">
                     <div class="message_buttons">
                         <ul>

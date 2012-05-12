@@ -3,123 +3,150 @@
 <div id="main_image_header" style="height:100%">
     <div id="schedule">
         <div class="clear"></div>
-        <h2>Schedule a free fitness Consultation</h2>
+        <h2>Schedule a free fitness Consultation</h2>      
         <div id="schedule_left">
-            <p style="width:275px;">Welcome to Globa Fitness.  Please fill out the form and we will contact you soon.</p>
-            <form id="schedule_form" name="schedule_form" method="post" action="#">
+            #{if flash.error}
+                <p class="fError">
+                    <strong>${flash.error}</strong>
+                </p>
+            #{/if}
+             #{ifErrors}
+                <p class="error">
+                    ${errors[0]}
+                </p>
+            #{/ifErrors}
+            #{if flash.success}
+                <p class="fSuccess">
+                    <strong>${flash.success}</strong>
+                </p>
+            #{/if}
+            #{else}
+            <p style="width:275px;">Welcome to Globa Fitness.  Please fill out the form and we a representative contact you soon.</p>
+			#{form @sendConsultationForm()}
                 <ol>
                     <li>
                         <ol class="inline">
+                         	#{field 'firstName'}
                             <li style="display:inline-block">
                                 <label for="name">First Name (required)</label>
-                                <input id="firstName" id="name" type="text" class="text" name="text" />
+                                <input id="firstName" type="text" class="text" name="${field.name}" value="${firstName}" />
                             </li>
+                            #{/field}
+                            #{field 'lastName'}
                             <li style="padding-left:5px;">
                                 <label for="name">Last Name (required)</label>
-                                <input id="lastName" type="text" class="text" name="text" />
+                                <input id="lastName" type="text" class="text" name="${field.name}" value="${lastName}" />
                             </li>
+                            #{/field}
                         </ol>
                     </li>
+                    #{field 'email'}
                     <li>
                         <label for="name">Email (required)</label>
-                        <input id="name" type="text" class="text" name="text" />
+                        <input id="name" type="text" class="text" name="${field.name}" value="${email}" />
                     </li>
+                    #{/field}
+                    #{field 'phoneNumber'}
                     <li>
-                        <label for="name">Contact Number (required)</label>
-                        <input id="name" type="text" class="text" name="text" />
+                        <label for="name">Phone Number (required)</label>
+                        <input id="name" type="text" class="text"name="${field.name}" value="${phoneNumber}" />
                     </li>
+                    #{/field}
                 </ol>
-            </form>
             <div id="questionaire">
-            <form id="questionaire_form" name="questionaire_form" method="post" action="#">
                 <ul>
+                	#{field 'question1'}
                     <li>1) What is your age?
                         <br />
                         <table>
                             <tr>
-                                <td><input type="radio" name="question1" value="1" /></td>
+                                <td><input type="radio" name="${field.name}" value="11-17" ${question1=='11-17'?'checked="checked"':''} /></td>
                                 <td>a. 11-17</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question1" value="2" /></td>
-                                <td>b. 18- 25</td>
+                                <td><input type="radio" name="${field.name}" value="18-25" ${question1=='18-25'?'checked="checked"':''} /></td>
+                                <td>b. 18-25</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question1"value="3" /></td>
-                                <td>c. 26- 35</td>
+                                <td><input type="radio" name="${field.name}" value="26-35" ${question1=='26-35'?'checked="checked"':''} /></td>
+                                <td>c. 26-35</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question1"value="3" /></td>
+                                <td><input type="radio" name="${field.name}" value="36-49" ${question1=='36-49'?'checked="checked"':''} /></td>
                                 <td>d. 36-49</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question1"value="3" /></td>
+                                <td><input type="radio" name="${field.name}" value="50 and above" ${question1=='50 and above'?'checked="checked"':''} /></td>
                                 <td>e. 50 and above</td>
                             </tr>
                         </table>
                     </li>
+                    #{/field}
                     <li>2) On a scale from 1 to 8 ( 8 being the most serious) how serious are you about accomplishing your fitness goals?
                         <br />
-                        <select class="blue_select" name="question2">
-                            <option>a. 1</option>
-                            <option>b. 2</option>
-                            <option>c. 3</option>
-                            <option>d. 4</option>
-                            <option>e. 5</option>
-                            <option>f. 6</option>
-                            <option>g. 7</option>
-                            <option>h. 8</option>
-                        </select>
-
+                        #{select 'question2', class:"blue_select", id:"fitnessGoals"}
+                            #{option '1'}a. 1#{/option}
+                            #{option '2'}b. 2#{/option}
+                            #{option '3'}c. 3#{/option}
+                            #{option '4'}d. 4#{/option}
+                            #{option '5'}e. 5#{/option}
+                            #{option '6'}f. 6#{/option}
+                            #{option '7'}g. 7#{/option}
+                            #{option '8'}h. 8#{/option}
+                        #{/select}
                     </li>
+                    #{field 'question3'}
                     <li>3) What has prevented you from reaching your fitness goals in the past? <br />
-                                                        <table>
+                       <table>
                             <tr>
-                                <td><input type="radio" name="question3" value="1" /></td>
+                                <td><input type="radio" name="${field.name}" value="Time" ${question3=='Time'?'checked="checked"':''} /></td>
                                 <td>a. Time</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question3" value="2" /></td>
+                                <td><input type="radio" name="${field.name}" value="Motivation" ${question3=='Motivation'?'checked="checked"':''} /></td>
                                 <td>b. Motivation</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question3"value="3" /></td>
+                                <td><input type="radio" name="${field.name}" value="Results" ${question3=='Results'?'checked="checked"':''}/></td>
                                 <td>c. Results</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question3"value="4" /></td>
+                                <td><input type="radio" name="${field.name}" value="Commitment" ${question3=='Commitment'?'checked="checked"':''} /></td>
                                 <td>d. Commitment</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question3"value="5" /></td>
+                                <td><input type="radio" name="${field.name}" value="Budget" ${question3=='Budget'?'checked="checked"':''}/></td>
                                 <td>e. Budget</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question3"value="6" /></td>
+                                <td><input type="radio" name="${field.name}" value="Knowledge" ${question3=='Knowledge'?'checked="checked"':''}/></td>
                                 <td>f. Knowledge</td>
                             </tr>
                         </table>
                     </li>
+                    #{/field}
+                    #{field 'question4'}
                     <li>4) What is your present physical condition?
                         <table>
                             <tr>
-                                <td><input name="question4" type="radio" name="1" /></td>
+                                <td><input name="${field.name}" type="radio" value="Poor" ${question4=='Poor'?'checked="checked"':''} /></td>
                                 <td>a. Poor</td>
                             </tr>
                             <tr>
-                                <td><input name="question4" type="radio" name="2" /></td>
+                                <td><input name="${field.name}" type="radio"  value="Fair" ${question4=='Fair'?'checked="checked"':''}/></td>
                                 <td>b. Fair</td>
                             </tr>
                             <tr>
-                                <td><input name="question4" type="radio" name="3" /></td>
+                                <td><input name="${field.name}" type="radio" value="Good" ${question4=='Good'?'checked="checked"':''} /></td>
                                 <td>c. Good</td>
                             </tr>
                             <tr>
-                                <td><input name="question4" type="radio" name="4" /></td>
+                                <td><input name="${field.name}" type="radio" value="Great" ${question4=='Great'?'checked="checked"':''} /></td>
                                 <td>d. Great</td>
                             </tr>
                         </table>
                     </li>
+                    #{/field}
                 </ul>
             </div>
         </div>
@@ -134,67 +161,76 @@
             <div class="clear"></div>
             <div id="questionaire2">
                 <ul>
+                	#{field 'question5'}
                     <li>5) Is your job active or Sedentary? 
                         <table>
                             <tr>
-                                <td><input type="radio" name="question5" value="1" /></td>
+                                <td><input type="radio" name="${field.name}" value="Active" ${question5=='Active'?'checked="checked"':''}  /></td>
                                 <td>a. Active </td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question5" value="2" /></td>
+                                <td><input type="radio" name="${field.name}" value="Sedentary" ${question5=='Sedentary'?'checked="checked"':''}  /></td>
                                 <td>b. Sedentary</td>
                             </tr>
                         </table>
                     </li>
+                    #{/field}
                     <li>6) On a scale from 1 to 8 (8 being the most committed), how committed are you now with your nutritional choices?
                         <br />
-                        <select class="blue_select" name="question6">
-                            <option>a. 1</option>
-                            <option>b. 2</option>
-                            <option>c. 3</option>
-                            <option>d. 4</option>
-                            <option>e. 5</option>
-                            <option>f. 6</option>
-                            <option>g. 7</option>
-                            <option>h. 8</option>
-                        </select>
+                         #{select 'question6', class:"blue_select", id:"question6"}
+                            #{option '1'}a. 1#{/option}
+                            #{option '2'}b. 2#{/option}
+                            #{option '3'}c. 3#{/option}
+                            #{option '4'}d. 4#{/option}
+                            #{option '5'}e. 5#{/option}
+                            #{option '6'}f. 6#{/option}
+                            #{option '7'}g. 7#{/option}
+                            #{option '8'}h. 8#{/option}
+                        #{/select}
                     </li>
+                    #{field 'question7'}
                     <li>7) How many meals are you eating per day?
                         <table>
                             <tr>
-                                <td><input type="radio" name="question7" value="1" /></td>
+                                <td><input type="radio" name="${field.name}" value="1-2" ${question5=='1-2'?'checked="checked"':''} /></td>
                                 <td>a. 1-2</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question7" value="2" /></td>
+                                <td><input type="radio" name="${field.name}" value="2-4" ${question7=='2-4'?'checked="checked"':''} /></td>
                                 <td>b. 2-4</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question7"value="3" /></td>
+                                <td><input type="radio" name="${field.name}" value="4-6" ${question7=='4-6'?'checked="checked"':''} /></td>
                                 <td>c. 4-6</td>
                             </tr>
                         </table>
                     </li>
+                    #{/field}
+                    #{field 'question8'}
                     <li>8) Are you ready to make a change today?
                         <table>
                             <tr>
-                                <td><input type="radio" name="question8" value="1" /></td>
+                                <td><input type="radio" name="${field.name}" value="Yes" ${question8=='Yes'?'checked="checked"':''} /></td>
                                 <td>a. Yes</td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="question8" value="2" /></td>
+                                <td><input type="radio" name="${field.name}" value="No" ${question8=='No'?'checked="checked"':''} /></td>
                                 <td>b. No</td>
                             </tr>
                         </table>
                     </li>
+                    #{/field}
                 </ul>
                 <input type="image" src="@{'public/images/submit.gif'}" class="submit" name="sendquestionaire" id="sendquestionaire">
             </div>	
         </div>
-        </form>
+        #{/form}
+        #{/else}
         <div class="clear"></div>
     </div>
 </div>	
+<div class="clear"></div>
+</div>
 </div>
 <script type="text/javascript">
 	$('.pics2').cycle('fade');

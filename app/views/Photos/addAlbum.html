@@ -1,0 +1,109 @@
+#{extends 'main.html' /}
+#{set title:'Profile' /}
+#{set 'moreScripts'}
+    <script type="text/javascript" src="@{'/public/javascripts/jquery.galleriffic.js'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/jquery.opacityrollover.js'}"></script>
+    <script src="@{'/public/javascripts/fileuploader.js'}" type="text/javascript"></script>
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+    <link rel="stylesheet" href="@{'/public/stylesheets/galleriffic-2.css'}" type="text/css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">
+#{/set}
+    <div class="photo_gallery">
+        <div class="profile_banner">
+            <div class="profile_banner_col1">
+                <div class="left_pad">
+                    <h1>Complete your Profile to maximize your trainer search</h1>
+                    <p>A professional profile is vital to finding a trainer to match your needs.  Once you have completed your profile, it will be much easier to match a trainer to your specific needs .</p>
+                </div>
+            </div>	
+            <div class="profile_banner_col2">
+                <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
+            </div>
+        </div>
+        <h2 style="margin-bottom:27px; margin-left:0px;">Add Album</h2>
+        #{flash /}
+        <div id="file-uploader">
+            <noscript>
+                <p>Please enable JavaScript to use file uploader.</p>
+                <!-- or put a simple form for upload here -->
+            </noscript>
+
+            <script type="text/javascript">
+                function createUploader(){
+                var uploader = new qq.FileUploader({
+                element: document.getElementById('file-uploader'),
+                action: '/upload',
+                debug: true
+                });
+                }
+
+                // in your app create uploader as soon as the DOM is ready
+                // don't wait for the window to load
+                window.onload = createUploader;
+            </script>
+        </div>
+
+        #{display_photos /}
+        <div class="clear"></div>
+        </div>  
+        <div class="clear"></div>
+    </div>	
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+    // We only want these styles applied when javascript is enabled
+    $('div.navigation').css({'width' : '300px', 'float' : 'right'});
+    $('div.content').css('display', 'block');
+
+    // Initially set opacity on thumbs and add
+    // additional styling for hover effect on thumbs
+    var onMouseOutOpacity = 0.67;
+    $('#thumbs ul.thumbs li').opacityrollover({
+    mouseOutOpacity:   onMouseOutOpacity,
+    mouseOverOpacity:  1.0,
+    fadeSpeed:         'fast',
+    exemptionSelector: '.selected'
+    });
+
+    // Initialize Advanced Galleriffic Gallery
+    var gallery = $('#thumbs').galleriffic({
+    delay:                     2500,
+    numThumbs:                 15,
+    preloadAhead:              10,
+    enableTopPager:            true,
+    enableBottomPager:         true,
+    maxPagesToShow:            7,
+    imageContainerSel:         '#slideshow',
+    controlsContainerSel:      '#controls',
+    captionContainerSel:       '#caption',
+    loadingContainerSel:       '#loading',
+    renderSSControls:          true,
+    renderNavControls:         true,
+    playLinkText:              'Play Slideshow',
+    pauseLinkText:             'Pause Slideshow',
+    prevLinkText:              '&lsaquo; Previous Photo',
+    nextLinkText:              'Next Photo &rsaquo;',
+    nextPageLinkText:          'Next &rsaquo;',
+    prevPageLinkText:          '&lsaquo; Prev',
+    enableHistory:             false,
+    autoStart:                 false,
+    syncTransitions:           true,
+    defaultTransitionDuration: 900,
+    onSlideChange:             function(prevIndex, nextIndex) {
+    // 'this' refers to the gallery, which is an extension of $('#thumbs')
+    this.find('ul.thumbs').children()
+    .eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+    .eq(nextIndex).fadeTo('fast', 1.0);
+    },
+    onPageTransitionOut:       function(callback) {
+    this.fadeTo('fast', 0.0, callback);
+    },
+    onPageTransitionIn:        function() {
+    this.fadeTo('fast', 1.0);
+    }
+    });
+    });
+</script>

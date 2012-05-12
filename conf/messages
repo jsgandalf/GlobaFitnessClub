@@ -1,3 +1,8 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+
+# Forum configuration
+# ~~~
+forum.pageSize=10
+forum.adminEmail=admin@sampleforum.com

@@ -115,14 +115,17 @@ ul.dropdown li a                    {
 
 ul#dropdown1 li{
 		opacity:0.95; filter:alpha(opacity=95);
+		cursor: pointer;
 }
 
 ul#dropdown2 li{
 		opacity:0.95; filter:alpha(opacity=95);
+		cursor: pointer;
 }
 
 ul#dropdown3 li{
 		opacity:0.95; filter:alpha(opacity=95);
+		cursor: pointer;
 }
 
 
@@ -1032,7 +1035,7 @@ border-radius: 7px; background-color:#FFF;color:#467AA7;display:block;font-size:
 	font-size: 28px;
     font-weight: normal;
     text-transform: uppercase;
-	margin-left:12px;
+	margin-left:10px;
 	margin-bottom:35px;
 }
 #schedule h2{
@@ -1396,6 +1399,40 @@ outline-style:none;
 .clear{clear:both;visibility:hidden;}
 .small{font-size:0.8em;}
 
+#schedule p.error{
+	color: #DA4348;
+    outline: medium none;
+    text-decoration: none;
+	font-weight:bold;
+}
+
+#contact_paragraph p.error{
+	color: #DA4348;
+    outline: medium none;
+    text-decoration: none;
+	font-weight:bold;
+}
+
+#schedule p.fError{
+	color: #DA4348;
+    outline: medium none;
+    text-decoration: none;
+}
+
+#contact_paragraph p.fError{
+	color: #DA4348;
+    outline: medium none;
+    text-decoration: none;
+}
+
+
+.fError{
+	color: #DA4348;
+    outline: medium none;
+    text-decoration: none;
+}
+
+
 .error{
 	color: #DA4348;
     outline: medium none;
@@ -1469,6 +1506,7 @@ outline-style:none;
     width: 596px;
 	display:block;
 	height: 100px;
+	z-index: 0;
 }
 
 
@@ -1493,7 +1531,7 @@ outline-style:none;
 }
 
 #profile_pic{
-	background:url("../images/trainers/mike.jpg") no-repeat scroll center center #FFFFFF;
+	background:url("../images/placeholder.jpg") no-repeat scroll center center #FFFFFF;
     border: 1px solid #C5C9CF;
     margin: 0 3px 3px 0;
     padding: 3px;
@@ -1506,9 +1544,34 @@ outline-style:none;
 	display:inline-block;
 	float:left;
 	padding-left: 25px;
-	width: 502px;
+	width: 389px;
+	float: left;
 }
 
+#profile_save{
+	float: left;
+}
+
+#profile_edit{
+	float: left;
+	margin-top: 16px;
+}
+
+#profile_edit a.submit2{
+	background-color: #FAFAFA;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+#profile_edit a.submit2:hover{
+	opacity:0.5; filter:alpha(opacity=50);	
+	border: 1px #999999 solid;
+	color: #000;
+	text-decoration:none;
+}
 
 #profile_content a.submit2{
 	background-color: #FAFAFA;
@@ -1540,4 +1603,19 @@ outline-style:none;
 
 .profile_city{
 	width:175px;
+}
+
+.profile_name{
+	width:175px;
+}
+
+#helper{
+	background: url("../images/helper2.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 60px;
+    margin-left: 10px;
+    margin-top: 20px;
+    padding-right: 10px;
+    width: 50px;
+    z-index: 100;
 }

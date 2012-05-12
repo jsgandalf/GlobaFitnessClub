@@ -1,0 +1,16 @@
+#{if flash.error}
+<p class="fError">
+    <strong>${flash.error}</strong>
+</p>
+#{/if}
+#{if flash.success}
+<p class="fSuccess">
+    <strong>${flash.success}</strong>
+</p>
+#{/if}
+
+#{ifErrors}
+<p class="error">
+    ${errors[0]}
+</p>
+#{/ifErrors}

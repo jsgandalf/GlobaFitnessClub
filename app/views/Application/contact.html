@@ -22,47 +22,73 @@
                 <br />
                 Fax: 1-801-756-0080
                 <br />
-                Email: Globafitness@gmail.com
+                Email: support@GlobaFitness.com
             </p>
         </div>
         <div id="trainer_picture"></div>
+        #{if flash.error}
+            <p class="fError">
+                <strong>${flash.error}</strong>
+            </p>
+        #{/if}
+         #{ifErrors}
+            <p class="error">
+                ${errors[0]}
+            </p>
+        #{/ifErrors}
+        #{if flash.success}
+            <p class="fSuccess">
+                <strong>${flash.success}</strong>
+            </p>
+        #{/if}
+        #{else}
         <div id="contactdiv">
-            
-            <form id="schedule_form" name="schedule_form" method="post" action="#">
+            #{form @sendContactForm()}
                 <ol>
                     <li>
-                    <p>Welcome to Globa Fitness.  Please fill out the form and we will contact you soon.</p>
+                    <p>Welcome to Globa Fitness.  Please fill out the form and a representative will contact you soon.</p>
                     </li>
                     <li>
                         <ol class="inline">
+                            #{field 'firstName'}
                             <li>
                                 <label for="name">First Name (required)</label>
-                                <input id="firstName" id="name" type="text" class="text" name="text" />
+                                <input id="firstName" id="name" type="text" class="text" name="${field.name}" value="${firstName}" />
                             </li>
+                            #{/field}
+                            #{field 'lastName'}
                             <li style="padding-left:5px;">
                                 <label for="name">Last Name (required)</label>
-                                <input id="lastName" type="text" class="text" name="text" />
+                                <input id="lastName" type="text" class="text" name="${field.name}" value="${lastName}" />
                             </li>
+                            #{/field}
                         </ol>
                     </li>
-
+					#{field 'email'}
                     <li>
                         <label for="name">Email (required)</label>
-                        <input id="name" type="text" class="text" name="text" />
+                        <input id="name" type="text" class="text" name="${field.name}" value="${email}" />
                     </li>
+                    #{/field}
+                    #{field 'subject'}
                     <li>
-                        <label for="name">Phone Number</label>
-                        <input id="name" type="text" class="text" name="text" />
+                        <label for="name">Subject (required)</label>
+                        <input id="name" type="text" class="text" name="${field.name}" value="${subject}" />
                     </li>
+                    #{/field}
+                    #{field 'message'}
                     <li>
-                        <label for="name">Message (required)</label>
-                        <textarea id="name" class="text" name="text"></textarea>
+                        <label for="name">message (required)</label>
+                        <textarea id="message" class="text" name="${field.name}">${message}</textarea>
                     </li>
+                    #{/field}
                 </ol>
                 <input type="image" src="@{'/public/images/submit.gif'}" class="submit" value="contact">
-            </form>
+            #{/form}
         </div>
         <div class="clear"></div>
+        #{/else}
     </div>
+    <div class="clear"></div>
 </div>	
 </div>

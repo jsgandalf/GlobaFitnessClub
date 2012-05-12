@@ -1,0 +1,48 @@
+#{extends 'main.html' /}
+#{set title:'Profile' /}
+#{set 'moreScripts'}
+
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+    <div class="list">
+        <div class="profile_banner">
+            <div class="profile_banner_col1">
+                <div class="left_pad">
+                    <h1>Complete your Profile to maximize your trainer search</h1>
+                    <p>A professional profile is vital to finding a trainer to match your needs.  Once you have completed your profile, it will be much easier to match a trainer to your specific needs .</p>
+                </div>
+            </div>	
+            <div class="profile_banner_col2">
+                <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
+            </div>
+        </div>
+        <div class="list_child" style="border:none;">
+            <div id="profile_content" style="float:left">
+            	#{form @createPostFunction()}
+           			<ol>
+                        #{field 'post_title'}
+                        <li>
+                            <label>Title (required)</label>
+                            <input id="email" type="text" class="text" name="${field.name}" maxlength="25" size="25" value="${post_title}" />
+                            <span class="error">${field.error}</span>
+                        </li>
+                        #{/field}
+                        #{field 'post_content'}
+                        <li>
+                            <label>Content:</label>
+                            <textarea name="${field.name}">${content}</textarea><span class="error">${field.error}</span>
+                        </li>
+                        #{/field}
+                        <li>
+                            <div id="profile_save"><input type="submit" src="@{'/public/images/save.gif'}" value="Save" class="submit2"></div>
+                        </li>
+            		</ol>
+               #{/form}
+            </div>
+            <div class="clear"></div>
+        </div>  
+        <div class="clear"></div>
+    </div>	
+</div>

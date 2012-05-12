@@ -3,6 +3,7 @@ package models;
 import play.db.jpa.*;
 import play.data.validation.*;
 import javax.persistence.*;
+import play.db.jpa.Blob;
 
 @Entity
 @Table(name="Customer")
@@ -14,6 +15,8 @@ public class User extends Model {
 	public String address;
 	public String city;
 	
+	public Blob photo;
+	
 	@MinSize(value=2, message="State must be 2 letters")
 	public String state;
 	
@@ -24,7 +27,6 @@ public class User extends Model {
     public String email;
 
     @Required(message = "Password is required")
-    @MaxSize(15)
     @MinSize(5)
     public String password;
     
@@ -61,14 +63,19 @@ public class User extends Model {
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = phoneNumber;
 		this.bio = bio;
+		this.isAdmin = false;
     }
 
     public String toString()  {
-        return "User(" + firstName + " "+ lastName +")";
+        return email+"-> "+firstName+" "+lastName;
     }
     
 	public String fullName(){
 		return firstName + " "+ lastName;
 	}
+	
+	public static boolean isEmailAvailable(String email) {
+        return User.find("byEmail") == null;
+    }
 	
 }

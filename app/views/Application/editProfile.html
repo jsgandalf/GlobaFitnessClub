@@ -20,67 +20,62 @@
         </div>
         <div class="list_child" style="border:none;">
         	<div id="profile_pic"></div>
-            <div id="profile_content">
+            <div id="profile_content" style="float:left">
             	#{form @saveProfile()}
                 <table class="profile_table Trainer_specs">
-                        <tr>
-                            <td colspan="2" style="padding-top:0px">
-                                <h1>${user.fullName()} &nbsp;<ul><li><input type="submit" src="@{'/public/images/save.gif'}" value="Save" class="submit2"></li></ul></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>City:</td>
-                            #{field 'user.city'}
-                            <td><input maxlength="40" type="text" class="inputcolor profile_city" name="${field.name}" value="${user?.city}"  />#{/field}#{field 'user.state'} State: <input maxlength="40" type="text" class="inputcolor" id="state"name="${field.name}" value="${user?.state}"  />#{/field}</td>
-                            
-                        </tr>
-                        <tr>
-                            <td class="phone">Phone Number:</td>
-                            #{field 'user.phoneNumber'}
-                            <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.phoneNumber}"  /></td>
-                            #{/field}
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            #{field 'user.email'}
-                            <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.email}" /></td>
-                            #{/field}
-                        </tr>
-                        <tr>
-                            <td>Credentials:</td>
-                            <td>Not yet defined:</td>
-                        </tr>
-                        <tr>
-                        	<td> Bio:</td>
-                            <td class="bio" colspan="2">
-                            
-                             <textarea id="name" class="text" name="text"> My name is Mike and i am a personal trainer. My training programs accommodate a variety of fitness levels and helps to promote strength , balance, endurance, speed, flexibility and an overall wellness of the body and mind. I guarantee your training experience with me will provide you with incredible benefits, including... but not limited to: building motivation and creating accountability, building confidence, building a higher level of mental toughness....and many more.</textarea>
-                            </td>   
-                       </tr>
-                        <tr> 
-                            <td>
-                              <p>10/10 Rating</p>
-                            </td>
-                        </tr>
-					</table>
-                    #{/form}
-                       <!-- <td>
-                            <table class="Trainer_specialities">
-                                <tr>
-                                    <td>
-                                        <ul>
-                                            <li>Weight loss</li>
-                                            <li>Functional training</li>
-                                            <li>Body building</li>
-                                            <li>General fitness</li>
-                                            <li>Toned or Get Yoked</li>
-                                        </ul>                                    
-                                    </td>                                
-                               </tr>
-                            </table>
+                    <tr>
+                        <td>First Name:</td>
+                        #{field 'user.firstName'}
+                        <td>
+                            <input maxlength="40" type="text" class="inputcolor profile_name" name="${field.name}" value="${user?.firstName}"  /> &nbsp;
                         </td>
-                        -->
+                        #{/field}
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        #{field 'user.lastName'}
+                        <td>
+                            <input maxlength="40" type="text" class="inputcolor profile_name" name="${field.name}" value="${user?.lastName}"  /> &nbsp;
+                        </td>
+                        #{/field}
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        #{field 'user.city'}
+                        <td><input maxlength="40" type="text" class="inputcolor profile_city" name="${field.name}" value="${user?.city}"  />#{/field}#{field 'user.state'} State: <input maxlength="40" type="text" class="inputcolor" id="state"name="${field.name}" value="${user?.state}"  />#{/field}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="phone">Phone Number:</td>
+                        #{field 'user.phoneNumber'}
+                        <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.phoneNumber}"  /></td>
+                        #{/field}
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        #{field 'user.email'}
+                        <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.email}" /></td>
+                        #{/field}
+                    </tr>
+                    <tr>
+                        <td> Bio:</td>
+                        <td class="bio" colspan="2">
+                        #{field 'user.bio'}
+                        <textarea id="name" class="text" name="${field.name}">${user?.bio}</textarea>
+                        </td>
+                        #{/field}   
+                   </tr>
+                    <tr> 
+                        <td>
+                          <p>10/10 Rating</p>
+                        </td>
+                    </tr>
+                </table>
+               
             </div>
+            <div id="profile_save"><input type="submit" src="@{'/public/images/save.gif'}" value="Save" class="submit2"></div>
+            <div class="clear"></div>
+             #{/form}
         </div>  
         <div class="clear"></div>
     </div>	
