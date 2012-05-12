@@ -85,7 +85,7 @@
 
              Logger.info("Name of the file %s", qqfile);
              // Another way I used to grab the name of the file
-             String filename = request.headers.get("x-file-name").value();
+             //String filename = request.headers.get("x-file-name").value();
 
              Logger.info("Absolute on where to send %s", Play.getFile("").getAbsolutePath() + File.separator + "uploads" + File.separator);
              try {
@@ -95,7 +95,7 @@
                  String accessKey = "AKIAIIDVPNAYFEVBVVFA";
                  String secretKey = "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";
                  AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey));
-                 String key = ""+filename;
+                 String key = "newPhotoObject";
                  s3.putObject(new PutObjectRequest("globafitnessphotos", key, data, new ObjectMetadata()).withCannedAcl(CannedAccessControlList.PublicRead));
                  //s3.putObject(new PutObjectRequest("globafitnessphotos", key, photo).withCannedAcl(CannedAccessControlList.PublicRead));
 

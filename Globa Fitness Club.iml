@@ -32,7 +32,7 @@
         <jarDirectory url="file://$MODULE_DIR$/../framework/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../framework/play-1.2.4.jar!/" />
@@ -44,6 +44,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="aws-java-sdk-1.3.8" level="project" />
+    <orderEntry type="library" name="commons-codec-1.4" level="project" />
   </component>
 </module>
 
