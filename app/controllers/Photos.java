@@ -62,11 +62,11 @@
          String mimeType = play.libs.MimeTypes.getMimeType(photo.getAbsolutePath());
          if(!mimeType.equals("image/jpeg") && !mimeType.equals("image/gif") && !mimeType.equals("image/png")){
              flash.error("File is not jpg, gif, or png. Please upload this type of file.");
-             render("@profile", user, photo);
+             render("@Application.profile", user, photo);
          }
          if(photo.length()>MAX_SIZE){
              flash.error("File is too large, must be less than 2.5mb");
-             render("@profile", user, photo);
+             render("@Application.profile", user, photo);
          }
          flash.error("");
          String accessKey = "AKIAIIDVPNAYFEVBVVFA";
@@ -75,7 +75,7 @@
          String key = "profile"+user.id;
          s3.putObject(new PutObjectRequest("globafitnessphotos", key, photo).withCannedAcl(CannedAccessControlList.PublicRead));
          flash.success("You have successfully uploaded a photo");
-         render("@profile",user);
+         render("@Application.profile",user);
      }
 
      public static void upload(String qqfile){
