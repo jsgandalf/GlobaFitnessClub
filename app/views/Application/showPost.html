@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:post.title /}
 #{set 'moreScripts'}
-	<script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}"></script>
+	<!--<script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}"></script>-->
 #{/set}
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
@@ -67,7 +67,7 @@
 </div>
 
 <script type="text/javascript" charset="${_response_encoding}">
-    $(function() {         
+   /* $(function() {         
         // Expose the form 
         $('form').click(function() { 
             $('form').expose({api: true}).load(); 
@@ -78,5 +78,5 @@
             $('form').expose({api: true, loadSpeed: 0}).load(); 
             $('form input[type=text]').get(0).focus();
         }
-    });
+    });*/
 </script>
