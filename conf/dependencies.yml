@@ -3,3 +3,4 @@
 require:
    - play 1.2.4
    - crud
+   - com.amazonaws -> aws-java-sdk 1.2.7
