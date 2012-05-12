@@ -1381,8 +1381,9 @@ outline-style:none;
 .options_logged_in{
 	float: right;
     height: 14px;
-    margin-right: 36px;
+    margin-right: 0px;
     margin-top: 10px;
+    width: 600px
 }
 .white_background_wrapper{
 	background-color: #FFF;

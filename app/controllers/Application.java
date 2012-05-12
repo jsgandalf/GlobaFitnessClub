@@ -90,7 +90,7 @@ public class Application extends Controller{
 		// Oops
 		flash.put("email", email);
 		flash.error("Login failed");
-		login_page();
+		render("@login_page");
     }
     
     public static void logout() {
