@@ -1513,7 +1513,7 @@ outline-style:none;
 
 .profile_banner_col2{
 	float: right;
-    width: 215px;
+    width: 200px;
 	height: 100px;
 	display:block;
 }
@@ -1547,6 +1547,17 @@ outline-style:none;
 	padding-left: 25px;
 	width: 389px;
 	float: left;
+}
+
+#upload_form_content{
+	display:inline-block;
+	float:left;
+	padding-left: 25px;
+	width: 389px;
+	float: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
 }
 
 #profile_save{
@@ -1619,4 +1630,32 @@ outline-style:none;
     padding-right: 10px;
     width: 50px;
     z-index: 100;
+}
+
+#add_photo{
+    padding-right: 15px;
+}
+
+.showAlbum{
+    margin: 0 0 27px 0;
+    width: 371px;
+    float: left;
+}
+
+.deleteAlbum{
+    float:right;
+    font-size:12px;
+    padding-top:10px;
+}
+
+#photo{
+      background-color: #E0ECF3;
+          border: 1px solid #A8CEE2;
+          font-size: 12px;
+}
+
+.addPhotoToAlbum{
+    width:300px;
+    float:left;
+    margin-top: 23px;
 }

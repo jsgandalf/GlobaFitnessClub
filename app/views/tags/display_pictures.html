@@ -1,0 +1,16 @@
+<ul class="thumbs noscript">
+    #{list items:_albums.pictures, as:'picture'}
+    <li>
+        <a class="thumb" name="leaf" href="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}" title="${picture?.title}">
+            <img width="75" height="75" src="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}" alt="${picture?.title}" />
+        </a>
+        <div class="caption">
+            <!--<div class="download">
+                <a href="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}">Download Original</a>
+            </div>-->
+            <div class="image-title">${picture?.title}</div>
+            <div class="image-desc">${picture?.content}</div>
+        </div>
+    </li>
+    #{/list}
+</ul>

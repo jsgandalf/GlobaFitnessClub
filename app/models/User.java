@@ -5,8 +5,10 @@ import play.data.validation.*;
 import javax.persistence.*;
 import play.db.jpa.Blob;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name="Customer")
 public class User extends Model {
 	
 	public String gender;
@@ -48,8 +50,11 @@ public class User extends Model {
     @Lob
     public String bio;
    
-    public boolean isAdmin;   
-   
+    public boolean isAdmin;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    public List<Album> myAlbums;
+
     public User(String firstName, String lastName, String password, String email, String zip, String address, String state, String city,String gender, String dateOfBirth, String phoneNumber, String bio) {
         this.firstName = firstName;
 		this.lastName = lastName;
@@ -64,6 +69,7 @@ public class User extends Model {
 		this.phoneNumber = phoneNumber;
 		this.bio = bio;
 		this.isAdmin = false;
+        this.myAlbums = new ArrayList<Album>();
     }
 
     public String toString()  {
@@ -77,5 +83,29 @@ public class User extends Model {
 	public static boolean isEmailAvailable(String email) {
         return User.find("byEmail") == null;
     }
-	
+
+    public Album addAlbum(){
+        Album newAlbum = new Album(this,"","");
+        this.myAlbums.add(newAlbum);
+        this.save();
+        return newAlbum;
+    }
+    public Album addAlbum(String title, String description){
+        Album newAlbum = new Album(this,title, description);
+        this.myAlbums.add(newAlbum);
+        this.save();
+        return newAlbum;
+    }
+    public Album getLastAlbum(){
+        //If there are not any albums available then make your first one
+        if(myAlbums.isEmpty()==true){
+            this.addAlbum();
+        }
+        return myAlbums.get(myAlbums.size() - 1);
+    }
+    public void deleteLastAlbum(){
+        Album lastAlbum = getLastAlbum();
+        lastAlbum.deletePictures();
+        //lastAlbum.delete();
+    }
 }

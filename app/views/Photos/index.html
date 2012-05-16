@@ -19,40 +19,45 @@
             <div class="profile_banner_col2">
                 <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
             </div>
+            <div class="clear"></div>
         </div>
-        <h2 style="margin-bottom:27px; margin-left:0px;">Photos</h2>
+        <div class="clear"></div>
+        <h2 style="margin-bottom:27px; margin-left:0px;">My Albums</h2>
         #{flash /}
         <div id="profile_edit" style="float:left"><a style="font-size:12px" class="submit2" href="@{Photos.addAlbum()}">New Album</a></div>
         <div class="clear"></div>
-        <div id="gallery" class="content">
-            <div id="controls" class="controls"></div>
-            <div class="slideshow-container">
-                <div id="loading" class="loader"></div>
-                <div id="slideshow" class="slideshow"></div>
-            </div>
-            <div id="caption" class="caption-container"></div>
-        </div>
-        #{display_photos /}
+        #{if myAlbumList}
+        #{display_albums albums:myAlbumList /}
+        #{/if}
+        #{else}
+            <div style="margin-top:10px"><p>You have no Albums</p></div>
+        #{/else}
         <div class="clear"></div>
-        </div>  
+        </div>
         <div class="clear"></div>
     </div>	
 </div>
 
 <script type="text/javascript">
 jQuery(document).ready(function($) {
+
+    $(".thumbs li a").click(function(){
+    var relocation_page = $(this).attr('redirect');
+    window.location.replace(relocation_page);
+    });
+
     // We only want these styles applied when javascript is enabled
-    $('div.navigation').css({'width' : '300px', 'float' : 'right'});
+    $('div.navigation').css({'width' : '300px', 'float' : 'left'});
     $('div.content').css('display', 'block');
 
     // Initially set opacity on thumbs and add
     // additional styling for hover effect on thumbs
     var onMouseOutOpacity = 0.67;
-    $('#thumbs ul.thumbs li').opacityrollover({
-    mouseOutOpacity:   onMouseOutOpacity,
-    mouseOverOpacity:  1.0,
-    fadeSpeed:         'fast',
-    exemptionSelector: '.selected'
+    $('#thumbs ul li').opacityrollover({
+        mouseOutOpacity:   onMouseOutOpacity,
+        mouseOverOpacity:  1.0,
+        fadeSpeed:         'fast',
+        exemptionSelector: '.selected'
     });
 
     // Initialize Advanced Galleriffic Gallery
@@ -93,4 +98,6 @@ jQuery(document).ready(function($) {
     }
     });
 });
+
+
 </script>

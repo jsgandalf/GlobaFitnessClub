@@ -1,0 +1,18 @@
+<div id="thumbs" class="navigation">
+<ul class="thumbs noscript">
+    #{list items:_albums, as:'albums'}
+    <li>
+        <a class="thumb" name="leaf" href="" redirect="@{showAlbum(albums.id)}" title="${albums?.title}">
+            <img width="75" height="75" src="https://s3.amazonaws.com/globafitnessphotos/${albums.getFirstPictureKey()}" alt="${albums?.title}" />
+        </a>
+        <div class="caption">
+            <!--<div class="download">
+                <a href="https://s3.amazonaws.com/globafitnessphotos/${albums.getFirstPictureKey()}">Download Original</a>
+            </div>-->
+            <div class="image-title">${albums?.title}</div>
+            <div class="image-desc">${albums?.content}</div>
+        </div>
+    </li>
+    #{/list}
+</ul>
+

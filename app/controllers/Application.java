@@ -51,16 +51,16 @@ public class Application extends Controller{
     
     public static void saveUser(@Valid User user, @Required(message="Re-enter Your password") String verifyPassword,
 								@Required(message="Re-enter your email") String verifyEmail) {
-									
+
         validation.required(verifyPassword);
-		validation.required(verifyEmail);
-		validation.equals(verifyEmail, user.email).message("Your email doesn't match");
+        validation.required(verifyEmail);
+        validation.equals(verifyEmail, user.email).message("Your email doesn't match");
         validation.equals(verifyPassword, user.password).message("Your password doesn't match");
+		User myUser = User.find("byEmail", user.email).first();
         if(validation.hasErrors()) {
             render("@register", user, verifyPassword, verifyEmail);
         }
-		User myUser = User.find("byEmail", user.email).first();
-		if(myUser == null){
+        if(myUser == null){
 			Mails.welcome(user); 	
 			flash.success("Your account is created.");
 			BCrypt B = new BCrypt();
@@ -99,7 +99,6 @@ public class Application extends Controller{
         index();
     }
     public static void register() {
-        Application.siteDown();
         render();
     }
 	

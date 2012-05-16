@@ -252,7 +252,7 @@ qq.FileUploaderBasic = function(o){
     this._options = {
         // set to true to see the server response
         debug: false,
-        action: '/server/upload',
+        action: '/upload',
         params: {},
         button: null,
         multiple: true,
@@ -260,7 +260,7 @@ qq.FileUploaderBasic = function(o){
         // validation        
         allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
         sizeLimit: 2621440,
-        minSizeLimit: 10000,
+        minSizeLimit: 1000,
         // events
         // return false to cancel submit
         onSubmit: function(id, fileName){},
@@ -642,7 +642,7 @@ qq.extend(qq.FileUploader.prototype, {
         }          
     },
     /**
-     * delegate click event for cancel link 
+     * delegate click event for cancel link
      **/
     _bindCancelEvent: function(){
         var self = this,

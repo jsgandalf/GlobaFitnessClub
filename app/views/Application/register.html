@@ -5,7 +5,22 @@
     <div class="clear"></div>
     <h2 style="margin-bottom:27px;">Sign Up</h2>
     <p style="width: 300px">Become a member of Globa fitness Network.  Its free to sign up!</p>
-    #{flash /}
+    #{if flash.error}
+    <p class="fError">
+        <strong>${flash.error}</strong>
+    </p>
+    #{/if}
+    #{if flash.success}
+    <p class="fSuccess">
+        <strong>${flash.success}</strong>
+    </p>
+    #{/if}
+
+    #{ifErrors}
+    <p class="error">
+        ${errors[0]}
+    </p>
+    #{/ifErrors}
 
     <div id="joinLeft">
         #{form @saveUser()}

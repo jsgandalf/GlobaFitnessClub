@@ -1,37 +1,52 @@
 package models;
 
+import java.util.*;
+import javax.persistence.*;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import play.data.binding.As;
-import play.data.validation.MaxSize;
-import play.data.validation.Required;
-import play.db.jpa.Model;
+import play.db.jpa.*;
+import play.data.validation.*;
 
-import javax.persistence.Lob;
-import java.util.Date;
-
-/**
- * Created with IntelliJ IDEA.
- * User: Sean
- * Date: 5/10/12
- * Time: 9:18 PM
- * To change this template use File | Settings | File Templates.
- */
+@Entity
 public class Picture extends Model {
+
+    @Required
     public String title;
 
     @Required @As("yyyy-MM-dd")
     public Date creationDate;
 
     @Lob
-    @MaxSize(1000)
-    public String description;
+    @Required
+    @MaxSize(10000)
+    public String content;
 
-    //The key found in AWS Amazon s3
-    public String key;
+    @ManyToOne
+    @Required
+    public Album album;
 
-    public Picture(String title, String description, String key) {
+    @Required
+    private String amazonKey;
+
+    public String fileExtension;
+
+    public Picture(Album album, String title, String content, String fileExtension, String amazonKey) {
+        this.album = album;
         this.title = title;
-        this.description = description;
-        this.key = key;
+        this.content = content;
         this.creationDate = new Date();
+        this.fileExtension = fileExtension;
+        this.amazonKey = amazonKey;
     }
+
+    public String getAmazonKey(){
+        return amazonKey;
+    }
+
+    public String toString() {
+        return content.length() > 50 ? content.substring(0, 50) + "..." : content;
+    }
+
 }

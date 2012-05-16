@@ -9,15 +9,31 @@ div.content a, div.navigation a {
 	color: #777;
 }
 div.content a:focus, div.content a:hover, div.content a:active {
-	text-decoration: underline;
+	text-decoration: none;
 }
 div.controls {
 	margin-top: 5px;
 	height: 23px;
 }
 div.controls a {
-	padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    background-color: #E0ECF3;
+    border: 1px solid #A8CEE2;
+    height: 16px;
+    color: #000;
+    opacity:0.8; filter:alpha(opacity=100);
+    margin-left:6px;
 }
+
+div.controls a:hover{
+    opacity:1; filter:alpha(opacity=50);
+    text-decoration:none;
+}
+
 div.ss-controls {
 	float: left;
 }
@@ -59,10 +75,10 @@ div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.sli
 	text-decoration: none;
 }
 div.slideshow img {
-	vertical-align: middle;
+	vertical-align: top;
 	background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #C5C9CF;
-    margin: 0 3px 3px 0;
+    margin: 10px 3px 3px 0;
     padding: 3px;
 }
 div.download {
@@ -85,7 +101,7 @@ div.caption {
 }
 div.image-title {
 	font-weight: bold;
-	font-size: 1.4em;
+	font-size: 2.4em;
 }
 div.image-desc {
 	line-height: 1.3em;
@@ -93,6 +109,8 @@ div.image-desc {
 }
 div.navigation {
 	/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */
+	float:left;
+	width: 300px;
 }
 
 .photo_gallery{
