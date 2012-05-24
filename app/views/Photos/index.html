@@ -6,98 +6,57 @@
 #{/set}
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
-    <link rel="stylesheet" href="@{'/public/stylesheets/galleriffic-2.css'}" type="text/css" />
 #{/set}
-    <div class="photo_gallery">
-        <div class="profile_banner">
-            <div class="profile_banner_col1">
-                <div class="left_pad">
-                    <h1>Complete your Profile to maximize your trainer search</h1>
-                    <p>A professional profile is vital to finding a trainer to match your needs.  Once you have completed your profile, it will be much easier to match a trainer to your specific needs .</p>
-                </div>
-            </div>	
-            <div class="profile_banner_col2">
-                <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
-            </div>
-            <div class="clear"></div>
+
+<h2 style="margin-bottom:27px; margin-left:0px; padding-left:20px;">My Albums</h2>
+<div class="profile_banner">
+    <div class="profile_banner_col1">
+        <div class="left_pad">
+            <h1>Complete your Profile to maximize your trainer search</h1>
+            <p>A professional profile is vital to finding a trainer to match your needs.  Once you have completed your profile, it will be much easier to match a trainer to your specific needs .</p>
         </div>
-        <div class="clear"></div>
-        <h2 style="margin-bottom:27px; margin-left:0px;">My Albums</h2>
-        #{flash /}
-        <div id="profile_edit" style="float:left"><a style="font-size:12px" class="submit2" href="@{Photos.addAlbum()}">New Album</a></div>
-        <div class="clear"></div>
-        #{if myAlbumList}
+    </div>
+    <div class="profile_banner_col2">
+        <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="sidebar">
+    <h3>Photos</h3>
+    <ul class="sb_menu">
+        <li><a href="@{Photos.addAlbum()}">Add New Album</a></li>
+        <li><a href="#">Manage my Photos</a></li>
+        <li><a href="#">Search Photos</a></li>
+        <li class="last"><a href="#">Create new photo options</a></li>
+    </ul>
+    <h3>Friends</h3>
+    <ul class="sb_menu">
+        <li><a href="#">Find friends</a></li>
+        <li><a href="#">See current friends</a></li>
+        <li><a href="#">Manage friends</a></li>
+        <li class="last"><a href="#">Create Network</a></li>
+    </ul>
+</div>
+<div class="content">
+    #{flash /}
+    <!--<div id="profile_edit" style="float:left"><a style="font-size:12px" class="submit2" href="@{Photos.addAlbum()}">New Album</a></div>-->
+    <div class="clear"></div>
+    #{if myAlbumList}
+
         #{display_albums albums:myAlbumList /}
-        #{/if}
-        #{else}
-            <div style="margin-top:10px"><p>You have no Albums</p></div>
-        #{/else}
-        <div class="clear"></div>
-        </div>
-        <div class="clear"></div>
-    </div>	
+    #{/if}
+    #{else}
+        <div style="margin-top:10px"><p>You have no Albums</p></div>
+    #{/else}
+    <div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
 </div>
 
 <script type="text/javascript">
-jQuery(document).ready(function($) {
-
-    $(".thumbs li a").click(function(){
-    var relocation_page = $(this).attr('redirect');
-    window.location.replace(relocation_page);
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
     });
-
-    // We only want these styles applied when javascript is enabled
-    $('div.navigation').css({'width' : '300px', 'float' : 'left'});
-    $('div.content').css('display', 'block');
-
-    // Initially set opacity on thumbs and add
-    // additional styling for hover effect on thumbs
-    var onMouseOutOpacity = 0.67;
-    $('#thumbs ul li').opacityrollover({
-        mouseOutOpacity:   onMouseOutOpacity,
-        mouseOverOpacity:  1.0,
-        fadeSpeed:         'fast',
-        exemptionSelector: '.selected'
-    });
-
-    // Initialize Advanced Galleriffic Gallery
-    var gallery = $('#thumbs').galleriffic({
-    delay:                     2500,
-    numThumbs:                 15,
-    preloadAhead:              10,
-    enableTopPager:            true,
-    enableBottomPager:         true,
-    maxPagesToShow:            7,
-    imageContainerSel:         '#slideshow',
-    controlsContainerSel:      '#controls',
-    captionContainerSel:       '#caption',
-    loadingContainerSel:       '#loading',
-    renderSSControls:          true,
-    renderNavControls:         true,
-    playLinkText:              'Play Slideshow',
-    pauseLinkText:             'Pause Slideshow',
-    prevLinkText:              '&lsaquo; Previous Photo',
-    nextLinkText:              'Next Photo &rsaquo;',
-    nextPageLinkText:          'Next &rsaquo;',
-    prevPageLinkText:          '&lsaquo; Prev',
-    enableHistory:             false,
-    autoStart:                 false,
-    syncTransitions:           true,
-    defaultTransitionDuration: 900,
-    onSlideChange:             function(prevIndex, nextIndex) {
-    // 'this' refers to the gallery, which is an extension of $('#thumbs')
-    this.find('ul.thumbs').children()
-    .eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
-    .eq(nextIndex).fadeTo('fast', 1.0);
-    },
-    onPageTransitionOut:       function(callback) {
-    this.fadeTo('fast', 0.0, callback);
-    },
-    onPageTransitionIn:        function() {
-    this.fadeTo('fast', 1.0);
-    }
-    });
-});
-
-
 </script>

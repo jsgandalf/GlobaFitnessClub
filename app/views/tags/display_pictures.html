@@ -1,16 +1,16 @@
-<ul class="thumbs noscript">
+<ul class="display_pictures" xmlns="http://www.w3.org/1999/html">
     #{list items:_albums.pictures, as:'picture'}
-    <li>
-        <a class="thumb" name="leaf" href="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}" title="${picture?.title}">
-            <img width="75" height="75" src="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}" alt="${picture?.title}" />
-        </a>
-        <div class="caption">
-            <!--<div class="download">
-                <a href="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}">Download Original</a>
-            </div>-->
-            <div class="image-title">${picture?.title}</div>
-            <div class="image-desc">${picture?.content}</div>
-        </div>
-    </li>
+        <li>
+            <a class="photoIframe fancybox" href="#comment_pic${picture_index}" rel="gallery">
+                <img src="https://s3.amazonaws.com/globafitnessphotos/${picture.amazonThumbnailKey}" />
+            </a>
+            <div style="display: none;">
+                <div id="comment_pic${picture_index}" class="photoDisplayDiv">
+                    <img src="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}" alt="${picture?.title}">
+                    <div><h2>${picture?.title}</h2></div>
+                    <div><p></p>${picture?.content}</p><p><a href="" class="btn">Comment</a></p>
+                </div>
+            </div>
+        </li>
     #{/list}
 </ul>

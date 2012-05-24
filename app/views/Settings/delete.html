@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+<div id="contact_paragraph">
+    <div class="clear"></div>
+    <h2 style="margin-bottom:27px;">Account Deleted</h2>
+	#{if flash.error}
+        <p class="fError">
+            <strong>${flash.error}</strong>
+        </p>
+    #{/if}
+    #{if flash.success}
+        <p class="fSuccess">
+            <strong>${flash.success}</strong>
+        </p>
+    #{/if}
+    <p style="width: 300px">Thank you for being apart of Globa Fitness Club. We are sorry to see you go! <a href="@{Application.login_page()}">Click here</a> to Sign up again.</p>
+	 #{ifErrors}
+        <p class="error">
+            ${errors[0]}
+        </p>
+    #{/ifErrors}
+
+
+    <div id="joinLeft">
+		<p></p>
+	</div>
+     <div class="clear"></div>
+    
+</div>
+        </div>

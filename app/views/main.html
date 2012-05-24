@@ -1,16 +1,27 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <head>
         <title>#{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/globa.css'}">
         #{get 'moreStyles' /}
-		<script type="text/javascript" src="@{'/public/javascripts/jquery-1.6.4.min.js'}"></script>
+		<script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.2.min.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/cycle.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/slideshow.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/dropdown.js'}"></script>
         <script src="@{'/public/javascripts/fileuploader.js'}" type="text/javascript"></script>
         <script src="@{'/public/javascripts/cufon/cufon-yui.js'}" type="text/javascript"></script>
         <script src="@{'/public/javascripts/cufon/Liberation_Sans_400.font.js'}" type="text/javascript"></script>
+
+        <!--Fancy box plugin------------------------------------------------------------------------------------>
+
+
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="@{'/public/javascripts/fancybox/source/jquery.fancybox.css'}" type="text/css" media="screen" />
+        <script type="text/javascript" src="@{'/public/javascripts/fancybox/source/jquery.fancybox.pack.js'}"></script>
+
+
+
         <script type="text/javascript">
             Cufon.replace('h1'); 
             Cufon.replace('#login a', {
@@ -73,7 +84,7 @@
                     |
                     <a href="@{Application.siteDown()}">Calendar</a>
                     |
-                    <a href="@{Application.settings()}">Settings</a>
+                    <a href="@{Settings.index()}">Settings</a>
                     |
                     <a href="@{Application.profile()}">Profile</a>
                     |
@@ -187,7 +198,7 @@
                         </div>
                         <div class="clear"></div>
                         <div class="footer_bottom">
-                            <div class="copy">&copy; Copyright <a href="#">Globa Fitness</a></div>
+                            <div class="copy">&copy; Copyright ${new Date().format("yyyy")} <a href="@{Application.index}">Globa Fitness</a></div>
                             <div class="clear"></div>
                         </div>
                     </div>

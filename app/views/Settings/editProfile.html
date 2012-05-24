@@ -1,0 +1,103 @@
+#{extends 'main2.html' /}
+#{set title:'Settings' /}
+#{set 'moreScripts'}
+
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+        <div id="profile_content" style="float:left;">
+            #{form @saveProfile()}
+            <table class="profile_table Trainer_specs">
+                <tr>
+                    <td>First Name:</td>
+                    #{field 'user.firstName'}
+                    <td>
+                        <input maxlength="40" type="text" class="inputcolor profile_name" name="${field.name}" value="${user?.firstName}"  /> &nbsp;
+                    </td>
+                    #{/field}
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    #{field 'user.lastName'}
+                    <td>
+                        <input maxlength="40" type="text" class="inputcolor profile_name" name="${field.name}" value="${user?.lastName}"  /> &nbsp;
+                    </td>
+                    #{/field}
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    #{field 'user.city'}
+                    <td><input maxlength="40" type="text" class="inputcolor profile_city" name="${field.name}" value="${user?.city}"  />#{/field}#{field 'user.state'} State: <input maxlength="40" type="text" class="inputcolor" id="state"name="${field.name}" value="${user?.state}"  />#{/field}</td>
+
+                </tr>
+                <tr>
+                    <td class="phone">Phone Number:</td>
+                    #{field 'user.phoneNumber'}
+                    <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.phoneNumber}"  /></td>
+                    #{/field}
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    #{field 'user.email'}
+                    <td><input maxlength="40" type="text" class="inputcolor profile_input" name="${field.name}" value="${user?.email}" /></td>
+                    #{/field}
+                </tr>
+                <tr>
+                    <td>Relationship Status:</td>
+                    #{field 'user.relationship'}
+                    <td>#{select 'user.relationship',value:user.relationship, class:"blue_select", id:"relationship"}
+                        #{option ''}N/A#{/option}
+                        #{option 'Single'}Single#{/option}
+                        #{option 'Married'}Married#{/option}
+                        #{option 'Divorced'}Divorced#{/option}
+                        #{/select}
+                    </td>
+                    #{/field}
+                </tr>
+                <tr>
+                    <td>Fitness Goals:</td>
+                    <td>
+                        #{list items:fitnessGoals, as:'fitnessGoal'}
+                            <div class="fitnessGoals${fitnessGoal_parity}">
+                                <!--<input type="hidden" name="goalsHidden[]" value="${fitnessGoal.id}">-->
+                                #{set name:"fitnessGoal[" + fitnessGoal_index + "]" /}
+                                <input ${fitnessGoal.value ? 'checked':''}  type="checkbox" name="${name}" id="${fitnessGoal.name}" value="${fitnessGoal.id}" /><label for="${fitnessGoal.name}"> ${fitnessGoal.name}</label>
+                            </div>
+                        #{/list}
+                        <div class="clear"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Bio:</td>
+                    <td class="bio" colspan="2">
+                    #{field 'user.bio'}
+                    <textarea id="name" class="text" name="${field.name}">${user?.bio}</textarea>
+                    </td>
+                    #{/field}
+               </tr>
+                <tr>
+                    <td>
+                      <p>10/10 Rating</p>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="profile_save"><input type="submit" src="@{'/public/images/save.gif'}" value="Save" class="submit2"></div>
+        <div class="clear"></div>
+         #{/form}
+    </div>
+    <div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+
+$('.pics').cycle('fade');
+		
+$('#rate_trainer').click(function(){
+	$('#trainer_box_response').css("height","334px").toggle('fast');
+});
+
+$('#trainer_box_response').hide();
+</script>

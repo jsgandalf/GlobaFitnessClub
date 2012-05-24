@@ -1,13 +1,16 @@
 package controllers;
 
+import models.FitnessGoal;
 import models.Post;
 import models.User;
+import models.user_fitnessgoal;
 import notifiers.Mails;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
 import play.data.validation.Required;
 import play.data.validation.Valid;
+import play.db.jpa.GenericModel;
 import play.libs.Codec;
 import play.libs.Images;
 import play.mvc.Before;
@@ -16,10 +19,15 @@ import security.BCrypt;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+import static models.user_fitnessgoal.newUserSetupForGoals;
+import static models.user_fitnessgoal.setUserFitnessGoal;
 
 public class Application extends Controller{
-	
+
     @Before
     static void addUser() {
         User user = connected();
@@ -27,7 +35,7 @@ public class Application extends Controller{
             renderArgs.put("user", user);
 		}
     }
-    
+
     static User connected() {
         if(renderArgs.get("user") != null) {
             return renderArgs.get("user", User.class);
@@ -38,7 +46,7 @@ public class Application extends Controller{
         }
         return null;
     }
-    
+
     // ~~
 
     public static void index() {
@@ -48,7 +56,7 @@ public class Application extends Controller{
 		User user = connected();
 		render(user);
 	}
-    
+
     public static void saveUser(@Valid User user, @Required(message="Re-enter Your password") String verifyPassword,
 								@Required(message="Re-enter your email") String verifyEmail) {
 
@@ -61,12 +69,13 @@ public class Application extends Controller{
             render("@register", user, verifyPassword, verifyEmail);
         }
         if(myUser == null){
-			Mails.welcome(user); 	
+			Mails.welcome(user);
 			flash.success("Your account is created.");
 			BCrypt B = new BCrypt();
 			user.password = B.hashpw(user.password, B.gensalt(12));
-			user.create();
-			flash.success("Welcome, " + user.firstName);
+            user.create();
+            newUserSetupForGoals(user);
+            flash.success("Welcome, " + user.firstName);
 			session.put("user", user.email);
 			profile();
 		}else{
@@ -74,7 +83,16 @@ public class Application extends Controller{
 			render("@register", user, verifyPassword, verifyEmail);
 		}
     }
-    
+
+    public static void profile(){
+        User user = connected();
+        if(user==null){
+            flash.error("You must login to see your profile");
+            Application.login_page();
+        }
+        render(user);
+    }
+
     public static void login(String email, String password) {
 		if(!email.equals("") && !password.equals("")){
 			User user = User.find("byEmail", email).first();
@@ -83,7 +101,7 @@ public class Application extends Controller{
 				if(B.checkpw(password, user.password)) {
 					session.put("user", user.email);
 					flash.success("Welcome, " + user.firstName);
-					profile();         
+					profile();
 				}
 			}
 		}
@@ -92,57 +110,37 @@ public class Application extends Controller{
 		flash.error("Login failed");
 		render("@login_page");
     }
-    
+
     public static void logout() {
         session.clear();
 		flash.success("Thank you for using Globa Fitness!");
         index();
     }
     public static void register() {
+        flash.clear();
         render();
     }
-	
-	public static void profile(){
-		User user = connected();
-		render(user);
-	}
- 
+
 	public static void login_page(){
 		render();
 	}
-	
+
 	public static void contact(){
 		render();
 	}
-	
+
 	public static void consultation(){
-		render();
+        render();
 	}
-	
-	public static void editProfile(){
-		User user = connected();
-        render(user);
-	}
-	
-	public static void saveProfile(User user){
-		User myUser = connected();
-		myUser.city = user.city;
-		myUser.state = user.state;
-		myUser.email = user.email;
-		myUser.phoneNumber = user.phoneNumber;
-		myUser.bio = user.bio;
-		myUser.save();
-		settings();
-	}
-	
+
 	public static void siteDown(){
 		render();
 	}
-	
+
 	public static void weightLoss(){
 		render();
 	}
-	
+
 	public static void bodyBuilding(){
 		render();
 	}
@@ -152,7 +150,7 @@ public class Application extends Controller{
 	public static void highIntensityIntervalTraining(){
 		render();
 	}
-	public static void  goalSpecificTraining(){
+	public static void goalSpecificTraining(){
 		render();
 	}
     public static void personalizedNutritionPlan(){
@@ -179,58 +177,10 @@ public class Application extends Controller{
 	public static void network(){
 		siteDown();
 	}
-	public static void resetPasswordFunction(@Required(message="Please type in your email to reset your password.")String email, @Required(message="Please type in your zip code.")String zip)	{
-		validation.required(email);
-		validation.required(zip);
-		flash.put("email", email);
-		flash.put("zip", zip);
-		User user = User.find("byEmail", email).first();
-		if(validation.hasErrors()) {
-			render("@resetPassword", email, zip);
-		}else if(user != null && ((user.zip).equals(zip)||user.zip==null)) {
-			Mails.lostPassword(user);
-			flash.success("Password Changed Successfully. Please check your email for your password."); 
-			render("@resetPassword");
-		}else if(user!= null && !(user.zip).equals(zip)){
-			flash.error("Zip code incorect.");
-			render("@resetPassword", email, zip);
-		}
-		// No matching email or zip
-		flash.error("There is no one registered with that email.");
-		render("@resetPassword", email, zip);
-	}
-	public static void resetPassword(){
-		render();
-	}
-	public static void settings(){
-        flash.error("");
-		User user = connected();
-		render(user);
-	}
-	public static void saveSettings(@Required(message="Please type in your current password")String userPassword, @Required(message="Please provide your new password")String newPassword) {
-		User user = connected();
-		validation.required(userPassword);
-		validation.required(newPassword);
-		if(validation.hasErrors()) {
-			render("@settings", userPassword, newPassword);
-		}
-        BCrypt B = new BCrypt();
-        if(B.checkpw(userPassword, user.password)) {
-            user.password = B.hashpw(newPassword, B.gensalt(12));
-            user.save();
-            flash.error("");
-            flash.success("Password Reset Successfully");
-            render("@settings");
-        }else{
-			flash.error("Current Password Incorrect");
-			render("@settings", userPassword, newPassword);	
-		}
-	}
-	
 	public static void template(String header, String content){
 		render(header, content);
 	}
-	
+
 	public static void sendContactForm(@Required(message="Please put in your first name.")String firstName, @Required(message="Please type in your last name.")String lastName, @Required(message="Please type in your email.")String email,@Required(message="Please type in the subject.")String subject, @Required(message="Please put in your message.")String message){
 		validation.required(firstName);
 		validation.required(lastName);
@@ -242,7 +192,7 @@ public class Application extends Controller{
 		}
 		flash.success("Your message has been sent.");
 		Mails.contact(firstName, lastName, email, subject, message);
-		render("@contact"); 
+		render("@contact");
 	}
 
 	public static void sendConsultationForm(String firstName, String lastName, String email, String phoneNumber, String question1, String question2, String question3,String question4,String question5,String question6,String question7,String question8){
@@ -262,7 +212,7 @@ public class Application extends Controller{
 		Mails.consultation(firstName, lastName,  email,  phoneNumber,  question1,  question2,  question3, question4, question5, question6, question7, question8);
 		render("@consultation");
 	}
-	
+
 	public static void posts(){
 		User user = connected();
 		Post frontPost = Post.find(
@@ -271,7 +221,7 @@ public class Application extends Controller{
     		"select p from Post p where p.author = ? order by postedAt desc",user).from(1).fetch(10);
         render(user, frontPost, olderPosts);
 	}
-	
+
 	public static void showPost(Long id) {
         Post post = Post.findById(id);
         String randomID = Codec.UUID();
@@ -290,11 +240,11 @@ public class Application extends Controller{
     }
 
 	public static void postComment(
-			Long postId, 
-			@Required(message="Author is required") String author, 
-			@Required(message="A message is required") String content, 
-			@Required(message="Please type the code") String code, 
-			String randomID) 
+			Long postId,
+			@Required(message="Author is required") String author,
+			@Required(message="A message is required") String content,
+			@Required(message="Please type the code") String code,
+			String randomID)
 	{
 		Post post = Post.findById(postId);
 		validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
@@ -306,12 +256,12 @@ public class Application extends Controller{
 		Cache.delete(randomID);
 		showPost(postId);
 	}
-	
+
 	public static void createPost(){
 		User user = connected();
 		render(user);
 	}
-	
+
 	public static void createPostFunction(@Required(message="Title is required") String post_title, @Required(message="Content is required") String post_content)
 	{
 		if(validation.hasErrors()) {
@@ -327,5 +277,28 @@ public class Application extends Controller{
 	}
 	public static void donate(){
         render();
+    }
+    public static void resetPassword(){
+        render();
+    }
+    public static void resetPasswordFunction(@Required(message="Please type in your email to reset your password.")String email, @Required(message="Please type in your zip code.")String zip)	{
+        validation.required(email);
+        validation.required(zip);
+        flash.put("email", email);
+        flash.put("zip", zip);
+        User user = User.find("byEmail", email).first();
+        if(validation.hasErrors()) {
+            render("@resetPassword", email, zip);
+        }else if(user != null && ((user.zip).equals(zip)||user.zip==null)) {
+            Mails.lostPassword(user);
+            flash.success("Password Changed Successfully. Please check your email for your password.");
+            render("@resetPassword");
+        }else if(user!= null && !(user.zip).equals(zip)){
+            flash.error("Zip code incorect.");
+            render("@resetPassword", email, zip);
+        }
+        // No matching email or zip
+        flash.error("There is no one registered with that email.");
+        render("@resetPassword", email, zip);
     }
 }

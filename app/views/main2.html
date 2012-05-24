@@ -1,0 +1,43 @@
+#{extends 'main.html' /}
+#{set title:'Settings' /}
+#{set 'moreScripts'}
+
+#{/set}
+#{set 'moreStyles'}
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+<h2 style="margin-bottom:27px; margin-left:0px; padding-left:20px;"><a style="color:#555454" href="@{index}">Settings</a></h2>
+<div class="profile_banner">
+    <div class="profile_banner_col1">
+        <div class="left_pad">
+            <h1>Complete your Profile to maximize your trainer search</h1>
+            <p>A professional profile is vital to finding a trainer to match your needs.  Once you have completed your profile, it will be much easier to match a trainer to your specific needs .</p>
+        </div>
+    </div>
+    <div class="profile_banner_col2">
+        <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="sidebar">
+    <h3>Account</h3>
+    <ul class="sb_menu">
+        <li><a href="@{Settings.index()}">Profile</a></li>
+        <li><a href="#">Change Password</a></li>
+        <li><a href="#">Email Settings</a></li>
+        <li class="last"><a href="@{Settings.delete}">Delete Account</a></li>
+    </ul>
+    <h3>Privacy</h3>
+    <ul class="sb_menu">
+        <li><a href="#">Privacy Settings</a></li>
+        <li><a href="#">See current friends</a></li>
+        <li><a href="#">Manage friends</a></li>
+        <li class="last"><a href="#">Create Network</a></li>
+    </ul>
+</div>
+
+<div class="settings_content">
+    #{doLayout /}
+</div>
+<div class="clear"></div>
+</div>

@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="@{'/public/stylesheets/galleriffic-2.css'}" type="text/css" />
     <!--<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">-->
 #{/set}
-
-
-
 <div class="photo_gallery">
     <div class="profile_banner">
         <div class="profile_banner_col1">
@@ -25,11 +22,8 @@
         </div>
     </div>
 
-    <h2 class="showAlbum">${currentAlbum?.title}</h2>
+    <h2 class="showAlbum">New Album ${currentAlbum?.title}</h2>
     <div style="float:left; margin-top:9px;"><a style="font-size:12px" class="submit2" href="@{Photos.index()}">Back to Albums</a></div>
-    <div class="deleteAlbum">
-        <a class="submit2" href="@{Photos.deleteAlbum(currentAlbum.id)}">Delete Album</a>
-    </div>
     <div class="clear"></div>
     #{if flash.error}
     <div style="float:left; width:100%">
@@ -49,84 +43,31 @@
         ${errors[0]}
     </p>
     #{/ifErrors}
-    <h4>Upload your photos </h4>
-    <div class="addPhotoToAlbum">
-        #{form @uploadPhotoToAlbum(), enctype:'multipart/form-data'}
+    <div class="addPhotoToAlbum" style="margin-top:0px">
+        #{form @saveAlbumDetails(), enctype:'multipart/form-data'}
             <ol>
-                #{field 'photo_title'}
+                #{field 'album_title'}
                 <li>
                     <label for="name">Title:</label>
-                    <input id="name" type="text" class="text" name="${field.name}" value="${photo_title}" />
+                    <input id="name" type="text" class="text" name="${field.name}" value="${album_title}" />
                 </li>
                 #{/field}
                 #{field 'message'}
                 <li>
                     <label for="name">Message:</label>
-                    <textarea title="loading" id="message" class="text" name="${field.name}">${message}</textarea>
-                </li>
-                #{/field}
-                <li>
-                    <label for="name">Upload Photo:</label>
-                    <input type="file" name="photo" id="photo" />
-                    <input type="hidden" name="albumID" value="${currentAlbum?.id}" />
+                    <textarea id="message" class="text" name="${field.name}">${message}</textarea>
                 </li>
                 <li style="margin-top:10px;">
-                    <input  id="upload" type="submit" name="submit" value="Upload" class="submit2">
+                    <input type="submit" name="submit" value="Next" class="submit2">
                 </li>
             </ol>
+        #{/field}
     </div>
     <!--<div id="profile_save"><input id="addMoreFiles" name="submit" value="Add more files" class="submit2"></div>-->
     #{/form}
     <br>
-
-
-    #{if currentAlbum?.pictures?.size()}
-        #{display_pictures albums:currentAlbum /}
-    #{/if}
-    #{else}
-    <div style="margin-top:10px"><p>You have not uploaded any pictures yet</p></div>
-    #{/else}
     <div class="clear"></div>
 </div>
 <div class="clear"></div>
 </div>
 </div>
-
-
-<script type="text/javascript">
-    //jQuery(document).ready(function($) {
-
-        //$('.fancybox').fancybox();
-
-    //});
-
-    $  (document).ready(function() {
-        var mySRC = "";
-        $("a.photoIframe").fancybox({
-        'titlePosition' : 'inside',
-        'transitionIn'  : 'elastic',
-        'transitionOut' : 'elastic',
-        'onComplete': function() {
-            mySRC = $  ('#comment_pic iframe').attr('src');
-        },
-        'onClosed': function() {
-            $('#comment_pic iframe').attr('src', mySRC);
-        }
-        });
-    });
-
-
-
-        //$.fancybox.hideLoading();
-        /*$('.myPhoto').click(function(){
-            $.fancybox.showLoading();
-            $.fancybox.open(this.href, {type: "iframe"});
-            $.fancybox.showLoading();
-            $("iframe.fancybox-iframe").load(function() {
-                $.fancybox.hideLoading();
-                this.append("hello");
-            });
-            event.preventDefault();
-        });*/
-
-</script>

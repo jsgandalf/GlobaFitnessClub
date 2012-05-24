@@ -32,13 +32,16 @@ public class Picture extends Model {
 
     public String fileExtension;
 
-    public Picture(Album album, String title, String content, String fileExtension, String amazonKey) {
+    public String amazonThumbnailKey;
+
+    public Picture(Album album, String title, String content, String fileExtension, String amazonKey, String amazonThumbnailKey) {
         this.album = album;
         this.title = title;
         this.content = content;
         this.creationDate = new Date();
         this.fileExtension = fileExtension;
         this.amazonKey = amazonKey;
+        this.amazonThumbnailKey = amazonThumbnailKey;
     }
 
     public String getAmazonKey(){

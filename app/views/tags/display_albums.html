@@ -1,18 +1,20 @@
-<div id="thumbs" class="navigation">
-<ul class="thumbs noscript">
-    #{list items:_albums, as:'albums'}
-    <li>
-        <a class="thumb" name="leaf" href="" redirect="@{showAlbum(albums.id)}" title="${albums?.title}">
-            <img width="75" height="75" src="https://s3.amazonaws.com/globafitnessphotos/${albums.getFirstPictureKey()}" alt="${albums?.title}" />
-        </a>
-        <div class="caption">
-            <!--<div class="download">
-                <a href="https://s3.amazonaws.com/globafitnessphotos/${albums.getFirstPictureKey()}">Download Original</a>
-            </div>-->
-            <div class="image-title">${albums?.title}</div>
-            <div class="image-desc">${albums?.content}</div>
-        </div>
-    </li>
-    #{/list}
-</ul>
-
+#{list items:_albums, as:'albums'}
+<div class="post">
+    <h2>${albums?.title}</h2>
+    <div class="infobar">
+        Date ${albums.creationDate.format("dd MMMM yyyy")}
+        <span>/</span>
+        Fitness Goal
+        <a href="#">Weight Training</a>
+        <span>/</span>
+        <a href="#">Comments 0</a>
+    </div>
+    <a href="@{showAlbum(albums.id)}" title="${albums?.title}">
+        <img src="https://s3.amazonaws.com/globafitnessphotos/${albums.getFirstPictureKeyThumb()}" alt="${albums?.title}" />
+    </a>
+    <div class="post_content">
+        <p>${albums?.content}</p><p><a href="@{showAlbum(albums.id)}" class="btn">View Album</a></p>
+    </div>
+    <div class="clear"></div>
+</div>
+#{/list}

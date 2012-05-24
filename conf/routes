@@ -17,9 +17,10 @@ POST    /sendContact                            Application.sendContactForm
 GET     /trainers/contact/{id}                  Trainers.show
 POST    /register                               Application.saveUser
 POST    /login                                  Application.login
-GET     /settings                               Application.settings
-POST    /SaveSettings                           Application.saveSettings
+GET     /settings                               Settings.index
+POST    /SaveSettings                           Settings.saveSettings
 GET     /createPost                             Application.createPost
+GET     /resetPassword                          Application.resetPassword
 POST    /resetPassword                          Application.resetPasswordFunction
 GET     /                                       Application.home
 GET     /FitnessBlog                            Application.posts
