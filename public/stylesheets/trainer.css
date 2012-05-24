@@ -270,13 +270,3 @@ h2{
 	padding: 0 5px 0 10px;
 }
 
-.profile_table{
-    width: 100%;
-}
-
-.profile_table h1{
-	color: #555454;
-    font-weight: normal;
-    text-transform: uppercase;
-	font-size: 35px;
-}
