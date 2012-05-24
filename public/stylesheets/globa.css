@@ -495,7 +495,7 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 	border-radius: 15px;
 	background: url("../images/menu.gif") repeat-x scroll left top transparent;
     height: 54px;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
 	z-index: 1;
 }
 
@@ -1487,6 +1487,8 @@ outline-style:none;
 	z-index: 0;
 }
 
+
+
 .profile_banner{
 	background: none repeat scroll 0 0 #FAFAFA;
 	border: 1px solid #CCCCCC;
@@ -1501,7 +1503,30 @@ outline-style:none;
 	width: 812px;
 	height: 100px;
 	display: block;
-	margin-left:20px;
+	margin-left:52px;
+}
+.profile_banner h3{
+	margin-bottom: 11px;
+	font-size: 20px;
+}
+
+.profile_banner em {
+    color: #A4A3A3;
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    margin: 12px 0;
+}
+
+.profile_banner p {
+    color: #868484;
+    font-size: 12px;
+    margin: 12px 0;
+}
+
+.profile_banner h1{
+    margin-bottom: 11px;
+   	font-size: 20px;
 }
 
 .profile_banner_col1{
@@ -1827,3 +1852,81 @@ ul.sb_menu li a:hover, ul.sb_secondary_menu li a:hover{color:#da4348; font-weigh
 }
 
 .settings_content{margin-top: 10px; width:630px; float:right; padding:0 20px 0 0;}
+
+#menu_bar2_div{
+    width: 926px;
+    height: 50px;
+    display: block;
+    margin-left: 87px;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 17px;
+}
+
+ul.menu_bar2{
+    font-size: 13px;
+    list-style: none;
+}
+
+ul.menu_bar2 li{
+    border-left: 1px solid #CCCCCC;
+    float: left;
+    margin: 0;
+    position: relative;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+ul.menu_bar2 li a{
+    color: #333333;
+    cursor: pointer;
+    display: block;
+    padding: 10px 23px;
+}
+
+#menu_bar2_first{
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+}
+
+#menu_bar2_last{
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    border-right: 1px solid #CCCCCC;
+}
+
+ul.menu_bar2 li:hover{
+    background: none repeat scroll 0 0 #EFEFEF;
+    text-decoration: none;
+}
+
+element.style {
+    width: 920px;
+}
+
+ul.social_list{
+      display:inline-block;
+      float:left;
+      height:30px;
+      list-style-image:initial;
+      list-style-position:initial;
+      list-style-type:none;
+      padding-left:66px;
+      padding-top:13px;
+      width:100px;
+      position:absolute;
+}
+
+ul.social_list li{
+    border:none;
+    display:inline-block;
+    list-style:none;
+    padding:0 0;
+}
+
+
+

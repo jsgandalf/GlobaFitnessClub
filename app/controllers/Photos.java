@@ -250,7 +250,7 @@
          }
          s3.putObject(new PutObjectRequest("globafitnessphotos", "thumbprofile"+user.id+fileExtension, f).withCannedAcl(CannedAccessControlList.PublicRead));
          flash.success("You have successfully updated your profile photo");
-         render("@Settings.index",user);
+         Settings.index();
      }
      public static void saveAlbum(Long albumID){
          if (params.get("submit") != null) {

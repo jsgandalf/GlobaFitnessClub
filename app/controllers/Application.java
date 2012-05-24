@@ -126,42 +126,53 @@ public class Application extends Controller{
 	}
 
 	public static void contact(){
-		render();
+		User user = connected();
+        render(user);
 	}
 
 	public static void consultation(){
-        render();
+        User user = connected();
+        render(user);
 	}
 
 	public static void siteDown(){
-		render();
-	}
+        User user = connected();
+        render(user);
+    }
 
 	public static void weightLoss(){
-		render();
-	}
+        User user = connected();
+        render(user);
+    }
 
 	public static void bodyBuilding(){
-		render();
+        User user = connected();
+        render(user);
 	}
 	public static void functionalTraining(){
-		render();
+        User user = connected();
+        render(user);
 	}
 	public static void highIntensityIntervalTraining(){
-		render();
-	}
+        User user = connected();
+        render(user);
+    }
 	public static void goalSpecificTraining(){
-		render();
-	}
+        User user = connected();
+        render(user);
+    }
     public static void personalizedNutritionPlan(){
-        render();
+        User user = connected();
+        render(user);
     }
 	public static void postInjury(){
-		render();
-	}
+        User user = connected();
+        render(user);
+    }
 	public static void sportsConditioning(){
-		render();
-	}
+        User user = connected();
+        render(user);
+    }
 	public static void privateTraining(){
 		siteDown();
 	}
@@ -177,9 +188,6 @@ public class Application extends Controller{
 	public static void network(){
 		siteDown();
 	}
-	public static void template(String header, String content){
-		render(header, content);
-	}
 
 	public static void sendContactForm(@Required(message="Please put in your first name.")String firstName, @Required(message="Please type in your last name.")String lastName, @Required(message="Please type in your email.")String email,@Required(message="Please type in the subject.")String subject, @Required(message="Please put in your message.")String message){
 		validation.required(firstName);
@@ -192,7 +200,8 @@ public class Application extends Controller{
 		}
 		flash.success("Your message has been sent.");
 		Mails.contact(firstName, lastName, email, subject, message);
-		render("@contact");
+		User user = connected();
+        render("@contact", user);
 	}
 
 	public static void sendConsultationForm(String firstName, String lastName, String email, String phoneNumber, String question1, String question2, String question3,String question4,String question5,String question6,String question7,String question8){
@@ -210,7 +219,8 @@ public class Application extends Controller{
 		}
 		flash.success("Your free consultation has been submitted.  Please allow up to 24 hours for a representative to contact you.");
 		Mails.consultation(firstName, lastName,  email,  phoneNumber,  question1,  question2,  question3, question4, question5, question6, question7, question8);
-		render("@consultation");
+		User user = connected();
+        render("@consultation",user);
 	}
 
 	public static void posts(){
@@ -273,13 +283,16 @@ public class Application extends Controller{
 	}
 
 	public static void thankyou(){
-		render();
-	}
+        User user = connected();
+        render(user);
+    }
 	public static void donate(){
-        render();
+        User user = connected();
+        render(user);
     }
     public static void resetPassword(){
-        render();
+        User user = connected();
+        render(user);
     }
     public static void resetPasswordFunction(@Required(message="Please type in your email to reset your password.")String email, @Required(message="Please type in your zip code.")String zip)	{
         validation.required(email);
