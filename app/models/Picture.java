@@ -34,6 +34,8 @@ public class Picture extends Model {
 
     public String amazonThumbnailKey;
 
+
+
     public Picture(Album album, String title, String content, String fileExtension, String amazonKey, String amazonThumbnailKey) {
         this.album = album;
         this.title = title;
@@ -42,7 +44,15 @@ public class Picture extends Model {
         this.fileExtension = fileExtension;
         this.amazonKey = amazonKey;
         this.amazonThumbnailKey = amazonThumbnailKey;
+        //this.picture_coments = new ArrayList<Picture_comment>();
     }
+
+    /*public Picture_comment addComent(String comment_content){
+        Picture_comment newComment = new Picture_comment(this, album.author, comment_content);
+        this.picture_coments.add(newComment);
+        this.save();
+        return newComment;
+    }*/
 
     public String getAmazonKey(){
         return amazonKey;
@@ -50,6 +60,11 @@ public class Picture extends Model {
 
     public String toString() {
         return content.length() > 50 ? content.substring(0, 50) + "..." : content;
+    }
+
+    public List<Picture_comment> getComments(){
+        List<Picture_comment> comments = Picture_comment.find("select c from Picture_comment c where c.picture = ? order by postedAt desc", this).fetch();
+        return comments;
     }
 
 }

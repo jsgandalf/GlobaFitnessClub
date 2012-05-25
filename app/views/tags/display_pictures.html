@@ -1,14 +1,69 @@
-<ul class="display_pictures" xmlns="http://www.w3.org/1999/html">
+<ul class="display_pictures">
     #{list items:_albums.pictures, as:'picture'}
         <li>
-            <a class="photoIframe fancybox" href="#comment_pic${picture_index}" rel="gallery">
+            <a class="photoIframe fancybox" href="#comment_pic${picture.id}" rel="gallery">
                 <img src="https://s3.amazonaws.com/globafitnessphotos/${picture.amazonThumbnailKey}" />
             </a>
             <div style="display: none;">
-                <div id="comment_pic${picture_index}" class="photoDisplayDiv">
-                    <img src="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}" alt="${picture?.title}">
-                    <div><h2>${picture?.title}</h2></div>
-                    <div><p></p>${picture?.content}</p><p><a href="" class="btn">Comment</a></p>
+                <div id="comment_pic${picture.id}" class="photoDisplayDiv">
+                    <img id="main_pic" src="https://s3.amazonaws.com/globafitnessphotos/${picture.getAmazonKey()}" alt="${picture?.title}">
+                    <div class="clear"></div>
+                    <div id="profile_thumb_container">
+                        <div id="picture_title">
+                            <h2>${picture?.title}</h2>
+                        </div>
+                        #{if _user?.profileThumbPic}
+                            <img id="profile_thumb" class="picture_formating" src="https://s3.amazonaws.com/globafitnessphotos/${_user.profileThumbPic}">
+                        #{/if}
+                        #{else}
+                            #{if _user?.gender.equals("female") }
+                                <img id="profile_thumb" class="picture_formating" src="https://s3.amazonaws.com/globafitnessphotos/default/femaleThumb.jpg" alt="" />
+                            #{/if}
+                            #{else}
+                                <img id="profile_thumb" class="picture_formating" src="https://s3.amazonaws.com/globafitnessphotos/default/defaultThumb.jpg" alt="" />
+                            #{/else}
+                        #{/else}
+                            <h2>${_user?.fullName()}</h2>
+                            <p>${picture?.content}</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="picture_list_comments${picture_index}" class="picture_list_comment_scoll">
+                        <h4>Comments</h4>
+                        #{list items:picture.getComments(), as:'comment'}
+                            <div class='picture_lists'>
+                                <img class='commentThumbPic' src="https://s3.amazonaws.com/globafitnessphotos/${comment.author.profileThumbPic}" width='32' height='32'>
+                                <div class='commentRightText'>
+                                    <span class='redText' style='margin-right:5px'>
+                                        ${comment.author.fullName()}
+                                    </span>
+                                    ${comment.content}
+                                    <div class='commentDate'>
+                                        ${new Date(comment.postedAt.getTime() - 1000000).since()}
+                                    </div>
+                                </div>
+                                <div class='clear'></div>
+                            </div>
+                        #{/list}
+                    </div>
+                    <div id="picture_comments">
+                        <ul>
+                            <li>
+                                #{if _user?.profileThumbPic}
+                                <img id="profile_thumb" width="32" height="32" class="picture_formating" src="https://s3.amazonaws.com/globafitnessphotos/${_user.profileThumbPic}">
+                                #{/if}
+                                #{else}
+                                #{if _user?.gender.equals("female") }
+                                <img id="profile_thumb" width="32" height="32" class="picture_formating" src="https://s3.amazonaws.com/globafitnessphotos/default/femaleThumb.jpg" alt="" />
+                                #{/if}
+                                #{else}
+                                <img id="profile_thumb" width="32" height="32" class="picture_formating" src="https://s3.amazonaws.com/globafitnessphotos/default/defaultThumb.jpg" alt="" />
+                                #{/else}
+                                #{/else}
+                            </li>
+                            <li><input  class="myPictureComment" id="myPictureComment${picture.id}" type="text"></li>
+                            <li><input id="${picture.id}" type="submit" value="Comment" class="btn" /></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </li>

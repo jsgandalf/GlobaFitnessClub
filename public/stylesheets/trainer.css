@@ -1,17 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-h2{
-	color: #555454;
-	font-size: 28px;
-    font-weight: normal;
-    text-transform: uppercase;
-	margin-left:12px;
-	margin-bottom:35px;
-}
-
-
-
 #trainer_container{
 	color: #FFFFFF;
     height: 100%;

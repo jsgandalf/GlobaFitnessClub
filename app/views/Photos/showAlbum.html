@@ -29,25 +29,28 @@
         #{flash /}
         <div class="clear"></div>
         #{if currentAlbum?.pictures?.size()}
-        #{display_pictures albums:currentAlbum /}
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.fancybox').fancybox();
-                $('.btn').click(function(){
-                    alert('');
+            #{display_pictures albums:currentAlbum, user:user/}
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('.fancybox').fancybox();
+                    $('.btn').click(function(){
+                        src = $('#profile_thumb').attr('src');
+                        user = '${user.fullName()}';
+                        $('#picture_list_comments'+$(this).attr('id')).append("<div class='picture_lists'><img class='commentThumbPic' src='"+src+"' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>"+user+"</span>"+$('#myPictureComment'+$(this).attr("id")).val()+"<div class='commentDate'>${new Date(new Date().getTime() - 1000000).since()}</div></div><div class='clear'></div></div>");
+                        var objDiv = document.getElementById("picture_list_comments"+$(this).attr('id'));
+                        objDiv.scrollTop = objDiv.scrollHeight;
+                        $.post('@{Photos.addComment()}',{pictureID: $(this).attr('id'), comment: $('#myPictureComment'+$(this).attr("id")).val()}, function(comment){
+
+                        }, 'json');
+                    });
                 });
-            });
-        </script>
+            </script>
         #{/if}
         #{else}
-        <div style="margin-top:10px"><p>You have no pictures in this Album.</p><a style="font-size:12px" class="submit2" href="@{Photos.addAlbumPhotos(currentAlbum.id)}">Add Photos</a></div>
+            <div style="margin-top:10px"><p>You have no pictures in this Album.</p><a style="font-size:12px" class="submit2" href="@{Photos.addAlbumPhotos(currentAlbum.id)}">Add Photos</a></div>
         #{/else}
         <div class="clear"></div>
         </div>  
         <div class="clear"></div>
     </div>	
 </div>
-
-<script type="text/javascript">
-
-</script>

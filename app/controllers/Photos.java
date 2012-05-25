@@ -11,6 +11,7 @@
  import com.ning.http.client.FilePart;
  import models.Album;
  import models.Picture;
+ import models.Picture_comment;
  import models.User;
  import play.Logger;
  import play.Play;
@@ -133,10 +134,7 @@
              f = resizedPhoto;;
          }
          s3.putObject(new PutObjectRequest("globafitnessphotos", amazonKey, f).withCannedAcl(CannedAccessControlList.PublicRead));
-         if(renderString.equals("@Settings.index"))
-            render("@Settings.index");
-         else
-             addAlbumPhotos(Long.valueOf(renderString));
+         addAlbumPhotos(Long.valueOf(renderString));
      }
 
      public static void uploadPhotoToAlbum(String photo_title, String message, File photo, Long albumID) throws IOException {
@@ -220,7 +218,7 @@
          photo = resizedPhoto;
          s3.putObject(new PutObjectRequest("globafitnessphotos", "profile"+user.id+fileExtension, photo).withCannedAcl(CannedAccessControlList.PublicRead));
          user.profilePicture("profile"+user.id+fileExtension);
-
+         user.profileThumbPicture("thumbprofile"+user.id+fileExtension);
 
          String keyToFetch =  "profile"+user.id+fileExtension;
 
@@ -277,6 +275,15 @@
 
      public static void loading(){
          render();
+     }
+
+     //Mental note, you can renderJSON with objects with an instance of Picture_comment, or Picture
+     public static void addComment(Long pictureID, String comment){
+         Picture currentPicture = Picture.findById(pictureID);
+         User user = connected();
+         Picture_comment newComment = new Picture_comment(currentPicture, user, comment);
+         newComment.save();
+         renderJSON(comment);
      }
 
     //For multiple uploads --> haven't implemented it yet, it was too difficult

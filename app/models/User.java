@@ -48,6 +48,7 @@ public class User extends Model {
     public String relationship;
 
     public String profilePic;
+    public String profileThumbPic;
 
     @Lob
     public String bio;
@@ -70,6 +71,7 @@ public class User extends Model {
 		this.isAdmin = false;
         this.relationship = relationship;
         this.profilePic = null;
+        this. profileThumbPic = null;
     }
 
     public String toString()  {
@@ -89,4 +91,10 @@ public class User extends Model {
         this.save();
         return this.profilePic;
     }
+    public String profileThumbPicture(String profile){
+        this.profileThumbPic = profile;
+        this.save();
+        return this.profileThumbPic;
+    }
+
 }

@@ -12,6 +12,15 @@ a{
     text-decoration: none;
 }	
 
+h2{
+	color: #555454;
+	font-size: 28px;
+    font-weight: normal;
+    text-transform: uppercase;
+	margin-left:12px;
+	margin-bottom:35px;
+}
+
 p{color:#555454;}
 
 
@@ -1833,17 +1842,7 @@ ul.sb_menu li a:hover, ul.sb_secondary_menu li a:hover{color:#da4348; font-weigh
   border-radius: 5px;
 }
 
-.photoDisplayDiv{
-    width:auto;height:auto;overflow:auto;
-}
 
-.photoDisplayDiv h2 {
-  color: #555454;
-  font-size:14px;
-  font-weight:bold;
-  margin:0px;
-
-}
 
 .addProfilePicture{
     float: left;
@@ -1928,5 +1927,143 @@ ul.social_list li{
     padding:0 0;
 }
 
+//For profile pics only
+.picture_formating{
+  border:1px solid #C5C9CF;
+  float:left;
+  padding:3px;
+}
 
+//------Picture comments------------------------------
 
+.photoDisplayDiv{
+    width:auto;height:auto;overflow:auto;
+}
+
+.photoDisplayDiv h2 {
+  color: #555454;
+  font-size:14px;
+  font-weight:bold;
+  margin:0px;
+  text-transform: capitalize;
+  color: #DA4348;
+}
+
+#main_pic{
+    float:left;
+}
+
+#profile_thumb{
+    float:left;
+    margin-right:20px;
+}
+
+#profile_thumb_container{
+    margin-top: 15px;
+}
+
+#profile_thumb_container h1{
+    float:left;
+    text-transform: none;
+}
+
+#profile_thumb_container p{
+    float:left;
+}
+
+#picture_comments{
+    float:left;
+}
+#picture_comments ul{
+    list-style: none;
+    display: inline-block;
+}
+
+#picture_comments ul li{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#picture_comments ul li input.btn{
+    background-image: url("../images/button.jpg");
+    background-position: 0px 20px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 0px;
+    margin:0px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 83px;
+    height: 21px;
+    line-height: 1.9em;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.myPictureComment{
+    width:150px;
+    color: #555454;
+    border:1px solid #C5C9CF;
+    margin-right:5px;
+}
+
+#picture_title h2{
+    float: right;
+    font-size: 12px;
+    font-weight:bold;
+    color: #555454;
+    text-transform: uppercase;
+}
+
+.redText{
+    font-size: 12px;
+    font-weight:bold;
+    color: #DA4348;
+}
+
+.picture_lists{
+    width: 300px;
+    font-size: 11px;
+    line-height: 1.28;
+
+    color: black;
+    background-color: #E0ECF3;
+    border: 1px solid #A8CEE2;
+    border-top:none;
+}
+
+.comment_text{
+    color: black;
+    opacity:1.0; filter:alpha(opacity=100);
+}
+
+.picture_list_comment_scoll{
+    width: 100%;
+    height: 100px;
+    overflow:scroll;
+    overflow-x: hidden;
+}
+
+.picture_list_comment_scoll h4{
+    text-size: 12px;
+}
+
+.commentThumbPic{
+    float:left;
+    margin-top: 3px;
+    padding-5px;
+}
+.commentRightText{
+    vertical-align: top;
+    display: table-cell;
+    width: 10000px;
+    padding: 5px;
+}
+
+.commentDate{
+    font-size: 11px;
+    color: #555454;
+}
