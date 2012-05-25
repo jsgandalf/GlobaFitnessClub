@@ -67,4 +67,22 @@ public class Picture extends Model {
         return comments;
     }
 
+    public String getProfileThumbPic(){
+        User thisUser = User.findById(this.album.author.id);
+        if(!thisUser.profileThumbPic.isEmpty() || thisUser.profileThumbPic.length() != 0 || thisUser.profileThumbPic != null)
+            return "https://s3.amazonaws.com/globafitnessphotos/"+thisUser.profileThumbPic;
+        else if(thisUser.gender.equals("female") || thisUser.gender.equals("Female"))
+            return "https://s3.amazonaws.com/globafitnessphotos/default/femaleThumb.jpg";
+        else
+            return "https://s3.amazonaws.com/globafitnessphotos/default/defaultThumb.jpg";
+    }
+
+    public void deleteComments(){
+        List<Picture_comment> comments = Picture_comment.find("byPicture", this).fetch();
+        Iterator<Picture_comment> iterator = comments.iterator();
+        while (iterator.hasNext()) {
+            iterator.next().delete();
+        }
+    }
+
 }

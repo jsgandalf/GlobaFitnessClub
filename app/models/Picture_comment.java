@@ -4,10 +4,13 @@ import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import java.util.Date;
+
+import static org.hibernate.annotations.CascadeType.*;
 
 @Entity
 public class Picture_comment extends Model {
@@ -23,8 +26,8 @@ public class Picture_comment extends Model {
     public String content;
 
     @Required
-    @ManyToOne
-    public Picture picture;
+    @ManyToOne(cascade= CascadeType.PERSIST)
+            public Picture picture;
 
     public Picture_comment(Picture picture, User author, String content) {
         this.picture = picture;

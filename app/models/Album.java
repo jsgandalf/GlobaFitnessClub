@@ -7,9 +7,6 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import play.Logger;
 import play.data.binding.*;
 import play.data.validation.*;
 import play.db.jpa.Model;
@@ -104,6 +101,9 @@ public class Album extends Model {
             //Logger.info("Name of the file %s", myPicture.getAmazonKey());
             s3.deleteObject(new DeleteObjectRequest("globafitnessphotos",myPicture.getAmazonKey()));
             s3.deleteObject(new DeleteObjectRequest("globafitnessphotos",myPicture.amazonThumbnailKey));
+
+            //Delete All comments with all the picture
+            myPicture.deleteComments();
         }
     }
 

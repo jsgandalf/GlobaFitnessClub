@@ -1395,7 +1395,7 @@ outline-style:none;
     height: 14px;
     margin-right: 0px;
     margin-top: 10px;
-    width: 600px
+    width: 381px;
 }
 .white_background_wrapper{
 	background-color: #FFF;
@@ -1973,6 +1973,7 @@ ul.social_list li{
 
 #picture_comments{
     float:left;
+    margin-top: 5px;
 }
 #picture_comments ul{
     list-style: none;
@@ -1986,7 +1987,7 @@ ul.social_list li{
 
 #picture_comments ul li input.btn{
     background-image: url("../images/button.jpg");
-    background-position: 0px 20px;
+    background-position: 0px 0px;
     color: #FFFFFF;
     display: block;
     font-size: 11px;
@@ -2004,7 +2005,7 @@ ul.social_list li{
 }
 
 .myPictureComment{
-    width:150px;
+    width:160px;
     color: #555454;
     border:1px solid #C5C9CF;
     margin-right:5px;

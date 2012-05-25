@@ -47,9 +47,10 @@
         #{form @saveAlbumDetails(), enctype:'multipart/form-data'}
             <ol>
                 #{field 'album_title'}
-                <li>
-                    <label for="name">Title:</label>
-                    <input id="name" type="text" class="text" name="${field.name}" value="${album_title}" />
+                <li style="display:inline-block">
+                    <a class="btn" id="clickTitle">Add Title</a></li>
+                <li style="display:inline-block">
+                    <input id="name" type="text" style="width:190px" class="text" name="${field.name}" value="${album_title}" />
                 </li>
                 #{/field}
                 #{field 'message'}
@@ -71,3 +72,13 @@
 <div class="clear"></div>
 </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // hides the slickbox as soon as the DOM is ready
+        $('#name').hide();
+        $('#clickTitle').click(function(){
+            $('#name').toggle('slow');
+        });
+    });
+</script>

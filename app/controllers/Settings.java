@@ -130,6 +130,7 @@ public class Settings extends Controller{
 
             user.delete();
         }
+        session.clear();
         render();
     }
 }

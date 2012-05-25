@@ -97,4 +97,13 @@ public class User extends Model {
         return this.profileThumbPic;
     }
 
+    public String getProfileThumbPic(){
+        if(!this.profileThumbPic.isEmpty() || this.profileThumbPic.length() != 0 || this.profileThumbPic != null)
+            return "https://s3.amazonaws.com/globafitnessphotos/"+this.profileThumbPic;
+        else if(this.gender.equals("female") || this.gender.equals("Female"))
+            return "https://s3.amazonaws.com/globafitnessphotos/default/femaleThumb.jpg";
+        else
+            return "https://s3.amazonaws.com/globafitnessphotos/default/defaultThumb.jpg";
+    }
+
 }
