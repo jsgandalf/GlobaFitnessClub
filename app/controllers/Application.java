@@ -1,9 +1,6 @@
 package controllers;
 
-import models.FitnessGoal;
-import models.Post;
-import models.User;
-import models.user_fitnessgoal;
+import models.*;
 import notifiers.Mails;
 import play.Logger;
 import play.Play;

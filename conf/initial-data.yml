@@ -1,0 +1,139 @@
+# Test data
+
+User(user_sean):
+    email:          sean.alan.thomas@gmail.com
+    password:       $2a$12$IEtutAJHTpe23o8bSZVZj.640TknvtSHKYS4DKUiw87WS4F3i1RvO
+    firstName:      Sean
+    lastName:       Thomas
+    zip:            84604
+    isAdmin:        true
+
+User(user_mike):
+    email:          healthcoachutah@gmail.com
+    password:       $2a$12$NpXGCOXnuXf01IRySaoVuOl/GrpxehM6f.T2bJ1zVg1iRkoIVTHna
+    firstName:      Michael
+    lastName:       Andam
+    zip:            84604
+    isAdmin:        true
+
+Post(firstSeanPost):
+    title:          My first post
+    postedAt:       2009-06-14
+    author:         user_sean
+
+    content:        >
+                    The model has a central position in a Play! application. It is the domain-specific
+                    representation of the information on which the application operates.
+
+                    Martin fowler defines it as :
+
+                    Responsible for representing concepts of the business, information about the
+                    business situation, and business rules. State that reflects the business situation
+                    is controlled and used here, even though the technical details of storing it are
+                    delegated to the infrastructure. This layer is the heart of business software.
+
+Comment(c1):
+    author:         user_sean
+    content:        >
+                    You are right!
+    postedAt:       2009-06-14
+    post:           firstSeanPost
+
+
+Album(firstAlbum):
+   author:          user_sean
+   content:         >
+                    This is going to be a set of my engagement pics
+
+   creationDate:    2012-05-26 14:13:40
+   title:           Engagement Pics
+
+
+Picture(firstPic):
+  amazonThumbnailKey: usr11alb11pic1thumb.jpg
+  amazonKey:          usr11alb11pic1.jpg
+  content:          Our first GOOD picture
+  creationDate:     2012-05-26 14:20:45
+  fileExtension:    .jpg
+  title:            A random park
+  album:            firstAlbum
+
+
+
+FitnessGoal(weight):
+  name: Weight Loss
+
+FitnessGoal(body):
+  name: Body Building
+
+FitnessGoal(Sport):
+    name: Sport Conditioning
+
+FitnessGoal(Injury):
+    name: Injury Rehab
+
+FitnessGoal(Tone):
+    name: Get Tone
+
+FitnessGoal(Rip):
+    name: Rip Abs
+
+user_fitnessgoal(weightLossSean):
+  name: Weight Loss
+  value: 0
+  author: user_sean
+
+user_fitnessgoal(bodyBuildingSean):
+  name: Body Building
+  value: 0
+  author: user_sean
+
+user_fitnessgoal(sportSean):
+    name: Sport Conditioning
+    value: 0
+    author: user_sean
+
+user_fitnessgoal(injuryRehabSean):
+    name: Injury Rehab
+    value: 0
+    author: user_sean
+
+user_fitnessgoal(toneSean):
+    name: Get Tone
+    value: 0
+    author: user_sean
+
+user_fitnessgoal(ripAbsSean):
+    name: Rip Abs
+    value: 0
+    author: user_sean
+
+user_fitnessgoal(weightLossMike):
+  name: Weight Loss
+  value: 0
+  author: user_mike
+
+user_fitnessgoal(BodyMike):
+  name: Body Building
+  value: 0
+  author: user_mike
+
+user_fitnessgoal(sportMike):
+    name: Sport Conditioning
+    value: 0
+    author: user_mike
+
+user_fitnessgoal(injuryMike):
+    name: Injury Rehab
+    value: 0
+    author: user_mike
+
+user_fitnessgoal(ToneMike):
+    name: Get Tone
+    value: 0
+    author: user_mike
+
+user_fitnessgoal(absMike):
+    name: Rip Abs
+    value: 0
+    author: user_mike

@@ -13,6 +13,7 @@ GET     /logout                                 Application.logout
 GET     /trainers                               Trainers.index
 GET     /joinTrainersNetwork                    Trainers.register
 GET     /contact                                Aplication.contact
+GET     /display_pictures/{id}        Photos.display_pictures
 POST    /sendContact                            Application.sendContactForm
 GET     /trainers/contact/{id}                  Trainers.show
 POST    /register                               Application.saveUser
@@ -30,11 +31,10 @@ POST    /posts/{<[0-9]+>postId}/comments        Application.postComment
 GET     /captcha                                Application.captcha
 GET     /thankyou                               Application.thankyou
 GET     /photos                                 Photos.index
-GET     /photos/                                Photos.index
 POST    /upload                                 Photos.upload
+GET     /photos/                                Photos.index
 GET     /photos/addAlbum                        Photos.addAlbum
 POST    /photos/addAlbums                       Photos.addAlbumFunction
-POST     /photos/uploadPhotoToAlbum             Photos.uploadPhotoToAlbum
 GET     /photos/add/{id}                        Photos.addAlbumPhotos
 # Administration
 *       /admin                                  module:crud

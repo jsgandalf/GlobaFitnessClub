@@ -98,12 +98,12 @@ public class User extends Model {
     }
 
     public String getProfileThumbPic(){
-        if(!this.profileThumbPic.isEmpty() || this.profileThumbPic.length() != 0 || this.profileThumbPic != null)
+        if(this.profileThumbPic != null && !this.profileThumbPic.isEmpty() && !this.profileThumbPic.trim().isEmpty())
             return "https://s3.amazonaws.com/globafitnessphotos/"+this.profileThumbPic;
-        else if(this.gender.equals("female") || this.gender.equals("Female"))
-            return "https://s3.amazonaws.com/globafitnessphotos/default/femaleThumb.jpg";
-        else
-            return "https://s3.amazonaws.com/globafitnessphotos/default/defaultThumb.jpg";
+        else if(this.gender!=null)
+            if(this.gender.equals("female") || this.gender.equals("Female"))
+                return "https://s3.amazonaws.com/globafitnessphotos/default/femaleThumb.jpg";
+        return "https://s3.amazonaws.com/globafitnessphotos/default/defaultThumb.jpg";
     }
 
 }

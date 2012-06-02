@@ -252,15 +252,15 @@ qq.FileUploaderBasic = function(o){
     this._options = {
         // set to true to see the server response
         debug: false,
-        action: '/upload',
+        action: '/server/upload',
         params: {},
         button: null,
         multiple: true,
-        maxConnections: 3,
+        maxConnections: 1,
         // validation        
         allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
-        sizeLimit: 2621440,
-        minSizeLimit: 1000,
+        sizeLimit: 5242880,
+        minSizeLimit: 0,
         // events
         // return false to cancel submit
         onSubmit: function(id, fileName){},
@@ -276,7 +276,9 @@ qq.FileUploaderBasic = function(o){
             onLeave: "The files are being uploaded, if you leave now the upload will be cancelled."            
         },
         showMessage: function(message){
-            alert(message);
+            $('#displayError').html("<h1>"+message+"</h1>");
+            $('#clickOnDisplayError').click();
+            //alert(message);
         }               
     };
     qq.extend(this._options, o);
@@ -486,7 +488,7 @@ qq.FileUploader = function(o){
                 
         template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button">Upload Photos</div>' +
+                '<div class="qq-upload-button">Upload Files</div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
 
@@ -642,7 +644,7 @@ qq.extend(qq.FileUploader.prototype, {
         }          
     },
     /**
-     * delegate click event for cancel link
+     * delegate click event for cancel link 
      **/
     _bindCancelEvent: function(){
         var self = this,

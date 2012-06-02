@@ -1,8 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Globa Fitness Photos' /}
 #{set 'moreScripts'}
-    <script type="text/javascript" src="@{'/public/javascripts/jquery.galleriffic.js'}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/jquery.opacityrollover.js'}"></script>
+
 #{/set}
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
@@ -25,10 +24,15 @@
         </div>
     </div>
 
-    <h2 class="showAlbum">${currentAlbum?.title}</h2>
-    <div style="float:left; margin-top:9px;"><a style="font-size:12px" class="submit2" href="@{Photos.index()}">Back to Albums</a></div>
+    <div><h2 class="showAlbum">${currentAlbum?.title}</h2></div>
+    <div class="backToAlbums"><a style="font-size:12px" class="submit2" href="@{Photos.index()}">Back to Albums</a></div>
     <div class="deleteAlbum">
         <a class="submit2" href="@{Photos.deleteAlbum(currentAlbum.id)}">Delete Album</a>
+    </div>
+    <div class="clear"></div>
+    <div class="infobar">
+        Upload your photos here
+        <div style="float:right">Date ${currentAlbum.creationDate.format("dd MMMM yyyy")}</div>
     </div>
     <div class="clear"></div>
     #{if flash.error}
@@ -44,89 +48,116 @@
     </p>
     #{/if}
 
-    #{ifErrors}
-    <p class="error">
-        ${errors[0]}
+    <p style="display:none" class="error">
     </p>
-    #{/ifErrors}
-    <h4>Upload your photos </h4>
+
     <div class="addPhotoToAlbum">
-        #{form @uploadPhotoToAlbum(), enctype:'multipart/form-data'}
+        #{form @uploadPhotoToAlbum(),id:"jsonForm", enctype:"multipart/form-data"}
             <ol>
-                #{field 'photo_title'}
+                <!--<#{field 'photo_title'}
                 <li>
-                    <label for="name">Title:</label>
-                    <input id="name" type="text" class="text" name="${field.name}" value="${photo_title}" />
+                    <label>Title:</label>
+                    <input id="photo_title" type="text" class="text" name="${field.name}" value="${photo_title}" />
                 </li>
                 #{/field}
                 #{field 'message'}
                 <li>
-                    <label for="name">Message:</label>
-                    <textarea title="loading" id="message" class="text" name="${field.name}">${message}</textarea>
+                    <label>Message:</label>
+                    <textarea title="loading" style="height:68px" id="message" class="text" name="${field.name}">${message}</textarea>
                 </li>
                 #{/field}
-                <li>
-                    <label for="name">Upload Photo:</label>
+                li>
+                    <label>Upload Photo:</label>
                     <input type="file" name="photo" id="photo" />
                     <input type="hidden" name="albumID" value="${currentAlbum?.id}" />
                 </li>
-                <li style="margin-top:10px;">
-                    <input  id="upload" type="submit" name="submit" value="Upload" class="submit2">
-                </li>
+                <li style="margin-top:10px;" id="removeUpload">
+                    <input  id="upload" type="submit"  name="submit" value="Upload" class="submit2">
+                </li>-->
+                <div id="file-uploader">
+                    <noscript>
+                        <p>Please enable JavaScript to use file uploader.</p>
+                        <!-- or put a simple form for upload here -->
+                    </noscript>
+
+                    <script>
+                        function createUploader(){
+                            var uploader = new qq.FileUploader({
+                                element: document.getElementById('file-uploader'),
+                                action: '/upload',
+                                debug: true,
+                                params: {
+                                    albumID: '${currentAlbum?.id}'
+                                },
+                                onComplete: function(){
+
+                                    //var showUserAction = #{jsAction @Photos.display_pictures(':id') /}
+                                   //var albumID = "${currentAlbum?.id}";
+                                    /*var displayUserDetail = function(albumID) {
+                                        $('#showPicturesInCurrentAlbum').load( showUserAction({id: albumID}) )
+                                    }
+
+                                    $.get(displayUserDetail, function(data){
+                                        alert('');
+                                    });*/
+                                }
+                            });
+                        }
+
+                        // in your app create uploader as soon as the DOM is ready
+                        // don't wait for the window to load
+                        window.onload = createUploader;
+                    </script>
+                </div>
             </ol>
+        #{/form}
     </div>
     <!--<div id="profile_save"><input id="addMoreFiles" name="submit" value="Add more files" class="submit2"></div>-->
-    #{/form}
+
     <br>
 
-
-    #{if currentAlbum?.pictures?.size()}
-        #{display_pictures albums:currentAlbum /}
+    <div id="showPicturesInCurrentAlbum">
+    *{#{if currentAlbum?.pictures?.size()}
+        #{display_pictures albums:currentAlbum, user:user /}
     #{/if}
     #{else}
     <div style="margin-top:10px"><p>You have not uploaded any pictures yet</p></div>
-    #{/else}
+    #{/else}      }*
+    </div>
     <div class="clear"></div>
+    <a class="fancybox" href="#displayError" id="clickOnDisplayError">
+
+    </a>
+    <div style="display: none; height:95px;">
+        <div id="displayError">
+
+        </div>
+    </div>
 </div>
 <div class="clear"></div>
 </div>
 </div>
 
-
 <script type="text/javascript">
-    //jQuery(document).ready(function($) {
+    $(document).ready(function() {
+    $("#clickOnDisplayError").fancybox({
+    'hideOnOverlayClick':false,
+    'hideOnContentClick':false
+    });
 
         //$('.fancybox').fancybox();
-
-    //});
-
-    $  (document).ready(function() {
         var mySRC = "";
         $("a.photoIframe").fancybox({
         'titlePosition' : 'inside',
         'transitionIn'  : 'elastic',
         'transitionOut' : 'elastic',
         'onComplete': function() {
-            mySRC = $  ('#comment_pic iframe').attr('src');
+        mySRC = $  ('#comment_pic iframe').attr('src');
         },
         'onClosed': function() {
-            $('#comment_pic iframe').attr('src', mySRC);
+        $('#comment_pic iframe').attr('src', mySRC);
         }
         });
     });
-
-
-
-        //$.fancybox.hideLoading();
-        /*$('.myPhoto').click(function(){
-            $.fancybox.showLoading();
-            $.fancybox.open(this.href, {type: "iframe"});
-            $.fancybox.showLoading();
-            $("iframe.fancybox-iframe").load(function() {
-                $.fancybox.hideLoading();
-                this.append("hello");
-            });
-            event.preventDefault();
-        });*/
-
 </script>
+

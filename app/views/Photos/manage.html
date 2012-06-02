@@ -44,7 +44,7 @@
     <div class="clear"></div>
     #{if myAlbumList}
 
-        #{display_albums albums:myAlbumList /}
+        #{display_albums_manage albums:myAlbumList, user:user /}
     #{/if}
     #{else}
         <div style="margin-top:10px"><p>You have no Albums</p></div>
@@ -56,7 +56,8 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.fancybox').fancybox();
-    });
+    $('.fancybox').fancybox();
+
+
+
 </script>

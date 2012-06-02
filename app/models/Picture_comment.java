@@ -1,16 +1,19 @@
 package models;
 
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
+import play.data.binding.As;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
-
-import static org.hibernate.annotations.CascadeType.*;
+import java.util.Iterator;
+import java.util.List;
 
 @Entity
 public class Picture_comment extends Model {
@@ -21,13 +24,13 @@ public class Picture_comment extends Model {
 
     public Date postedAt;
 
-    @Lob
-    @MaxSize(10000)
+    @Required
     public String content;
+    public boolean done;
 
     @Required
     @ManyToOne(cascade= CascadeType.PERSIST)
-            public Picture picture;
+    public Picture picture;
 
     public Picture_comment(Picture picture, User author, String content) {
         this.picture = picture;
@@ -39,5 +42,4 @@ public class Picture_comment extends Model {
     public String toString() {
         return content.length() > 50 ? content.substring(0, 50) + "..." : content;
     }
-
 }

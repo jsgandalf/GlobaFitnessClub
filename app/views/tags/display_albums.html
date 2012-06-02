@@ -3,14 +3,14 @@
     <h2>${albums?.title}</h2>
     <div class="infobar">
         Date ${albums.creationDate.format("dd MMMM yyyy")}
-        <span>/</span>
+        <!--<span>/</span>
         Fitness Goal
-        <a href="#">Weight Training</a>
+        <a href="#">Weight Training</a>-->
         <span>/</span>
-        <a href="#">Comments 0</a>
+        <a href="@{Photos.showAlbum(albums.id)}">${albums.getCommentCount() ?: 'no'} comment${albums.getCommentCount().pluralize()}</a>
     </div>
     <a href="@{showAlbum(albums.id)}" title="${albums?.title}">
-        <img src="https://s3.amazonaws.com/globafitnessphotos/${albums.getFirstPictureKeyThumb()}" alt="${albums?.title}" />
+        <img src="${albums.getFirstPictureKeyThumb()}" alt="${albums?.title}" />
     </a>
     <div class="post_content">
         <p>${albums?.content}</p><p><a href="@{showAlbum(albums.id)}" class="btn">View Album</a></p>

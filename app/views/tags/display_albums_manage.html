@@ -1,0 +1,79 @@
+#{list items:_albums, as:'album'}
+<div class="deleteAlbum">
+    <a class="submit2" href="@{Photos.deleteAlbum(album.id)}">Delete Album</a>
+</div>
+<div class="post">
+        <h2><span id="editTitle${album.id}Response">${album?.title}</span> <a style="font-size:13px; font-weight:normal;margin:0;padding:0;" class="fancybox2" href="#editTitle${album.id}">Edit</a></h2>
+
+        <div class="infobar">
+            Date ${album.creationDate.format("dd MMMM yyyy")}
+            <!--<span>/</span>
+            Fitness Goal
+            <a href="#">Weight Training</a>-->
+            <span>/</span>
+            <a href="@{Photos.showAlbum(album.id)}">View Album</a>
+            <div style="float:right"><a href="@{AddAlbumPhotos(album.id)}" style="color:#DA4348;">Add More Photos</a></div>
+        </div>
+        <!--<a href="@{showAlbum(album.id)}" title="${album?.title}">
+            <img src="${album.getFirstPictureKeyThumb()}" alt="${album?.title}" />
+        </a>-->
+        <div class="post_content" style="float:none;">
+            <p>${album?.content}</p>
+        </div>
+        <div id="picture_container">
+
+            #{if album?.pictures?.size()}
+                #{display_pictures_manage album:album, user:user/}
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $(".fancybox2")
+                            .fancybox({
+                            beforeLoad: function() {
+                            $.fancybox.showLoading();
+                            },
+                            beforeLoad: function() {
+                            saveFieldAs($(this).attr('href'),'@{Photos.savAlbumTitle()}',$(this).attr('href')+"Response");
+                            }
+                        });
+
+                        $('.fancybox').fancybox();
+                        $('.deletePic').click(function(){
+                            $.fancybox.showLoading();
+                            var deleteID = $(this).attr('pictureid');
+                            $.post('@{Photos.deletePhoto()}',{id: $(this).attr('pictureid')}, function(data){
+                                $("#myPicture"+deleteID).remove();
+                                $.fancybox.hideLoading();
+                            });
+                        });
+
+                        $('.deleteCommentDiv').click(function(){
+                            var id = $(this).parent().parent().attr('commentid');
+                            $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
+                            $('#comment'+id).remove();
+                            });
+                        });
+
+                        $('.picture_lists').hover(function(){
+                            $('#deleteComment'+$(this).attr('commentid')).show();
+                            },function(){
+                            $('.deleteCommentDiv').hide();
+                        });
+                    });
+                </script>
+            #{/if}
+            #{else}
+            <div style="margin-top:10px"><p>You have no pictures in this Album.</p><a style="font-size:12px" class="submit2" href="@{Photos.addAlbumPhotos(album.id)}">Add Photos</a></div>
+            #{/else}
+            <div class="clear"></div>
+
+
+
+        </div>
+        <div class="clear"></div>
+</div>
+
+
+#{Photos_Edit_Title album:album /}
+
+
+#{/list}

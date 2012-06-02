@@ -3,6 +3,10 @@ package models;
 import java.util.*;
 import javax.persistence.*;
 
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import play.data.binding.As;
@@ -28,13 +32,11 @@ public class Picture extends Model {
     public Album album;
 
     @Required
-    private String amazonKey;
+    public String amazonKey;
 
     public String fileExtension;
 
     public String amazonThumbnailKey;
-
-
 
     public Picture(Album album, String title, String content, String fileExtension, String amazonKey, String amazonThumbnailKey) {
         this.album = album;
@@ -47,13 +49,6 @@ public class Picture extends Model {
         //this.picture_coments = new ArrayList<Picture_comment>();
     }
 
-    /*public Picture_comment addComent(String comment_content){
-        Picture_comment newComment = new Picture_comment(this, album.author, comment_content);
-        this.picture_coments.add(newComment);
-        this.save();
-        return newComment;
-    }*/
-
     public String getAmazonKey(){
         return amazonKey;
     }
@@ -63,18 +58,13 @@ public class Picture extends Model {
     }
 
     public List<Picture_comment> getComments(){
-        List<Picture_comment> comments = Picture_comment.find("select c from Picture_comment c where c.picture = ? order by postedAt desc", this).fetch();
+        List<Picture_comment> comments = Picture_comment.find("select c from Picture_comment c where c.picture = ? order by postedAt asc", this).fetch();
         return comments;
     }
 
     public String getProfileThumbPic(){
         User thisUser = User.findById(this.album.author.id);
-        if(!thisUser.profileThumbPic.isEmpty() || thisUser.profileThumbPic.length() != 0 || thisUser.profileThumbPic != null)
-            return "https://s3.amazonaws.com/globafitnessphotos/"+thisUser.profileThumbPic;
-        else if(thisUser.gender.equals("female") || thisUser.gender.equals("Female"))
-            return "https://s3.amazonaws.com/globafitnessphotos/default/femaleThumb.jpg";
-        else
-            return "https://s3.amazonaws.com/globafitnessphotos/default/defaultThumb.jpg";
+        return thisUser.getProfileThumbPic();
     }
 
     public void deleteComments(){
@@ -83,6 +73,16 @@ public class Picture extends Model {
         while (iterator.hasNext()) {
             iterator.next().delete();
         }
+    }
+    public void deletePicture(){
+        this.deleteComments();
+        String accessKey = "AKIAIIDVPNAYFEVBVVFA";
+        String secretKey = "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";
+        AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey));
+        //Delete everything off of amazon s3
+        s3.deleteObject(new DeleteObjectRequest("globafitnessphotos",this.getAmazonKey()));
+        s3.deleteObject(new DeleteObjectRequest("globafitnessphotos",this.amazonThumbnailKey));
+        this.delete();
     }
 
 }

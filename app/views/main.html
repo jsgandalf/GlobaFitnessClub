@@ -4,12 +4,14 @@
         <title>#{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/globa.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">
         #{get 'moreStyles' /}
 		<script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.2.min.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/cycle.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/slideshow.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/dropdown.js'}"></script>
-        <script src="@{'/public/javascripts/fileuploader.js'}" type="text/javascript"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/fileuploader.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/general.js'}"></script>
         <script src="@{'/public/javascripts/cufon/cufon-yui.js'}" type="text/javascript"></script>
         <script src="@{'/public/javascripts/cufon/Liberation_Sans_400.font.js'}" type="text/javascript"></script>
 
@@ -81,13 +83,13 @@
                     <a href="#" style="color:#FFF">Connected as ${user.email}</a>
                     <!--|
                     <a href="@{Application.siteDown()}">Videos</a>
-                    |-->
+                    |
                     <a href="@{Application.siteDown()}">Calendar</a>
                     |
                     <a href="@{Settings.index()}">Settings</a>
                     |
                     <a href="@{Application.profile()}">Profile</a>
-                    <!--|
+                    |
                     <a href="@{Application.index()}">Mail</a>
                     |
                     <a href="@{Photos.index()}">Photos</a>

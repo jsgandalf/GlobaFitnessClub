@@ -48,11 +48,11 @@ public class Album extends Model {
 
     public String getFirstPictureKeyThumb(){
         //Default picture
-        String amazonKey ="defaultAlbum.jpg";
+        String amazonKey ="default/defaultAlbum.jpg";
         if(!this.pictures.isEmpty()){
             amazonKey = this.pictures.get(0).amazonThumbnailKey;
         }
-        return amazonKey;
+        return "https://s3.amazonaws.com/globafitnessphotos/"+amazonKey;
     }
 
     public String getNewKey(String fileExtension){
@@ -83,11 +83,11 @@ public class Album extends Model {
         return userid + albumid + pictureLengthString + "thumb" +fileExtension;
     }
 
-    public Album addPicture(String title, String content, String fileExtension) {
+    public Picture addPicture(String title, String content, String fileExtension) {
         Picture newPicture = new Picture(this, title, content, fileExtension, getNewKey(fileExtension),getNewThumbnailKey(fileExtension));
         this.pictures.add(newPicture);
         this.save();
-        return this;
+        return newPicture;
     }
 
     public void deletePictures(){
@@ -105,6 +105,16 @@ public class Album extends Model {
             //Delete All comments with all the picture
             myPicture.deleteComments();
         }
+    }
+
+    public Integer getCommentCount(){
+        Integer count = 0;
+        Iterator<Picture> iterator = this.pictures.iterator();
+        while (iterator.hasNext()) {
+            Picture myPicture =  iterator.next();
+            count +=myPicture.getComments().size();
+        }
+        return count;
     }
 
     public Album previous() {

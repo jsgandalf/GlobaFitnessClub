@@ -21,9 +21,19 @@
             </div>
         </div>
         <h2 class="showAlbum">My Album ${currentAlbum?.title}</h2>
-        <div style="float:left; margin-top:9px;"><a style="font-size:12px" class="submit2" href="@{Photos.index()}">Back to Albums</a></div>
+        <div class="backToAlbums"><a style="font-size:12px" class="submit2" href="@{Photos.index()}">Back to Albums</a></div>
         <div class="deleteAlbum">
                <a class="submit2" href="@{Photos.deleteAlbum(currentAlbum.id)}">Delete Album</a>
+        </div>
+        <div class="clear"></div>
+        <div class="infobar">
+            Date ${currentAlbum.creationDate.format("dd MMMM yyyy")}
+            <!--<span>/</span>
+            Fitness Goal
+            <a href="#">Weight Training</a>-->
+            <span>/</span>
+            <a href="@{Photos.showAlbum(currentAlbum.id)}">${currentAlbum.getCommentCount() ?: 'no'} comment${currentAlbum.getCommentCount().pluralize()}</a>
+            <div style="float:right"><a href="@{AddAlbumPhotos(currentAlbum.id)}" style="color:#DA4348;">Add More Photos</a></div>
         </div>
         <div class="clear"></div>
         #{flash /}
@@ -32,17 +42,50 @@
             #{display_pictures albums:currentAlbum, user:user/}
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $('.fancybox').fancybox();
-                    $('.btn').click(function(){
-                        src = $('#profile_thumb').attr('src');
-                        user = '${user.fullName()}';
-                        $('#picture_list_comments'+$(this).attr('id')).append("<div class='picture_lists'><img class='commentThumbPic' src='"+src+"' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>"+user+"</span>"+$('#myPictureComment'+$(this).attr("id")).val()+"<div class='commentDate'>${new Date(new Date().getTime() - 1000000).since()}</div></div><div class='clear'></div></div>");
-                        var objDiv = document.getElementById("picture_list_comments"+$(this).attr('id'));
-                        objDiv.scrollTop = objDiv.scrollHeight;
-                        $.post('@{Photos.addComment()}',{pictureID: $(this).attr('id'), comment: $('#myPictureComment'+$(this).attr("id")).val()}, function(comment){
+                    $('.fancybox').fancybox({ width: '500px'});
 
-                        }, 'json');
+                    $('.deleteCommentDiv').click(function(){
+                        var id = $(this).parent().parent().attr('commentid');
+                        $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
+                            $('#comment'+id).remove();
+                        });
                     });
+
+                    $('.btn').click(function(){
+                        var id = $(this).attr('id');
+                        //$.fancybox.showLoading();
+                        $.post('@{Photos.addComment()}',{pictureID: $(this).attr('id'), comment: $('#myPictureComment'+$(this).attr("id")).val()}, function(newComment){
+                            var src = "${user.getProfileThumbPic()}";
+                            var userFullName = "${user.fullName()}";
+                            $('#picture_list_comments'+id).append(
+                               "<div id='comment"+newComment.id+"' class='picture_lists' commentid='"+newComment.id+"'>"+
+                                    "<img class='commentThumbPic' src='"+src+"' width='32' height='32'>"+
+                                    "<div class='commentRightText'>"+
+                                        "<span class='redText' style='margin-right:5px'>"+userFullName+"</span>"
+                                        +newComment.content+
+                                        "<div id='deleteComment"+newComment.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div>"+
+                                        "<div class='commentDate'>${new Date(new Date().getTime() - 1000000).since()}</div>"+
+                                    "</div>"+
+                                    "<div class='clear'></div>"+
+                                "</div>");
+                                $('.picture_lists').hover(function(){$('#deleteComment'+$(this).attr('commentid')).show();},function(){$('.deleteCommentDiv').hide();});
+                                var objDiv = document.getElementById("picture_list_comments"+id);
+                                objDiv.scrollTop = objDiv.scrollHeight;
+                                $('.deleteCommentDiv').click(function(){
+                                    var id = $(this).parent().parent().attr('commentid');
+                                    $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
+                                        $('#comment'+id).remove();
+                                    });
+                                });
+                        }, 'json');
+
+                    });
+                });
+
+                $('.picture_lists').hover(function(){
+                    $('#deleteComment'+$(this).attr('commentid')).show();
+                },function(){
+                    $('.deleteCommentDiv').hide();
                 });
             </script>
         #{/if}
