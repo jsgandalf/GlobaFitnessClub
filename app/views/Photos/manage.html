@@ -56,8 +56,16 @@
 </div>
 
 <script type="text/javascript">
-    $('.fancybox').fancybox();
-
+    $('.fancybox').fancybox({autoSize:true});
+    $(".fancybox2")
+        .fancybox({
+            beforeLoad: function() {
+            $.fancybox.showLoading();
+        },
+        beforeLoad: function() {
+            saveFieldAs($(this).attr('href'),'@{Photos.savAlbumTitle()}',$(this).attr('href')+"Response");
+        }
+    });
 
 
 </script>

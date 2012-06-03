@@ -340,8 +340,8 @@
 
                  InputStream data = request.body;
 
-                 int maxwidth=800;
-                 int maxheight=640;
+                 int maxwidth=600;
+                 int maxheight=440;
 
                  String accessKey = "AKIAIIDVPNAYFEVBVVFA";
                  String secretKey = "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";

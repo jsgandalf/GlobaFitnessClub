@@ -26,17 +26,7 @@
                 #{display_pictures_manage album:album, user:user/}
                 <script type="text/javascript">
                     $(document).ready(function() {
-                        $(".fancybox2")
-                            .fancybox({
-                            beforeLoad: function() {
-                            $.fancybox.showLoading();
-                            },
-                            beforeLoad: function() {
-                            saveFieldAs($(this).attr('href'),'@{Photos.savAlbumTitle()}',$(this).attr('href')+"Response");
-                            }
-                        });
 
-                        $('.fancybox').fancybox();
                         $('.deletePic').click(function(){
                             $.fancybox.showLoading();
                             var deleteID = $(this).attr('pictureid');

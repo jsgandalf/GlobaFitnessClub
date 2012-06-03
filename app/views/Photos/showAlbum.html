@@ -42,7 +42,11 @@
             #{display_pictures albums:currentAlbum, user:user/}
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $('.fancybox').fancybox({ autoSize: true});
+                    $('.fancybox').fancybox({
+
+                        'width' : 700,
+                        'height' : 575
+                    });
 
                     $('.deleteCommentDiv').click(function(){
                         var id = $(this).parent().parent().attr('commentid');

@@ -1993,8 +1993,7 @@ ul.social_list li{
 }
 
 #picture_comments{
-    float:left;
-    margin-top: 5px;
+
 }
 #picture_comments ul{
     list-style: none;
@@ -2161,4 +2160,11 @@ text-decoration:underline;
     font-size: 15px;
     position: absolute;
     right: 94px;
+}
+
+.loadingDivGif{
+ background: url("../images/ajax-loader.gif") no-repeat !important;
+ width: 100px !important;
+ height:100px !important;
+ display:none;
 }

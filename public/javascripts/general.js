@@ -7,21 +7,39 @@
 */
 function saveFieldAs(divID, postURL, responseID){
         //Checks to see if actionButtons exist
-        if(!$(".actionButtons").length)
+        if(!$(divID+" .actionButtons").length)
             $(divID).append("<div class='actionButtons'></div>");
+        if(!$(".loadingDivGif").length)
+                    $(divID).append("<div class='loadingDivGif'></div>");
 
-        $(divID+" .actionButtons").html('<a class="btn" id="button_save">Save</a><a id="button_cancel" class="submit2">Cancel</a>');
+        $(divID+" .actionButtons").html('<a class="btn" id="button_save">Save</a><a id="button_cancel" class="submit2 button_cancel_class">Cancel</a>');
 
-        $('#button_save').click(function(){
-            $.fancybox.showLoading();
+        $(divID+' #button_save').click(function(){
+            /*$(divID +" ol").hide();
+            $(divID +" .actionButtons").hide();
+            divwidth = $(divID).width();
+            divheight = $(divID).height();
+            $(divID).width(100);
+            $(divID).height(100);
+            $('.fancybox-inner').width(100);
+            $('.fancybox-wrap').width(130);
+            $(".loadingDivGif").show();*/
+            $(divID+' #button_save').unbind();
             $.post(postURL,{id: $(divID).attr('saveID'), content:$(divID+' input').val()}, function(data){
                $(responseID).html(data.title);
                parent.$.fancybox.close();
-               $.fancybox.hideLoading();
+
+               /*$(".loadingDivGif").hide(function(){
+                   $(divID +" ol").show();
+                   $(divID +" .actionButtons").show();
+                   $(divID).width(divwidth);
+                   $(divID).height(divheight);
+                });*/
+
             },'json');
         });
 
-        $('#button_cancel').click(function(){
+        $('.button_cancel_class').click(function(){
             parent.$.fancybox.close();
         });
 }
