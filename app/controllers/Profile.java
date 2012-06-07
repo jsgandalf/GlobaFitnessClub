@@ -74,6 +74,7 @@ public class Profile extends Controller{
 
 	public static void index(){
 		User user = connected();
+        session.put("isHome","false");
         List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
                 "select f from user_fitnessgoal f where f.author = ? and f.value = 1 order by id asc",user).fetch();
         List<CalendarEvent> calendarList = CalendarEvent.find("byAuthor",user).fetch();

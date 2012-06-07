@@ -29,7 +29,6 @@
  public class Photos extends Controller {
      @Before
      static void addUser() {
-
          User user = connected();
          if(user != null) {
              renderArgs.put("user", user);

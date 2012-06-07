@@ -78,7 +78,8 @@ ul.dropdown li#myHome{
 	border-bottom-left-radius: 15px;
 }
 
-ul.dropdown #myHome { list-style:none; font-weight: bold; float: left; zoom: 1; color: #717171;
+ul.dropdown #myHome {
+    list-style:none; font-weight: bold; float: left; zoom: 1; color: #717171;
 	-moz-border-radius-topleft: 15px;
 	-moz-border-radius-bottomleft: 15px;
 	border-top-left-radius: 15px;
@@ -505,7 +506,7 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 	width: 266px;
 	height: 400px;
     margin-left: 19px;
-    margin-top: 24px;
+    margin-top: 0px;
     width: 266px;
 	float:left;
 }
@@ -1426,9 +1427,9 @@ outline-style:none;
 .options_logged_in{
 	float: right;
     height: 14px;
-    margin-right: 0px;
+    margin-right: 35px;
     margin-top: 10px;
-    width: 248px;
+    width: auto;
 }
 .white_background_wrapper{
 	background-color: #FFF;
@@ -1604,7 +1605,7 @@ outline-style:none;
 #profile_pic {
   border:1px solid #C5C9CF;
   float:left;
-  margin:10px 3px 3px 0;
+  margin:0px 3px 3px 0;
   padding:3px;
 }
 
@@ -1666,10 +1667,6 @@ outline-style:none;
 	border: 1px #999999 solid;
 	color: #000;
 	text-decoration:none;
-}
-
-#profile_div{
-
 }
 
 .profile_table{
@@ -1778,8 +1775,8 @@ outline-style:none;
 
 }
 
-.sidebar{width:245px; float:left; padding:0 0 0 20px;}
-.sidebar h3{margin:0 0 15px 0; font-size: 20px;}
+.sidebar{width:245px; float:left; padding:7px 0 0 20px;}
+.sidebar h3{margin:0 0 15px 0; font-size: 18px;}
 ul.sb_menu, ul.sb_secondary_menu{list-style:none; margin:0 0 60px 0;}
 ul.sb_menu li{font-size:13px; line-height:33px; border-bottom:1px solid #e3e3e3; color:#747473;}
 ul.sb_secondary_menu li{padding:10px 0; line-height:20px; font-size:13px; border-bottom:1px solid #e3e3e3; color:#747473;}
@@ -1888,7 +1885,7 @@ ul.sb_menu li a:hover, ul.sb_secondary_menu li a:hover{color:#da4348; font-weigh
     width: 200px;
 }
 
-.settings_content{margin-top: 10px; width:630px; float:right; padding:0 20px 0 0;}
+.settings_content{width:630px; float:right; padding:0 20px 0 0;}
 
 #menu_bar2_div{
     width: 926px;
@@ -2221,4 +2218,30 @@ text-decoration:underline;
 
 .editEventDialog table td{
     padding: 5px 5px 5px 0;
+}
+
+.globaSettingsDiv{
+    padding-left: 3px;
+    vertical-align: top;
+    width: 330px;
+    float:left;
+}
+
+.uiList{
+    list-style:none;
+}
+
+.uiList li{
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.settings_content h1{
+    font-size: 25px; display:inline-block;
+    border-bottom: 1px solid #AAAAAA;
+    padding-bottom: 10px;
+    width:100%;
+}
+
+.settings_inside{
+    margin-top: 15px;
 }

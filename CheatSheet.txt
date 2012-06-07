@@ -1,0 +1,10 @@
+
+Declaring a Map with all session variables-----------------------------------------------------------------
+
+Map<String, String> allSessions = session.all();
+
+Iterating over a Map in template---------------------------------------------------------------------------
+
+#{list allSessions}
+${_.key} -> ${_.value}<br>
+#{/}

@@ -76,8 +76,9 @@
                     </form>
                 </div>
                 #{if user?.id}
+                <div class="clear"></div>
                 <div id="options" class="options_logged_in">
-                    <a href="#" style="color:#FFF">Connected as ${user.email}</a>
+                    <a href="@{Profile.index()}" style="color:#FFF">Profile > ${user.email}</a>
                     <!--|
                     <a href="@{Application.siteDown()}">Videos</a>
                     |
@@ -101,14 +102,81 @@
         <div class="clear"></div>
         <div class="white_background_wrapper">
             <div id="container_main">
+                #{if user?.id}
+                    #{if isHome=="true"}
+                    <div id="menu">
+                        <ul class="dropdown">
+                             <li id="myHome"><a href="@{Profile.index()}" >Profile</a></li>
+                             <li ><a href="@{Application.siteDown()}">Services</a>
+                                <ul id="dropdown1">
+                                     <li><a href="@{Application.privateTraining()}">Private Training</a></li>
+                                     <li><a href="@{Application.partnerTraining()}">Partner Training</a></li>
+                                     <li><a href="@{Application.groupTraining()}">Group Training</a></li>
+                                </ul>
+                            </li>
+                            <li id="Trainers"><a href="@{Trainers.index()}">Trainers</a></li>
+                            <li><a href="@{Application.weightLoss()}">Programs</a>
+                                <ul id="dropdown2">
+                                    <li><a href="@{Application.weightLoss()}">Weight Loss</a></li>
+                                    <li><a href="@{Application.bodyBuilding()}">Body Building</a></li>
+                                    <li><a href="@{Application.functionalTraining()}">Functional Training</a></li>
+                                    <li><a href="@{Application.highIntensityIntervalTraining()}">High Intensity Interval Training</a></li>
+                                    <li><a href="@{Application.goalSpecificTraining()}">Goal Specific Training</a></li>
+                                    <li><a href="@{Application.postInjury()}">Post Injury Training</a></li>
+                                    <li><a href="@{Application.sportsConditioning()}">Sports Conditioning</a></li>
+                                    <li><a href="@{Application.personalizedNutritionPlan()}">Personalized Nutrition Plan</a></li>
+                                </ul>
+                            </li>
+                            <li id="Consultation"><a href="@{Application.consultation}">Consultation</a></li>
+                            <li><a href="@{Application.members()}" style="padding: 20px 20px 0;">Networking</a>
+                                <ul id="dropdown3">
+                                    <li><a href="@{Application.members()}">Members</a></li>
+                                    <li><a href="@{Application.network()}">Network</a></li>
+                                </ul>
+                            </li>
+                            <li id="Contact"><a href="@{Application.contact()}" style="padding: 20px 20px 0;">Contact Us</a></li>
+                        </ul>
+                        <ul class="social_list">
+                            <li><a href="http://www.facebook.com"><div id="facebook"></div></a></li>
+                            <li><a href="http://www.twitter.com"><div id="twitter"></div></a></li>
+                            <li><a href="http://www.youtube.com"><div id="youtube"></div></a> </li>
+                        </ul>
+                    </div>
+                    #{/if}
+                    #{else}
+                    <div id="menu">
+                        <ul class="dropdown">
+                            <li id="myHome"><a href="@{Application.index()}" >home</a></li> <!-- id="active_link"-->
+                            <li id="Trainers"><a href="@{Trainers.index()}">Trainers</a></li>
+                            <li id="Photos"><a href="@{Photos.index()}">Photos</a></li>
+                            <li id="Mail"><a href="@{Application.siteDown()}">Mail</a></li>
+                            <li id="FitnessBlog"><a href="@{Application.posts()}">Fitness Blog</a></li>
+                            <li><a href="@{Application.members()}" style="padding: 20px 20px 0;">Networking</a>
+                                <ul id="dropdown3">
+                                    <li><a href="@{Application.members()}">Members</a></li>
+                                    <li><a href="@{Application.network()}">Network</a></li>
+                                </ul>
+                            </li>
+                            <li id="Donation"><a href="@{Application.donate()}" style="padding: 20px 20px 0;">Donation</a></li>
+                            <li id="Settings"><a href="@{Settings.index()}" style="padding: 20px 20px 0;">Settings</a></li>
+                        </ul>
+                        <ul class="social_list">
+                            <li><a href="http://www.facebook.com"><div id="facebook"></div></a></li>
+                            <li><a href="http://www.twitter.com"><div id="twitter"></div></a></li>
+                            <li><a href="http://www.youtube.com"><div id="youtube"></div></a> </li>
+                        </ul>
+                    </div>
+                    #{/else}
+                #{/if}
+                #{else}
                 <div id="menu">
                     <ul class="dropdown">
-                         <li id="myHome"><a href="@{Application.index()}" >home</a></li> <!-- id="active_link"-->
-                         <li ><a href="@{Application.siteDown()}">Services</a>
+                        <li id="myHome"><a href="@{Application.index()}" >home</a></li>
+                        <li ><a href="@{Application.siteDown()}">Services</a>
                             <ul id="dropdown1">
-                                 <li><a href="@{Application.privateTraining()}">Private Training</a></li>
-                                 <li><a href="@{Application.partnerTraining()}">Partner Training</a></li>
-                                 <li><a href="@{Application.groupTraining()}">Group Training</a></li>
+                                <li><a href="@{Application.privateTraining()}">Private Training</a></li>
+                                <li><a href="@{Application.partnerTraining()}">Partner Training</a></li>
+                                <li><a href="@{Application.groupTraining()}">Group Training</a></li>
                             </ul>
                         </li>
                         <li id="Trainers"><a href="@{Trainers.index()}">Trainers</a></li>
@@ -138,21 +206,8 @@
                         <li><a href="http://www.twitter.com"><div id="twitter"></div></a></li>
                         <li><a href="http://www.youtube.com"><div id="youtube"></div></a> </li>
                     </ul>
-
                 </div>
-                #{if user?.id}
-                    <div id="menu_bar2_div">
-                        <ul class="menu_bar2">
-                            <li id="menu_bar2_first"><a href="@{Profile.index()}">Profile</a></li>
-                            <li><a href="@{Application.siteDown()}">Videos</a></li>
-                            <li><a href="@{Settings.index()}">Settings</a></li>
-                            <li><a href="@{Application.index()}">Mail</a>
-                            <li><a href="@{Photos.index()}">Photos</a></li>
-                            <li><a href="@{Application.posts()}">Fitness Blog</a></li>
-                            <li id="menu_bar2_last"><a href="@{Application.donate()}">Donate</a></li>
-                        </ul>
-                    </div>
-                #{/if}
+                #{/else}
                 <div class="clear"></div>       
                 <div id="content">
                     #{doLayout /}  

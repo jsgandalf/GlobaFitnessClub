@@ -4,9 +4,23 @@
 #{set 'moreStyles'}
 
 #{/set}
-<div id="profile_div">  <!--width="275" height="275"-->
-    <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
-    <table class="profile_table">
+<h1>General Settings</h1>
+<div>
+    <div class="settings_inside">
+        <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" /> <!--width="275" height="275"-->
+        <div class="globaSettingsDiv">
+            <ul class="uiList">
+                <li>Name: ${user.fullName()}</li>
+                <li>Location: ${user.city} ${user.state}</li>
+                <li>Phone Number: ${user.phoneNumber}</li>
+                <li>Email: ${user.email}</li>
+                <li>${user?.relationship}</li>
+            </ul>
+        </div>
+    </div>
+        <!--
+        ${user.fullName()} &nbsp;</h1>  <a style="font-size:12px; display:inline-block;" class="submit2" href="@{Settings.editProfile()}">Edit</a>
+        <table class="profile_table">
         <tr>
             <td colspan="2" style="padding-top:0px">
                 <h1 style="	font-size: 25px; display:inline-block;">${user.fullName()} &nbsp;</h1>  <a style="font-size:12px; display:inline-block;" class="submit2" href="@{Settings.editProfile()}">Edit</a>
@@ -49,7 +63,7 @@
               <p>10/10 Rating</p>
             </td>
         </tr>
-    </table>
+    </table>-->
     </div>
     <div class="clear"></div>
     <div class="addProfilePicture">

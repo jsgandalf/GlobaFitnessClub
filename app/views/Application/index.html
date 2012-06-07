@@ -1,6 +1,10 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
-
+#{if isHome=="true"}
+    #{set title:'Globa Fitness Club Home' /}
+#{/if}
+#{else}
+    #{set title:'Home' /}
+#{/else}
 <div id="main_image_header">
     <div id="background_image" class="switch_pictures">
         <div id="splash" style="

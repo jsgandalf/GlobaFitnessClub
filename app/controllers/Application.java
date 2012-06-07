@@ -1,35 +1,29 @@
 package controllers;
 
-import models.*;
+import models.Post;
+import models.User;
 import notifiers.Mails;
-import play.Logger;
-import play.Play;
 import play.cache.Cache;
 import play.data.validation.Required;
 import play.data.validation.Valid;
-import play.db.jpa.GenericModel;
 import play.libs.Codec;
 import play.libs.Images;
 import play.mvc.Before;
 import play.mvc.Controller;
 import security.BCrypt;
 
-import java.io.File;
-import java.io.InputStream;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import static models.user_fitnessgoal.newUserSetupForGoals;
-import static models.user_fitnessgoal.setUserFitnessGoal;
 
 public class Application extends Controller{
 
     @Before
     static void addUser() {
         User user = connected();
-        if(user != null  && (user.isAdmin==true)) {
+        if(user != null) {
             renderArgs.put("user", user);
+            session.put("isHome","true");
 		}
     }
 
@@ -44,14 +38,10 @@ public class Application extends Controller{
         return null;
     }
 
-    // ~~
-
     public static void index() {
-        /*if(connected() != null) {
-            Trainers.index();
-        }*/
 		User user = connected();
-		render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
 	}
 
     public static void saveUser(@Valid User user, @Required(message="Re-enter Your password") String verifyPassword,
@@ -74,6 +64,7 @@ public class Application extends Controller{
             newUserSetupForGoals(user);
             flash.success("Welcome, " + user.firstName);
 			session.put("user", user.email);
+            session.put("isHome","false");
 			profile();
 		}else{
 			flash.error("Someone is already registered with that email");
@@ -98,6 +89,7 @@ public class Application extends Controller{
 				if(B.checkpw(password, user.password)) {
 					session.put("user", user.email);
 					flash.success("Welcome, " + user.firstName);
+                    session.put("isHome","false");
 					profile();
 				}
 			}
