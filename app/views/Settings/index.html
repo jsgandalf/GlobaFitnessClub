@@ -8,6 +8,37 @@
 <div>
     <div class="settings_inside">
         <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" /> <!--width="275" height="275"-->
+        <div class="addProfilePicture">
+            #{if flash.error}
+            <p class="fError">
+                <strong>${flash.error}</strong>
+            </p>
+            #{/if}
+            #{if flash.success}
+            <p class="fSuccess">
+                <strong>${flash.success}</strong>
+            </p>
+            #{/if}
+
+            #{ifErrors}
+            <p class="error">
+                ${errors[0]}
+            </p>
+            #{/ifErrors}
+            #{form @Photos.uploadProfilePhoto(), enctype:'multipart/form-data'}
+            <ol>
+                <li>
+                    <label for="name">Upload Photo:</label>
+                    <input type="file" name="photo" id="photo" />
+                </li>
+                <li style="margin-top:10px;">
+                    <input  id="upload" type="submit" name="submit" value="Upload" class="submit2">
+                </li>
+            </ol>
+        </div>
+        #{/form}
+    </div>
+    <div class="clear"></div>
         <div class="globaSettingsDiv">
             <ul class="uiList">
                 <li>Name: ${user.fullName()}</li>
@@ -66,36 +97,5 @@
     </table>-->
     </div>
     <div class="clear"></div>
-    <div class="addProfilePicture">
-        #{if flash.error}
-        <p class="fError">
-            <strong>${flash.error}</strong>
-        </p>
-        #{/if}
-        #{if flash.success}
-        <p class="fSuccess">
-            <strong>${flash.success}</strong>
-        </p>
-        #{/if}
-
-        #{ifErrors}
-        <p class="error">
-            ${errors[0]}
-        </p>
-        #{/ifErrors}
-        #{form @Photos.uploadProfilePhoto(), enctype:'multipart/form-data'}
-        <ol>
-            <li>
-                <label for="name">Upload Photo:</label>
-                <input type="file" name="photo" id="photo" />
-            </li>
-            <li style="margin-top:10px;">
-                <input  id="upload" type="submit" name="submit" value="Upload" class="submit2">
-            </li>
-        </ol>
-    </div>
-    <!--<div id="profile_save"><input id="addMoreFiles" name="submit" value="Add more files" class="submit2"></div>-->
-    #{/form}
-    </div>
 
 <div class="clear"></div>
