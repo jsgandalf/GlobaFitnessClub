@@ -1107,6 +1107,16 @@ ol li input.text {
 	z-index: 0;
 }
 
+.text {
+    background-color: #E0ECF3;
+    border: 1px solid #A8CEE2;
+    height: 16px;
+    padding: 5px 2px;
+	z-index: 0;
+}
+
+
+
 input.h1text {
     background-color: #E0ECF3;
     border: 1px solid #A8CEE2;
@@ -2167,4 +2177,32 @@ text-decoration:underline;
  width: 100px !important;
  height:100px !important;
  display:none;
+}
+
+.loadingDivGifSmall{
+ background: url("../images/ajax-loader.gif") no-repeat !important;
+ width: 100px !important;
+ height: 100px !important;
+}
+
+.createEventDialog{
+    width: auto;
+    height: auto;
+    padding-bottom:50px;
+}
+
+.createEventDialog table td{
+    padding: 5px 5px 5px 0;
+}
+
+#DateFrom{
+    width: 57px;
+}
+
+#DateTo{
+    width: 65px;
+}
+
+#whatInput{
+    width: 240px;
 }

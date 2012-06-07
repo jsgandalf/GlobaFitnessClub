@@ -1,15 +1,18 @@
 package models;
 
-import java.util.*;
-import javax.persistence.*;
-
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
-import play.data.binding.*;
-import play.data.validation.*;
+import play.data.validation.MaxSize;
+import play.data.validation.Required;
 import play.db.jpa.Model;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 @Entity
 public class Album extends Model {
@@ -17,7 +20,7 @@ public class Album extends Model {
     @Required
     public String title;
 
-    @Required @As("yyyy-MM-dd")
+    //@Required @As("yyyy-MM-dd")
     public Date creationDate;
 
     @Lob
@@ -128,6 +131,11 @@ public class Album extends Model {
 
     public String toString() {
         return title;
+    }
+
+    public Integer getPictureCount(){
+        List <Picture> pictures = Picture.find("byAlbum",this).fetch();
+        return pictures.size();
     }
 
 }

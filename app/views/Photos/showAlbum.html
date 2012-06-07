@@ -1,12 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Profile' /}
 #{set 'moreScripts'}
-    <script type="text/javascript" src="@{'/public/javascripts/jquery.galleriffic.js'}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/jquery.opacityrollover.js'}"></script>
+
 #{/set}
 #{set 'moreStyles'}
-    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
-    <link rel="stylesheet" href="@{'/public/stylesheets/galleriffic-2.css'}" type="text/css" />
+
 #{/set}
     <div class="photo_gallery">
         <div class="profile_banner">
@@ -32,6 +30,8 @@
             Fitness Goal
             <a href="#">Weight Training</a>-->
             <span>/</span>
+            <a href="@{Photos.showAlbum(currentAlbum.id)}">${currentAlbum.getPictureCount() ?: 'no'} photo${currentAlbum.getPictureCount().pluralize()}</a>
+            <span>/</span>
             <a href="@{Photos.showAlbum(currentAlbum.id)}">${currentAlbum.getCommentCount() ?: 'no'} comment${currentAlbum.getCommentCount().pluralize()}</a>
             <div style="float:right"><a href="@{AddAlbumPhotos(currentAlbum.id)}" style="color:#DA4348;">Add More Photos</a></div>
         </div>
@@ -42,14 +42,12 @@
             #{display_pictures albums:currentAlbum, user:user/}
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $('.fancybox').fancybox({
-
-                        'width' : 700,
-                        'height' : 575
-                    });
+                    $('.fancybox').fancybox({});
 
                     $('.deleteCommentDiv').click(function(){
                         var id = $(this).parent().parent().attr('commentid');
+                        $(this).unbind();
+                        $('#comment'+id).remove();
                         $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
                             $('#comment'+id).remove();
                         });
@@ -58,7 +56,8 @@
                     $('.btn').click(function(){
                         var id = $(this).attr('id');
                         //$.fancybox.showLoading();
-                        $.post('@{Photos.addComment()}',{pictureID: $(this).attr('id'), comment: $('#myPictureComment'+$(this).attr("id")).val()}, function(newComment){
+                        $('#picture_list_comments'+id).show();
+                        $.post('@{Photos.addComment()}',{pictureID: id, comment: $('#myPictureComment'+$(this).attr("id")).val()}, function(newComment){
                             var src = "${user.getProfileThumbPic()}";
                             var userFullName = "${user.fullName()}";
                             $('#picture_list_comments'+id).append(
@@ -68,7 +67,7 @@
                                         "<span class='redText' style='margin-right:5px'>"+userFullName+"</span>"
                                         +newComment.content+
                                         "<div id='deleteComment"+newComment.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div>"+
-                                        "<div class='commentDate'>${new Date(new Date().getTime() - 1000000).since()}</div>"+
+                                        "<div class='commentDate'>a few seconds ago</div>"+
                                     "</div>"+
                                     "<div class='clear'></div>"+
                                 "</div>");

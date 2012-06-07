@@ -43,3 +43,33 @@ function saveFieldAs(divID, postURL, responseID){
             parent.$.fancybox.close();
         });
 }
+
+function createEvent(divID, postURL, date, dateFormatted){
+        //Checks to see if actionButtons exist
+        if(!$(divID+" .actionButtons").length)
+            $(divID).append("<div class='actionButtons'></div>");
+        if(!$(".loadingDivGif").length)
+                    $(divID).append("<div class='loadingDivGif'></div>");
+
+        $(divID+" .actionButtons").html('<a class="btn" id="button_save" style="font-size: 12px;">Add Event</a><a id="button_cancel" class="submit2 button_cancel_class">Cancel</a>');
+
+        $(divID+" .date").html(dateFormatted);
+
+        $(divID+' #button_save').click(function(){
+            $(divID+' #button_save').unbind();
+            $.post(postURL,{id: $(divID).attr('saveID'), content:$(divID+' input').val()}, function(data){
+               $(responseID).html(data.title);
+               parent.$.fancybox.close();
+
+            },'json');
+        });
+
+        $('.button_cancel_class').click(function(){
+            parent.$.fancybox.close();
+        });
+
+        $('.clearOnClick').click(function(){
+            $(this).val('');
+            $(this).unbind();
+        });
+}

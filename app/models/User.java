@@ -1,12 +1,10 @@
 package models;
 
-import play.db.jpa.*;
 import play.data.validation.*;
-import javax.persistence.*;
-import play.db.jpa.Blob;
+import play.db.jpa.Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 @Entity
 public class User extends Model {
@@ -91,6 +89,16 @@ public class User extends Model {
         this.save();
         return this.profilePic;
     }
+
+    public String getProfilePic(){
+        if(this.profilePic != null && !this.profilePic.isEmpty() && !this.profilePic.trim().isEmpty())
+            return "https://s3.amazonaws.com/globafitnessphotos/"+this.profilePic;
+        else if(this.gender!=null)
+            if(this.gender.equals("female") || this.gender.equals("Female"))
+                return "https://s3.amazonaws.com/globafitnessphotos/default/female.jpg";
+        return "https://s3.amazonaws.com/globafitnessphotos/default/default.jpg";
+    }
+
     public String profileThumbPicture(String profile){
         this.profileThumbPic = profile;
         this.save();

@@ -54,7 +54,7 @@
     <div class="addPhotoToAlbum">
         #{form @uploadPhotoToAlbum(),id:"jsonForm", enctype:"multipart/form-data"}
             <ol>
-                <!--<#{field 'photo_title'}
+                #{field 'album_title'}
                 <li>
                     <label>Title:</label>
                     <input id="photo_title" type="text" class="text" name="${field.name}" value="${photo_title}" />
@@ -66,22 +66,21 @@
                     <textarea title="loading" style="height:68px" id="message" class="text" name="${field.name}">${message}</textarea>
                 </li>
                 #{/field}
-                li>
+                <li>
                     <label>Upload Photo:</label>
                     <input type="file" name="photo" id="photo" />
                     <input type="hidden" name="albumID" value="${currentAlbum?.id}" />
                 </li>
                 <li style="margin-top:10px;" id="removeUpload">
                     <input  id="upload" type="submit"  name="submit" value="Upload" class="submit2">
-                </li>-->
-                <div id="file-uploader">
+                </li>
+                <!--<div id="file-uploader">
                     <noscript>
                         <p>Please enable JavaScript to use file uploader.</p>
-                        <!-- or put a simple form for upload here -->
                     </noscript>
 
                     <script>
-                        function createUploader(){
+                        /*function createUploader(){
                             var uploader = new qq.FileUploader({
                                 element: document.getElementById('file-uploader'),
                                 action: '/upload',
@@ -91,11 +90,7 @@
                                 },
                                 onComplete: function(){
 
-                                    //var showUserAction = #{jsAction @Photos.display_pictures(':id') /}
-                                   //var albumID = "${currentAlbum?.id}";
-                                    /*var displayUserDetail = function(albumID) {
-                                        $('#showPicturesInCurrentAlbum').load( showUserAction({id: albumID}) )
-                                    }
+
 
                                     $.get(displayUserDetail, function(data){
                                         alert('');
@@ -108,7 +103,7 @@
                         // don't wait for the window to load
                         window.onload = createUploader;
                     </script>
-                </div>
+                </div>-->
             </ol>
         #{/form}
     </div>
@@ -117,12 +112,12 @@
     <br>
 
     <div id="showPicturesInCurrentAlbum">
-    *{#{if currentAlbum?.pictures?.size()}
+    #{if currentAlbum?.pictures?.size()}
         #{display_pictures albums:currentAlbum, user:user /}
     #{/if}
     #{else}
     <div style="margin-top:10px"><p>You have not uploaded any pictures yet</p></div>
-    #{/else}      }*
+    #{/else}
     </div>
     <div class="clear"></div>
     <a class="fancybox" href="#displayError" id="clickOnDisplayError">
@@ -145,8 +140,14 @@
     'hideOnContentClick':false
     });
 
-        //$('.fancybox').fancybox();
-        var mySRC = "";
+    $('#upload').click(function(){
+        $(this).hide();
+        //$('jsonForm').submit();
+        $('#removeUpload').append('<div class="loadingDivGifSmall"></div>');
+    });
+
+        $('.fancybox').fancybox();
+        /*var mySRC = "";
         $("a.photoIframe").fancybox({
         'titlePosition' : 'inside',
         'transitionIn'  : 'elastic',
@@ -157,7 +158,7 @@
         'onClosed': function() {
         $('#comment_pic iframe').attr('src', mySRC);
         }
-        });
+        });*/
     });
 </script>
 

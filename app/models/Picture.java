@@ -1,17 +1,20 @@
 package models;
 
-import java.util.*;
-import javax.persistence.*;
-
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import play.data.binding.As;
-import play.db.jpa.*;
-import play.data.validation.*;
+import play.data.validation.MaxSize;
+import play.data.validation.Required;
+import play.db.jpa.Model;
+
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 @Entity
 public class Picture extends Model {
@@ -83,6 +86,11 @@ public class Picture extends Model {
         s3.deleteObject(new DeleteObjectRequest("globafitnessphotos",this.getAmazonKey()));
         s3.deleteObject(new DeleteObjectRequest("globafitnessphotos",this.amazonThumbnailKey));
         this.delete();
+    }
+
+    public int getCommentCount(){
+        List<Picture_comment> comments = Picture_comment.find("select c from Picture_comment c where c.picture = ? order by postedAt asc", this).fetch();
+        return comments.size();
     }
 
 }

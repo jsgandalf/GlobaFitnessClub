@@ -18,7 +18,15 @@
                     </div>
                     <div class="clear"></div>
                     <div id="picture_list_comments${picture.id}" class="picture_list_comment_scoll">
-                        <h4>Comments</h4>
+                        #{if picture.getComments().size()}
+                            <h4>Comments</h4>
+                        #{/if}
+                        #{else}
+                            <script type="text/javascript">
+                                $('#picture_list_comments'+${picture.id}).hide();
+                                $('#comment_pic'+${picture.id}+' #picture_comments').css('margin-top','10px');
+                            </script>
+                        #{/else}
                         #{list items:picture.getComments(), as:'comment'}
                             <div class='picture_lists' id='comment${comment.id}' commentid='${comment.id}'>
                                 <img class='commentThumbPic' src="${comment.author.getProfileThumbPic()}" width='32' height='32'>

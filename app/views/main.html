@@ -4,25 +4,22 @@
         <title>#{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/globa.css'}">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">
+        <!--<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">-->
         #{get 'moreStyles' /}
 		<script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.2.min.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/cycle.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/slideshow.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/dropdown.js'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/fileuploader.js'}"></script>
+        <!--<script type="text/javascript" src="@{'/public/javascripts/fileuploader.js'}"></script>-->
+        <!--This is a script for AJAX loading in fancybox--->
         <script type="text/javascript" src="@{'/public/javascripts/general.js'}"></script>
+        <!--Cufon Scripts--->
         <script src="@{'/public/javascripts/cufon/cufon-yui.js'}" type="text/javascript"></script>
         <script src="@{'/public/javascripts/cufon/Liberation_Sans_400.font.js'}" type="text/javascript"></script>
 
         <!--Fancy box plugin------------------------------------------------------------------------------------>
-
-
-        <!-- Add fancyBox -->
         <link rel="stylesheet" href="@{'/public/javascripts/fancybox/source/jquery.fancybox.css'}" type="text/css" media="screen" />
         <script type="text/javascript" src="@{'/public/javascripts/fancybox/source/jquery.fancybox.pack.js'}"></script>
-
-
 
         <script type="text/javascript">
             Cufon.replace('h1'); 
@@ -146,10 +143,9 @@
                 #{if user?.id}
                     <div id="menu_bar2_div">
                         <ul class="menu_bar2">
-                            <li id="menu_bar2_first"><a href="@{Application.siteDown()}">Videos</a></li>
-                            <li><a href="@{Application.siteDown()}">Calendar</a></li>
+                            <li id="menu_bar2_first"><a href="@{Profile.index()}">Profile</a></li>
+                            <li><a href="@{Application.siteDown()}">Videos</a></li>
                             <li><a href="@{Settings.index()}">Settings</a></li>
-                            <li><a href="@{Application.profile()}">Profile</a></li>
                             <li><a href="@{Application.index()}">Mail</a>
                             <li><a href="@{Photos.index()}">Photos</a></li>
                             <li><a href="@{Application.posts()}">Fitness Blog</a></li>
