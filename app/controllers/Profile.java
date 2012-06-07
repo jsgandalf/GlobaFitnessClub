@@ -1,5 +1,6 @@
 package controllers;
 
+import models.CalendarEvent;
 import models.User;
 import models.user_fitnessgoal;
 import play.data.validation.Required;
@@ -7,6 +8,7 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import security.BCrypt;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -74,7 +76,8 @@ public class Profile extends Controller{
 		User user = connected();
         List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
                 "select f from user_fitnessgoal f where f.author = ? and f.value = 1 order by id asc",user).fetch();
-        render(user, fitnessGoals);
+        List<CalendarEvent> calendarList = CalendarEvent.find("byAuthor",user).fetch();
+        render(user, fitnessGoals, calendarList);
 	}
 	public static void saveSettings(@Required(message="Please type in your current password")String userPassword, @Required(message="Please provide your new password")String newPassword) {
 		User user = connected();
@@ -95,5 +98,23 @@ public class Profile extends Controller{
 			render("@settings", userPassword, newPassword);
 		}
 	}
+
+    public static void createNewEvent(String timeFrom, String timeTo, String what, Date date){
+        User user = connected();
+        CalendarEvent newEvent = new CalendarEvent(user,timeFrom,timeTo,what,date);
+        newEvent.save();
+        String success = "\"success\"";
+        //String success = "\"Failed to delete picture, please contact us about this issue and we will fix it as soon as possible.\"";
+        renderJSON("{\"success\": " + success +"}");
+    }
+
+    public static void editEvent(Long id){
+        User user = connected();
+        CalendarEvent newEvent = CalendarEvent.findById(id);
+        newEvent.delete();
+        String success = "\"success\"";
+        //String success = "\"Failed to delete picture, please contact us about this issue and we will fix it as soon as possible.\"";
+        renderJSON("{\"success\": " + success +"}");
+    }
 
 }

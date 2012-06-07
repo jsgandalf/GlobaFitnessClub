@@ -27,22 +27,6 @@
                 <script type="text/javascript">
                     $(document).ready(function() {
 
-                        $('.deletePic').click(function(){
-                            $.fancybox.showLoading();
-                            var deleteID = $(this).attr('pictureid');
-                            $.post('@{Photos.deletePhoto()}',{id: $(this).attr('pictureid')}, function(data){
-                                $("#myPicture"+deleteID).remove();
-                                $.fancybox.hideLoading();
-                            });
-                        });
-
-                        $('.deleteCommentDiv').click(function(){
-                            var id = $(this).parent().parent().attr('commentid');
-                            $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
-                            $('#comment'+id).remove();
-                            });
-                        });
-
                         $('.picture_lists').hover(function(){
                             $('#deleteComment'+$(this).attr('commentid')).show();
                             },function(){

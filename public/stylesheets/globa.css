@@ -21,6 +21,21 @@ h2{
 	margin-bottom:35px;
 }
 
+h3{
+	color: #555454;
+    font-size: 24px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+h4{
+	color: #555454;
+    font-size: 24px;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin:0px;
+}
+
 p{color:#555454;}
 
 
@@ -1325,12 +1340,7 @@ ol li textarea{
     font-size: 11px;
 }
 
-h3{
-	color: #555454;
-    font-size: 24px;
-    font-weight: normal;
-    text-transform: uppercase;
-}
+
 
 #slideshow1{
 	background: url(../images/slideshow/1.jpg);
@@ -1832,10 +1842,7 @@ ul.sb_menu li a:hover, ul.sb_secondary_menu li a:hover{color:#da4348; font-weigh
   font-size:11px;
   font-weight:normal;
   height:20px;
-  margin-bottom:5px;
-  margin-left:0;
-  margin-right:0;
-  margin-top:20px;
+
   padding-bottom:0;
   padding-left:0;
   padding-right:0;
@@ -2161,8 +2168,9 @@ text-decoration:underline;
     line-height: 13px;
     width: 83px;
     position: absolute;
-    bottom: -5px;
+    bottom: 0px;
     right:0px;
+    margin-bottom: 1px;
 }
 
 #button_cancel{
@@ -2186,23 +2194,31 @@ text-decoration:underline;
 }
 
 .createEventDialog{
-    width: auto;
-    height: auto;
-    padding-bottom:50px;
+    width: 289px;
+    height: 140px;
 }
 
 .createEventDialog table td{
     padding: 5px 5px 5px 0;
 }
 
-#DateFrom{
+#timeFrom{
     width: 57px;
 }
 
-#DateTo{
-    width: 65px;
+#timeTo{
+    width: 57px;
 }
 
 #whatInput{
-    width: 240px;
+    width: 235px;
+}
+
+.editEventDialog{
+    width: 250px;
+    height: 120px;
+}
+
+.editEventDialog table td{
+    padding: 5px 5px 5px 0;
 }

@@ -2,7 +2,7 @@
     #{list items:_album.pictures, as:'picture'}
         <li>
             <div id="myPicture${picture.id}">
-                <div><a class="deletePic" pictureid="${picture.id}"><img src="@{'public/images/delete-icon.jpg'}" alt="">Delete</a></div>
+                <div class="deletePic" pictureid="${picture.id}"><img src="@{'public/images/delete-icon.jpg'}" alt=""><a>Delete</a></div>
                 <div><a class="photoIframe fancybox" href="#comment_pic${picture.id}" rel="gallery">
                     <img src="https://s3.amazonaws.com/globafitnessphotos/${picture.amazonThumbnailKey}"  alt="Picture Not Found" />
                 </a></div>

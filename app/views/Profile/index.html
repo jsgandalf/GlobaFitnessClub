@@ -2,7 +2,7 @@
 #{set title:'Profile' /}
 
 #{set 'moreScripts'}
-<!---Calendar Plugin------------------>
+<!---CalendarEvent Plugin------------------>
     <script type='text/javascript' src="@{'/public/javascripts/fullcalendar/jquery-ui-1.8.17.custom.min.js'}"></script>
     <script type='text/javascript' src="@{'/public/javascripts/fullcalendar/fullcalendar.min.js'}"></script>
 #{/set}
@@ -22,7 +22,7 @@
         <tr>
             <td>Location:</td>
             <td>#{if user.city}${user.city}#{/if}
-                #{else}<span class="error">(Edit city)</span><a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a> #{/else}
+                #{else}<span class="error">City</span><a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a> #{/else}
                 #{if user.state}, ${user.state}#{/if}#{else}<span class="error">(Edit state)</span> <a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a> #{/else}
             </td>
         </tr>
@@ -59,39 +59,10 @@
     </table>
     </div>
     <div id='calendar'></div>
-    <div class="addProfilePicture">
-        #{if flash.error}
-        <p class="fError">
-            <strong>${flash.error}</strong>
-        </p>
-        #{/if}
-        #{if flash.success}
-        <p class="fSuccess">
-            <strong>${flash.success}</strong>
-        </p>
-        #{/if}
 
-        #{ifErrors}
-        <p class="error">
-            ${errors[0]}
-        </p>
-        #{/ifErrors}
-        #{form @Photos.uploadProfilePhoto(), enctype:'multipart/form-data'}
-        <ol>
-            <li>
-                <label>Upload Photo:</label>
-                <input type="file" name="photo" id="photo" />
-            </li>
-            <li style="margin-top:10px;">
-                <input  id="upload" type="submit" name="submit" value="Upload" class="submit2">
-            </li>
-        </ol>
-    </div>
-    <div class="clear"></div>
-    <!--<div id="profile_save"><input id="addMoreFiles" name="submit" value="Add more files" class="submit2"></div>-->
-    #{/form}
     </div>
     <div id="createEvent" style="display:none">#{createEvent /}</div>
+    <div id="editEvent" style="display:none">#{editEvent /}</div>
 <div class="clear"></div>
 <script type='text/javascript'>
 
@@ -99,26 +70,37 @@ $(document).ready(function() {
 
     var createEventHtml = $('#createEvent').html();
     $('#createEvent').remove();
-    /*eventClick: function(event) {
-    if (event.url) {
-    window.open(event.url);
-    return false;
-    }
-    }*/
+    var editEventHtml = $('#editEvent').html();
+    $('#editEvent').remove();
+
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
+
+    /*alert(d);
+    alert(m);
+    alert(y);*/
 
     $('#calendar').fullCalendar({
         theme: true,
         weekMode: "variable",
         eventClick: function(calEvent, jsEvent, view) {
 
-
-            alert('Event: ' + calEvent.title);
+            /*alert('Event: ' + calEvent.title);
             alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert('View: ' + view.name);
+            alert('View: ' + view.name);*/
+
+            var date = new Date(calEvent.start);
+
+            $.fancybox(editEventHtml,
+            {
+                autoSize:true,
+                beforeShow: function() {
+                    //To be improved with startDate time and endDate times
+                    editEvent(".editEventDialog",calEvent.id,calEvent.title,'@{Profile.editEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
+                }
+            });
 
             // change the border color just for fun
             $(this).css('border-color', 'red');
@@ -131,7 +113,7 @@ $(document).ready(function() {
         {
             autoSize:true,
             beforeShow: function() {
-                createEvent(".createEventDialog",'@{Profile.index()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "));
+                createEvent(".createEventDialog",'@{Profile.createNewEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
             }
         });
 
@@ -154,13 +136,16 @@ $(document).ready(function() {
         right: 'prev,next'
         /*right: 'month,agendaWeek,agendaDay' */
     },
-    editable: true,
+    /*editable: true,*/
     events: [
-    {
-    title: 'All Day Event',
-    start: new Date(y, m, 1)
-    },
-    {
+    #{list items:calendarList, as:'calendarEvent'}
+        {
+            title: '${calendarEvent.what}',
+            start: "${calendarEvent.start}",
+            id: "${calendarEvent.id}"
+        }${calendarEvent_isLast ? '' : ',' }
+    #{/list}
+    /*{
     title: 'Long Event',
     start: new Date(y, m, d-5),
     end: new Date(y, m, d-2)
@@ -199,7 +184,7 @@ $(document).ready(function() {
     start: new Date(y, m, 28),
     end: new Date(y, m, 29),
     url: 'http://google.com/'
-    }
+    }*/
     ]
     });
 

@@ -99,9 +99,16 @@
 
 
      public static void deletePhoto(Long id){
-        Picture myPicture = Picture.findById(id);
-        notFoundIfNull(myPicture);
-        myPicture.deletePicture();
+         String success = "\"success\"";
+         try{
+            Picture myPicture = Picture.findById(id);
+            //notFoundIfNull(myPicture);
+            myPicture.deletePicture();
+        } catch(Exception ex) {
+            success = "\"Failed to delete picture, please contact us about this issue and we will fix it as soon as possible.\"";
+            renderJSON("{\"success\": " + success +"}");
+        }
+        renderJSON("{\"success\": " + success+"}");
      }
 
      public static void uploadPhotoToAlbum(String photo_title, String message, File photo, Long albumID) throws IOException {

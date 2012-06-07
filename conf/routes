@@ -5,8 +5,8 @@
 # Home page
 GET     /                                       Application.index
 GET     /consultation/                          Application.consultation
-GET		/profile								Application.profile
-GET		/profile               					Application.profile
+GET		/profile								Profile.index
+GET		/profile/               				Profile.index
 GET     /register                               Application.register
 GET     /login                                  Application.login_page
 GET     /logout                                 Application.logout
