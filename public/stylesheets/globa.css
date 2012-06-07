@@ -2223,7 +2223,7 @@ text-decoration:underline;
 .globaSettingsDiv{
     padding-left: 3px;
     vertical-align: top;
-    width: 330px;
+    min-width:260px;
     float:left;
 }
 
@@ -2233,6 +2233,13 @@ text-decoration:underline;
 
 .uiList li{
     border-bottom: 1px solid #E9E9E9;
+}
+
+.uiList a.{
+    background: none repeat scroll 0 0 transparent;
+    display: block;
+    text-decoration: none;
+    padding: 10px 5px;
 }
 
 .settings_content h1{

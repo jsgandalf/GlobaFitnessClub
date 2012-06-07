@@ -65,20 +65,11 @@ public class Application extends Controller{
             flash.success("Welcome, " + user.firstName);
 			session.put("user", user.email);
             session.put("isHome","false");
-			profile();
+            Profile.index();
 		}else{
 			flash.error("Someone is already registered with that email");
 			render("@register", user, verifyPassword, verifyEmail);
 		}
-    }
-
-    public static void profile(){
-        User user = connected();
-        if(user==null){
-            flash.error("You must login to see your profile");
-            Application.login_page();
-        }
-        render(user);
     }
 
     public static void login(String email, String password) {
@@ -90,7 +81,7 @@ public class Application extends Controller{
 					session.put("user", user.email);
 					flash.success("Welcome, " + user.firstName);
                     session.put("isHome","false");
-					profile();
+					Profile.index();
 				}
 			}
 		}
