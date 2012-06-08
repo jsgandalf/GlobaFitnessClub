@@ -4,12 +4,7 @@ import models.Album;
 import models.Post;
 import models.User;
 import models.user_fitnessgoal;
-import notifiers.Mails;
-import play.cache.Cache;
 import play.data.validation.Required;
-import play.data.validation.Valid;
-import play.libs.Codec;
-import play.libs.Images;
 import play.mvc.Before;
 import play.mvc.Controller;
 import security.BCrypt;
@@ -18,7 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static models.user_fitnessgoal.newUserSetupForGoals;
 import static models.user_fitnessgoal.setUserFitnessGoal;
 
 public class Settings extends Controller{
@@ -90,7 +84,7 @@ public class Settings extends Controller{
 		validation.required(userPassword);
 		validation.required(newPassword);
 		if(validation.hasErrors()) {
-			render("@settings", userPassword, newPassword);
+			render("@Settings.changePassword", userPassword, newPassword);
 		}
         BCrypt B = new BCrypt();
         if(B.checkpw(userPassword, user.password)) {
@@ -98,10 +92,10 @@ public class Settings extends Controller{
             user.save();
             flash.error("");
             flash.success("Password Reset Successfully");
-            render("@settings");
+            render("@Settings.changePassword");
         }else{
 			flash.error("Current Password Incorrect");
-			render("@settings", userPassword, newPassword);
+			render("@Settings.changePassword", userPassword, newPassword);
 		}
 	}
 
@@ -131,6 +125,10 @@ public class Settings extends Controller{
             user.delete();
         }
         session.clear();
+        render();
+    }
+
+    public static void changePassword(){
         render();
     }
 }

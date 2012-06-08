@@ -617,10 +617,11 @@ table.fc-border-separate {
 	
 	
  #calendar {
-    width: 500px;
-    margin: 0 auto;
+    width: 621px;
+    //width: 500px;
+    margin: 15px auto 0;
     text-align: center;
-    float:right;
+    //float:right;
 }
 
 .fc-header-title{

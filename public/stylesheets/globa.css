@@ -333,9 +333,9 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 }
 
 #extra_buttons ul li:hover{
-	background: url(../images/black_btn2.jpg) #e9545a;
+	background-color: #e9545a;
 	z-index:5;
-	opacity:0.95; filter:alpha(opacity=95);
+	opacity:0.70; filter:alpha(opacity=70);
 	padding: 7px;
 	display:inline-block;
 	-moz-border-radius: 7px;
@@ -1431,6 +1431,15 @@ outline-style:none;
     margin-top: 10px;
     width: auto;
 }
+
+.options_logged_in a{
+    color: #FFF;
+}
+
+.options_logged_in a:hover{
+    color: #e9545a;
+}
+
 .white_background_wrapper{
 	background-color: #FFF;
 	/*-moz-border-radius-bottomleft:: 15px;
@@ -1536,17 +1545,17 @@ outline-style:none;
 	background: none repeat scroll 0 0 #FAFAFA;
 	border: 1px solid #CCCCCC;
     clear: both;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    margin-top: 17px;
     padding: 0;
 	display: block;
 	color: #333333;
     font-size: 14px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
-	width: 812px;
+	width: auto;
 	height: 100px;
 	display: block;
-	margin-left:52px;
 }
 .profile_banner h3{
 	margin-bottom: 11px;
@@ -1575,7 +1584,7 @@ outline-style:none;
 .profile_banner_col1{
 	border-right: 1px solid #CCCCCC;
     float: left;
-    width: 596px;
+    width: 670px;
 	display:block;
 	height: 100px;
 	z-index: 0;
@@ -1584,7 +1593,7 @@ outline-style:none;
 
 .profile_banner_col2{
 	float: right;
-    width: 200px;
+    width: 279px;
 	height: 100px;
 	display:block;
 }
@@ -1673,26 +1682,35 @@ outline-style:none;
     padding-left: 3px;
     vertical-align: top;
     width: 330px;
+    color: #747473;
+}
+
+.profile_table td.tableSubject{
+    font-weight:bold;
+    color: #333333;
 }
 
 .profile_table h1{
 	display:inline-block;
+	font-size: 30px;
 }
 
 .profile_table ul li{list-style-type:none; display:block; padding: 0; margin: 0; }
 .profile_table ul a.submit2 {padding: 5px; display: block; }
 
 .profile_table td{
-	padding:5px 0 5px 5px;
+	padding:2px 0 2px 5px;
+	vertical-align: top;
+}
+
+.profile_table tr:hover{
+    background-color:#E0ECF3;
 }
 
 .profile_table ul{
 	display:inline-block;
 }
 
-.profile_table td{
-	vertical-align: top;
-}
 
 .profile_table td.phone{
 	width:95px;
@@ -2253,7 +2271,7 @@ text-decoration:underline;
 
 .settings_content h1{
     font-size: 25px; display:inline-block;
-    border-bottom: 1px solid #AAAAAA;
+    border-bottom: 1px solid #CCC;
     padding-bottom: 10px;
     width:100%;
 }
@@ -2282,4 +2300,15 @@ text-decoration:underline;
     padding-left: 25px;
     padding-right: 5px;
     text-align: right;
+}
+.profileIcon{
+    float:right;
+}
+
+.profileIcon img{
+    margin: 8px 5px 0 0;
+}
+
+#social_link_padding{
+    padding-left:30px;
 }

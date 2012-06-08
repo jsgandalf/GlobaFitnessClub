@@ -77,8 +77,11 @@
                 </div>
                 #{if user?.id}
                 <div class="clear"></div>
-                <div id="options" class="options_logged_in">
-                    <a href="@{Profile.index()}" style="color:#FFF">Profile &rarr; ${user.email}</a>
+                <div class="profileIcon">
+                    <a href="@{Profile.index()}"><img src="@{'/public/images/profile_icon.png'}"></a>
+                    <div id="options" class="options_logged_in">
+                        <a href="@{Profile.index()}"> ${user.email}</a>
+                    </div>
                 </div>
             #{/if}
             </div>
@@ -133,7 +136,7 @@
                             <li id="myHome"><a href="@{Application.index()}" >home</a></li> <!-- id="active_link"-->
                             <li id="Trainers"><a href="@{Trainers.index()}">Trainers</a></li>
                             <li id="Photos"><a href="@{Photos.index()}">Photos</a></li>
-                            <li id="Mail"><a href="@{Application.siteDown()}">Mail</a></li>
+                            <li id="Mail"><a href="@{Application.siteDown()}">Inbox &nbsp;<img src="@{'/public/images/envelope.png'}" alt=""></a></li>
                             <li id="FitnessBlog"><a href="@{Application.posts()}">Fitness Blog</a></li>
                             <li><a href="@{Application.members()}" style="padding: 20px 20px 0;">Networking</a>
                                 <ul id="dropdown3">
@@ -144,7 +147,7 @@
                             <li id="Donation"><a href="@{Application.donate()}" style="padding: 20px 20px 0;">Donation</a></li>
                             <li id="Settings"><a href="@{Settings.index()}" style="padding: 20px 20px 0;">Settings</a></li>
                         </ul>
-                        <ul class="social_list">
+                        <ul class="social_list" id="social_link_padding">
                             <li><a href="http://www.facebook.com"><div id="facebook"></div></a></li>
                             <li><a href="http://www.twitter.com"><div id="twitter"></div></a></li>
                             <li><a href="http://www.youtube.com"><div id="youtube"></div></a> </li>

@@ -47,7 +47,7 @@
                 <li><a href="@{Settings.editProfile()}"><span class="uiSpanSubject">Email:</span><span class="uiSpanEdit">Edit</span><span class="uiSpanName">${user.email}&nbsp</span></a></li>
                 <li><a href="@{Settings.editProfile()}"><span class="uiSpanSubject">Relationship:</span><span class="uiSpanEdit">Edit</span><span class="uiSpanName">${user?.relationship}&nbsp</span></a></li>
                 <li><a href="@{Settings.editProfile()}"><span class="uiSpanSubject">Fitness Goals:</span><span class="uiSpanEdit">Edit</span><span class="uiSpanName">#{list items:fitnessGoals, as:'goal'}${goal.name}${goal_isLast ? '' : ',' }#{/list}&nbsp</span></a></li>
-                <li><a href="@{Settings.editProfile()}"><span class="uiSpanSubject">Relationship:</span><span class="uiSpanEdit">Edit</span><span class="uiSpanName">${user.bio}&nbsp</span></a></li>
+                <li><a href="@{Settings.editProfile()}"><span class="uiSpanSubject">Bio:</span><span class="uiSpanEdit">Edit</span><span class="uiSpanName">${user.bio}&nbsp</span></a></li>
             </ul>
         </div>
     </div>

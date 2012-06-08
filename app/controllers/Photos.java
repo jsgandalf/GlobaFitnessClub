@@ -173,21 +173,22 @@
      }
 
      public static void uploadProfilePhoto(File photo) throws IOException {
+         long MAX_SIZE = 5242880;
          User user = connected();
          String accessKey = "AKIAIIDVPNAYFEVBVVFA";
          String secretKey = "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";
          if(photo==null){
              flash.error("Please upload a file");
-             render("@Settings.index", user);
+             Settings.index();
          }
          String mimeType = play.libs.MimeTypes.getMimeType(photo.getAbsolutePath());
          if(!mimeType.equals("image/jpeg") && !mimeType.equals("image/gif") && !mimeType.equals("image/png")){
              flash.error("File is not jpg, gif, or png. Please upload this type of file.");
-             render("@Settings.index", user, photo);
+             Settings.index();
          }
          if(photo.length()>MAX_SIZE){
              flash.error("File is too large, must be less than 2.5mb");
-             render("@Settings.index", user, photo);
+             Settings.index();
          }
          String fileExtension = "";
          if(mimeType.equals("image/jpeg")) fileExtension=".jpg";
@@ -195,7 +196,7 @@
          else if(mimeType.equals("image/png")) fileExtension=".png";
          else{
              flash.error("File is not jpg, gif, or png. Please upload this type of file.");
-             render("@Settings.index", user);
+             Settings.index();
          }
 
          BufferedImage image = ImageIO.read(photo);
@@ -230,7 +231,7 @@
          s3.putObject(new PutObjectRequest("globafitnessphotos", "thumbprofile"+user.id+fileExtension, newThumbnailFile).withCannedAcl(CannedAccessControlList.PublicRead));
 
          flash.success("You have successfully updated your profile photo");
-         render("@Settings.index()");
+         Settings.index();
      }
 
      public static void saveAlbum(Long albumID){

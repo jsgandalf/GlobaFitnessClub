@@ -11,53 +11,66 @@
     <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/fullcalendar.css'}" />
     <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/fullcalendar.print.css'}" media='print' />
 #{/set}
+
 <div id="profile_div">  <!--width="275" height="275"-->
-    <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
+    <div class="profile_banner">
+        <div class="profile_banner_col1">
+            <div id="helper"></div>
+            <div class="left_pad">
+                <h1>Profile Help</h1>
+                <p>Welcome to Your fitness profile, click on the calendar to schedule and event with a trainer. Then edit your profile and track your goals</p>
+            </div>
+        </div>
+        <div class="profile_banner_col2">
+            <p class="pad_five">Maximize your efforts by completing your profile</p>
+        </div>
+    </div>
+    <a class="fancybox" href="${user.getProfilePic()}">
+        <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
+    </a>
     <table class="profile_table">
         <tr>
             <td colspan="2" style="padding-top:0px">
-                <h1 style="	font-size: 25px; display:inline-block;">${user.fullName()} &nbsp;</h1>  <a style="font-size:12px; display:inline-block;" class="submit2" href="@{Settings.editProfile()}">Edit</a>
+                <h1>${user.fullName()} &nbsp;</h1>  <a style="font-size:12px; display:inline-block;" class="submit2" href="@{Settings.editProfile()}">Edit</a>
             </td>
         </tr>
+
         <tr>
-            <td>Location:</td>
-            <td>#{if user.city}${user.city}#{/if}
-                #{else}<span class="error">City</span><a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a> #{/else}
-                #{if user.state}, ${user.state}#{/if}#{else}<span class="error">(Edit state)</span> <a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a> #{/else}
+            <td class="tableSubject">Location:</td>
+            <td>${user.city}
+                #{if user.state},${user.state}#{/if}&nbsp;
             </td>
         </tr>
+
         <tr>
-            <td class="phone">Phone Number:</td>
-            <td>#{if user.phoneNumber}${user.phoneNumber}#{/if} #{else}<span class="error">(Edit phone number)</span> <a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a> #{/else}</td>
+            <td class="tableSubject">Phone Number:</td>
+            <td>${user.phoneNumber}&nbsp;</td>
         </tr>
         <tr>
-            <td>Email:</td>
-            <td>#{if user.email}${user.email}#{/if} #{else}<span class="error">(Edit email)</span><a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a>#{/else}</td>
+            <td class="tableSubject">Email:</td>
+            <td>${user.email}&nbsp;</td>
         </tr>
         <tr>
-            <td>Relationship status:</td>
-            <td>${user?.relationship}</td>
+            <td class="tableSubject">Relationship status:</td>
+            <td>${user?.relationship}&nbsp;</td>
         </tr>
         <tr>
-            <td>Fitness Goals:</td>
+            <td class="tableSubject">Fitness Goals:</td>
             <td>
                 #{list items:fitnessGoals, as:'goal'}
                     ${goal.name}${goal_isLast ? '' : ',' }
-                #{/list}
+                #{/list} &nbsp;
             </td>
         </tr>
         <tr>
+            <td class="tableSubject">Bio:</td>
             <td class="profile_description" colspan="2">
-            #{if user.bio}${user.bio}#{/if}#{else}<span class="error">(Edit bio)</span><a style="font-size:12px" class="submit" href="@{Settings.editProfile()}">[Edit]</a>#{/else}
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <p>10/10 Rating</p>
+            ${user.bio}&nbsp;
             </td>
         </tr>
     </table>
     </div>
+    <div class="clear"></div>
     <div id='calendar'></div>
 
     </div>
@@ -67,6 +80,8 @@
 <script type='text/javascript'>
 
 $(document).ready(function() {
+
+    $(".fancybox").fancybox();
 
     var createEventHtml = $('#createEvent').html();
     $('#createEvent').remove();

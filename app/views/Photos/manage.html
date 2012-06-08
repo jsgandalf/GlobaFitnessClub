@@ -39,7 +39,6 @@
     <!--<div id="profile_edit" style="float:left"><a style="font-size:12px" class="submit2" href="@{Photos.addAlbum()}">New Album</a></div>-->
     <div class="clear"></div>
     #{if myAlbumList}
-
         #{display_albums_manage albums:myAlbumList, user:user /}
     #{/if}
     #{else}
