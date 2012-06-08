@@ -1883,7 +1883,7 @@ ul.sb_menu li a:hover, ul.sb_secondary_menu li a:hover{color:#da4348; font-weigh
     float: left;
     margin-top: 0;
     width: 200px;
-    border: 1px solid #C5C9CF;
+    //border: 1px solid #C5C9CF;
     padding: 3px;
     height: 166px;
     margin-left: 20px;
@@ -2227,7 +2227,7 @@ text-decoration:underline;
 .globaSettingsDiv{
     padding-left: 3px;
     vertical-align: top;
-    min-width:260px;
+    width: 100%;
     float:left;
 }
 
@@ -2239,7 +2239,12 @@ text-decoration:underline;
     border-bottom: 1px solid #E9E9E9;
 }
 
-.uiList a.{
+.uiList li:hover{
+    background-color: #F7F7F7;
+}
+
+.uiList li a{
+    color: #747473;
     background: none repeat scroll 0 0 transparent;
     display: block;
     text-decoration: none;
@@ -2255,4 +2260,26 @@ text-decoration:underline;
 
 .settings_inside{
     margin-top: 15px;
+}
+
+.uiSpanSubject{
+    color: #333333;
+    float: left;
+    width: 160px;
+    padding-left: 5px;
+    font-weight:bold;
+}
+
+.uiSpanName{
+    display: block;
+    margin-left: 170px;
+    width: 450px;
+}
+
+.uiSpanEdit{
+    color: #DA4348;
+    float: right;
+    padding-left: 25px;
+    padding-right: 5px;
+    text-align: right;
 }
