@@ -1,18 +1,12 @@
 package controllers;
 
-import models.Post;
 import models.User;
 import notifiers.Mails;
-import play.cache.Cache;
 import play.data.validation.Required;
 import play.data.validation.Valid;
-import play.libs.Codec;
-import play.libs.Images;
 import play.mvc.Before;
 import play.mvc.Controller;
 import security.BCrypt;
-
-import java.util.List;
 
 import static models.user_fitnessgoal.newUserSetupForGoals;
 
@@ -201,65 +195,6 @@ public class Application extends Controller{
 		Mails.consultation(firstName, lastName,  email,  phoneNumber,  question1,  question2,  question3, question4, question5, question6, question7, question8);
 		User user = connected();
         render("@consultation",user);
-	}
-
-	public static void posts(){
-		User user = connected();
-		Post frontPost = Post.find(
-    		"select p from Post p where p.author = ? order by postedAt desc",user).first();
-		List<Post> olderPosts = Post.find(
-    		"select p from Post p where p.author = ? order by postedAt desc",user).from(1).fetch(10);
-        render(user, frontPost, olderPosts);
-	}
-
-	public static void showPost(Long id) {
-        Post post = Post.findById(id);
-        String randomID = Codec.UUID();
-		User user = connected();
-		render(user, post, randomID);
-    }
-	public static void captcha(String id) {
-        Images.Captcha captcha = Images.captcha();
-        String code = captcha.getText("#E4EAFD");
-        Cache.set(id, code, "30mn");
-        renderBinary(captcha);
-    }
-	public static void listTagged(String tag) {
-        List<Post> posts = Post.findTaggedWith(tag);
-        render(tag, posts);
-    }
-
-	public static void postComment(
-			Long postId,
-			@Required(message="Author is required") String author,
-			@Required(message="A message is required") String content,
-			@Required(message="Please type the code") String code,
-			String randomID)
-	{
-		Post post = Post.findById(postId);
-		validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
-		if(validation.hasErrors()) {
-			render("@showPost", post, randomID);
-		}
-		post.addComment(author, content);
-		flash.success("Thanks for posting %s", author);
-		Cache.delete(randomID);
-		showPost(postId);
-	}
-
-	public static void createPost(){
-		User user = connected();
-		render(user);
-	}
-
-	public static void createPostFunction(@Required(message="Title is required") String post_title, @Required(message="Content is required") String post_content)
-	{
-		if(validation.hasErrors()) {
-			render("@createPost", post_title, post_content);
-		}
-		Post post = new Post(connected(),post_title,post_content);
-		post.create();
-		posts();
 	}
 
 	public static void thankyou(){

@@ -1,0 +1,47 @@
+#{extends 'main.html' /}
+#{set title:'FitnessBlog' /}
+#{set 'moreScripts'}
+
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+<div class="profile_banner">
+    <div class="profile_banner_col1">
+        <div id="helper"></div>
+        <div class="left_pad">
+            <h1>Fitness Blog Help</h1>
+            <p>Welcome to Your fitness Blog, click on add post to create your first post! Edit, add, and create your fitness blog and track your goals</p>
+        </div>
+    </div>
+    <div class="profile_banner_col2">
+        <p class="pad_five">Maximize your efforts by creating a blog</p>
+    </div>
+</div>
+        #{if frontPost}
+
+            #{display post:frontPost, as:'home' /}
+
+            #{if olderPosts.size()}
+
+                <div class="older-posts">
+                    <h3>Older posts <span class="from">from this blog</span></h3>
+
+                    #{list items:olderPosts, as:'oldPost'}
+                        #{display post:oldPost, as:'teaser' /}
+                    #{/list}
+                </div>
+
+            #{/if}
+
+        #{/if}
+
+        #{else}
+            <div style="margin-left:30px;" class="empty">
+                <p>There is currently nothing to read here.</p>
+            </div>
+        #{/else}
+
+    <div id="profile_edit"><a style="font-size:12px" class="submit2" href="@{createPost()}">Add New Post</a></div>
+<div class="clear"></div>
+</div>

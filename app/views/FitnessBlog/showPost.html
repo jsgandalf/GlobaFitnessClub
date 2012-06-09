@@ -6,10 +6,7 @@
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
 #{/set}
-<div class="list_child" style="border:none;">
-    <div id="profile_content">
-    
-    	<a href="@{posts}">View all posts</a>
+    	<a href="@{FitnessBlog.index}">View all posts</a>
         <ul id="pagination">
             #{if post.previous()}
                 <li id="previous">
@@ -31,7 +28,7 @@
         
         <h3>Post a comment</h3>
          
-        #{form @Application.postComment(post.id)}
+        #{form @FitnessBlog.postComment(post.id)}
          
             #{ifErrors}
                 <p class="error">
@@ -51,7 +48,7 @@
                 </li>
                 <li>
                     <label for="code">Please type the code below: </label>
-                    <img src="@{Application.captcha(randomID)}" />
+                    <img src="@{FitnessBlog.captcha(randomID)}" />
                     <br />
                     <input class="text" type="text" name="code" id="code" size="18" value="" />
                     <input type="hidden" name="randomID" value="${randomID}" />
@@ -61,8 +58,6 @@
                 </li>
             </ol>
         #{/form}
-	</div>
-</div>
 <div class="clear"></div>
 </div>
 

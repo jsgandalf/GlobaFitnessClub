@@ -3,16 +3,16 @@
 
 #{set 'moreScripts'}
 <!---CalendarEvent Plugin------------------>
-    <script type='text/javascript' src="@{'/public/javascripts/fullcalendar/jquery-ui-1.8.17.custom.min.js'}"></script>
+    <script type='text/javascript' src="@{'/public/javascripts/fullcalendar/jquery-ui-1.8.21.custom.min.js'}"></script>
     <script type='text/javascript' src="@{'/public/javascripts/fullcalendar/fullcalendar.min.js'}"></script>
 #{/set}
 #{set 'moreStyles'}
-    <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/cupertino/theme.css'}" />
+    <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/cupertino/jquery-ui-1.8.21.custom.css'}" />
     <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/fullcalendar.css'}" />
     <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/fullcalendar.print.css'}" media='print' />
 #{/set}
 
-<div id="profile_div">  <!--width="275" height="275"-->
+   <!--width="275" height="275"-->
     <div class="profile_banner">
         <div class="profile_banner_col1">
             <div id="helper"></div>
@@ -25,10 +25,18 @@
             <p class="pad_five">Maximize your efforts by completing your profile</p>
         </div>
     </div>
-    <a class="fancybox" href="${user.getProfilePic()}">
-        <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
-    </a>
-    <table class="profile_table">
+    <div class="profile_left_col">
+        <a class="fancybox" href="${user.getProfilePic()}">
+            <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
+        </a>
+        <div class="shareDiv">
+            <input class="shareInput" type="text" size="16" value="I.e. Insanity workout 20 minutes!">
+            <span id="shareButton" class="fc-button fc-button-today ui-state-default ui-corner-left ui-corner-right">Share</span>
+
+        </div>
+    </div>
+    <div class="profile_mid_col">
+        <table class="profile_table">
         <tr>
             <td colspan="2" style="padding-top:0px">
                 <h1>${user.fullName()} &nbsp;</h1>  <a style="font-size:12px; display:inline-block;" class="submit2" href="@{Settings.editProfile()}">Edit</a>
@@ -63,25 +71,48 @@
             </td>
         </tr>
         <tr>
-            <td class="tableSubject">Bio:</td>
+            <td class="tableSubject ">Bio:</td>
             <td class="profile_description" colspan="2">
             ${user.bio}&nbsp;
             </td>
         </tr>
     </table>
     </div>
-    <div class="clear"></div>
-    <div id='calendar'></div>
 
+    <div class="profileRating">
+        <div class="feedbackRatingHeader">
+            <h2>Feedback</h2>
+            <div class="feedBackNumber">
+                <h1>3.7</h1>
+                <div id="progressbar">
+                </div>
+                <a href="#">(7 Reviews)</a>
+            </div>
+        </div>
     </div>
-    <div id="createEvent" style="display:none">#{createEvent /}</div>
-    <div id="editEvent" style="display:none">#{editEvent /}</div>
-<div class="clear"></div>
+        <div class="clear"></div>
+        <div class="profile_table_border"></div>
+        <div class="clear"></div>
+        <div id='calendar'></div>
+        </div>
+        <div id="createEvent" style="display:none">#{createEvent /}</div>
+        <div id="editEvent" style="display:none">#{editEvent /}</div>
+    <div class="clear"></div>
 <script type='text/javascript'>
 
-$(document).ready(function() {
+    $(function() {
+        $("#progressbar").progressbar({
+            value: 37
+        });
+    });
 
+$(document).ready(function() {
     $(".fancybox").fancybox();
+
+    $('.shareInput').click(function(){
+    $(this).val("");
+    $(this).unbind();
+    });
 
     var createEventHtml = $('#createEvent').html();
     $('#createEvent').remove();

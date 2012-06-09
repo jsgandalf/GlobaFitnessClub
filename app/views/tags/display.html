@@ -1,29 +1,32 @@
 *{ Display a post in one of these modes: 'full', 'home' or 'teaser' }*
  
 <div class="post ${_as == 'teaser' ? 'teaser' : ''}">
-    <h2 class="post-title">
-        <a href="@{Application.showPost(_post.id)}">${_post.title}</a>
+    <h2>
+        <a href="@{FitnessBlog.showPost(_post.id)}">${_post.title}</a>
     </h2>
-    <div class="post-metadata">
-        <span class="post-author">by ${_post.author.fullName()}</span>,
-        <span class="post-date">${_post.postedAt.format('dd MMM yy')}</span>
-        #{if _as != 'full'}
-            <span class="post-comments">
-                &nbsp;|&nbsp; ${_post.comments.size() ?: 'no'} comment${_post.comments.size().pluralize()}
-                #{if _post.comments}
-                    , latest by ${_post.comments[-1].author}
-                #{/if}
-            </span>
-        #{/if}
-        #{elseif _post.tags}
-            <span class="post-tags">
-                - Tagged 
-                #{list items:_post.tags, as:'tag'}
-                    <a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
-                #{/list}
-            </span>
-        #{/elseif}
-    </div>
+    <div class="infobar">
+    Date ${_post.postedAt.format("dd MMMM yyyy")}
+    <span>/</span>
+    By ${_post.author.fullName()}
+    #{if _as != 'full'}
+        <span class="post-comments">
+            <span>/</span> ${_post.comments.size() ?: 'no'} comment${_post.comments.size().pluralize()}
+        </span>
+    #{/if}
+    #{elseif _post.tags}
+        <span class="post-tags">
+            - Tagged
+            #{list items:_post.tags, as:'tag'}
+                <a href="@{FitnessBlog.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
+            #{/list}
+        </span>
+    #{/elseif}
+    <!--<span>/</span>
+    Fitness Goal
+    <a href="#">Weight Training</a>-->
+
+</div>
+
     #{if _as != 'teaser'}
         <div class="post-content">
             <div class="about">Detail: </div>
