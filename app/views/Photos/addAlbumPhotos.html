@@ -145,6 +145,43 @@
         $('#removeUpload').append('<div class="loadingDivGifSmall"></div>');
     });
 
+    $('.btn').click(function(){
+        var id = $(this).attr('id');
+        //$.fancybox.showLoading();
+        $('#picture_list_comments'+id).show();
+        $.post('@{Photos.addComment()}',{pictureID: id, comment: $('#myPictureComment'+$(this).attr("id")).val()}, function(newComment){
+        var src = "${user.getProfileThumbPic()}";
+        var userFullName = "${user.fullName()}";
+        $('#picture_list_comments'+id).append(
+        "<div id='comment"+newComment.id+"' class='picture_lists' commentid='"+newComment.id+"'>"+
+        "<img class='commentThumbPic' src='"+src+"' width='32' height='32'>"+
+        "<div class='commentRightText'>"+
+            "<span class='redText' style='margin-right:5px'>"+userFullName+"</span>"
+            +newComment.content+
+            "<div id='deleteComment"+newComment.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div>"+
+            "<div class='commentDate'>a few seconds ago</div>"+
+            "</div>"+
+        "<div class='clear'></div>"+
+        "</div>");
+        $('.picture_lists').hover(function(){$('#deleteComment'+$(this).attr('commentid')).show();},function(){$('.deleteCommentDiv').hide();});
+        var objDiv = document.getElementById("picture_list_comments"+id);
+        objDiv.scrollTop = objDiv.scrollHeight;
+        $('#deleteComment'+newComment.id).click(function(){
+            var id = $(this).parent().parent().attr('commentid');
+            $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
+                $('#comment'+id).remove();
+            });
+        });
+        }, 'json');
+
+    });
+
+    $('.picture_lists').hover(function(){
+    $('#deleteComment'+$(this).attr('commentid')).show();
+    },function(){
+    $('.deleteCommentDiv').hide();
+    });
+
         $('.fancybox').fancybox();
         /*var mySRC = "";
         $("a.photoIframe").fancybox({

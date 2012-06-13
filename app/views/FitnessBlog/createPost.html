@@ -1,0 +1,44 @@
+#{extends 'main.html' /}
+#{set title:'Profile' /}
+#{set 'moreScripts'}
+
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+<div class="profile_banner">
+    <div class="profile_banner_col1">
+        <div id="helper"></div>
+        <div class="left_pad">
+            <h1>Fitness Blog Help</h1>
+            <p>Welcome to Your fitness Blog, click on add post to create your first post! Edit, add, and create your fitness blog and track your goals</p>
+        </div>
+    </div>
+    <div class="profile_banner_col2">
+        <p class="pad_five">Maximize your efforts by creating a blog</p>
+    </div>
+</div>
+   <div id="profile_content" style="margin: 0 auto">
+        #{form @createPostFunction()}
+            <ol>
+                #{field 'post_title'}
+                <li>
+                    <label>Title (required)</label>
+                    <input id="email" type="text" class="text" name="${field.name}" maxlength="25" size="25" value="${post_title}" />
+                    <span class="error">${field.error}</span>
+                </li>
+                #{/field}
+                #{field 'post_content'}
+                <li>
+                    <label>Content:</label>
+                    <textarea name="${field.name}">${content}</textarea><span class="error">${field.error}</span>
+                </li>
+                #{/field}
+                <li>
+                    <div id="profile_save"><input type="submit" src="@{'/public/images/save.gif'}" value="Save" class="submit2"></div>
+                </li>
+            </ol>
+       #{/form}
+    </div>
+    <div class="clear"></div>
+</div>

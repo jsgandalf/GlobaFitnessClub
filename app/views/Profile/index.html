@@ -25,113 +25,116 @@
             <p class="pad_five">Maximize your efforts by completing your profile</p>
         </div>
     </div>
-    <div class="profile_left_col">
-        <a class="fancybox" href="${user.getProfilePic()}">
-            <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
-        </a>
-        <div class="shareDiv">
-            <input class="shareInput" type="text" size="16" value="I.e. Insanity workout 20 minutes!">
-            <span id="shareButton" class="fc-button fc-button-today ui-state-default ui-corner-left ui-corner-right">Share</span>
-
+    <div class="ui-widget-content" style="moz-border-radius: 15px; border-radius: 15px; float:left; width:100%;">
+        <div class="profile_left_col_container">
+            <div class="profile_left_col">
+                <a class="fancybox" href="${user.getProfilePic()}">
+                    <img src="${user.getProfilePic()}" alt="Can't find user profile pic" />
+                </a>
+                <div class="clear"></div>
+                <a href="@{Settings.index()}" style="float:left; color:#E9545A; margin-left: 13px;">Change Profile Pic</a>
+            </div>
         </div>
-    </div>
-    <div class="profile_mid_col">
-        <table class="profile_table">
-        <tr>
-            <td colspan="2" style="padding-top:0px">
-                <h1>${user.fullName()} &nbsp;</h1>  <a style="font-size:12px; display:inline-block;" class="submit2" href="@{Settings.editProfile()}">Edit</a>
-            </td>
-        </tr>
+        <div class="profile_mid_col">
+            <table class="profile_table">
+            <tr>
+                <td colspan="2" style="padding-top:0px">
+                    <h1>${user.fullName()} &nbsp;</h1>  <a style="font-size:12px; display:inline-block;" class="submit2" href="@{Settings.editProfile()}">Edit</a>
+                </td>
+            </tr>
 
-        <tr>
-            <td class="tableSubject">Location:</td>
-            <td>${user.city}
-                #{if user.state},${user.state}#{/if}&nbsp;
-            </td>
-        </tr>
+            <tr>
+                <td class="tableSubject">Location:</td>
+                <td>${user.city}
+                    #{if user.state},${user.state}#{/if}&nbsp;
+                </td>
+            </tr>
 
-        <tr>
-            <td class="tableSubject">Phone Number:</td>
-            <td>${user.phoneNumber}&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="tableSubject">Email:</td>
-            <td>${user.email}&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="tableSubject">Relationship status:</td>
-            <td>${user?.relationship}&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="tableSubject">Fitness Goals:</td>
-            <td>
-                #{list items:fitnessGoals, as:'goal'}
-                    ${goal.name}${goal_isLast ? '' : ',' }
-                #{/list} &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td class="tableSubject ">Bio:</td>
-            <td class="profile_description" colspan="2">
-            ${user.bio}&nbsp;
-            </td>
-        </tr>
-    </table>
-    </div>
-
-    <div class="profileRating">
-        <div class="feedbackRatingHeader">
-            <h2>Feedback</h2>
-            <div class="feedBackNumber">
-                <h1>3.7</h1>
-                <div id="progressbar">
+            <tr>
+                <td class="tableSubject">Phone Number:</td>
+                <td>${user.phoneNumber}&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="tableSubject">Email:</td>
+                <td>${user.email}&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="tableSubject">Relationship status:</td>
+                <td>${user?.relationship}&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="tableSubject">Fitness Goals:</td>
+                <td>
+                    #{list items:fitnessGoals, as:'goal'}
+                        ${goal.name}${goal_isLast ? '' : ',' }
+                    #{/list} &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="tableSubject ">Bio:</td>
+                <td class="profile_description" colspan="2">
+                ${user.bio}&nbsp;
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div class="profileRating">
+            <div class="feedbackRatingHeader">
+                <h2>Feedback</h2>
+                <div class="feedBackNumber">
+                    <h1>3.7</h1>
+                    <div id="progressbar">
+                    </div>
+                    <a href="#">(7 Reviews)</a>
                 </div>
-                <a href="#">(7 Reviews)</a>
             </div>
         </div>
     </div>
         <div class="clear"></div>
-        <div class="profile_table_border"></div>
-        <div class="clear"></div>
-        <div id='calendar'></div>
+        <div class="shareDiv">
+            <input class="shareInput" type="text" size="16" value="I.e. Insanity workout 20 minutes!">
+            <!--<span id="shareButton" class="fc-button fc-button-today ui-state-default ui-corner-left ui-corner-right">Share</span>-->
+            <a id="shareButton" class="Button">Share</a>
         </div>
-        <div id="createEvent" style="display:none">#{createEvent /}</div>
-        <div id="editEvent" style="display:none">#{editEvent /}</div>
-    <div class="clear"></div>
-<script type='text/javascript'>
+            <!--<div class="profile_table_border"></div>-->
+            <div class="clear"></div>
 
-    $(function() {
-        $("#progressbar").progressbar({
-            value: 37
-        });
-    });
+            </div>
+            <div id="createEvent" style="display:none">#{createEvent /}</div>
+            <div id="editEvent" style="display:none">#{editEvent /}</div>
+        <div class="clear"></div>
 
-$(document).ready(function() {
-    $(".fancybox").fancybox();
+<div id="tabs" class="profle_tabs">
+    <ul>
+        <li><a href="#tabs-1">News Feed</a></li>
+        <li><a href="#tabs-2">Calendar</a></li>
+        <li><a href="#tabs-3">Workout Buddies</a></li>
+    </ul>
+    <div id="tabs-1">
+        #{shareProfile shares:shares, user:user/}
+    </div>
+    <div id="tabs-2">
+        <p>Schedule Events with Trainers</p><div id='calendar'></div>
 
-    $('.shareInput').click(function(){
-    $(this).val("");
-    $(this).unbind();
-    });
+        <script type="text/javascript">
+            var createEventHtml = $('#createEvent').html();
+            $('#createEvent').remove();
+            var editEventHtml = $('#editEvent').html();
+            $('#editEvent').remove();
 
-    var createEventHtml = $('#createEvent').html();
-    $('#createEvent').remove();
-    var editEventHtml = $('#editEvent').html();
-    $('#editEvent').remove();
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
 
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
+            /*alert(d);
+            alert(m);
+            alert(y);*/
 
-    /*alert(d);
-    alert(m);
-    alert(y);*/
-
-    $('#calendar').fullCalendar({
-        theme: true,
-        weekMode: "variable",
-        eventClick: function(calEvent, jsEvent, view) {
+            $('#calendar').fullCalendar({
+            theme: true,
+            weekMode: "variable",
+            eventClick: function(calEvent, jsEvent, view) {
 
             /*alert('Event: ' + calEvent.title);
             alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
@@ -141,99 +144,240 @@ $(document).ready(function() {
 
             $.fancybox(editEventHtml,
             {
-                autoSize:true,
-                beforeShow: function() {
-                    //To be improved with startDate time and endDate times
-                    editEvent(".editEventDialog",calEvent.id,calEvent.title,'@{Profile.editEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
-                }
+            autoSize:true,
+            beforeShow: function() {
+            //To be improved with startDate time and endDate times
+            editEvent(".editEventDialog",calEvent.id,calEvent.title,'@{Profile.editEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
+            }
             });
 
             // change the border color just for fun
             $(this).css('border-color', 'red');
 
-        },
+            },
 
-    dayClick: function(date, allDay, jsEvent, view) {
+            dayClick: function(date, allDay, jsEvent, view) {
 
-        $.fancybox(createEventHtml,
-        {
+            $.fancybox(createEventHtml,
+            {
             autoSize:true,
             beforeShow: function() {
-                createEvent(".createEventDialog",'@{Profile.createNewEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
+            createEvent(".createEventDialog",'@{Profile.createNewEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
             }
-        });
+            });
 
-        /*if (allDay) {
+            /*if (allDay) {
             alert('Clicked on the entire day: ' + date);
-        }else{
+            }else{
             alert('Clicked on the slot: ' + date);
-        }
+            }
 
-        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
 
-        alert('Current view: ' + view.name);
-        */
-        // change the day's background color just for fun
-        $(this).css('background-color', 'red');
-    },
-    header: {
-        left: 'today',
-        center: 'title',
-        right: 'prev,next'
-        /*right: 'month,agendaWeek,agendaDay' */
-    },
-    /*editable: true,*/
-    events: [
-    #{list items:calendarList, as:'calendarEvent'}
-        {
+            alert('Current view: ' + view.name);
+            */
+            // change the day's background color just for fun
+            $(this).css('background-color', 'red');
+            },
+            header: {
+            left: 'today',
+            center: 'title',
+            right: 'prev,next'
+            /*right: 'month,agendaWeek,agendaDay' */
+            },
+            /*editable: true,*/
+            events: [
+            #{list items:calendarList, as:'calendarEvent'}
+            {
             title: '${calendarEvent.what}',
             start: "${calendarEvent.start}",
             id: "${calendarEvent.id}"
-        }${calendarEvent_isLast ? '' : ',' }
-    #{/list}
-    /*{
-    title: 'Long Event',
-    start: new Date(y, m, d-5),
-    end: new Date(y, m, d-2)
-    },
-    {
-    id: 999,
-    title: 'Repeating Event',
-    start: new Date(y, m, d-3, 16, 0),
-    allDay: false
-    },
-    {
-    id: 999,
-    title: 'Repeating Event',
-    start: new Date(y, m, d+4, 16, 0),
-    allDay: false
-    },
-    {
-    title: 'Meeting',
-    start: new Date(y, m, d, 10, 30),
-    allDay: false
-    },
-    {
-    title: 'Lunch',
-    start: new Date(y, m, d, 12, 0),
-    end: new Date(y, m, d, 14, 0),
-    allDay: false
-    },
-    {
-    title: 'Birthday Party',
-    start: new Date(y, m, d+1, 19, 0),
-    end: new Date(y, m, d+1, 22, 30),
-    allDay: false
-    },
-    {
-    title: 'Click for Google',
-    start: new Date(y, m, 28),
-    end: new Date(y, m, 29),
-    url: 'http://google.com/'
-    }*/
-    ]
+            }${calendarEvent_isLast ? '' : ',' }
+            #{/list}
+            /*{
+            title: 'Long Event',
+            start: new Date(y, m, d-5),
+            end: new Date(y, m, d-2)
+            },
+            {
+            id: 999,
+            title: 'Repeating Event',
+            start: new Date(y, m, d-3, 16, 0),
+            allDay: false
+            },
+            {
+            id: 999,
+            title: 'Repeating Event',
+            start: new Date(y, m, d+4, 16, 0),
+            allDay: false
+            },
+            {
+            title: 'Meeting',
+            start: new Date(y, m, d, 10, 30),
+            allDay: false
+            },
+            {
+            title: 'Lunch',
+            start: new Date(y, m, d, 12, 0),
+            end: new Date(y, m, d, 14, 0),
+            allDay: false
+            },
+            {
+            title: 'Birthday Party',
+            start: new Date(y, m, d+1, 19, 0),
+            end: new Date(y, m, d+1, 22, 30),
+            allDay: false
+            },
+            {
+            title: 'Click for Google',
+            start: new Date(y, m, 28),
+            end: new Date(y, m, 29),
+            url: 'http://google.com/'
+            }*/
+            ]
+            });
+        </script>
+    </div>
+    <div id="tabs-3">
+        <p>You have no workout buddies yet, please add someone!</p>
+        <p>This feature is comming soon to you!</p>
+    </div>
+</div>
+<script type='text/javascript'>
+
+
+    $(function() {
+        $("#progressbar").progressbar({
+            value: 37
+        });
+        $( "#tabs" ).tabs();
+        $('.Button').button();
+    });
+    $('.deleteShareDiv').hide();
+$(document).ready(function() {
+    $(".fancybox").fancybox();
+
+    $('.shareInput').click(function(){
+        $(this).val("");
+        $(this).unbind();
     });
 
+    $('.shareCommentButton').click(function(){
+        var shareID = $(this).parent().parent().parent().parent().parent().parent().attr('shareID');
+        $.post('@{Profile.addComment()}',{shareID:shareID,content:$('#myShareComment'+shareID).val()},function(newShare){
+            $('#commentContainer'+shareID).append("<div class='picture_lists share_comment_list' id='comment"+newShare.id+"' commentid='"+newShare.id+"'><img class='commentThumbPic' src='${user.getProfileThumbPic()}' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>${user.fullName()}</span>"+newShare.content+"<div id='deleteComment"+newShare.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div><div class='commentDate'>a few seconds ago</div></div><div class='clear'></div></div>");
+            $('.deleteCommentDiv').click(function(){
+                var id = $(this).parent().parent().attr('commentid');
+                $(this).unbind();
+                $('#comment'+id).remove();
+                $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
+                    $('#comment'+id).remove();
+                });
+            });
+
+            $('.picture_lists').hover(function(){
+                $('#deleteComment'+$(this).attr('commentid')).show();
+            },function(){
+                $('.deleteCommentDiv').hide();
+            });
+            $('.myPictureComment').val("");
+        },'json');
     });
+
+    $('.shareCommentLink').click(function(){
+        $(this).hide();
+        $("#share_comments"+$(this).parent().parent().parent().parent().parent().attr('shareID')).show("slow");
+    });
+
+    $('.deleteCommentDiv').click(function(){
+        var id = $(this).parent().parent().attr('commentid');
+        $(this).unbind();
+        $('#comment'+id).remove();
+        $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
+            $('#comment'+id).remove();
+        });
+    });
+
+    $('.picture_lists').hover(function(){
+        $('#deleteComment'+$(this).attr('commentid')).show();
+    },function(){
+        $('.deleteCommentDiv').hide();
+    });
+
+    $('#shareButton').click(function(){
+        $.post('@{Profile.share()}',{content:$('.shareInput').val()},function(newShare){
+                $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
+
+                window.location.replace('@{Profile.index}');
+
+                //Ajax loading for later
+                /*$('#tabs-1').append('<div class="newsComments" shareid="'+newShare.id+'" id="newsComments'+newShare.id+'"><div id="profile_thumb_container"><div class="newsCommentThumb"><img id="profile_thumb" class="picture_formating"  style="float:none;" src="${user?.getProfileThumbPic()}"><div class="commentDate shareCommentDate">a few seconds ago</div></div><div class="newsCommentContainer"><h2>${user?.fullName()}</h2><p  style="float:none;">'+newShare.content+'</p><span id="commentContainer'+newShare.id+'"></span><div id="newsCommentContainer'+newShare.id+'" style="width:100%"><p style="float:none;"><a class="shareCommentLink">Comment</a></p><div class="share_comments" id="share_comments'+newShare.id+'"><div><img width="32" height="32" class="picture_formating" src="${user.getProfileThumbPic()}"></div><div><input class="myPictureComment" id="myShareComment'+newShare.id+'" type="text"></div><div><a class="Button shareCommentButton">Comment</a></div></div></div></div><div class="deleteShareDiv" id="deleteShareDiv'+newShare.id+'"><div class="deleteComment"></div></div></div></div>')
+
+                //For deleting a share
+                $('#deleteShareDiv'+newShare.id).click(function(){
+                    var id = $(this).parent().parent().attr('shareid');
+                    $(this).unbind();
+                    $('#newsComments'+id).remove();
+                    $.post('@{Profile.deleteShare()}', {id: id}, function(data){
+                        $('#newsComments'+id).remove();
+                    });
+                });
+
+                $('#newsComments'+share.id).hover(function(){
+                    $('#deleteShareDiv'+$(this).attr('shareid')).show();
+                },function(){
+                    $('.deleteShareDiv').hide();
+                });
+
+                //For adding a comment
+                $('#newsCommentContainer'+share.id+' p a.shareCommentLink').click(function(){
+                    $(this).hide();
+                    $("#share_comments"+$(this).parent().parent().parent().parent().parent().attr('shareID')).show("slow");
+                });
+
+                $('#tabs-1').click();
+
+                //For comments
+                $('#share_comments'+share.id+' .shareCommentButton').click(function(){
+                    var shareID = $(this).parent().parent().parent().parent().parent().parent().attr('shareID');
+                    $.post('@{Profile.addComment()}',{shareID:shareID,content:$('#myShareComment'+shareID).val()},function(newShare){
+                        $('#commentContainer'+shareID).append("<div class='picture_lists share_comment_list' id='comment"+newShare.id+"' commentid='"+newShare.id+"'><img class='commentThumbPic' src='${user.getProfileThumbPic()}' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>${user.fullName()}</span>"+newShare.content+"<div id='deleteComment"+newShare.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div><div class='commentDate'>a few seconds ago</div></div><div class='clear'></div></div>");
+                        $('.deleteCommentDiv').click(function(){
+                            var id = $(this).parent().parent().attr('commentid');
+                        $(this).unbind();
+                        $('#comment'+id).remove();
+                        $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
+                            $('#comment'+id).remove();
+                        });
+                    });
+
+                $('.picture_lists').hover(function(){
+                $('#deleteComment'+$(this).attr('commentid')).show();
+                },function(){
+                $('.deleteCommentDiv').hide();
+                });
+                },'json');
+                });
+                $('.Button').button();  */
+        },'json');
+    });
+
+    $('.deleteShareDiv').click(function(){
+        var id = $(this).parent().parent().attr('shareid');
+        $(this).unbind();
+        $('#newsComments'+id).remove();
+        $.post('@{Profile.deleteShare()}', {id: id}, function(data){
+            $('#newsComments'+id).remove();
+        });
+    });
+
+    $('.newsComments').hover(function(){
+        $('#deleteShareDiv'+$(this).attr('shareid')).show();
+    },function(){
+        $('.deleteShareDiv').hide();
+    });
+
+
+});
 
 </script>

@@ -1,3 +1,7 @@
+<div class="newsComments">
+
+</div>
+
 <ul class="display_pictures">
     #{list items:_albums.pictures, as:'picture'}
         <li>
@@ -19,7 +23,7 @@
                     <div class="clear"></div>
                     <div id="picture_list_comments${picture.id}" class="picture_list_comment_scoll">
                         #{if picture.getComments().size()}
-                        <h4>Comments</h4>
+                            <h4>Comments</h4>
                         #{/if}
                         #{else}
                             <script type="text/javascript">
@@ -37,7 +41,7 @@
                                     ${comment.content}
                                     <div id="deleteComment${comment.id}" class="deleteCommentDiv"><div class="deleteComment"></div></div>
                                     <div class='commentDate'>
-                                        ${new Date(comment.postedAt.getTime()).since()}
+                                        ${new Date(comment.postedAt.getTime() - 1000000).since()}
                                     </div>
                                 </div>
                                 <div class='clear'></div>

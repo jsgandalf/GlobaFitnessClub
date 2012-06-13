@@ -74,7 +74,7 @@
                                 $('.picture_lists').hover(function(){$('#deleteComment'+$(this).attr('commentid')).show();},function(){$('.deleteCommentDiv').hide();});
                                 var objDiv = document.getElementById("picture_list_comments"+id);
                                 objDiv.scrollTop = objDiv.scrollHeight;
-                                $('.deleteCommentDiv').click(function(){
+                                $('#deleteComment'+newComment.id).click(function(){
                                     var id = $(this).parent().parent().attr('commentid');
                                     $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
                                         $('#comment'+id).remove();

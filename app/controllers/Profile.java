@@ -1,8 +1,7 @@
 package controllers;
 
-import models.CalendarEvent;
-import models.User;
-import models.user_fitnessgoal;
+import flexjson.JSONSerializer;
+import models.*;
 import play.mvc.Before;
 import play.mvc.Controller;
 
@@ -40,7 +39,9 @@ public class Profile extends Controller{
         List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
                 "select f from user_fitnessgoal f where f.author = ? and f.value = 1 order by id asc",user).fetch();
         List<CalendarEvent> calendarList = CalendarEvent.find("byAuthor",user).fetch();
-        render(user, fitnessGoals, calendarList);
+        List<Share> shares = Share.find("byAuthor",user).fetch();
+
+        render(user, fitnessGoals, calendarList, shares);
 	}
 
     public static void createNewEvent(String timeFrom, String timeTo, String what, Date date){
@@ -61,4 +62,35 @@ public class Profile extends Controller{
         renderJSON("{\"success\": " + success +"}");
     }
 
+    public static void share(String content){
+        User user = connected();
+        String success = "\"success\"";
+        if(content.equals("")||content==null){
+            success = "\"Please share your current status!\"";
+            renderJSON("{\"success\": " + success +"}");
+        }
+        Share newShare = new Share(user,content);
+        newShare.save();
+        JSONSerializer modelSerializer = new JSONSerializer().include("id","content").exclude("*");
+        renderJSON(modelSerializer.serialize(newShare));
+    }
+
+    public static void deleteShare(Long id){
+        Share newShare = Share.findById(id);
+        newShare.deleteShare();
+    }
+
+    public static void addComment(Long shareID, String content){
+        User user = connected();
+        Share currentShare = Share.findById(shareID);
+        Share_comment comment = new Share_comment(currentShare, user, content);
+        comment.save();
+        JSONSerializer modelSerializer = new JSONSerializer().include("id","content").exclude("*");
+        renderJSON(modelSerializer.serialize(comment));
+    }
+
+    public static void deleteComment(Long commentID){
+        Share_comment newComment = Share_comment.findById(commentID);
+        newComment.delete();
+    }
 }

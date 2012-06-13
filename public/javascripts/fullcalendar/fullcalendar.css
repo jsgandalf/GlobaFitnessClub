@@ -618,7 +618,7 @@ table.fc-border-separate {
 	
  #calendar {
     cursor: pointer;
-    float: right;
+    //float: right;
     margin: 35px auto;
     text-align: center;
     width: 565px;
