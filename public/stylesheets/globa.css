@@ -2520,3 +2520,30 @@ text-decoration:underline;
 .share_comment_list{
     width: 47%;
 }
+
+.commonLink{
+ color: #2779AA !important;
+ font-weight:bold;
+ font-size:11px; !important;
+}
+
+.commonLink:hover{
+    color: #DA4348 !important;
+    cursor:pointer;
+}
+
+.upShareLink{
+    padding:5px;
+}
+
+.grey{
+color:#555454
+}
+
+.bold{
+font-weight:bold;
+}
+
+.shareLinks{
+    margin-bottom:10px;
+}

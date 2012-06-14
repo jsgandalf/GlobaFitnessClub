@@ -40,6 +40,14 @@ public class Settings extends Controller{
     }
 
 
+
+    public static void index(){
+        User user = connected();
+        List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
+                "select f from user_fitnessgoal f where f.author = ? and f.value = 1 order by id asc",user).fetch();
+        render(user, fitnessGoals);
+    }
+
 	public static void editProfile(){
 		User user = connected();
         List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
@@ -73,12 +81,7 @@ public class Settings extends Controller{
 	}
 
 
-	public static void index(){
-		User user = connected();
-        List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
-                "select f from user_fitnessgoal f where f.author = ? and f.value = 1 order by id asc",user).fetch();
-        render(user, fitnessGoals);
-	}
+
 	public static void saveSettings(@Required(message="Please type in your current password")String userPassword, @Required(message="Please provide your new password")String newPassword) {
 		User user = connected();
 		validation.required(userPassword);

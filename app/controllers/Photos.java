@@ -231,6 +231,7 @@
          s3.putObject(new PutObjectRequest("globafitnessphotos", "thumbprofile"+user.id+fileExtension, newThumbnailFile).withCannedAcl(CannedAccessControlList.PublicRead));
 
          flash.success("You have successfully updated your profile photo");
+         user.refresh();
          Settings.index();
      }
 

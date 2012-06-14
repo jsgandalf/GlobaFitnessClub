@@ -39,7 +39,8 @@ public class Profile extends Controller{
         List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
                 "select f from user_fitnessgoal f where f.author = ? and f.value = 1 order by id asc",user).fetch();
         List<CalendarEvent> calendarList = CalendarEvent.find("byAuthor",user).fetch();
-        List<Share> shares = Share.find("byAuthor",user).fetch();
+        List<Share> shares = Share.find(
+                "select s from Share s where s.author = ? order by creationDate desc",user).fetch();
 
         render(user, fitnessGoals, calendarList, shares);
 	}

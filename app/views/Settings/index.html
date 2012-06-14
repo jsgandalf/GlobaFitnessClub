@@ -7,7 +7,7 @@
 <h1>General Settings</h1>
 <div>
     <div class="settings_inside">
-        <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
+        #{display_profile_pic user:user /}
         <div class="addProfilePicture">
             #{if flash.error}
             <p class="fError">
