@@ -1,5 +1,39 @@
 /*
 
+    To create an event with Jquery UI Framework
+
+*/
+
+function createDayEvent(divID, postURL, date, dateFormatted,pageRedirectURL){
+    waitingDialog({});
+    $.post(postURL,{timeFrom: $(divID+' #timeFrom').val(),timeTo: $(divID+' #timeTo').val(), what:$(divID+' #whatInput').val(),date:date}, function(data){
+        parent.$.fancybox.close();
+        if(data.success=="success"){
+             $('#tabs-2').load(pageRedirectURL, function(){
+                $(".fc-button-today").click();
+                closeWaitingDialog();
+             });
+             /*$.ajax({
+               url: pageRedirectURL,
+               context: document.body,
+               success: function(s,x){
+                 $(this).html(s, function(){
+                    $('#calendarTab').click();
+                    $(".fc-button-today").click();
+                    $.fancybox('<h4 style="text-align:center; margin-top:10px;">Event</h4><h4 style="margin-top:10px;">Successfuly Scheduled!</h4>');
+                 });
+
+               }
+             });*/
+
+             //window.location.replace(pageRedirectURL);
+
+        }
+     },'json');
+}
+
+/*
+
     Generalized Function for posting. Used to save a specific field
 
     divID - this is the id of the div you are loading (you must include the preceding # when passing parameters into the function)
@@ -102,4 +136,37 @@ function editEvent(divID, eventID, eventTitle, postURL, date, dateFormatted,page
             $(this).val('');
             $(this).unbind();
         });
+}
+
+
+
+function initializeLoadingDialog(){
+	// create the loading window and set autoOpen to false
+	$("#loadingScreen").dialog({
+		autoOpen: false,	// set this to false so we can manually open it
+		dialogClass: "loadingScreenWindow",
+		closeOnEscape: false,
+		draggable: false,
+		width: 100,
+		minHeight: 150,
+		modal: true,
+		buttons: {},
+		resizable: false,
+		open: function() {
+			// scrollbar fix for IE
+			$('body').css('overflow','hidden');
+		},
+		close: function() {
+			// reset overflow
+			$('body').css('overflow','auto');
+		}
+	}); // end of dialog
+}
+function waitingDialog(waiting) { // I choose to allow my loading screen dialog to be customizable, you don't have to
+	//$("#loadingScreen").html(waiting.message &amp;&amp; '' != waiting.message ? waiting.message : 'Please wait...');
+	$("#loadingScreen").dialog('option', 'title', 'Loading');
+	$("#loadingScreen").dialog('open');
+}
+function closeWaitingDialog() {
+	$("#loadingScreen").dialog('close');
 }

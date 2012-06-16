@@ -1,0 +1,48 @@
+#{list items:_albums.pictures, as:'picture'}
+    <div style="display:inline-block; text-align:center; padding:10px;">
+        <h2 style="font-size:12px; margin:0;">${picture?.title}</h2>
+        <a id="choosePhotoAlbum${picture.id}" class="choosePhotoAlbum" pictureid="${picture.id}" title="${picture?.title}">
+            <img class="fancyImage" src="${picture.getThumb()}" alt="${picture?.title}" />
+        </a>
+        <div class="clear"></div>
+    </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#choosePhotoAlbum${picture.id}').click(function(){
+        var albumID = $(this).attr('pictureid');
+        waitingDialog({});
+        $("#dialog3").dialog("close");
+        $("#dialog3").load("@{Profile.Dialog_Photo(picture.id)}", function(){
+            $('.Button').button();
+            closeWaitingDialog();
+            $("#dialog3").dialog({
+                width: 400,
+                title: "Share Photo",
+                modal: true,
+                buttons: [
+                {
+                    text: "Cancel",
+                    click: function() { $(this).dialog("close"); }
+                },
+                {
+                    text: "Share Photo",
+                    click: function() {
+                        $(this).dialog("close");
+                        $('#dialog2').dialog("close");
+                        waitingDialog({});
+                        $.post('@{Profile.sharePhoto()}',{message:$('#sharePhotoInputContent').val(), photo:$('#sharePhotoID').attr('photoKey')},function(newShare){
+                            closeWaitingDialog();
+                            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
+                            window.location.replace('@{Profile.index}');
+                        });
+
+                    }
+                }
+                ]
+            });
+        });
+    });
+});
+</script>
+#{/list}

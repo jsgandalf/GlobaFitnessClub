@@ -1,0 +1,33 @@
+<a class="Button backButton" style="display:inline-block">Go Back</a>
+<h3 style="color: #555454;
+	font-size: 18px;
+    font-weight: normal;
+    display:inline-block;">Choose a photo</h3>
+<br />
+
+#{if currentAlbum?.pictures?.size()}
+    #{display_pictures_dialog albums:currentAlbum, user:user/}
+#{/if}
+#{else}
+    <div style="margin-top:10px"><p>You have no pictures, to share a picture, please upload one! <a style="margin-top:10px; color:#FFF" href="@{Photos.addAlbumPhotos(currentAlbum.id)}" class="btn">Add Photos</a></p></div>
+#{/else}
+
+<script type="text/javascript">
+$('.backButton').click(function(){
+    waitingDialog({});
+    $("#dialog2").load("@{sharePhotoDiv}", function(){
+        closeWaitingDialog();
+        $("#dialog2").dialog({
+           width: 600,
+           title: "Share Photo",
+           buttons: [
+                {
+                    text: "Cancel",
+                    click: function() { $(this).dialog("close"); }
+                }
+           ],
+           modal: true
+        })
+    });
+});
+</script>

@@ -93,4 +93,8 @@ public class Picture extends Model {
         return comments.size();
     }
 
+    public String getThumb(){
+        return "https://s3.amazonaws.com/globafitnessphotos/"+this.amazonThumbnailKey;
+    }
+
 }

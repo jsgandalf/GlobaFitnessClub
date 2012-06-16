@@ -10,7 +10,28 @@
                 </div>
                 <div class="newsCommentContainer">
                     <h2>${_user?.fullName()}</h2>
+                    #{if share.type==4}
+                    <p style="float:none; margin-top:14px;">
+                        <iframe class="fancyImage" style="float:none" width="560" height="315" src="${share.videoName}" frameborder="0" allowfullscreen></iframe>
+                    </p>
+                    #{/if}
+                    #{if share.type==3}
+                    <p style="float:none; margin-top:14px;">
+                        <a class="fancybox" href="https://s3.amazonaws.com/globafitnessphotos/${share.getPhotoFromThumb()}">
+                            <img class="fancyImage" style="float:none" src="https://s3.amazonaws.com/globafitnessphotos/${share.photo}"  alt="${share?.content}" />
+                        </a>
+                    </p>
                     <p  style="float:none;">${share.content}</p>
+                    #{/if}
+                    #{elseif share.type==2}
+                        <p style="float:none; margin-top:14px;">
+                            <a href="${share.link}" class="commonLink" target="_blank">${share.link}</a>
+                        </p>
+                        <p  style="float:none;">${share.content}</p>
+                    #{/elseif}
+                    #{else}
+                            <p  style="float:none;">${share.content}</p>
+                    #{/else}
                     <span id="commentContainer${share.id}">
                         #{if share.getComments().size()}
                             #{list items:share.getComments(), as:'comment'}

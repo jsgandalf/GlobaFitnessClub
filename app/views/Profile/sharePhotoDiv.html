@@ -1,0 +1,12 @@
+<h3 style="color: #555454;
+	font-size: 18px;
+    font-weight: normal;">Choose an album</h3>
+<br />
+
+#{if myAlbumList}
+
+    #{display_albums_dialog albums:myAlbumList /}
+#{/if}
+#{else}
+    <div style="margin-top:10px"><p>You have no pictures, to share a picture, please upload one to a new photo Album! <a href="@{Photos.addAlbum()}}" style="color:#FFF" class="btn">Add Album</a></p></div>
+#{/else}

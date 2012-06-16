@@ -27,10 +27,22 @@ public class Share extends Model {
     @Required
     public User author;
 
-    public Share(User author, String content) {
+    //1 for regular message
+    //2 for link share
+    //3 for photo share
+    //4 for video share
+    public Integer type;
+
+    public String link;
+    //Thumbnail of the image
+    public String photo;
+    public String videoName;
+
+    public Share(User author, String content, Integer type) {
         this.author = author;
         this.content = content;
         this.creationDate = new Date();
+        this.type=type;
     }
 
     public String toString() {
@@ -59,6 +71,11 @@ public class Share extends Model {
     public int getCommentCount(){
         List<Share_comment> comments = Share_comment.find("byShare", this).fetch();
         return comments.size();
+    }
+
+    public String getPhotoFromThumb(){
+        Picture currentPicture = Picture.find("byAmazonThumbnailKey",this.photo).first();
+        return currentPicture.getAmazonKey();
     }
 
 }

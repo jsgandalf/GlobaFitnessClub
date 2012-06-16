@@ -1,0 +1,33 @@
+#{list items:_albums, as:'albums'}
+<div style="display:inline-block; text-align:center; padding:10px;">
+    <h2 style="font-size:12px; margin:0;">${albums?.title}</h2>
+    <a id="choosePhotoAlbum${albums.id}" class="choosePhotoAlbum" albumid="${albums.id}" title="${albums?.title}">
+        <img class="fancyImage choosePhotoAlbum" src="${albums.getFirstPictureKeyThumb()}" alt="${albums?.title}" />
+    </a>
+    <div class="clear"></div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#choosePhotoAlbum${albums.id}').click(function(){
+        var albumID = $(this).attr('albumid');
+        waitingDialog({});
+        $("#dialog2").dialog("close");
+        $("#dialog2").load("@{shareAlbumPhotoDiv(albums.id)}", function(){
+            $('.Button').button();
+            closeWaitingDialog();
+            $("#dialog2").dialog({
+                width: 620,
+                title: "Share Photo",
+                modal: true,
+                buttons: [
+                {
+                    text: "Cancel",
+                    click: function() { $(this).dialog("close"); }
+                }
+                ]
+            });
+        });
+    });
+});
+</script>
+#{/list}

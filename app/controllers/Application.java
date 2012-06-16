@@ -101,51 +101,62 @@ public class Application extends Controller{
 
 	public static void contact(){
 		User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
 	}
 
 	public static void consultation(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
 	}
 
 	public static void siteDown(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
     }
 
 	public static void weightLoss(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
     }
 
 	public static void bodyBuilding(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
 	}
 	public static void functionalTraining(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
 	}
 	public static void highIntensityIntervalTraining(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
     }
 	public static void goalSpecificTraining(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
     }
     public static void personalizedNutritionPlan(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
     }
 	public static void postInjury(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
     }
 	public static void sportsConditioning(){
         User user = connected();
-        render(user);
+        String isHome = session.get("isHome");
+        render(user,isHome);
     }
 	public static void privateTraining(){
 		siteDown();

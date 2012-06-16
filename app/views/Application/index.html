@@ -5,6 +5,10 @@
 #{else}
     #{set title:'Home' /}
 #{/else}
+#{set 'moreScripts'}
+    <script type="text/javascript" src="@{'/public/javascripts/slideshow.js'}"></script>
+#{/set}
+
 <div id="main_image_header">
     <div id="background_image" class="switch_pictures">
         <div id="splash" style="

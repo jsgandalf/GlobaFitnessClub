@@ -94,7 +94,6 @@
         <div class="shareDiv">
             <div class="shareLinks"><span class="grey bold">Share:</span> <a id="shareLink" class="commonLink upShareLink">Link</a> | <a id="sharePhoto" class="commonLink upShareLink">Photo</a> | <a id="shareVideo" class="commonLink upShareLink">Video</a></div>
             <input class="shareInput" type="text" size="16" value="I.e. Insanity workout 20 minutes!">
-            <!--<span id="shareButton" class="fc-button fc-button-today ui-state-default ui-corner-left ui-corner-right">Share</span>-->
             <a id="shareButton" class="Button">Share</a>
         </div>
             <!--<div class="profile_table_border"></div>-->
@@ -108,141 +107,23 @@
 <div id="tabs" class="profle_tabs">
     <ul>
         <li><a href="#tabs-1">News Feed</a></li>
-        <li><a href="#tabs-2">Calendar</a></li>
+        <li><a href="#tabs-2" id="calendarTab">Calendar</a></li>
         <li><a href="#tabs-3">Workout Buddies</a></li>
     </ul>
     <div id="tabs-1">
         #{shareProfile shares:shares, user:user/}
     </div>
     <div id="tabs-2">
-        <p>Schedule Events with Trainers</p><div id='calendar'></div>
-
-        <script type="text/javascript">
-            var createEventHtml = $('#createEvent').html();
-            $('#createEvent').remove();
-            var editEventHtml = $('#editEvent').html();
-            $('#editEvent').remove();
-
-            var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear();
-
-            /*alert(d);
-            alert(m);
-            alert(y);*/
-
-            $('#calendar').fullCalendar({
-            theme: true,
-            weekMode: "variable",
-            eventClick: function(calEvent, jsEvent, view) {
-
-            /*alert('Event: ' + calEvent.title);
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert('View: ' + view.name);*/
-
-            var date = new Date(calEvent.start);
-
-            $.fancybox(editEventHtml,
-            {
-            autoSize:true,
-            beforeShow: function() {
-            //To be improved with startDate time and endDate times
-            editEvent(".editEventDialog",calEvent.id,calEvent.title,'@{Profile.editEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
-            }
-            });
-
-            // change the border color just for fun
-            $(this).css('border-color', 'red');
-
-            },
-
-            dayClick: function(date, allDay, jsEvent, view) {
-
-            $.fancybox(createEventHtml,
-            {
-            autoSize:true,
-            beforeShow: function() {
-            createEvent(".createEventDialog",'@{Profile.createNewEvent()}',$.fullCalendar.formatDate(date,"yyyy-MM-dd"),$.fullCalendar.formatDate(date,"ddd, MMMM dd, "),'@{Profile.index()}');
-            }
-            });
-
-            /*if (allDay) {
-            alert('Clicked on the entire day: ' + date);
-            }else{
-            alert('Clicked on the slot: ' + date);
-            }
-
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-
-            alert('Current view: ' + view.name);
-            */
-            // change the day's background color just for fun
-            $(this).css('background-color', 'red');
-            },
-            header: {
-            left: 'today',
-            center: 'title',
-            right: 'prev,next'
-            /*right: 'month,agendaWeek,agendaDay' */
-            },
-            /*editable: true,*/
-            events: [
-            #{list items:calendarList, as:'calendarEvent'}
-            {
-            title: '${calendarEvent.what}',
-            start: "${calendarEvent.start}",
-            id: "${calendarEvent.id}"
-            }${calendarEvent_isLast ? '' : ',' }
-            #{/list}
-            /*{
-            title: 'Long Event',
-            start: new Date(y, m, d-5),
-            end: new Date(y, m, d-2)
-            },
-            {
-            id: 999,
-            title: 'Repeating Event',
-            start: new Date(y, m, d-3, 16, 0),
-            allDay: false
-            },
-            {
-            id: 999,
-            title: 'Repeating Event',
-            start: new Date(y, m, d+4, 16, 0),
-            allDay: false
-            },
-            {
-            title: 'Meeting',
-            start: new Date(y, m, d, 10, 30),
-            allDay: false
-            },
-            {
-            title: 'Lunch',
-            start: new Date(y, m, d, 12, 0),
-            end: new Date(y, m, d, 14, 0),
-            allDay: false
-            },
-            {
-            title: 'Birthday Party',
-            start: new Date(y, m, d+1, 19, 0),
-            end: new Date(y, m, d+1, 22, 30),
-            allDay: false
-            },
-            {
-            title: 'Click for Google',
-            start: new Date(y, m, 28),
-            end: new Date(y, m, 29),
-            url: 'http://google.com/'
-            }*/
-            ]
-            });
-        </script>
     </div>
     <div id="tabs-3">
         <p>You have no workout buddies yet, please add someone!</p>
         <p>This feature is comming soon to you!</p>
     </div>
+</div>
+<div style="display:none">
+    <div id="dialog2" title="Loading">Loading</div>
+    <div id="dialog3" title="Loading">Loading</div>
+    <div id="loadingScreen"></div>
 </div>
 <script type='text/javascript'>
 
@@ -252,10 +133,91 @@
             value: 37
         });
         $( "#tabs" ).tabs();
+
         $('.Button').button();
     });
     $('.deleteShareDiv').hide();
 $(document).ready(function() {
+    $('#tabs-2').load("@{Profile.calendar}");
+        //$('#calendarTab').click();
+        //$(".fc-button-today").click();
+
+    $('#calendarTab').click(function(){
+        $(".fc-button-today").click();
+    });
+
+    initializeLoadingDialog();
+    $('#shareLink').click(function(){
+        $("#dialog2").html('<p>Share a Link on your news page! For example type:<br /> http://www.mysite.com</p><p><table class="shareTables"><tr><td>Link:</td><td><input class="shareInput" id="shareLinkInput" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input class="shareInput" id="shareLinkInputContent" type="text" size="16" value=""></td></tr></table><p>');
+        $("#dialog2").dialog({
+            width: 400,
+            title: "Share Link",
+            buttons: [
+                {
+                    text: "Cancel",
+                    click: function() { $(this).dialog("close"); }
+                },
+                {
+                    text: "Share",
+                    click: function() {
+                        $.post('@{Profile.shareLink()}',{link:$('#shareLinkInput').val(), message:$('#shareLinkInputContent').val()},function(newShare){
+                            $(this).dialog("close");
+                            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
+
+                            window.location.replace('@{Profile.index}');
+                        });
+                    }
+                }
+            ],
+            open: function(event, ui) { $('#shareLinkInput').focus(); },
+            modal: true
+        })
+    });
+    $('#sharePhoto').click(function(){
+        waitingDialog({});
+        $("#dialog2").load("@{sharePhotoDiv}", function(){
+            closeWaitingDialog();
+            $("#dialog2").dialog({
+               width: 600,
+               title: "Share Photo",
+               buttons: [
+                    {
+                        text: "Cancel",
+                        click: function() { $(this).dialog("close"); }
+                    }
+               ],
+               modal: true
+            })
+        });
+    });
+    $('#shareVideo').click(function(){
+        var src = "@{'/public/images/youtube_help.jpg'}";
+        $("#dialog2").html('<div style="display:inline-block; width:595px; margin: 0 auto;"><p>Share a Video on your news page from youtube! Simply click on the share button and copy and paste the link from the youtube video! Look at the example below.<br><br /><img src="'+src+'"></p><p><table class="shareTables"><tr><td>Link to this video:</td><td><input class="shareInput" id="shareVideoInput" style="width:307px" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input style="width:307px" class="shareInput" id="shareVideoInputContent" type="text" size="16" value=""></td></tr></table><p></div>');
+        $("#dialog2").dialog({
+            width: 700,
+            title: "Share Link",
+            buttons: [
+                {
+                    text: "Cancel",
+                    click: function() { $(this).dialog("close"); }
+                },
+                {
+                    text: "Share",
+                    click: function() {
+                        $.post('@{Profile.shareVideo()}',{video:$('#shareVideoInput').val(), message:$('#shareVideoInputContent').val()},function(newShare){
+                            $(this).dialog("close");
+                            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
+
+                            window.location.replace('@{Profile.index}');
+                        });
+                    }
+                }
+            ],
+            open: function(event, ui) { $('#shareLinkInput').focus(); },
+            modal: true
+        })
+    });
+
     $(".fancybox").fancybox();
 
     $('.shareInput').click(function(){
@@ -264,8 +226,10 @@ $(document).ready(function() {
     });
 
     $('.shareCommentButton').click(function(){
+        waitingDialog({});
         var shareID = $(this).parent().parent().parent().parent().parent().parent().attr('shareID');
         $.post('@{Profile.addComment()}',{shareID:shareID,content:$('#myShareComment'+shareID).val()},function(newShare){
+            closeWaitingDialog();
             $('#commentContainer'+shareID).append("<div class='picture_lists share_comment_list' id='comment"+newShare.id+"' commentid='"+newShare.id+"'><img class='commentThumbPic' src='${user.getProfileThumbPic()}' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>${user.fullName()}</span>"+newShare.content+"<div id='deleteComment"+newShare.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div><div class='commentDate'>a few seconds ago</div></div><div class='clear'></div></div>");
             $('.deleteCommentDiv').click(function(){
                 var id = $(this).parent().parent().attr('commentid');
@@ -291,11 +255,13 @@ $(document).ready(function() {
     });
 
     $('.deleteCommentDiv').click(function(){
+        waitingDialog({});
         var id = $(this).parent().parent().attr('commentid');
         $(this).unbind();
         $('#comment'+id).remove();
         $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
             $('#comment'+id).remove();
+            closeWaitingDialog();
         });
     });
 
@@ -306,8 +272,10 @@ $(document).ready(function() {
     });
 
     $('#shareButton').click(function(){
+        waitingDialog({});
         $.post('@{Profile.share()}',{content:$('.shareInput').val()},function(newShare){
-                $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
+            closeWaitingDialog();
+            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
 
                 window.location.replace('@{Profile.index}');
 
@@ -364,11 +332,13 @@ $(document).ready(function() {
     });
 
     $('.deleteShareDiv').click(function(){
+        waitingDialog({});
         var id = $(this).parent().parent().attr('shareid');
         $(this).unbind();
         $('#newsComments'+id).remove();
         $.post('@{Profile.deleteShare()}', {id: id}, function(data){
             $('#newsComments'+id).remove();
+            closeWaitingDialog();
         });
     });
 

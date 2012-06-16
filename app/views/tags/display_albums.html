@@ -16,11 +16,11 @@
         <span>/</span>
         <a href="@{Photos.showAlbum(albums.id)}">${albums.getCommentCount() ?: 'no'} comment${albums.getCommentCount().pluralize()}</a>
     </div>
-    <a href="@{showAlbum(albums.id)}" title="${albums?.title}">
+    <a href="@{Photos.showAlbum(albums.id)}" title="${albums?.title}">
         <img src="${albums.getFirstPictureKeyThumb()}" alt="${albums?.title}" />
     </a>
     <div class="post_content">
-        <p>${albums?.content}</p><p><a href="@{showAlbum(albums.id)}" class="btn">View Album</a></p>
+        <p>${albums?.content}</p><p><a href="@{Photos.showAlbum(albums.id)}" class="btn">View Album</a></p>
     </div>
     <div>
 
