@@ -1,36 +1,113 @@
 /*
+    Styles an input, takes the id as the parameter.  Pass this argument without a # sign!
+*/
 
-    To create an event with Jquery UI Framework
+function styleInput(id){
+    $('select#'+id).selectmenu("widget").addClass("wrap");
+    $('select#'+id).selectmenu({
+        style:'popup',
+        maxHeight: 150
+
+    });
+    $('select#'+id).selectmenu("widget").addClass("wrap");
+}
+
+/*
+
+    Resets pagination back to its defaults
 
 */
 
-function createDayEvent(divID, postURL, date, dateFormatted,pageRedirectURL){
-    waitingDialog({});
-    $.post(postURL,{timeFrom: $(divID+' #timeFrom').val(),timeTo: $(divID+' #timeTo').val(), what:$(divID+' #whatInput').val(),date:date}, function(data){
-        parent.$.fancybox.close();
+function resetPagination(){
+    $(".pagination li a").each(function(index){
+        var text = $(this).text();
+        $(this).parent().html("<a>"+text+"</a>");
+    });
+    $(".pagination li a").eq(0).addClass("Button");
+    $('.Button').button();
+}
+/*
+
+    Deletes an event
+
+*/
+
+
+function deleteEvent(postURL,pageRedirectURL,eventID,eventType){
+     waitingDialog({});
+    $("#dialog2").dialog("close");
+    $.post(postURL,{id:eventID}, function(data){
         if(data.success=="success"){
              $('#tabs-2').load(pageRedirectURL, function(){
                 $(".fc-button-today").click();
                 closeWaitingDialog();
+                if(eventType=="agendaWeek")
+                    $(".fc-button-agendaWeek").click();
+                else if(eventType=="agendaDay")
+                    $(".fc-button-agendaDay").click();
              });
-             /*$.ajax({
-               url: pageRedirectURL,
-               context: document.body,
-               success: function(s,x){
-                 $(this).html(s, function(){
-                    $('#calendarTab').click();
-                    $(".fc-button-today").click();
-                    $.fancybox('<h4 style="text-align:center; margin-top:10px;">Event</h4><h4 style="margin-top:10px;">Successfuly Scheduled!</h4>');
-                 });
-
-               }
-             });*/
-
-             //window.location.replace(pageRedirectURL);
-
+        }else{
+            closeWaitingDialog();
+            alert("Error has occured, please contact globa support!")
         }
      },'json');
 }
+
+/*
+
+    Saves an event when it is moved
+
+*/
+
+function moveEvent(postURL,eventID, deltaDays, deltaMinutes){
+    $.post(postURL,{id:eventID,deltaDays:deltaDays,deltaMinutes:deltaMinutes}, function(data){
+
+    },'json');
+}
+
+/*
+
+    To create an event when the user is in "Month" mode with Jquery UI Framework
+
+*/
+
+function createDayEvent(divID, date, postURL,pageRedirectURL,eventType){
+    if($(divID+' #timeFrom option:selected').val()>=$(divID+' #timeTo option:selected').val()){
+       htmlString = "";
+       if($(divID+' #timeFrom option:selected').val()==$(divID+' #timeTo option:selected').val())
+            htmlString = "<p>The starting time and ending time cannot be equal!</p>";
+       else
+            htmlString = "<p>The starting time must be before the ending time!</p>";
+       $("#dialog3").html(htmlString);
+       $("#dialog3").dialog({
+           width: 400,
+           title: "Error",
+           buttons: [
+                {
+                    text: "Ok",
+                    click: function() { $(this).dialog("close"); }
+                }
+           ],
+           modal: true
+       });
+    }else{
+        waitingDialog({});
+        $("#dialog2").dialog("close");
+        $.post(postURL,{date1:date, date2:date, start: $(divID+' #timeFrom option:selected').val(),end: $(divID+' #timeTo option:selected').val(), what:$(divID+' #whatInputCreate').val()}, function(data){
+            if(data.success=="success"){
+                 $('#tabs-2').load(pageRedirectURL, function(){
+                    $(".fc-button-today").click();
+                    closeWaitingDialog();
+                    if(eventType=="agendaWeek")
+                        $(".fc-button-agendaWeek").click();
+                    else if(eventType=="agendaDay")
+                        $(".fc-button-agendaDay").click();
+                 });
+            }
+         },'json');
+     }
+}
+
 
 /*
 

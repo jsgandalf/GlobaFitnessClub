@@ -8,23 +8,22 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
-public class CalendarEvent extends Model {
+public class CalendarEvents extends Model {
 
     @Required
     @ManyToOne
     public User author;
 
-    public String timeFrom;
-    public String timeTo;
     public String what;
-    public Date start;
 
-    public CalendarEvent(User author, String timeFrom, String timeTo, String what, Date start) {
+    public Date start;
+    public Date end;
+
+    public CalendarEvents(User author, String what, Date start, Date end) {
         this.author = author;
-        this.timeFrom = timeFrom;
-        this.timeTo = timeTo;
         this.what = what;
         this.start = start;
+        this.end = end;
     }
 
     public String toString() {

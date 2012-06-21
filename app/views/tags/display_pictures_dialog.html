@@ -32,9 +32,9 @@ $(document).ready(function() {
                         $('#dialog2').dialog("close");
                         waitingDialog({});
                         $.post('@{Profile.sharePhoto()}',{message:$('#sharePhotoInputContent').val(), photo:$('#sharePhotoID').attr('photoKey')},function(newShare){
-                            closeWaitingDialog();
-                            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
-                            window.location.replace('@{Profile.index}');
+                             $('#tabs-1').load("@{Profile.shareNews}",function(){
+                                closeWaitingDialog();
+                            });
                         });
 
                     }

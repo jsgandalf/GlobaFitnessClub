@@ -1956,6 +1956,7 @@ ul.social_list li{
 
 .photoDisplayDiv{
     width:auto;height:auto;overflow:auto;
+    float:left;
 }
 
 .photoDisplayDiv h2 {
@@ -1973,11 +1974,13 @@ ul.social_list li{
 
 #profile_thumb{
     float:left;
-    margin-right:20px;
+    margin-right:4px;
 }
 
 #profile_thumb_container{
-    margin-top: 15px;
+    margin-top: 0px;
+    display: inline-block;
+    width: 100%;
 }
 
 #profile_thumb_container h1{
@@ -1990,7 +1993,9 @@ ul.social_list li{
 }
 
 #picture_comments{
-
+    float: left;
+    margin: 0;
+    padding: 0;
 }
 #picture_comments ul{
     list-style: none;
@@ -2013,7 +2018,7 @@ ul.social_list li{
     margin:0px;
     text-align: center;
     text-transform: uppercase;
-    width: 83px;
+    width: 60px;
     height: 21px;
     line-height: 1.9em;
     -moz-border-radius: 5px;
@@ -2022,10 +2027,10 @@ ul.social_list li{
 }
 
 .myPictureComment{
-    width:160px;
+    width:201px;
     color: #555454;
     border:1px solid #C5C9CF;
-    margin-right:5px;
+    margin-right:0px;
 }
 
 #picture_title h2{
@@ -2059,10 +2064,10 @@ ul.social_list li{
 }
 
 .picture_list_comment_scoll{
-    width: 100%;
-    height: 100px;
-    overflow:scroll;
-    overflow-x: hidden;
+    display: inline-block;
+    //height: 100px;
+    //overflow:scroll;
+    //overflow-x: hidden;
 }
 
 .picture_list_comment_scoll h4{
@@ -2183,15 +2188,20 @@ text-decoration:underline;
 }
 
 #timeFrom{
-    width: 57px;
+    width: 130px;
 }
 
 #timeTo{
-    width: 57px;
+    width: 130px;
 }
 
 #whatInput{
-    width: 235px;
+    width: 315px;
+}
+
+
+#whatInputCreate{
+    width: 410px;
 }
 
 .editEventDialog{
@@ -2267,8 +2277,13 @@ text-decoration:underline;
     width:201px;
 }
 
+.profileIcon a{
+    display:inline-block;
+}
+
 .profileIcon img{
     margin: 8px 5px 0 0;
+    display:inline-block;
 }
 
 #social_link_padding{
@@ -2427,6 +2442,7 @@ text-decoration:underline;
 .newsComments{
     border-bottom: 1px solid #E5E5E5;
     color: #222222;
+    margin-top: 4px;
 }
 
 .newsComments h2{
@@ -2437,11 +2453,37 @@ text-decoration:underline;
   text-transform:capitalize;
 }
 
-.profle_tabs{
+.profile_tabs{
     margin-top:10px !important;
     -moz-border-radius: 10px !important;
-        border-radius: 10px !important;
+    border-radius: 10px !important;
 }
+
+#tabs{
+    width:48%;
+    display:inline-block;
+    vertical-align:top;
+    float:left;
+}
+
+#tabs2{
+     width:49%;
+     display:inline-block;
+     margin-left: 10px;
+     vertical-align:top;
+     float:right;
+     margin-top:15px;
+ }
+
+#tabs3{
+     width:49%;
+     display:inline-block;
+     margin-left: 10px;
+     vertical-align:top;
+     float:right;
+     margin-top:15px;
+     height: 457px;
+ }
 
 .newsCommentUL{
     list-style:none;
@@ -2459,7 +2501,8 @@ text-decoration:underline;
 .newsCommentContainer{
     display:inline-block;
     vertical-align: top;
-    width:824px;
+    //width:824px;
+    width:340px;
 }
 
 .deleteShareDiv{
@@ -2512,13 +2555,13 @@ text-decoration:underline;
     border: 1px solid #A8CEE2;
     border-radius: 5px 5px 5px 5px;
     display: inline-block;
-    height: 11px;
-    padding: 7px 2px;
-    width: 95%;
+    height: 16px;
+    padding: 5px 2px;
+    width: 208px;
 }
 
 .share_comment_list{
-    width: 47%;
+    width: 100%;
 }
 
 .commonLink{
@@ -2605,4 +2648,87 @@ font-weight:bold;
     width:100px;
     height:100px;
     margin-left:19px;
+}
+
+
+#calendar {
+    cursor: pointer;
+    //float: right;
+    margin: 35px auto;
+    text-align: center;
+    width: 435px;
+}
+
+.share_photo_content{
+    display: inline-block;
+    float: none;
+    padding-left: 4px;
+    padding-top: 5px;
+    vertical-align: top;
+    width: 139px;
+    margin: 0;
+}
+
+.fc-header-title h2{
+    color: #555454;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0px;
+    text-transform: uppercase;
+}
+
+.newsCommentContainer p{
+    margin:0px;
+}
+
+.inputColor{
+    background-color: #D7EBF9;
+    border: 1px solid #A8CEE2;
+    border-radius: 5px 5px 5px 5px;
+    color:#555454;
+}
+
+#themeSwitcher{
+    float: right;
+    margin-right: 38px;
+    margin-top: 15px;
+    padding: 5px;
+    font-weight: normal;
+}
+
+.pagination{
+    margin-top: 5px;
+    float:left;
+}
+
+.pagination ul{
+    list-style-type:none;
+     display: inline-block;
+}
+
+.pagination ul li{
+    display: inline-block;
+    padding-right: 11px;
+    cursor:pointer;
+}
+
+.messageIcon{
+    background: url(../images/ui-icons_2e83ff_256x240.png) 129px -98px;
+    height: 12px;
+    width: 17px;
+    display:inline-block;
+}
+
+.viewAllComments{
+    width:100%;
+    border-top:1px solid #A8CEE2;
+    cursor: pointer;
+}
+
+.viewAllComments a:hover{
+    color:#E9545A;
+}
+
+.hide{
+    display:none;
 }

@@ -42,61 +42,21 @@
             #{display_pictures albums:currentAlbum, user:user/}
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $('.fancybox').fancybox({});
 
-                    $('.deleteCommentDiv').click(function(){
-                        var id = $(this).parent().parent().attr('commentid');
-                        $(this).unbind();
-                        $('#comment'+id).remove();
-                        $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
-                            $('#comment'+id).remove();
-                        });
-                    });
 
-                    $('.btn').click(function(){
-                        var id = $(this).attr('id');
-                        //$.fancybox.showLoading();
-                        $('#picture_list_comments'+id).show();
-                        $.post('@{Photos.addComment()}',{pictureID: id, comment: $('#myPictureComment'+$(this).attr("id")).val()}, function(newComment){
-                            var src = "${user.getProfileThumbPic()}";
-                            var userFullName = "${user.fullName()}";
-                            $('#picture_list_comments'+id).append(
-                               "<div id='comment"+newComment.id+"' class='picture_lists' commentid='"+newComment.id+"'>"+
-                                    "<img class='commentThumbPic' src='"+src+"' width='32' height='32'>"+
-                                    "<div class='commentRightText'>"+
-                                        "<span class='redText' style='margin-right:5px'>"+userFullName+"</span>"
-                                        +newComment.content+
-                                        "<div id='deleteComment"+newComment.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div>"+
-                                        "<div class='commentDate'>a few seconds ago</div>"+
-                                    "</div>"+
-                                    "<div class='clear'></div>"+
-                                "</div>");
-                                $('.picture_lists').hover(function(){$('#deleteComment'+$(this).attr('commentid')).show();},function(){$('.deleteCommentDiv').hide();});
-                                var objDiv = document.getElementById("picture_list_comments"+id);
-                                objDiv.scrollTop = objDiv.scrollHeight;
-                                $('#deleteComment'+newComment.id).click(function(){
-                                    var id = $(this).parent().parent().attr('commentid');
-                                    $.post('@{Photos.deleteComment()}', {commentID: id}, function(deleteComment){
-                                        $('#comment'+id).remove();
-                                    });
-                                });
-                        }, 'json');
 
-                    });
+
                 });
 
-                $('.picture_lists').hover(function(){
-                    $('#deleteComment'+$(this).attr('commentid')).show();
-                },function(){
-                    $('.deleteCommentDiv').hide();
-                });
+
+
             </script>
         #{/if}
         #{else}
             <div style="margin-top:10px"><p>You have no pictures in this Album.</p><a style="font-size:12px" class="submit2" href="@{Photos.addAlbumPhotos(currentAlbum.id)}">Add Photos</a></div>
         #{/else}
         <div class="clear"></div>
-        </div>  
+        </div>
         <div class="clear"></div>
-    </div>	
+    </div>
 </div>

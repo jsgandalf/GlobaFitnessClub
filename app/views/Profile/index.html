@@ -2,12 +2,12 @@
 #{set title:'Profile' /}
 
 #{set 'moreScripts'}
-<!---CalendarEvent Plugin------------------>
-    <script type='text/javascript' src="@{'/public/javascripts/fullcalendar/jquery-ui-1.8.21.custom.min.js'}"></script>
+<!---CalendarEvents Plugin------------------>
+
     <script type='text/javascript' src="@{'/public/javascripts/fullcalendar/fullcalendar.min.js'}"></script>
 #{/set}
 #{set 'moreStyles'}
-    <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/cupertino/jquery-ui-1.8.21.custom.css'}" />
+
     <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/fullcalendar.css'}" />
     <link rel='stylesheet' type='text/css' href="@{'/public/javascripts/fullcalendar/fullcalendar.print.css'}" media='print' />
 #{/set}
@@ -86,67 +86,128 @@
                     <div id="progressbar">
                     </div>
                     <a href="#">(7 Reviews)</a>
+                    <div class="clear"></div>
+                    <div id="themeSwitcher" class="ui-button ui-widget ui-state-default ui-corner-all">Change Theme!</div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="clear"></div>
+    <div class="shareDiv">
+        <div class="shareLinks"><span class="grey bold">Share:</span> <a id="shareLink" class="commonLink upShareLink">Link</a> | <a id="sharePhoto" class="commonLink upShareLink">Photo</a> | <a id="shareVideo" class="commonLink upShareLink">Video</a></div>
+        <input class="shareInput" type="text" size="16" placeholder="I.e. Insanity workout 20 minutes!">
+        <a id="shareButton" class="Button">Share</a>
+    </div>
+        <!--<div class="profile_table_border"></div>-->
         <div class="clear"></div>
-        <div class="shareDiv">
-            <div class="shareLinks"><span class="grey bold">Share:</span> <a id="shareLink" class="commonLink upShareLink">Link</a> | <a id="sharePhoto" class="commonLink upShareLink">Photo</a> | <a id="shareVideo" class="commonLink upShareLink">Video</a></div>
-            <input class="shareInput" type="text" size="16" value="I.e. Insanity workout 20 minutes!">
-            <a id="shareButton" class="Button">Share</a>
+
+    <div class="clear"></div>
+    <div id="tabs">
+    <div  class="profile_tabs">
+        <ul>
+            <li><a href="#tabs-1">News Feed</a></li>
+            <li><a href="#tabs-3">Workout Buddies</a></li>
+            <li><a href="#sharedVideos">My Trainers</a></li>
+            <li><a href="#sharedPhotos">My Contacts</a></li>
+        </ul>
+        <div id="tabs-1">
+            #{shareNews user:user, shares:shares /}
         </div>
-            <!--<div class="profile_table_border"></div>-->
-            <div class="clear"></div>
+        <div id="tabs-3">
+            <p>You have no workout buddies yet, please add someone!</p>
+            <p>This feature is comming soon to you!</p>
+        </div>
+        <div id="sharedVideos">
+            <p>You have no workout buddies yet, please add someone!</p>
+            <p>This feature is comming soon to you!</p>
+        </div>
+        <div id="sharedPhotos">
+            <p>You have no workout buddies yet, please add someone!</p>
+            <p>This feature is comming soon to you!</p>
+        </div>
+    </div>
+    <div class="pagination">
+        #{if total}
+        #{list items:1..total, as:'i'}
+        <ul>
+            <li class="ui-widget">
+                <a class="${i_isFirst ? 'Button' : '' }">${i}</a>
+            </li>
+        </ul>
+        #{/list}
+        #{/if}
+    </div>
+        </div>
+    <div id="tabs2" class="profile_tabs">
+        <ul>
+            <li><a href="#tabs-2" id="calendarTab">Calendar</a></li>
+        </ul>
+        <div id="tabs-2">
+        </div>
+    </div>
+    <div id="tabs3" class="profile_tabs">
+        <ul>
+            <li><a href="#Sponsors">Sponsors</a></li>
+        </ul>
+        <div id="Sponsors">
+        </div>
+    </div>
 
-            </div>
-            <div id="createEvent" style="display:none">#{createEvent /}</div>
-            <div id="editEvent" style="display:none">#{editEvent /}</div>
-        <div class="clear"></div>
+    <div class="clear"></div>
 
-<div id="tabs" class="profle_tabs">
-    <ul>
-        <li><a href="#tabs-1">News Feed</a></li>
-        <li><a href="#tabs-2" id="calendarTab">Calendar</a></li>
-        <li><a href="#tabs-3">Workout Buddies</a></li>
-    </ul>
-    <div id="tabs-1">
-        #{shareProfile shares:shares, user:user/}
     </div>
-    <div id="tabs-2">
+    <div style="display:none">
+        <div id="dialog2" title="Loading">Loading</div>
+        <div id="dialog3" title="Loading">Loading</div>
+        <div id="loadingScreen"></div>
     </div>
-    <div id="tabs-3">
-        <p>You have no workout buddies yet, please add someone!</p>
-        <p>This feature is comming soon to you!</p>
-    </div>
-</div>
-<div style="display:none">
-    <div id="dialog2" title="Loading">Loading</div>
-    <div id="dialog3" title="Loading">Loading</div>
-    <div id="loadingScreen"></div>
-</div>
+
 <script type='text/javascript'>
-
-
     $(function() {
         $("#progressbar").progressbar({
             value: 37
         });
-        $( "#tabs" ).tabs();
+        $( ".profile_tabs" ).tabs();
 
         $('.Button').button();
     });
     $('.deleteShareDiv').hide();
+
 $(document).ready(function() {
+
+    $(".pagination li").click(function(){
+        var page = $(this).text().trim()*1;
+        waitingDialog({});
+        var showNextShare = #{jsAction @Profile.shareNews(':page') /}
+        $('#tabs-1').load(showNextShare({page: page}),function(){
+            window.location.hash="shareButton";
+            $(".pagination li a").each(function(index){
+                var text = $(this).text();
+                $(this).parent().html("<a>"+text+"</a>");
+            });
+            $(".pagination li a").eq(page-1).addClass("Button");
+            closeWaitingDialog();
+            $('.Button').button();
+        });
+    });
+
     $('#tabs-2').load("@{Profile.calendar}");
-        //$('#calendarTab').click();
-        //$(".fc-button-today").click();
 
     $('#calendarTab').click(function(){
         $(".fc-button-today").click();
     });
 
     initializeLoadingDialog();
+
+     $('#shareButton').click(function(){
+        waitingDialog({});
+        $.post('@{Profile.share()}',{content:$('.shareInput').val()},function(newShare){
+            $('#tabs-1').load("@{Profile.shareNews}",function(){
+                closeWaitingDialog();
+            });
+        },'json');
+    });
+
     $('#shareLink').click(function(){
         $("#dialog2").html('<p>Share a Link on your news page! For example type:<br /> http://www.mysite.com</p><p><table class="shareTables"><tr><td>Link:</td><td><input class="shareInput" id="shareLinkInput" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input class="shareInput" id="shareLinkInputContent" type="text" size="16" value=""></td></tr></table><p>');
         $("#dialog2").dialog({
@@ -160,11 +221,12 @@ $(document).ready(function() {
                 {
                     text: "Share",
                     click: function() {
+                        $(this).dialog("close");
+                        waitingDialog({});
                         $.post('@{Profile.shareLink()}',{link:$('#shareLinkInput').val(), message:$('#shareLinkInputContent').val()},function(newShare){
-                            $(this).dialog("close");
-                            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
-
-                            window.location.replace('@{Profile.index}');
+                            $('#tabs-1').load("@{Profile.shareNews}",function(){
+                                closeWaitingDialog();
+                            });
                         });
                     }
                 }
@@ -204,11 +266,11 @@ $(document).ready(function() {
                 {
                     text: "Share",
                     click: function() {
+                    $(this).dialog("close");
                         $.post('@{Profile.shareVideo()}',{video:$('#shareVideoInput').val(), message:$('#shareVideoInputContent').val()},function(newShare){
-                            $(this).dialog("close");
-                            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
-
-                            window.location.replace('@{Profile.index}');
+                            $('#tabs-1').load("@{Profile.shareNews}",function(){
+                                closeWaitingDialog();
+                            });
                         });
                     }
                 }
@@ -220,135 +282,20 @@ $(document).ready(function() {
 
     $(".fancybox").fancybox();
 
-    $('.shareInput').click(function(){
-        $(this).val("");
-        $(this).unbind();
-    });
 
-    $('.shareCommentButton').click(function(){
-        waitingDialog({});
-        var shareID = $(this).parent().parent().parent().parent().parent().parent().attr('shareID');
-        $.post('@{Profile.addComment()}',{shareID:shareID,content:$('#myShareComment'+shareID).val()},function(newShare){
-            closeWaitingDialog();
-            $('#commentContainer'+shareID).append("<div class='picture_lists share_comment_list' id='comment"+newShare.id+"' commentid='"+newShare.id+"'><img class='commentThumbPic' src='${user.getProfileThumbPic()}' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>${user.fullName()}</span>"+newShare.content+"<div id='deleteComment"+newShare.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div><div class='commentDate'>a few seconds ago</div></div><div class='clear'></div></div>");
-            $('.deleteCommentDiv').click(function(){
-                var id = $(this).parent().parent().attr('commentid');
-                $(this).unbind();
-                $('#comment'+id).remove();
-                $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
-                    $('#comment'+id).remove();
-                });
-            });
-
-            $('.picture_lists').hover(function(){
-                $('#deleteComment'+$(this).attr('commentid')).show();
-            },function(){
-                $('.deleteCommentDiv').hide();
-            });
-            $('.myPictureComment').val("");
-        },'json');
-    });
-
-    $('.shareCommentLink').click(function(){
-        $(this).hide();
-        $("#share_comments"+$(this).parent().parent().parent().parent().parent().attr('shareID')).show("slow");
-    });
-
-    $('.deleteCommentDiv').click(function(){
-        waitingDialog({});
-        var id = $(this).parent().parent().attr('commentid');
-        $(this).unbind();
-        $('#comment'+id).remove();
-        $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
-            $('#comment'+id).remove();
-            closeWaitingDialog();
-        });
-    });
-
-    $('.picture_lists').hover(function(){
-        $('#deleteComment'+$(this).attr('commentid')).show();
-    },function(){
-        $('.deleteCommentDiv').hide();
-    });
-
-    $('#shareButton').click(function(){
-        waitingDialog({});
-        $.post('@{Profile.share()}',{content:$('.shareInput').val()},function(newShare){
-            closeWaitingDialog();
-            $.fancybox('<div style="height: 35px;width: 146px;margin: auto auto;"><h3 style="margin: 35px 10px;">Success!</h3></div>');
-
-                window.location.replace('@{Profile.index}');
-
-                //Ajax loading for later
-                /*$('#tabs-1').append('<div class="newsComments" shareid="'+newShare.id+'" id="newsComments'+newShare.id+'"><div id="profile_thumb_container"><div class="newsCommentThumb"><img id="profile_thumb" class="picture_formating"  style="float:none;" src="${user?.getProfileThumbPic()}"><div class="commentDate shareCommentDate">a few seconds ago</div></div><div class="newsCommentContainer"><h2>${user?.fullName()}</h2><p  style="float:none;">'+newShare.content+'</p><span id="commentContainer'+newShare.id+'"></span><div id="newsCommentContainer'+newShare.id+'" style="width:100%"><p style="float:none;"><a class="shareCommentLink">Comment</a></p><div class="share_comments" id="share_comments'+newShare.id+'"><div><img width="32" height="32" class="picture_formating" src="${user.getProfileThumbPic()}"></div><div><input class="myPictureComment" id="myShareComment'+newShare.id+'" type="text"></div><div><a class="Button shareCommentButton">Comment</a></div></div></div></div><div class="deleteShareDiv" id="deleteShareDiv'+newShare.id+'"><div class="deleteComment"></div></div></div></div>')
-
-                //For deleting a share
-                $('#deleteShareDiv'+newShare.id).click(function(){
-                    var id = $(this).parent().parent().attr('shareid');
-                    $(this).unbind();
-                    $('#newsComments'+id).remove();
-                    $.post('@{Profile.deleteShare()}', {id: id}, function(data){
-                        $('#newsComments'+id).remove();
-                    });
-                });
-
-                $('#newsComments'+share.id).hover(function(){
-                    $('#deleteShareDiv'+$(this).attr('shareid')).show();
-                },function(){
-                    $('.deleteShareDiv').hide();
-                });
-
-                //For adding a comment
-                $('#newsCommentContainer'+share.id+' p a.shareCommentLink').click(function(){
-                    $(this).hide();
-                    $("#share_comments"+$(this).parent().parent().parent().parent().parent().attr('shareID')).show("slow");
-                });
-
-                $('#tabs-1').click();
-
-                //For comments
-                $('#share_comments'+share.id+' .shareCommentButton').click(function(){
-                    var shareID = $(this).parent().parent().parent().parent().parent().parent().attr('shareID');
-                    $.post('@{Profile.addComment()}',{shareID:shareID,content:$('#myShareComment'+shareID).val()},function(newShare){
-                        $('#commentContainer'+shareID).append("<div class='picture_lists share_comment_list' id='comment"+newShare.id+"' commentid='"+newShare.id+"'><img class='commentThumbPic' src='${user.getProfileThumbPic()}' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>${user.fullName()}</span>"+newShare.content+"<div id='deleteComment"+newShare.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div><div class='commentDate'>a few seconds ago</div></div><div class='clear'></div></div>");
-                        $('.deleteCommentDiv').click(function(){
-                            var id = $(this).parent().parent().attr('commentid');
-                        $(this).unbind();
-                        $('#comment'+id).remove();
-                        $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
-                            $('#comment'+id).remove();
-                        });
-                    });
-
-                $('.picture_lists').hover(function(){
-                $('#deleteComment'+$(this).attr('commentid')).show();
-                },function(){
-                $('.deleteCommentDiv').hide();
-                });
-                },'json');
-                });
-                $('.Button').button();  */
-        },'json');
-    });
-
-    $('.deleteShareDiv').click(function(){
-        waitingDialog({});
-        var id = $(this).parent().parent().attr('shareid');
-        $(this).unbind();
-        $('#newsComments'+id).remove();
-        $.post('@{Profile.deleteShare()}', {id: id}, function(data){
-            $('#newsComments'+id).remove();
-            closeWaitingDialog();
-        });
-    });
-
-    $('.newsComments').hover(function(){
-        $('#deleteShareDiv'+$(this).attr('shareid')).show();
-    },function(){
-        $('.deleteShareDiv').hide();
-    });
 
 
 });
+
+ // add themeswitcher
+    $(function(){
+        var ts = $('#themeSwitcher')
+        .bind("click", function() {
+            ts.text("Loading Themeswitcher...");
+            $.getScript('http://ui.jquery.com/applications/themeroller/themeswitchertool/', function() {
+                ts.removeClass("ui-button ui-widget ui-state-default ui-corner-all").text("").unbind("click").themeswitcher();
+            });
+        });
+    });
 
 </script>

@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30e2db5d-4366-4c59-b920-cf3eb849ba1e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Profile/Dialog_Photo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Profile/calendar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Profile/shareAlbumPhotoDiv.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Profile/sharePhotoDiv.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/tags/calendar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/tags/display_albums_dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/tags/display_pictures_dialog.html" />
-      <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\Foo.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\Foo2.jpg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Profile/Dialog_Event.html" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\Good.JPG" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\IMG_3381.JPG" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\IMG_4567.JPG" afterPath="" />
@@ -24,37 +15,28 @@
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\invite collage2.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\cupertino\theme.css" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\jquery-ui-1.8.17.custom.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/getConnected2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/getConnected2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/get_connected.jpg" afterPath="$PROJECT_DIR$/public/images/splash/get_connected.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/get_connected_small.jpg" afterPath="$PROJECT_DIR$/public/images/splash/get_connected_small.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/get_connected_small2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/get_connected_small2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/get_connected_small2_11.jpg" afterPath="$PROJECT_DIR$/public/images/splash/get_connected_small2_11.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/get_connected_small2_2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/get_connected_small2_2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash_mini.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash_mini.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash_mini2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash_mini2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash_mini2_hover.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash_mini2_hover.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash_mini_2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash_mini_2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash_mini_hover.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash_mini_hover.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash_mini_hover2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash_mini_hover2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/main_splash_mini_hover_2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/main_splash_mini_hover_2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/splash4.jpg" afterPath="$PROJECT_DIR$/public/images/splash/splash4.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/splash_small.jpg" afterPath="$PROJECT_DIR$/public/images/splash/splash_small.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/splash/splash_small2.jpg" afterPath="$PROJECT_DIR$/public/images/splash/splash_small2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Globa Fitness Club.ipr" afterPath="$PROJECT_DIR$/Globa Fitness Club.ipr" />
+      <change type="MOVED" beforePath="C:\play-1.2.4\GlobaFitnessClub\app\models\CalendarEvent.java" afterPath="$PROJECT_DIR$/app/models/CalendarEvents.java" />
+      <change type="MOVED" beforePath="C:\play-1.2.4\GlobaFitnessClub\app\views\tags\calendar.html" afterPath="$PROJECT_DIR$/app/views/Profile/shareNews.html" />
+      <change type="MOVED" beforePath="C:\play-1.2.4\GlobaFitnessClub\app\views\tags\shareProfile.html" afterPath="$PROJECT_DIR$/app/views/tags/shareNews.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo.jpg" afterPath="$PROJECT_DIR$/Foo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo2.jpg" afterPath="$PROJECT_DIR$/Foo2.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Globa Fitness Club.iws" afterPath="$PROJECT_DIR$/Globa Fitness Club.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Application.java" afterPath="$PROJECT_DIR$/app/controllers/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Photos.java" afterPath="$PROJECT_DIR$/app/controllers/Photos.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Profile.java" afterPath="$PROJECT_DIR$/app/controllers/Profile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Album.java" afterPath="$PROJECT_DIR$/app/models/Album.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Picture.java" afterPath="$PROJECT_DIR$/app/models/Picture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Share.java" afterPath="$PROJECT_DIR$/app/models/Share.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/index.html" afterPath="$PROJECT_DIR$/app/views/Application/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" afterPath="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Photos/showAlbum.html" afterPath="$PROJECT_DIR$/app/views/Photos/showAlbum.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" afterPath="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/Dialog_Photo.html" afterPath="$PROJECT_DIR$/app/views/Profile/Dialog_Photo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/calendar.html" afterPath="$PROJECT_DIR$/app/views/Profile/calendar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/index.html" afterPath="$PROJECT_DIR$/app/views/Profile/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.html" afterPath="$PROJECT_DIR$/app/views/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/display_albums.html" afterPath="$PROJECT_DIR$/app/views/tags/display_albums.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/createEvent.html" afterPath="$PROJECT_DIR$/app/views/tags/createEvent.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/display_pictures.html" afterPath="$PROJECT_DIR$/app/views/tags/display_pictures.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/shareProfile.html" afterPath="$PROJECT_DIR$/app/views/tags/shareProfile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/fullcalendar/cupertino/jquery-ui-1.8.21.custom.css" afterPath="$PROJECT_DIR$/public/javascripts/fullcalendar/cupertino/jquery-ui-1.8.21.custom.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/display_pictures_dialog.html" afterPath="$PROJECT_DIR$/app/views/tags/display_pictures_dialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/fancybox/source/jquery.fancybox.js" afterPath="$PROJECT_DIR$/public/javascripts/fancybox/source/jquery.fancybox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/fullcalendar/fullcalendar.css" afterPath="$PROJECT_DIR$/public/javascripts/fullcalendar/fullcalendar.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/general.js" afterPath="$PROJECT_DIR$/public/javascripts/general.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/globa.css" afterPath="$PROJECT_DIR$/public/stylesheets/globa.css" />
     </list>
@@ -117,34 +99,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="4" selection-start="5559" selection-end="5600" vertical-scroll-proportion="-16.884615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="113" selection-start="1288" selection-end="1288" vertical-scroll-proportion="147.76923">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calendar.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/Profile/calendar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="252" selection-start="2092" selection-end="2092" vertical-scroll-proportion="-17.653847">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="general.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/general.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="37" selection-start="529" selection-end="529" vertical-scroll-proportion="0.25431532">
+            <state line="183" column="65" selection-start="6752" selection-end="6795" vertical-scroll-proportion="-9.365385">
               <folding />
             </state>
           </provider>
@@ -153,7 +108,54 @@
       <file leaf-file-name="Profile.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Profile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="37" selection-start="1486" selection-end="1500" vertical-scroll-proportion="34.96154">
+            <state line="209" column="19" selection-start="7983" selection-end="7983" vertical-scroll-proportion="-17.68">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="globa.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/globa.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2707" column="54" selection-start="49544" selection-end="49544" vertical-scroll-proportion="-15.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shareNews.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/tags/shareNews.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="94" column="25" selection-start="5173" selection-end="5173" vertical-scroll-proportion="0.43333334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calendar.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/Profile/calendar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="63" selection-start="824" selection-end="825" vertical-scroll-proportion="-5.480769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="general.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/general.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="24" selection-start="392" selection-end="407" vertical-scroll-proportion="-13.6">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dialog_Event.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/Profile/Dialog_Event.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="41" selection-start="462" selection-end="462" vertical-scroll-proportion="-10.461538">
               <folding />
             </state>
           </provider>
@@ -172,25 +174,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/conf/routes" />
-        <option value="$PROJECT_DIR$/app/controllers/crudControllers/Trainers.java" />
-        <option value="$PROJECT_DIR$/app/controllers/crudControllers/Users.java" />
-        <option value="$PROJECT_DIR$/app/security/BCrypt.java" />
-        <option value="$PROJECT_DIR$/app/controllers/Application.java" />
-        <option value="$PROJECT_DIR$/app/views/tags/calendar.html" />
-        <option value="$PROJECT_DIR$/app/controllers/Profile.java" />
+        <option value="$PROJECT_DIR$/app/controllers/Photos.java" />
+        <option value="$PROJECT_DIR$/public/javascripts/fancybox/source/jquery.fancybox.js" />
+        <option value="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" />
+        <option value="$PROJECT_DIR$/app/views/Photos/showAlbum.html" />
+        <option value="$PROJECT_DIR$/app/views/tags/display_pictures.html" />
+        <option value="$PROJECT_DIR$/app/views/tags/display_pictures_dialog.html" />
+        <option value="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" />
+        <option value="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event_Week.html" />
+        <option value="$PROJECT_DIR$/app/views/Profile/Dialog_Event.html" />
         <option value="$PROJECT_DIR$/app/views/main.html" />
-        <option value="$PROJECT_DIR$/app/views/Profile/index.html" />
         <option value="$PROJECT_DIR$/app/views/Profile/calendar.html" />
+        <option value="$PROJECT_DIR$/app/controllers/Profile.java" />
         <option value="$PROJECT_DIR$/public/javascripts/general.js" />
+        <option value="$PROJECT_DIR$/app/views/Profile/index.html" />
+        <option value="$PROJECT_DIR$/public/stylesheets/globa.css" />
+        <option value="$PROJECT_DIR$/app/views/tags/shareNews.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="32" />
+    <option name="x" value="1358" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -300,7 +307,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
+              <option name="myItemId" value="stylesheets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -414,6 +421,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Globa Fitness Club" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Globa Fitness Club" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GlobaFitnessClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -440,6 +469,15 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\tags" />
+      <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\Profile" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\Photos" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -566,6 +604,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -593,14 +636,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5273973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -609,11 +652,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15224358" sideWeight="0.6707589" order="0" side_tool="true" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15811966" sideWeight="0.47260273" order="0" side_tool="true" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -676,79 +719,116 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/conf/routes">
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/Dialog_Photo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="8" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/crudControllers/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="37" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/crudControllers/Trainers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="37" selection-start="371" selection-end="371" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/security/BCrypt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="749" column="57" selection-start="27200" selection-end="27206" vertical-scroll-proportion="0.82393557" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Post.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="0.09781358" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="8" selection-start="7200" selection-end="7213" vertical-scroll-proportion="0.28504673" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tags/calendar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/fullcalendar/jquery-ui-1.8.21.custom.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="7376" selection-start="138264" selection-end="138264" vertical-scroll-proportion="0.33333334">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Profile.java">
+    <entry file="file://$PROJECT_DIR$/app/views/tags/display_profile_pic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="37" selection-start="1486" selection-end="1500" vertical-scroll-proportion="34.96154">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/shareAlbumPhotoDiv.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="4" selection-start="5559" selection-end="5600" vertical-scroll-proportion="-16.884615">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/display_pictures_dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="59" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.61608154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/CalendarEvents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.15260324">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="140" selection-start="5691" selection-end="5691" vertical-scroll-proportion="4.0366797">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/Dialog_Event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="41" selection-start="462" selection-end="462" vertical-scroll-proportion="-10.461538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/shareNews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="113" selection-start="1288" selection-end="1288" vertical-scroll-proportion="147.76923">
+        <state line="258" column="97" selection-start="16362" selection-end="16362" vertical-scroll-proportion="-12.384615">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Profile/calendar.html">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xhtml1-transitional.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="252" selection-start="2092" selection-end="2092" vertical-scroll-proportion="-17.653847">
+        <state line="353" column="4" selection-start="10089" selection-end="10089" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/general.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="37" selection-start="529" selection-end="529" vertical-scroll-proportion="0.25431532">
+        <state line="20" column="24" selection-start="392" selection-end="407" vertical-scroll-proportion="-13.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="19" selection-start="7983" selection-end="7983" vertical-scroll-proportion="-17.68">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/globa.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2707" column="54" selection-start="49544" selection-end="49544" vertical-scroll-proportion="-15.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/calendar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="63" selection-start="824" selection-end="825" vertical-scroll-proportion="-5.480769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="65" selection-start="6752" selection-end="6795" vertical-scroll-proportion="-9.365385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/shareNews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="25" selection-start="5173" selection-end="5173" vertical-scroll-proportion="0.43333334">
           <folding />
         </state>
       </provider>

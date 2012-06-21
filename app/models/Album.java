@@ -93,6 +93,13 @@ public class Album extends Model {
         return newPicture;
     }
 
+    public Picture addPicture(String title, String content, String fileExtension, int width, int height) {
+        Picture newPicture = new Picture(this, title, content, fileExtension, getNewKey(fileExtension),getNewThumbnailKey(fileExtension), width, height);
+        this.pictures.add(newPicture);
+        this.save();
+        return newPicture;
+    }
+
     public void deletePictures(){
         String accessKey = "AKIAIIDVPNAYFEVBVVFA";
         String secretKey = "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";

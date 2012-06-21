@@ -580,6 +580,8 @@
 			type = coming.type;
 			href = coming.href || element;
 
+
+
 			///Check if content type is set, if not, try to get
 			if (!type) {
 				if (isDom) {

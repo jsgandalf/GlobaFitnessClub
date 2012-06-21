@@ -41,6 +41,9 @@ public class Picture extends Model {
 
     public String amazonThumbnailKey;
 
+    public int width;
+    public int height;
+
     public Picture(Album album, String title, String content, String fileExtension, String amazonKey, String amazonThumbnailKey) {
         this.album = album;
         this.title = title;
@@ -49,9 +52,19 @@ public class Picture extends Model {
         this.fileExtension = fileExtension;
         this.amazonKey = amazonKey;
         this.amazonThumbnailKey = amazonThumbnailKey;
-        //this.picture_coments = new ArrayList<Picture_comment>();
     }
 
+    public Picture(Album album, String title, String content, String fileExtension, String amazonKey, String amazonThumbnailKey, int width, int height) {
+        this.album = album;
+        this.title = title;
+        this.content = content;
+        this.creationDate = new Date();
+        this.fileExtension = fileExtension;
+        this.amazonKey = amazonKey;
+        this.amazonThumbnailKey = amazonThumbnailKey;
+        this.width = width;
+        this.height = height;
+    }
     public String getAmazonKey(){
         return amazonKey;
     }

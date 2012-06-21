@@ -614,15 +614,7 @@ table.fc-border-separate {
 .fc-agenda .ui-resizable-resizing { /* TODO: better selector */
 	_overflow: hidden;
 	}
-	
-	
- #calendar {
-    cursor: pointer;
-    //float: right;
-    margin: 35px auto;
-    text-align: center;
-    width: 565px;
-}
+
 
 .fc-header-title{
     margin-bottom: 0px;

@@ -59,17 +59,15 @@
          User user = connected();
          List<Album> myAlbumList = Album.find(
                  "select a from Album a where a.author = ? order by creationDate desc",user).fetch(10);
+         notFoundIfNull(myAlbumList);
          render(user, myAlbumList);
      }
 
      public static void showAlbum(Long albumID) {
-         if(connected() != null) {
-             User user = connected();
-             Album currentAlbum = Album.findById(albumID);
-             render(user, currentAlbum);
-         }
-         flash.error("Please log in first to view photos.");
-         Application.login_page();
+         User user = connected();
+         Album currentAlbum = Album.findById(albumID);
+         notFoundIfNull(currentAlbum);
+         render(user, currentAlbum);
      }
 
      public static void addAlbum(){
@@ -151,12 +149,16 @@
          }else
              newFile = photo;
 
+         BufferedImage image_new= ImageIO.read(newFile);
+         int height_new = image_new.getHeight();
+         int width_new = image_new.getWidth();
+
          flash.clear();
 
          Album currentAlbum = Album.findById(albumID);
          String amazonkey = currentAlbum.getNewKey(fileExtension);
          String amazonThumbnailKey = currentAlbum.getNewThumbnailKey(fileExtension);
-         Picture newPicture = currentAlbum.addPicture(photo_title, message, fileExtension);
+         Picture newPicture = currentAlbum.addPicture(photo_title, message, fileExtension,width_new,height_new);
          AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey));
          s3.putObject(new PutObjectRequest("globafitnessphotos", amazonkey, newFile).withCannedAcl(CannedAccessControlList.PublicRead));
 

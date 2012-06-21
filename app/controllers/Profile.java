@@ -5,6 +5,7 @@ import models.*;
 import play.mvc.Before;
 import play.mvc.Controller;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -36,23 +37,47 @@ public class Profile extends Controller{
 	public static void index(){
 		User user = connected();
         session.put("isHome","false");
+        int size = 8;
         List<user_fitnessgoal> fitnessGoals = user_fitnessgoal.find(
                 "select f from user_fitnessgoal f where f.author = ? and f.value = 1 order by id asc",user).fetch();
         List<Share> shares = Share.find(
+                "select s from Share s where s.author = ? order by creationDate desc",user).from(0).fetch(size);
+        List<Share> totalShares = Share.find(
                 "select s from Share s where s.author = ? order by creationDate desc",user).fetch();
-
-        render(user, fitnessGoals, shares);
+        //Add 1 to it becuase its not counting the index
+        int total = (totalShares.size()/size);
+        int mod = totalShares.size()%size;
+        if(mod>0)
+            total++;
+        render(user, fitnessGoals, shares, total);
 	}
 
     public static void calendar(){
         User user = connected();
-        List<CalendarEvent> calendarList = CalendarEvent.find("byAuthor",user).fetch();
+        List<CalendarEvents> calendarList = CalendarEvents.find("byAuthor", user).fetch();
         render(user, calendarList);
     }
 
-    public static void createNewEvent(String timeFrom, String timeTo, String what, Date date){
+    public static void createNewEvent(String what, int start, int end, Date date1, Date date2){
         User user = connected();
-        CalendarEvent newEvent = new CalendarEvent(user,timeFrom,timeTo,what,date);
+        Calendar cal = Calendar.getInstance(); // locale-specific
+        cal.setTime(date1);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, start);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        Long time = cal.getTimeInMillis();
+        date1 = cal.getTime();
+
+        cal.setTime(date2);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, end);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        time = cal.getTimeInMillis();
+        date2 = cal.getTime();
+
+        CalendarEvents newEvent = new CalendarEvents(user,what,date1,date2);
         newEvent.save();
         String success = "\"success\"";
         //String success = "\"Failed to delete picture, please contact us about this issue and we will fix it as soon as possible.\"";
@@ -61,11 +86,36 @@ public class Profile extends Controller{
 
     public static void editEvent(Long id){
         User user = connected();
-        CalendarEvent newEvent = CalendarEvent.findById(id);
-        newEvent.delete();
+        CalendarEvents newEvents = CalendarEvents.findById(id);
+        newEvents.delete();
         String success = "\"success\"";
         //String success = "\"Failed to delete picture, please contact us about this issue and we will fix it as soon as possible.\"";
         renderJSON("{\"success\": " + success +"}");
+    }
+
+    public static void moveEvent(Long id, int deltaDays, int deltaMinutes){
+        CalendarEvents currentEvent = CalendarEvents.findById(id);
+        Calendar cal = Calendar.getInstance(); // locale-specific
+        cal.setTime(currentEvent.start);
+        cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + deltaDays);
+        cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY) + (deltaMinutes/60));
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        currentEvent.start = cal.getTime();
+
+        Calendar cal2 = Calendar.getInstance(); // locale-specific
+        cal2.setTime(currentEvent.end);
+        cal2.set(Calendar.DAY_OF_MONTH, cal2.get(Calendar.DAY_OF_MONTH) + deltaDays);
+        cal2.set(Calendar.HOUR_OF_DAY, cal2.get(Calendar.HOUR_OF_DAY) + (deltaMinutes/60));
+        cal2.set(Calendar.MINUTE, 0);
+        cal2.set(Calendar.SECOND, 0);
+        cal2.set(Calendar.MILLISECOND, 0);
+        currentEvent.end = cal2.getTime();
+        currentEvent.save();
+        String success = "\""+currentEvent.end+"\"";
+        String success2 = "\""+currentEvent.start+"\"";
+        renderJSON("{\"start\": " + success +",\"end\": " + success2 +"}");
     }
 
     public static void share(String content){
@@ -153,4 +203,28 @@ public class Profile extends Controller{
     public static void Dialog_Create_Event(){
         render();
     }
+
+    public static void shareNews(int page){
+        int size =8;
+        if(page!=0)
+            page--;
+        User user = connected();
+        int start = page * size;
+        List<Share> shares = Share.find(
+                "select s from Share s where s.author = ? order by creationDate desc",user).from(start).fetch(size);
+        render(shares,user);
+    }
+
+    public static void Dialog_Event(Long id){
+        CalendarEvents event = CalendarEvents.findById(id);
+        render(event);
+    }
+
+    public static void deleteEvent(Long id){
+        CalendarEvents event = CalendarEvents.findById(id);
+        event.delete();
+        String success = "\"success\"";
+        renderJSON("{\"success\": " + success +"}");
+    }
+
 }
