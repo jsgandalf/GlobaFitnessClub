@@ -1,0 +1,3 @@
+Date: ${event.start.format('dd MMMM yyyy hh:mm')} ${startAmPm} to ${event.end.format('hh:mm')} ${endAmPm}
+
+Reminder: ${event.what}

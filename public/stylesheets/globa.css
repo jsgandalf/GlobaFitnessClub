@@ -2188,11 +2188,11 @@ text-decoration:underline;
 }
 
 #timeFrom{
-    width: 130px;
+    width: 135px;
 }
 
 #timeTo{
-    width: 130px;
+    width: 135px;
 }
 
 #whatInput{
@@ -2431,7 +2431,7 @@ text-decoration:underline;
 }
 
 .profileRating{
-    width: 237px;
+    width: 280px;
     height: 200px;
     float:right;
     -moz-border-radius: 15px;
@@ -2624,6 +2624,7 @@ font-weight:bold;
   float:left;
   padding:5px;
   cursor:pointer;
+  z-index:1;
 }
 
 

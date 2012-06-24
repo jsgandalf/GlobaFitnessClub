@@ -12,9 +12,7 @@
         </tr>
         <tr>
             <td>When:</td>
-            <td><span class="date"></span></td>
-            <td>
-
+            <td><span class="date"></span>
                 From
                 #{select 'selectTimeFrom', class:"blue_select", id:"timeFrom"}
                 #{option '0'}12:00 am#{/option}
@@ -123,10 +121,18 @@
             <td>What:</td>
             <td colspan="2"><input id="whatInputCreate" type="text" class="text clearOnClick ui-corner-all inputColor" size="25" placeholder="e.g., Workout with John" /></td>
         </tr>
+        <tr colspan="2">
+            <td>Email Reminders:</td>
+            <td>
+                #{select 'selectReminder', class:"blue_select ui-corner-all", id:"emailReminderSelect"}
+                    #{option 0}No reminder#{/option}
+                    #{option 15}15 minutes before#{/option}
+                    #{option 30}30 minutes before#{/option}
+                    #{option 60}1 hour before#{/option}
+                    #{option 1440}1 day before#{/option}
+                #{/select}
+            </td>
+        </tr>
     </table>
     <!--<a class="btn" id="button_save" style="margin: 0px; float: right; position: relative; bottom: 0px; font-size: 12px;">Add Event</a><a id="button_cancel" style="float: right; position:relative; bottom:0px;" class="submit2">Cancel</a>-->
 </div>
-
-<script type="text/javascript">
-
-</script>

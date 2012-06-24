@@ -1,16 +1,9 @@
 package notifiers;
- 
-import play.*;
-import play.mvc.*;
-import java.util.*;
-import models.*;
-import java.util.Random;
 
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
-import org.apache.*;
-import security.*;
+import models.CalendarEvents;
+import models.User;
+import play.mvc.Mailer;
+import security.BCrypt;
 public class Mails extends Mailer {
  
    public static void welcome(User user) {
@@ -52,7 +45,13 @@ public class Mails extends Mailer {
 		int rnd = (int) (Math.random() * 52); // or use Random or whatever
 		char base = (rnd < 26) ? 'A' : 'a';
 		return (char) (base + rnd % 26);
-
 	}
+
+    public static void reminder(CalendarEvents event,String startAmPm, String endAmPm) {
+        setSubject("Reminder: %s", event.what);
+        addRecipient(event.author.email);
+        setFrom("Globa Fitness Club <support@globafitness.com>");
+        send(event.author,event,startAmPm,endAmPm);
+    }
 
 }

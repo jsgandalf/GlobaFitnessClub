@@ -18,7 +18,8 @@ $('.backButton').click(function(){
     $("#dialog2").load("@{sharePhotoDiv}", function(){
         closeWaitingDialog();
         $("#dialog2").dialog({
-           width: 600,
+           width: 'auto',
+           height: 500,
            title: "Share Photo",
            buttons: [
                 {

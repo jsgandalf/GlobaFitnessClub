@@ -36,6 +36,8 @@ GET     /photos/                                Photos.index
 GET     /photos/addAlbum                        Photos.addAlbum
 POST    /photos/addAlbums                       Photos.addAlbumFunction
 GET     /photos/add/{id}                        Photos.addAlbumPhotos
+GET     /welcome                                Jobs.emailAlert
+
 # Administration
 *       /admin                                  module:crud
 

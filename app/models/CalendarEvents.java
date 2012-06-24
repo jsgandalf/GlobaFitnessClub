@@ -19,11 +19,14 @@ public class CalendarEvents extends Model {
     public Date start;
     public Date end;
 
-    public CalendarEvents(User author, String what, Date start, Date end) {
+    public int emailReminder;
+
+    public CalendarEvents(User author, String what, Date start, Date end, int emailReminder) {
         this.author = author;
         this.what = what;
         this.start = start;
         this.end = end;
+        this.emailReminder = emailReminder;
     }
 
     public String toString() {

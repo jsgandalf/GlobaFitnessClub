@@ -87,7 +87,7 @@
                     </div>
                     <a href="#">(7 Reviews)</a>
                     <div class="clear"></div>
-                    <div id="themeSwitcher" class="ui-button ui-widget ui-state-default ui-corner-all">Change Theme!</div>
+                    <!--<div id="themeSwitcher" class="ui-button ui-widget ui-state-default ui-corner-all">Change Theme!</div>-->
                 </div>
             </div>
         </div>
@@ -209,9 +209,10 @@ $(document).ready(function() {
     });
 
     $('#shareLink').click(function(){
-        $("#dialog2").html('<p>Share a Link on your news page! For example type:<br /> http://www.mysite.com</p><p><table class="shareTables"><tr><td>Link:</td><td><input class="shareInput" id="shareLinkInput" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input class="shareInput" id="shareLinkInputContent" type="text" size="16" value=""></td></tr></table><p>');
+        $("#dialog2").html('<p>Share a Link on your news page! For example type:<br /> http://www.mysite.com</p><p><table class="shareTables"><tr><td>Link:</td><td><input placeholder="http://www.mysite.com" class="shareInput" id="shareLinkInput" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input class="shareInput" id="shareLinkInputContent" type="text" size="16" value="" placeholder="Your message here"></td></tr></table><p>');
         $("#dialog2").dialog({
             width: 400,
+            height: 'auto',
             title: "Share Link",
             buttons: [
                 {
@@ -240,7 +241,8 @@ $(document).ready(function() {
         $("#dialog2").load("@{sharePhotoDiv}", function(){
             closeWaitingDialog();
             $("#dialog2").dialog({
-               width: 600,
+               width: 'auto',
+               height: 500,
                title: "Share Photo",
                buttons: [
                     {
@@ -254,9 +256,10 @@ $(document).ready(function() {
     });
     $('#shareVideo').click(function(){
         var src = "@{'/public/images/youtube_help.jpg'}";
-        $("#dialog2").html('<div style="display:inline-block; width:595px; margin: 0 auto;"><p>Share a Video on your news page from youtube! Simply click on the share button and copy and paste the link from the youtube video! Look at the example below.<br><br /><img src="'+src+'"></p><p><table class="shareTables"><tr><td>Link to this video:</td><td><input class="shareInput" id="shareVideoInput" style="width:307px" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input style="width:307px" class="shareInput" id="shareVideoInputContent" type="text" size="16" value=""></td></tr></table><p></div>');
+        $("#dialog2").html('<div style="display:inline-block; width:595px; margin: 0 auto;"><p>Share a Video on your news page from youtube! Simply click on the share button and copy and paste the link from the youtube video! Look at the example below.<br><br /><img src="'+src+'"></p><p><table class="shareTables"><tr><td>Link to this video:</td><td><input placeholder="http://youtu.be/1SEl5H8hwLw" class="shareInput" id="shareVideoInput" style="width:307px" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input style="width:307px" class="shareInput" id="shareVideoInputContent" placeholder="Type your message here." type="text" size="16" value=""></td></tr></table><p></div>');
         $("#dialog2").dialog({
             width: 700,
+            height: 'auto',
             title: "Share Link",
             buttons: [
                 {
@@ -266,7 +269,8 @@ $(document).ready(function() {
                 {
                     text: "Share",
                     click: function() {
-                    $(this).dialog("close");
+                        waitingDialog({});
+                        $(this).dialog("close");
                         $.post('@{Profile.shareVideo()}',{video:$('#shareVideoInput').val(), message:$('#shareVideoInputContent').val()},function(newShare){
                             $('#tabs-1').load("@{Profile.shareNews}",function(){
                                 closeWaitingDialog();
@@ -288,7 +292,7 @@ $(document).ready(function() {
 });
 
  // add themeswitcher
-    $(function(){
+    /*$(function(){
         var ts = $('#themeSwitcher')
         .bind("click", function() {
             ts.text("Loading Themeswitcher...");
@@ -296,6 +300,6 @@ $(document).ready(function() {
                 ts.removeClass("ui-button ui-widget ui-state-default ui-corner-all").text("").unbind("click").themeswitcher();
             });
         });
-    });
+    });*/
 
 </script>

@@ -13,6 +13,20 @@ function styleInput(id){
 }
 
 /*
+    Styles all inputs on the page
+*/
+
+function styleInputs(){
+    $('select').selectmenu("widget").addClass("wrap");
+    $('select').selectmenu({
+        style:'popup',
+        maxHeight: 250
+
+    });
+    $('select').selectmenu("widget").addClass("wrap");
+}
+
+/*
 
     Resets pagination back to its defaults
 
@@ -72,9 +86,13 @@ function moveEvent(postURL,eventID, deltaDays, deltaMinutes){
 */
 
 function createDayEvent(divID, date, postURL,pageRedirectURL,eventType){
-    if($(divID+' #timeFrom option:selected').val()>=$(divID+' #timeTo option:selected').val()){
+    var start = $(divID+' #timeFrom option:selected').val();
+    var end = $(divID+' #timeTo option:selected').val();
+    start = start*1;
+    end = end*1;
+    if(start>=end){
        htmlString = "";
-       if($(divID+' #timeFrom option:selected').val()==$(divID+' #timeTo option:selected').val())
+       if(start==end)
             htmlString = "<p>The starting time and ending time cannot be equal!</p>";
        else
             htmlString = "<p>The starting time must be before the ending time!</p>";
@@ -93,7 +111,7 @@ function createDayEvent(divID, date, postURL,pageRedirectURL,eventType){
     }else{
         waitingDialog({});
         $("#dialog2").dialog("close");
-        $.post(postURL,{date1:date, date2:date, start: $(divID+' #timeFrom option:selected').val(),end: $(divID+' #timeTo option:selected').val(), what:$(divID+' #whatInputCreate').val()}, function(data){
+        $.post(postURL,{date1:date, date2:date, start: $(divID+' #timeFrom option:selected').val(),end: $(divID+' #timeTo option:selected').val(), what:$(divID+' #whatInputCreate').val(), emailReminder:$("#emailReminderSelect option:selected").val()}, function(data){
             if(data.success=="success"){
                  $('#tabs-2').load(pageRedirectURL, function(){
                     $(".fc-button-today").click();

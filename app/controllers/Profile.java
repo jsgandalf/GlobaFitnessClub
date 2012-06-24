@@ -17,7 +17,7 @@ public class Profile extends Controller{
         if(user != null) {
             renderArgs.put("user", user);
 		}else{
-            flash.error("You must log in to view your settings");
+            flash.error("You must log in to view your profile");
             Application.login_page();
         }
     }
@@ -58,7 +58,7 @@ public class Profile extends Controller{
         render(user, calendarList);
     }
 
-    public static void createNewEvent(String what, int start, int end, Date date1, Date date2){
+    public static void createNewEvent(String what, int start, int end, Date date1, Date date2, int emailReminder){
         User user = connected();
         Calendar cal = Calendar.getInstance(); // locale-specific
         cal.setTime(date1);
@@ -77,7 +77,7 @@ public class Profile extends Controller{
         time = cal.getTimeInMillis();
         date2 = cal.getTime();
 
-        CalendarEvents newEvent = new CalendarEvents(user,what,date1,date2);
+        CalendarEvents newEvent = new CalendarEvents(user,what,date1,date2,emailReminder);
         newEvent.save();
         String success = "\"success\"";
         //String success = "\"Failed to delete picture, please contact us about this issue and we will fix it as soon as possible.\"";

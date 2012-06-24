@@ -12,7 +12,7 @@
                     <h2>${_user?.fullName()}</h2>
                     #{if share.type==4}
                     <p style="float:none; margin:0px;">
-                        <iframe class="fancyImage" style="float:none" width="320" height="155" src="${share.videoName}" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="fancyImage" style="float:none" width="320" height="155" src="${share.videoName}?wmode=transparent" frameborder="0" allowfullscreen></iframe>
                     </p>
                     #{/if}
                     #{if share.type==3}
@@ -37,13 +37,13 @@
                     #{/else}
                     <span id="commentContainer${share.id}">
                         #{if share.getComments().size()}
-                            #{if share.getComments().size() >3}
+                            #{if share.getComments().size() >0}
                                 <div class="picture_lists viewAllComments" shareid="${share.id}">
                                     <div class="messageIcon"></div> <a>View all ${share.getComments().size()}</a>
                                 </div>
                             #{/if}
                             #{list items:share.getComments(), as:'comment'}
-                            <div class="${comment_index>3 ? 'hide' : ''} picture_lists share_comment_list" id='comment${comment.id}' commentid='${comment.id}'>
+                            <div class="${comment_index>0 ? 'hide' : ''} picture_lists share_comment_list" id='comment${comment.id}' commentid='${comment.id}'>
                                 <img class='commentThumbPic' src="${comment.author.getProfileThumbPic()}" width='32' height='32'>
                                 <div class='commentRightText'>
                                     <span class='redText' style='margin-right:5px'>

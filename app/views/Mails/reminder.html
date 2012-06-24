@@ -6,8 +6,12 @@
 </head>
 
 <body>
-<p>Welcome <b>${user.firstName}</b>, 
+<p>
+    Date: ${event.start.format('dd MMMM yyyy hh:mm')} ${startAmPm} to ${event.end.format('hh:mm')} ${endAmPm}
+    <br /><br />
+    Reminder: <b>${event.what}</b>,
 <br /><br />
+
 At Globa Fitness you can start by looking for trainers or join a network of people who are working out together.<br /><br />
 
 Upload your pictures for progress, or rate your favorite trainers.<br /><br />
