@@ -2733,3 +2733,10 @@ font-weight:bold;
 .hide{
     display:none;
 }
+
+.modelsWanted{
+    background: url(../images/sponsors/modelsWanted.jpg) no-repeat;
+    width: 100%;
+    height: 400px;
+    margin-top: 3px;
+}
