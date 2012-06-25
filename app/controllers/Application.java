@@ -25,10 +25,10 @@ public class Application extends Controller{
         if(renderArgs.get("user") != null) {
             return renderArgs.get("user", User.class);
         }
-        //String email = session.get("user");
-       // if(email != null) {
-       //     return User.find("byEmail", email).first();
-       // }
+        String email = session.get("user");
+       if(email != null) {
+            return User.find("byEmail", email).first();
+        }
         return null;
     }
 
