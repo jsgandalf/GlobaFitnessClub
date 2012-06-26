@@ -28,9 +28,11 @@
     <div class="ui-widget-content" style="moz-border-radius: 15px; border-radius: 15px; float:left; width:100%;">
         <div class="profile_left_col_container">
             <div class="profile_left_col">
-                <a class="fancybox" href="${user.getProfilePic()}">
-                    <img src="${user.getProfilePic()}" alt="Can't find user profile pic" />
-                </a>
+                <div id="profileResize">
+                    <!--<a class="fancybox" href="${user.getProfilePic()}">-->
+                        <img id="profile_pic" src="${user.getProfilePic()}" alt="Can't find user profile pic" />
+                    <!--</a>-->
+                </div>
                 <div class="clear"></div>
                 <a href="@{Settings.index()}" style="float:left; color:#E9545A; margin-left: 13px;">Change Profile Pic</a>
             </div>
@@ -175,6 +177,9 @@
     $('.deleteShareDiv').hide();
 
 $(document).ready(function() {
+    $(window).load(function(){
+        $('#profileResize').imagefit();
+    });
 
     $(".pagination li").click(function(){
         var page = $(this).text().trim()*1;
@@ -292,8 +297,8 @@ $(document).ready(function() {
 
 });
 
- // add themeswitcher
-    /*$(function(){
+  //add themeswitcher
+    $(function(){
         var ts = $('#themeSwitcher')
         .bind("click", function() {
             ts.text("Loading Themeswitcher...");
@@ -301,6 +306,6 @@ $(document).ready(function() {
                 ts.removeClass("ui-button ui-widget ui-state-default ui-corner-all").text("").unbind("click").themeswitcher();
             });
         });
-    });*/
+    });
 
 </script>

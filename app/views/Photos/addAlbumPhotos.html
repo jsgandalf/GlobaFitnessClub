@@ -5,7 +5,7 @@
 #{/set}
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
-    <!--<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">-->
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">
 #{/set}
 
 
@@ -30,7 +30,7 @@
     </div>
     <div class="clear"></div>
     <div class="infobar">
-        Upload your photos here
+        You may click on upload, or simply drag and drop your photos!
         <div style="float:right">Date ${currentAlbum.creationDate.format("dd MMMM yyyy")}</div>
     </div>
     <div class="clear"></div>
@@ -51,7 +51,7 @@
     </p>
 
     <div class="addPhotoToAlbum">
-        #{form @uploadPhotoToAlbum(),id:"jsonForm", enctype:"multipart/form-data"}
+        <!--{form @uploadPhotoToAlbum(),id:"jsonForm", enctype:"multipart/form-data"}
             <ol>
                 #{field 'album_title'}
                 <li>
@@ -72,14 +72,14 @@
                 </li>
                 <li style="margin-top:10px;" id="removeUpload">
                     <input  id="upload" type="submit"  name="submit" value="Upload" class="submit2">
-                </li>
-                <!--<div id="file-uploader">
+                </li>-->
+                <div id="file-uploader">
                     <noscript>
                         <p>Please enable JavaScript to use file uploader.</p>
                     </noscript>
 
                     <script>
-                        /*function createUploader(){
+                        function createUploader(){
                             var uploader = new qq.FileUploader({
                                 element: document.getElementById('file-uploader'),
                                 action: '/upload',
@@ -88,12 +88,9 @@
                                     albumID: '${currentAlbum?.id}'
                                 },
                                 onComplete: function(){
-
-
-
-                                    $.get(displayUserDetail, function(data){
-                                        alert('');
-                                    });*/
+                                    var listAction = #{jsAction @Photos.showPics(':id') /}
+                                    var albumID = "${currentAlbum.id}";
+                                    $("#showPicturesInCurrentAlbum").load(listAction({id: albumID}));
                                 }
                             });
                         }
@@ -102,9 +99,9 @@
                         // don't wait for the window to load
                         window.onload = createUploader;
                     </script>
-                </div>-->
-            </ol>
-        #{/form}
+                </div>
+        <!--</ol>
+        {/form}-->
     </div>
     <!--<div id="profile_save"><input id="addMoreFiles" name="submit" value="Add more files" class="submit2"></div>-->
 

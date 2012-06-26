@@ -2740,3 +2740,9 @@ font-weight:bold;
     height: 400px;
     margin-top: 3px;
 }
+
+#profileResize{
+    height:239px;
+      width:279px;
+      margin:15px 0 0 15px;
+}

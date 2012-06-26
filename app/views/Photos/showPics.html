@@ -1,0 +1,6 @@
+#{if currentAlbum?.pictures?.size()}
+    #{display_pictures albums:currentAlbum, user:user /}
+#{/if}
+#{else}
+    <div style="margin-top:10px"><p>You have not uploaded any pictures yet</p></div>
+#{/else}

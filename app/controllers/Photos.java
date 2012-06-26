@@ -108,71 +108,6 @@
         renderJSON("{\"success\": " + success+"}");
      }
 
-     public static void uploadPhotoToAlbum(String photo_title, String message, File photo, Long albumID) throws IOException {
-         User user = connected();
-         String accessKey = "AKIAIIDVPNAYFEVBVVFA";
-         String secretKey = "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";
-
-         if(photo==null){
-             flash.error("Please upload a file");
-             addAlbumPhotos(albumID);
-         }
-         String mimeType = play.libs.MimeTypes.getMimeType(photo.getAbsolutePath());
-         if(!mimeType.equals("image/jpeg") && !mimeType.equals("image/gif") && !mimeType.equals("image/png")){
-             flash.error("File is not jpg, gif, or png. Please upload this type of file.");
-             addAlbumPhotos(albumID);
-         }
-         if(photo.length()>MAX_SIZE){
-             flash.error("File is too large, must be less than 5mb");
-             addAlbumPhotos(albumID);
-         }
-         String fileExtension = ".jpg";
-         if(mimeType.equals("image/jpeg")) fileExtension=".jpg";
-         else if(mimeType.equals("image/gif")) fileExtension=".gif";
-         else if(mimeType.equals("image/png")) fileExtension=".png";
-         else{
-             flash.error("File is not jpg, gif, or png. Please upload this type of file.");
-             addAlbumPhotos(albumID);
-         }
-
-         BufferedImage image = ImageIO.read(photo);
-         int height = image.getHeight();
-         int width = image.getWidth();
-
-         int maxwidth = 760;
-         int maxheight = 600;
-
-         File newFile = new File("Foo"+fileExtension); // create random unique filename here
-
-         if((width>=maxwidth) || height>=maxheight){
-             Images.resize(photo, newFile, maxwidth, maxheight, true);
-         }else
-             newFile = photo;
-
-         BufferedImage image_new= ImageIO.read(newFile);
-         int height_new = image_new.getHeight();
-         int width_new = image_new.getWidth();
-
-         flash.clear();
-
-         Album currentAlbum = Album.findById(albumID);
-         String amazonkey = currentAlbum.getNewKey(fileExtension);
-         String amazonThumbnailKey = currentAlbum.getNewThumbnailKey(fileExtension);
-         Picture newPicture = currentAlbum.addPicture(photo_title, message, fileExtension,width_new,height_new);
-         AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey));
-         s3.putObject(new PutObjectRequest("globafitnessphotos", amazonkey, newFile).withCannedAcl(CannedAccessControlList.PublicRead));
-
-         File newThumbnailFile = new File("Foo2"+fileExtension); // create random unique filename here
-
-         if((width>=180) || height>=120){
-             Images.resize(photo, newThumbnailFile, 180, 120, true);
-         }else
-             newThumbnailFile = newFile;
-
-         s3.putObject(new PutObjectRequest("globafitnessphotos", amazonThumbnailKey, newThumbnailFile).withCannedAcl(CannedAccessControlList.PublicRead));
-
-         addAlbumPhotos(albumID);
-     }
 
      public static void uploadProfilePhoto(File photo) throws IOException {
          long MAX_SIZE = 5242880;
@@ -214,8 +149,6 @@
              Images.resize(photo, newFile, maxwidth, maxheight, true);
          }else
              newFile = photo;
-
-
 
          flash.clear();
          AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey));
@@ -287,20 +220,77 @@
          render(user, myAlbumList);
      }
 
+     public static void uploadPhotoToAlbum(String photo_title, String message, File photo, Long albumID) throws IOException {
+         User user = connected();
+         String accessKey = "AKIAIIDVPNAYFEVBVVFA";
+         String secretKey = "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";
 
-     //This is for multipleUploads, If mike needs this feature, he can contract it out to me later.
-     /*public static void upload(String qqfile, Long albumID) throws InterruptedException, IOException {
+         if(photo==null){
+             flash.error("Please upload a file");
+             addAlbumPhotos(albumID);
+         }
+         String mimeType = play.libs.MimeTypes.getMimeType(photo.getAbsolutePath());
+         if(!mimeType.equals("image/jpeg") && !mimeType.equals("image/gif") && !mimeType.equals("image/png")){
+             flash.error("File is not jpg, gif, or png. Please upload this type of file.");
+             addAlbumPhotos(albumID);
+         }
+         if(photo.length()>MAX_SIZE){
+             flash.error("File is too large, must be less than 5mb");
+             addAlbumPhotos(albumID);
+         }
+         String fileExtension = ".jpg";
+         if(mimeType.equals("image/jpeg")) fileExtension=".jpg";
+         else if(mimeType.equals("image/gif")) fileExtension=".gif";
+         else if(mimeType.equals("image/png")) fileExtension=".png";
+         else{
+             flash.error("File is not jpg, gif, or png. Please upload this type of file.");
+             addAlbumPhotos(albumID);
+         }
+
+         BufferedImage image = ImageIO.read(photo);
+         int height = image.getHeight();
+         int width = image.getWidth();
+
+         int maxwidth = 760;
+         int maxheight = 600;
+
+         File newFile = new File("Foo"+fileExtension); // create random unique filename here
+
+         if((width>=maxwidth) || height>=maxheight){
+             Images.resize(photo, newFile, maxwidth, maxheight, true);
+         }else
+             newFile = photo;
+
+         BufferedImage image_new= ImageIO.read(newFile);
+         int height_new = image_new.getHeight();
+         int width_new = image_new.getWidth();
+
+         flash.clear();
+
+         Album currentAlbum = Album.findById(albumID);
+         String amazonkey = currentAlbum.getNewKey(fileExtension);
+         String amazonThumbnailKey = currentAlbum.getNewThumbnailKey(fileExtension);
+         Picture newPicture = currentAlbum.addPicture(photo_title, message, fileExtension,width_new,height_new);
+         AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey));
+         s3.putObject(new PutObjectRequest("globafitnessphotos", amazonkey, newFile).withCannedAcl(CannedAccessControlList.PublicRead));
+
+         File newThumbnailFile = new File("Foo2"+fileExtension); // create random unique filename here
+
+         if((width>=180) || height>=120){
+             Images.resize(photo, newThumbnailFile, 180, 120, true);
+         }else
+             newThumbnailFile = newFile;
+
+         s3.putObject(new PutObjectRequest("globafitnessphotos", amazonThumbnailKey, newThumbnailFile).withCannedAcl(CannedAccessControlList.PublicRead));
+
+         addAlbumPhotos(albumID);
+     }
+
+
+
+     //This is for multipleUploads
+     public static void upload(String qqfile, Long albumID) throws InterruptedException, IOException {
          if(request.isNew) {
-
-             //FileOutputStream moveTo = null;
-
-             Logger.info("Name of the file %s", qqfile);
-             // Another way I used to grab the name of the file
-             //String filename = request.headers.get("x-file-name").value();
-
-             Logger.info("Absolute on where to send %s", Play.getFile("").getAbsolutePath() + File.separator + "uploads" + File.separator);
-
-
              try {
 
                  String[] allowedExtensions = {".jpg", ".jpeg", ".png", ".gif"};
@@ -314,8 +304,8 @@
 
                  InputStream data = request.body;
 
-                 int maxwidth=700;
-                 int maxheight=540;
+                 int maxwidth = 760;
+                 int maxheight = 600;
 
                  String accessKey = "AKIAIIDVPNAYFEVBVVFA";
                  String secretKey = "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";
@@ -324,8 +314,8 @@
 
                  InputStream objectData = data;
                  // Process the objectData stream.
-                 File f=new File("outFile.java");
-                 OutputStream out=new FileOutputStream(f);
+                 File photo=new File("outFile.java");
+                 OutputStream out=new FileOutputStream(photo);
                  byte buf[]=new byte[1024];
                  int len;
                  while((len=objectData.read(buf))>0)
@@ -334,67 +324,31 @@
 
                  objectData.close();
 
-                 BufferedImage image = ImageIO.read(f);
+                 BufferedImage image = ImageIO.read(photo);
                  int height = image.getHeight();
                  int width = image.getWidth();
 
 
                  File newFile = new File("Foo"+fileExtension); // create random unique filename here
-                 Images.resize(f, newFile, maxwidth, maxheight, true);
+                 if((width>=maxwidth) || height>=maxheight){
+                     Images.resize(photo, newFile, maxwidth, maxheight, true);
+                 }else{
+                     newFile = photo;
+                 }
+                 BufferedImage image_new= ImageIO.read(newFile);
+                 int height_new = image_new.getHeight();
+                 int width_new = image_new.getWidth();
 
 
 
-                /*double scalex = (double) targetWidth / sourceWidth;
-               double scaley = (double) targetHeight / sourceHeight;
-               double scale =  Math.min(scalex, scaley);
-
-               Image scaledImage = image.getScaledInstance((int) (targetWidth * scale), (int) (targetHeight * scale), Image.SCALE_SMOOTH);
-               int myWidth = (int) (targetWidth * scale);
-               int myHeight = (int) (targetHeight * scale);*/
-             //ImageInfo info = new ImageInfo();
-                /*MagickImage magickPhoto = new MagickImage( new ImageInfo( qqfile ) );
-                MagickImage bigger = magickPhoto.scaleImage(100, 100);
-                bigger.setFileName("bigger.jpg");*/
-                //bigger.writeImage(info);
-                //File resizedPhoto = new File("bigger.jpg");
-             /*BufferedImage resizedImage = new BufferedImage(myWidth, myHeight, image.getType());
-             Graphics2D g = resizedImage.createGraphics();
-             g.drawImage(image, 0, 0, myWidth, myHeight, null);
-             g.dispose();
-             g.setComposite(AlphaComposite.Src);
-
-             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                     RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-             g.setRenderingHint(RenderingHints.KEY_RENDERING,
-                     RenderingHints.VALUE_RENDER_QUALITY);
-             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                     RenderingHints.VALUE_ANTIALIAS_ON);
-             */
-                 //String newFileExtension = fileExtension.replace(".", "");
+                 String newFileExtension = fileExtension.replace(".", "");
                  //File tmpFile = new File(qqfile);
                  //ImageIO.write(scaledImage, newFileExtension, tmpFile);
 
-                 //BufferedImage image = ImageIO.read(f);
-                 //int height = image.getHeight();
-                 //int width = image.getWidth();
-                 /*File resizedPhoto = new File(f.getName());
-                 resizedPhoto.createNewFile();
-                 if((width>=maxwidth) || height>=maxheight){
-                     resize(f,resizedPhoto,maxwidth,maxheight,true);
-                     //f = resizedPhoto;
-                 } */
-                 /*String mimeType = play.libs.MimeTypes.getMimeType(f.getAbsolutePath());
-                 String fileExtension = "";
-                 if(mimeType.equals("image/jpeg")) fileExtension=".jpg";
-                 else if(mimeType.equals("image/gif")) fileExtension=".gif";
-                 else if(mimeType.equals("image/png")) fileExtension=".png";
-                 else
-                     renderJSON("{\"success\": " + mimeType +"}");*/
-                /*
                  Album currentAlbum = Album.findById(albumID);
                  String amazonkey = currentAlbum.getNewKey(fileExtension);
                  String amazonThumbnailKey = currentAlbum.getNewThumbnailKey(fileExtension);
-                 Picture newPicture = currentAlbum.addPicture("", "", fileExtension);
+                 Picture newPicture = currentAlbum.addPicture("", "", fileExtension,width_new,height_new);
 
                  AWSCredentials myCredentials = new BasicAWSCredentials(accessKey, secretKey);
                  TransferManager tx = new TransferManager(myCredentials);
@@ -404,17 +358,39 @@
 
                  Upload myUpload = tx.upload(req);
                  while (myUpload.isDone() == false) {
-                     System.out.println("Transfer: " + myUpload.getDescription());
-                     System.out.println("  - State: " + myUpload.getState());
-                     System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
+                     System.out.println("Original Transfer: " + myUpload.getDescription());
+                     //System.out.println("  - State: " + myUpload.getState());
+                     //System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
                      // Do work while we wait for our upload to complete...
-                     Thread.sleep(500);
+                     Thread.sleep(600);
                  }
 
+                 maxwidth = 180;
+                 maxheight = 120;
+
+                 BufferedImage image2 = ImageIO.read(newFile);
+                 height = image2.getHeight();
+                 width = image2.getWidth();
+
                  //makeAmazonThumb(amazonThumbnailKey, amazonkey, 180, 120);
+                 File newThumbNail = new File("Foo2"+fileExtension); // create random unique filename here
+                 if((width>=maxwidth) || height>=maxheight){
+                     Images.resize(newFile, newThumbNail, maxwidth, maxheight, true);
+                 }else{
+                     newThumbNail = newFile;
+                 }
+                 req = new PutObjectRequest(myBucket, amazonThumbnailKey, newThumbNail);
+                 req.setCannedAcl(CannedAccessControlList.PublicRead);
 
+                 myUpload = tx.upload(req);
+                 while (myUpload.isDone() == false) {
+                     System.out.println("Thumbnail Transfer: " + myUpload.getDescription());
+                     //System.out.println("  - State: " + myUpload.getState());
+                     //System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
+                     // Do work while we wait for our upload to complete...
+                     Thread.sleep(600);
+                 }
              } catch(Exception ex) {
-
                  // catch file exception
                  // catch IO Exception later on
                  renderJSON("{success: false}");
@@ -422,7 +398,7 @@
 
          }
          renderJSON("{success: true}");
-     } */
+     }
 
      public static void makeAmazonThumb(String amazonKey, String keyToFetch, Integer maxwidth, Integer maxheight) throws IOException {
          try {
@@ -461,11 +437,11 @@
 
              Upload myUpload = tx.upload(req);
              while (myUpload.isDone() == false) {
-                 System.out.println("Transfer: " + myUpload.getDescription());
-                 System.out.println("  - State: " + myUpload.getState());
-                 System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
+                 //System.out.println("Transfer: " + myUpload.getDescription());
+                 //System.out.println("  - State: " + myUpload.getState());
+                 //System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
                  // Do work while we wait for our upload to complete...
-                 Thread.sleep(500);
+                 Thread.sleep(600);
              }
          } catch(Exception ex) {
 
@@ -487,6 +463,12 @@
          }
          JSONSerializer modelSerializer = new JSONSerializer().include("id", "title").exclude("*");
          renderJSON(modelSerializer.serialize(currentAlbum));
+     }
+
+     public static void showPics(Long albumID){
+         User user = connected();
+         Album currentAlbum = Album.findById(albumID);
+        render(currentAlbum, user);
      }
  }
 

@@ -1,6 +1,5 @@
 import models.CalendarEvents;
 import notifiers.Mails;
-import play.Logger;
 import play.jobs.Job;
 import play.jobs.On;
 
@@ -20,7 +19,7 @@ public class alertDailey extends Job {
        SimpleDateFormat sdf =
                 new SimpleDateFormat(DATE_FORMAT);
        Calendar cal = Calendar.getInstance();
-        Logger.info("System check, current time: %s\n", sdf.format(cal.getTime()));
+       // Logger.info("System check, current time: %s\n", sdf.format(cal.getTime()));
        //Logger.info("Current Time at Job: %s\n", sdf.format(cal.getTime()));
        Date date = cal.getTime();
        Calendar cal2 = Calendar.getInstance();
