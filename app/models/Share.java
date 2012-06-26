@@ -75,6 +75,8 @@ public class Share extends Model {
 
     public String getPhotoFromThumb(){
         Picture currentPicture = Picture.find("byAmazonThumbnailKey",this.photo).first();
+        if(currentPicture==null)
+            return "";
         return currentPicture.getAmazonKey();
     }
 

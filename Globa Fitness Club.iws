@@ -14,8 +14,11 @@
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\invite collage2.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\cupertino\theme.css" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\jquery-ui-1.8.17.custom.min.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo2" afterPath="$PROJECT_DIR$/Foo2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Globa Fitness Club.iws" afterPath="$PROJECT_DIR$/Globa Fitness Club.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" afterPath="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Share.java" afterPath="$PROJECT_DIR$/app/models/Share.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/index.html" afterPath="$PROJECT_DIR$/app/views/Profile/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/outFile.java" afterPath="$PROJECT_DIR$/outFile.java" />
     </list>
     <ignored path="Globa Fitness Club.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,10 +94,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addAlbumPhotos.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="91" column="122" selection-start="3776" selection-end="3776" vertical-scroll-proportion="0.50843376">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addAlbumPhotos.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.84577113">
+            <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="-13.076923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Share.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/Share.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="76" column="64" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,15 +134,6 @@
         <entry file="file://$PROJECT_DIR$/public/javascripts/fileuploader.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="490" column="59" selection-start="15326" selection-end="15326" vertical-scroll-proportion="-6.8846154">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="16" selection-start="1084" selection-end="1101" vertical-scroll-proportion="-15.038462">
               <folding />
             </state>
           </provider>
@@ -154,15 +166,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="109" selection-start="1798" selection-end="1798" vertical-scroll-proportion="-15.692307">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -176,13 +179,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/Mails/reminder.txt" />
         <option value="$PROJECT_DIR$/app/controllers/Profile.java" />
         <option value="$PROJECT_DIR$/app/views/Profile/calendar.html" />
         <option value="$PROJECT_DIR$/app/controllers/Application.java" />
         <option value="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/globa.css" />
-        <option value="$PROJECT_DIR$/app/views/Profile/index.html" />
         <option value="$PROJECT_DIR$/app/alertDailey.java" />
         <option value="$PROJECT_DIR$/app/alert.java" />
         <option value="$PROJECT_DIR$/app/alert30.java" />
@@ -192,6 +193,8 @@
         <option value="$PROJECT_DIR$/app/views/Photos/showPics.html" />
         <option value="$PROJECT_DIR$/app/controllers/Photos.java" />
         <option value="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" />
+        <option value="$PROJECT_DIR$/app/models/Share.java" />
+        <option value="$PROJECT_DIR$/app/views/Profile/index.html" />
       </list>
     </option>
   </component>
@@ -397,11 +400,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Photos" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -704,13 +703,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/Profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="61" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/aws-java-sdk-1.3.8.jar!/com/amazonaws/services/s3/model/PutObjectRequest.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="11" selection-start="671" selection-end="671" vertical-scroll-proportion="0.29419035">
@@ -742,20 +734,6 @@
     <entry file="file://$PROJECT_DIR$/app/alertDailey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="9" selection-start="606" selection-end="606" vertical-scroll-proportion="0.25431532">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="16" selection-start="1084" selection-end="1101" vertical-scroll-proportion="-15.038462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/globa.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2746" column="32" selection-start="50193" selection-end="50193" vertical-scroll-proportion="-29.307692">
           <folding />
         </state>
       </provider>
@@ -795,13 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Photos/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.269231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Profile/calendar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="60" selection-start="773" selection-end="893" vertical-scroll-proportion="-5.576923">
@@ -809,9 +780,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Share.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="64" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.84577113">
+        <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="-13.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/globa.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2746" column="32" selection-start="50193" selection-end="50193" vertical-scroll-proportion="-29.307692">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Photos/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.269231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="122" selection-start="3776" selection-end="3776" vertical-scroll-proportion="0.50843376">
           <folding />
         </state>
       </provider>
