@@ -1,30 +1,26 @@
  package controllers;
 
  import com.amazonaws.auth.AWSCredentials;
- import com.amazonaws.auth.BasicAWSCredentials;
- import com.amazonaws.services.s3.AmazonS3;
- import com.amazonaws.services.s3.AmazonS3Client;
- import com.amazonaws.services.s3.model.CannedAccessControlList;
- import com.amazonaws.services.s3.model.GetObjectRequest;
- import com.amazonaws.services.s3.model.PutObjectRequest;
- import com.amazonaws.services.s3.model.S3Object;
- import com.amazonaws.services.s3.transfer.TransferManager;
- import com.amazonaws.services.s3.transfer.Upload;
- import flexjson.JSONSerializer;
- import models.Album;
- import models.Picture;
- import models.Picture_comment;
- import models.User;
- import play.libs.Images;
- import play.mvc.Before;
- import play.mvc.Controller;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.transfer.TransferManager;
+import com.amazonaws.services.s3.transfer.Upload;
+import flexjson.JSONSerializer;
+import models.Album;
+import models.Picture;
+import models.Picture_comment;
+import models.User;
+import play.libs.Images;
+import play.mvc.Before;
+import play.mvc.Controller;
 
- import javax.imageio.ImageIO;
- import java.awt.image.BufferedImage;
- import java.io.*;
- import java.util.List;
-
- import static play.libs.Images.resize;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.List;
 
  public class Photos extends Controller {
      @Before
@@ -292,16 +288,14 @@
      public static void upload(String qqfile, Long albumID) throws InterruptedException, IOException {
          if(request.isNew) {
              try {
-
-                 String[] allowedExtensions = {".jpg", ".jpeg", ".png", ".gif"};
                  String fileExtension = "";
+                 String[] allowedExtensions = {".jpg", ".jpeg", ".png", ".gif", ".JPG",".JPEG",".PNG",".GIF"};
                  for(String name : allowedExtensions){
                      int index = qqfile.indexOf(name);
                      if(index!=-1){
                          fileExtension=name;
                      }
                  }
-
                  InputStream data = request.body;
 
                  int maxwidth = 760;
@@ -358,7 +352,7 @@
 
                  Upload myUpload = tx.upload(req);
                  while (myUpload.isDone() == false) {
-                     System.out.println("Original Transfer: " + myUpload.getDescription());
+                     //System.out.println("Original Transfer: " + myUpload.getDescription());
                      //System.out.println("  - State: " + myUpload.getState());
                      //System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
                      // Do work while we wait for our upload to complete...
@@ -384,7 +378,7 @@
 
                  myUpload = tx.upload(req);
                  while (myUpload.isDone() == false) {
-                     System.out.println("Thumbnail Transfer: " + myUpload.getDescription());
+                     //System.out.println("Thumbnail Transfer: " + myUpload.getDescription());
                      //System.out.println("  - State: " + myUpload.getState());
                      //System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
                      // Do work while we wait for our upload to complete...
@@ -396,58 +390,6 @@
                  renderJSON("{success: false}");
              }
 
-         }
-         renderJSON("{success: true}");
-     }
-
-     public static void makeAmazonThumb(String amazonKey, String keyToFetch, Integer maxwidth, Integer maxheight) throws IOException {
-         try {
-             String accessKey = "AKIAIIDVPNAYFEVBVVFA";
-             String secretKey = "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";
-             String myBucket = "globafitnessphotos";
-             AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey));
-             S3Object object = s3.getObject(
-                     new GetObjectRequest("globafitnessphotos", keyToFetch));
-             InputStream objectData = object.getObjectContent();
-             // Process the objectData stream.
-             File file=new File("outFile2.java");
-             OutputStream out=new FileOutputStream(file);
-             byte buf[]=new byte[1024];
-             int len;
-             while((len=objectData.read(buf))>0)
-                 out.write(buf,0,len);
-             out.close();
-
-             objectData.close();
-
-             BufferedImage image = ImageIO.read(file);
-             int height = image.getHeight();
-             int width = image.getWidth();
-             File resizedPhoto = new File(file.getName());
-             resizedPhoto.createNewFile();
-             if((width>=maxwidth) || height>=maxheight){
-                 resize(file,resizedPhoto,maxwidth,maxheight,true);
-                 file = resizedPhoto;
-             }
-
-             AWSCredentials myCredentials = new BasicAWSCredentials(accessKey, secretKey);
-             TransferManager tx = new TransferManager(myCredentials);
-             PutObjectRequest req = new PutObjectRequest(myBucket, amazonKey, file);
-             req.setCannedAcl(CannedAccessControlList.PublicRead);
-
-             Upload myUpload = tx.upload(req);
-             while (myUpload.isDone() == false) {
-                 //System.out.println("Transfer: " + myUpload.getDescription());
-                 //System.out.println("  - State: " + myUpload.getState());
-                 //System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
-                 // Do work while we wait for our upload to complete...
-                 Thread.sleep(600);
-             }
-         } catch(Exception ex) {
-
-             // catch file exception
-             // catch IO Exception later on
-             renderJSON("{success: false}");
          }
          renderJSON("{success: true}");
      }

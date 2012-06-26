@@ -12,7 +12,7 @@
                             <div id="picture_title">
                                 <h2>${picture?.title}</h2>
                             </div>
-                            <img id="profile_thumb" class="picture_formating" src="${picture.getProfileThumbPic()}">
+                            <img id="profile_thumb" class="picture_formating" src="${picture.album.author.getProfileThumbPic()}">
                             <h2>${_user?.fullName()}</h2>
                             <p>${picture?.content}</p>
                         </div>

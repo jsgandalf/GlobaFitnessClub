@@ -14,11 +14,10 @@
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\invite collage2.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\cupertino\theme.css" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\jquery-ui-1.8.17.custom.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo2" afterPath="$PROJECT_DIR$/Foo2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo2.jpg" afterPath="$PROJECT_DIR$/Foo2.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Globa Fitness Club.iws" afterPath="$PROJECT_DIR$/Globa Fitness Club.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Share.java" afterPath="$PROJECT_DIR$/app/models/Share.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/index.html" afterPath="$PROJECT_DIR$/app/views/Profile/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/outFile.java" afterPath="$PROJECT_DIR$/outFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Photos.java" afterPath="$PROJECT_DIR$/app/controllers/Photos.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/display_pictures.html" afterPath="$PROJECT_DIR$/app/views/tags/display_pictures.html" />
     </list>
     <ignored path="Globa Fitness Club.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,18 +85,9 @@
         </entry>
       </file>
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/Photos/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.269231">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="122" selection-start="3776" selection-end="3776" vertical-scroll-proportion="0.50843376">
+            <state line="91" column="122" selection-start="3776" selection-end="3776" vertical-scroll-proportion="-16.23077">
               <folding />
             </state>
           </provider>
@@ -106,61 +96,34 @@
       <file leaf-file-name="addAlbumPhotos.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="-13.076923">
+            <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="-13.173077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Share.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Share.java">
+      <file leaf-file-name="display_pictures.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/tags/display_pictures.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="64" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.0">
+            <state line="14" column="99" selection-start="1268" selection-end="1268" vertical-scroll-proportion="-9.153846">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="calendar.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/Profile/calendar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="60" selection-start="773" selection-end="893" vertical-scroll-proportion="-5.576923">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fileuploader.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/fileuploader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="490" column="59" selection-start="15326" selection-end="15326" vertical-scroll-proportion="-6.8846154">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="19" selection-start="2907" selection-end="2907" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Photos.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Photos.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Photos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="470" column="27" selection-start="19174" selection-end="19186" vertical-scroll-proportion="-26.038462">
+            <state line="297" column="18" selection-start="11379" selection-end="11379" vertical-scroll-proportion="0.44308037">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="showPics.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/Photos/showPics.html">
+      <file leaf-file-name="Album.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/Album.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="-1.9615384">
+            <state line="95" column="67" selection-start="3041" selection-end="3041" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -179,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/Profile.java" />
         <option value="$PROJECT_DIR$/app/views/Profile/calendar.html" />
         <option value="$PROJECT_DIR$/app/controllers/Application.java" />
         <option value="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" />
@@ -191,18 +153,19 @@
         <option value="$PROJECT_DIR$/app/views/main.html" />
         <option value="$PROJECT_DIR$/public/javascripts/fileuploader.js" />
         <option value="$PROJECT_DIR$/app/views/Photos/showPics.html" />
-        <option value="$PROJECT_DIR$/app/controllers/Photos.java" />
         <option value="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" />
         <option value="$PROJECT_DIR$/app/models/Share.java" />
         <option value="$PROJECT_DIR$/app/views/Profile/index.html" />
+        <option value="$PROJECT_DIR$/app/views/tags/display_pictures.html" />
+        <option value="$PROJECT_DIR$/app/controllers/Photos.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="32" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -290,46 +253,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Globa Fitness Club" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Globa Fitness Club" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobaFitnessClub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Globa Fitness Club" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Globa Fitness Club" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobaFitnessClub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -353,6 +276,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Globa Fitness Club" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Globa Fitness Club" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GlobaFitnessClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tags" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -379,6 +328,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Profile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Globa Fitness Club" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Globa Fitness Club" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GlobaFitnessClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Photos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -620,7 +595,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -703,58 +678,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/aws-java-sdk-1.3.8.jar!/com/amazonaws/services/s3/model/PutObjectRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="11" selection-start="671" selection-end="671" vertical-scroll-proportion="0.29419035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/alert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="9" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/alert30.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="9" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/alertHourly.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="15" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.43037975">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/alertDailey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="9" selection-start="606" selection-end="606" vertical-scroll-proportion="0.25431532">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="109" selection-start="1798" selection-end="1798" vertical-scroll-proportion="-15.692307">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Photos/showPics.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="-1.9615384">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Photos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="470" column="27" selection-start="19174" selection-end="19186" vertical-scroll-proportion="-26.038462">
           <folding />
         </state>
       </provider>
@@ -787,9 +713,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html">
+    <entry file="file://$PROJECT_DIR$/app/views/Photos/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="-13.076923">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.269231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Picture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="62" selection-start="3497" selection-end="3551" vertical-scroll-proportion="1.4250295">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/shareNews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="122" selection-start="343" selection-end="361" vertical-scroll-proportion="0.10240964">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/shareNews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="36" selection-start="3117" selection-end="3135" vertical-scroll-proportion="0.6843374">
           <folding />
         </state>
       </provider>
@@ -801,16 +755,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Photos/index.html">
+    <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.269231">
+        <state line="91" column="122" selection-start="3776" selection-end="3776" vertical-scroll-proportion="-16.23077">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
+    <entry file="file://$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="122" selection-start="3776" selection-end="3776" vertical-scroll-proportion="0.50843376">
+        <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="-13.173077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Album.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="67" selection-start="3041" selection-end="3041" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/display_pictures.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="99" selection-start="1268" selection-end="1268" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Photos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="297" column="18" selection-start="11379" selection-end="11379" vertical-scroll-proportion="0.44308037">
           <folding />
         </state>
       </provider>
