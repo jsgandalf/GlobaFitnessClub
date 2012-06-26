@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30e2db5d-4366-4c59-b920-cf3eb849ba1e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Photos/showPics.html" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\Good.JPG" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\IMG_3381.JPG" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\IMG_4567.JPG" afterPath="" />
@@ -15,22 +14,8 @@
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\invite collage2.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\cupertino\theme.css" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\jquery-ui-1.8.17.custom.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo.jpg" afterPath="$PROJECT_DIR$/Foo.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo2.jpg" afterPath="$PROJECT_DIR$/Foo2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Foo" afterPath="$PROJECT_DIR$/Foo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Globa Fitness Club.iws" afterPath="$PROJECT_DIR$/Globa Fitness Club.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/alert.java" afterPath="$PROJECT_DIR$/app/alert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/alert30.java" afterPath="$PROJECT_DIR$/app/alert30.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/alertDailey.java" afterPath="$PROJECT_DIR$/app/alertDailey.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/alertHourly.java" afterPath="$PROJECT_DIR$/app/alertHourly.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Photos.java" afterPath="$PROJECT_DIR$/app/controllers/Photos.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" afterPath="$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" afterPath="$PROJECT_DIR$/app/views/Profile/Dialog_Create_Event.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Profile/index.html" afterPath="$PROJECT_DIR$/app/views/Profile/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.html" afterPath="$PROJECT_DIR$/app/views/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/outFile.java" afterPath="$PROJECT_DIR$/outFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/fileuploader.js" afterPath="$PROJECT_DIR$/public/javascripts/fileuploader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/globa.css" afterPath="$PROJECT_DIR$/public/stylesheets/globa.css" />
     </list>
     <ignored path="Globa Fitness Club.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,7 +94,7 @@
       <file leaf-file-name="addAlbumPhotos.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="100" selection-start="3959" selection-end="3959" vertical-scroll-proportion="0.38059703">
+            <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.84577113">
               <folding />
             </state>
           </provider>
@@ -826,7 +811,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Photos/addAlbumPhotos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="100" selection-start="3959" selection-end="3959" vertical-scroll-proportion="0.38059703">
+        <state line="129" column="0" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.84577113">
           <folding />
         </state>
       </provider>
