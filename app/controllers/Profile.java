@@ -141,10 +141,10 @@ public class Profile extends Controller{
         renderJSON(modelSerializer.serialize(newShare));
     }
 
-    public static void sharePhoto(String message, String photo){
+    public static void sharePhoto(String message, String photo, Long albumID){
         User user = connected();
         String success = "\"success\"";
-        Share newShare = new Share(user,message,3);
+        Share newShare = new Share(user,message,3,albumID);
         newShare.link = "The photo will point to someones album";
         newShare.photo = photo;
         newShare.save();

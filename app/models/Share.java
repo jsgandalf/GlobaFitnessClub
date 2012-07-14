@@ -15,6 +15,8 @@ import java.util.List;
 @Entity
 public class Share extends Model {
 
+    public Long albumID;
+
     @Required @As("yyyy-MM-dd")
     public Date creationDate;
 
@@ -45,6 +47,14 @@ public class Share extends Model {
         this.type=type;
     }
 
+
+    public Share(User author, String content, Integer type, Long albumID) {
+        this.author = author;
+        this.content = content;
+        this.creationDate = new Date();
+        this.type=type;
+        this.albumID = albumID;
+    }
     public String toString() {
         return content.length() > 50 ? content.substring(0, 50) + "..." : content;
     }

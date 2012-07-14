@@ -32,7 +32,7 @@ $(document).ready(function() {
                         $(this).dialog("close");
                         $('#dialog2').dialog("close");
                         waitingDialog({});
-                        $.post('@{Profile.sharePhoto()}',{message:$('#sharePhotoInputContent').val(), photo:$('#sharePhotoID').attr('photoKey')},function(newShare){
+                        $.post('@{Profile.sharePhoto()}',{message:$('#sharePhotoInputContent').val(), photo:$('#sharePhotoID').attr('photoKey'), albumID:$('#sharePhotoID').attr('albumID')},function(newShare){
                              $('#tabs-1').load("@{Profile.shareNews}",function(){
                                 closeWaitingDialog();
                             });

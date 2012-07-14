@@ -11,7 +11,7 @@ import play.mvc.Controller;
 
 import java.util.List;
 
-public class FitnessBlog extends Controller{
+public class FitnessBlogOld extends Controller{
 
     @Before
     static void addUser() {

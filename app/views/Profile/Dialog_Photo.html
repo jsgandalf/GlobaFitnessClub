@@ -1,7 +1,7 @@
 <div style="display:inline-block; text-align:center; padding:10px; margin: 0 auto; width:92%;">
     <h2 style="font-size:12px; margin:0;">${albums?.title}</h2>
     <a class="choosePhotoAlbum" albumid="${picture.id}" title="${picture?.title}">
-        <img style="float:none" id="sharePhotoID" photoKey="${picture.amazonThumbnailKey}" class="fancyImage choosePhotoAlbum" src="${picture.getThumb()}" alt="${picture?.title}" />
+        <img style="float:none" id="sharePhotoID" photoKey="${picture.amazonThumbnailKey}" albumID="${picture.album.id}" class="fancyImage choosePhotoAlbum" src="${picture.getThumb()}" alt="${picture?.title}" />
     </a>
     <div class="clear"></div>
     <p><div style="display:inline-block">Message:</div><div style="display:inline-block"><input class="shareInput" id="sharePhotoInputContent" type="text" maxlength="155" value=""></div></p>

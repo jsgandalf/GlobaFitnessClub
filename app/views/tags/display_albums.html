@@ -1,12 +1,13 @@
 #{list items:_albums, as:'albums'}
-<div class="post" style="border-bottom: 1px solid #D4D7D9;
+<div class="post" style="border:none;
+    vertical-align:top;
     display: inline-block;
-    height: 307px;
-    margin: 0 9px 50px;
+    height: 233px;
+    margin: 0 0 7px 17px;
     padding: 0 0 15px;
-    width: 46%;">
+    width: 47%;">
     <h2>${albums?.title}</h2>
-    <div class="infobar">
+    <div class="infobar" style="margin: 5px 0 4px;">
         Date ${albums.creationDate.format("dd MMMM yyyy")}
         <!--<span>/</span>
         Fitness Goal
@@ -16,13 +17,25 @@
         <span>/</span>
         <a href="@{Photos.showAlbum(albums.id)}">${albums.getCommentCount() ?: 'no'} comment${albums.getCommentCount().pluralize()}</a>
     </div>
-    <a href="@{Photos.showAlbum(albums.id)}" title="${albums?.title}">
-        <img src="${albums.getFirstPictureKeyThumb()}" alt="${albums?.title}" />
-    </a>
-    <div class="post_content">
-        <p>${albums?.content}</p><p><a href="@{Photos.showAlbum(albums.id)}" class="btn">View Album</a></p>
+    <div class="newsCommentContainer">
+        <a  href="@{Photos.showAlbum(albums.id)}" title="${albums?.title}" style="position:relative; top:4px">
+            <img class="fancyImage" style="float:none" src="${albums.getFirstPictureKeyThumb()}"  alt="${albums?.title}" />
+        </a>
+        #{if albums.content.size()}
+            <a href="@{Photos.showAlbum(albums.id)}"><p class="share_photo_content" style="float: none; width:120px; padding-left:0px; padding-top:9px;">${albums.content}</p></a>
+        #{/if}
     </div>
-    <div>
+    <!--<a href="@{Photos.showAlbum(albums.id)}" title="${albums?.title}">
+        <div style="width:100%">
+            <div style="float:left;">
+                <img style="display:inline-block" src="${albums.getFirstPictureKeyThumb()}" alt="${albums?.title}" />
+            </div>
+            <div style="max-width:20%; float:left; width:20%">
+                <p style="display:inline-block; margin-top:10px;">${albums?.content}<a href="@{Photos.showAlbum(albums.id)}" class="btn">View Album</a></p>
+            </div>
+        </div>
+    </a>-->
+<div>
 
     </div>
     <div class="clear"></div>

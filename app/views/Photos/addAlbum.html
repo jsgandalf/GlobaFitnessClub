@@ -48,7 +48,7 @@
                     <a class="btn" id="clickTitle">Add Title</a>
                 </li>
                 <li style="display:inline-block">
-                    <input id="name" type="text" style="width:190px" class="text" name="${field.name}" value="${album_title}" />
+                    <input maxlength="23" id="name" type="text" style="width:190px" class="text" name="${field.name}" value="${album_title}" />
                 </li>
                 #{/field}
                 #{field 'message'}
@@ -57,7 +57,7 @@
                 </li>
                 <li>
                     <!--<label for="name">Message:</label>-->
-                    <textarea id="message" style="height:68px" class="text" name="${field.name}">${message}</textarea>
+                    <input maxlength="155"  id="message" class="text" name="${field.name}" value="${message}">
                 </li>
                 <li style="margin-top:10px;">
                     <input type="submit" name="submit" value="Next" class="submit2">

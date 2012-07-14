@@ -1,0 +1,77 @@
+#{extends 'main.html' /}
+#{set title:'FitnessBlog' /}
+#{set 'moreScripts'}
+
+#{/set}
+<div class="profile_banner">
+    <div class="profile_banner_col1">
+        <div id="helper"></div>
+        <div class="left_pad">
+            <h1>Fitness Blog Help</h1>
+            <p>Welcome to Your fitness Blog, click on add post to create your first post! Edit, add, and create your fitness blog and track your goals</p>
+        </div>
+    </div>
+    <div class="profile_banner_col2">
+        <p class="pad_five">Maximize your efforts by creating a blog</p>
+    </div>
+</div>
+
+<div class="ui-widget-content ui-corner-all" id="fitnessBlogContainer">
+    #{list items:1..12, as:'i'}
+        #{if blogs}
+            #{if blogs?.get(i) != null}
+                Not null
+            #{/if}
+            #{else}
+                Null
+            #{/else}
+        #{/if}
+        #{else}
+        <div class="fitnessPicDefault">
+            <h1>
+            #{if i==1}
+                <a href="">Jan</a>
+            #{/if}
+            #{if i==2}
+                <a href="">Feb</a>
+            #{/if}
+            #{if i==3}
+            <a href="">Mar</a>
+            #{/if}
+            #{if i==4}
+            <a href="">April</a>
+            #{/if}
+            #{if i==5}
+            <a href="">May</a>
+            #{/if}
+            #{if i==6}
+            <a href="">June</a>
+            #{/if}
+            #{if i==7}
+            <a href="">July</a>
+            #{/if}
+            #{if i==8}
+            <a href="">Aug</a>
+            #{/if}
+            #{if i==9}
+            <a href="">Sept</a>
+            #{/if}
+            #{if i==10}
+            <a href="">Oct</a>
+            #{/if}
+            #{if i==11}
+            <a href="">Nov</a>
+            #{/if}
+            #{if i==12}
+            <a href="">Dec</a>
+            #{/if}
+            </h1>
+        </div>
+        #{/else}
+
+    #{/list}
+
+</div>
+
+
+</div>

@@ -1,11 +1,11 @@
 #{list items:_albums, as:'album'}
-<div class="deleteAlbum">
+<div class="deleteAlbum" style="padding-top:5px;">
     <a class="submit2" href="@{Photos.deleteAlbum(album.id)}">Delete Album</a>
 </div>
 <div class="post">
         <h2><span id="editTitle${album.id}Response">${album?.title}</span> <a style="font-size:13px; font-weight:normal;margin:0;padding:0;" class="fancybox2" href="#editTitle${album.id}">Edit</a></h2>
 
-        <div class="infobar">
+        <div class="infobar" style="margin-bottom:2px">
             Date ${album.creationDate.format("dd MMMM yyyy")}
             <!--<span>/</span>
             Fitness Goal
@@ -17,9 +17,10 @@
         <!--<a href="@{showAlbum(album.id)}" title="${album?.title}">
             <img src="${album.getFirstPictureKeyThumb()}" alt="${album?.title}" />
         </a>-->
-        <div class="post_content" style="float:none;">
+        <div class="post_content" style="float:left; width:100%">
             <p>${album?.content}</p>
         </div>
+        <div class="clear"></div>
         <div id="picture_container">
 
             #{if album?.pictures?.size()}

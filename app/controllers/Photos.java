@@ -9,11 +9,8 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.Upload;
 import flexjson.JSONSerializer;
-import models.Album;
-import models.Picture;
-import models.Picture_comment;
-import models.User;
-import play.libs.Images;
+ import models.*;
+ import play.libs.Images;
 import play.mvc.Before;
 import play.mvc.Controller;
 
@@ -71,7 +68,7 @@ import java.util.List;
          render(user);
      }
 
-     public  static void addAlbumPhotos(Long albumID){
+     public static void addAlbumPhotos(Long albumID){
          User user = connected();
          Album currentAlbum = Album.findById(albumID);
          render(user,currentAlbum);
@@ -186,8 +183,13 @@ import java.util.List;
          notFoundIfNull(currentAlbum);
          currentAlbum.deletePictures();
          currentAlbum.delete();
+         //Must delete all the shares that use this photo Album
+         List<Share> shares = Share.find("author = ? and albumID = ?",currentAlbum.author,currentAlbum.id).fetch();
+         for (Share share : shares ){
+            share.deleteShare();
+         }
          flash.success("Album was deleted.");
-         Photos.index();
+         Photos.manage();
      }
 
      public static void loading(){

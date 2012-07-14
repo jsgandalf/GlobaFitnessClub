@@ -18,7 +18,7 @@
                 <p class="pad_five">Complete your Profile to maximize your trainer finding opportunities</p>
             </div>
         </div>
-        <h2 class="showAlbum">My Album ${currentAlbum?.title}</h2>
+        <h2 class="showAlbum">${currentAlbum?.title}</h2>
         <div class="backToAlbums"><a style="font-size:12px" class="submit2" href="@{Photos.index()}">Back to Albums</a></div>
         <div class="deleteAlbum">
                <a class="submit2" href="@{Photos.deleteAlbum(currentAlbum.id)}">Delete Album</a>
@@ -40,17 +40,6 @@
         <div class="clear"></div>
         #{if currentAlbum?.pictures?.size()}
             #{display_pictures albums:currentAlbum, user:user/}
-            <script type="text/javascript">
-                $(document).ready(function() {
-
-
-
-
-                });
-
-
-
-            </script>
         #{/if}
         #{else}
             <div style="margin-top:10px"><p>You have no pictures in this Album.</p><a style="font-size:12px" class="submit2" href="@{Photos.addAlbumPhotos(currentAlbum.id)}">Add Photos</a></div>
