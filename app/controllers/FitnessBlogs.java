@@ -57,8 +57,8 @@ public class FitnessBlogs extends Controller{
     public static void motivationalQuotes(){
         User user = connected();
         List<Blog> blogs = Blog.find("author = ? and type = ?",user,2).fetch();
-        List<Quotes> quotes = Quotes.find("author = ? or default_quote = ?",user,true).fetch();
-        render(user,blogs,quotes);
+        List<Quotes> quotes = Quotes.find("author = ? or default_quote = ?", user, true).fetch();
+        render(user,blogs, quotes);
     }
     public static void generalKnowledge(){
         User user = connected();

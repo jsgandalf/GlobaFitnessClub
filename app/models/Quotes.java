@@ -1,5 +1,6 @@
 package models;
 
+import play.data.binding.As;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -10,11 +11,12 @@ import java.util.Date;
 @Entity
 public class Quotes extends Model {
 
-    @Required
-    @ManyToOne
-    public User author;
-
+    @Required @As("yyyy-MM-dd")
     public Date creationDate;
+
+    @ManyToOne
+    @Required
+    public User author;
 
     public String path;
 
@@ -22,7 +24,9 @@ public class Quotes extends Model {
 
     public Quotes(User author, String path) {
         this.author = author;
-        this.path = path;
         this.creationDate = new Date();
+        this.path = path;
+        this.default_quote = false;
     }
+
 }
