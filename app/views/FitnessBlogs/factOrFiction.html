@@ -1,0 +1,18 @@
+#{extends 'FitnessBlogFrame.html' /}
+#{set title:'FitnessBlog' /}
+#{set 'moreScripts'}
+
+#{/set}
+
+
+<div class="ui-widget-content ui-corner-all" id="fitnessBlogContainer">
+
+    <h1>Fact or Fiction</h1>
+
+</div>
+<div id="blog_comments">
+#{blog_comments blogs:blogs, user:user, type:1 /}
+</div>
+#{blog_comment_button user:user, type:1 /}
+
+</div>

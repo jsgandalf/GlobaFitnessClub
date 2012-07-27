@@ -5,6 +5,9 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import flexjson.JSONSerializer;
+import models.Blog;
+import models.Blog_comment;
 import models.FitnessBlog;
 import models.User;
 import play.libs.Images;
@@ -45,6 +48,77 @@ public class FitnessBlogs extends Controller{
         render(user,blogs);
 	}
 
+    public static void myWorkoutSheets(){
+        User user = connected();
+        render(user);
+    }
+    public static void factOrFiction(){
+        User user = connected();
+        List<Blog> blogs = Blog.find("author = ? and type = ?",user,1).fetch();
+        render(user,blogs);
+    }
+    public static void motivationalQuotes(){
+        User user = connected();
+        List<Blog> blogs = Blog.find("author = ? and type = ?",user,2).fetch();
+        render(user,blogs);
+    }
+    public static void generalKnowledge(){
+        User user = connected();
+        List<Blog> blogs = Blog.find("author = ? and type = ?",user,3).fetch();
+        render(user,blogs);
+    }
+    public static void trainingSessionInformation(){
+        User user = connected();
+        List<Blog> blogs = Blog.find("author = ? and type = ?",user,4).fetch();
+        render(user,blogs);
+    }
+    public static void myFitnessEvaluation(){
+        User user = connected();
+        render(user);
+    }
+    public static void myTrainersProfile(){
+        User user = connected();
+        render(user);
+    }
+    public static void myTransformation(){
+        User user = connected();
+        render(user);
+    }
+
+    public static void blog(String content, Integer type){
+        User user = connected();
+        String success = "\"success\"";
+        if(content.equals("")||content==null){
+            success = "\"Please share your current status!\"";
+            renderJSON("{\"success\": " + success +"}");
+        }
+        Blog newBlog = new Blog(user,content,type);
+        newBlog.save();
+        JSONSerializer modelSerializer = new JSONSerializer().include("id","content").exclude("*");
+        renderJSON(modelSerializer.serialize(newBlog));
+    }
+
+    public static void blog_comments(Integer type){
+        User user = connected();
+        List<Blog> blogs = Blog.find("author = ? and type = ?",user,type ).fetch();
+        render(blogs,user, type);
+    }
+    public static void deleteBlog(Long id){
+        Blog newBlog = Blog.findById(id);
+        newBlog.deleteBlog();
+    }
+    public static void addComment(Long blogID, String content){
+        User user = connected();
+        Blog currentBlog = Blog.findById(blogID);
+        Blog_comment comment = new Blog_comment(currentBlog, user, content);
+        comment.save();
+        JSONSerializer modelSerializer = new JSONSerializer().include("id","content").exclude("*");
+        renderJSON(modelSerializer.serialize(comment));
+    }
+    public static void deleteComment(Long commentID){
+        Blog_comment newComment = Blog_comment.findById(commentID);
+        newComment.delete();
+    }
     public static void uploadBlogPhoto(File photo, int month) throws IOException {
         long MAX_SIZE = 5242880;
         User user = connected();

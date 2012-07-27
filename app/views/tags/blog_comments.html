@@ -1,48 +1,31 @@
-#{if _shares.size()}
-    #{list items:_shares, as:'share'}
-        <div class="newsComments" shareid="${share.id}" id="newsComments${share.id}">
+<div style="display:none">
+    <div id="dialog2" title="Loading">Loading</div>
+    <div id="dialog3" title="Loading">Loading</div>
+    <div id="loadingScreen"></div>
+</div>
+
+<div class="ui-corner-all blog_comments_background">
+#{if _blogs.size()}
+    #{list items:_blogs, as:'blog'}
+        <div class="newsComments" shareid="${blog.id}" id="newsComments${blog.id}">
             <div id="profile_thumb_container">
                 <div class="newsCommentThumb">
                     <img id="profile_thumb" class="picture_formating"  style="float:none;" src="${_user.getProfileThumbPic()}">
                     <div class='commentDate shareCommentDate'>
-                        ${new Date(share.creationDate.getTime()).since()}
+                        ${new Date(blog.creationDate.getTime()).since()}
                     </div>
                 </div>
                 <div class="newsCommentContainer">
                     <h2>${_user?.fullName()}</h2>
-                    #{if share.type==4}
-                    <p style="float:none; margin:0px;">
-                        <iframe class="fancyImage" style="float:none" width="320" height="155" src="${share.videoName}?wmode=transparent" frameborder="0" allowfullscreen></iframe>
-                    </p>
-                    #{/if}
-                    #{if share.type==3}
-
-                            <a class="fancybox" href="https://s3.amazonaws.com/globafitnessphotos/${share.getPhotoFromThumb()}" style="position:relative; top:4px">
-                                <img class="fancyImage" style="float:none" src="https://s3.amazonaws.com/globafitnessphotos/${share.photo}"  alt="${share?.content}" />
-                            </a>
-
-                        #{if share.content.size()}
-                            <p class="share_photo_content" style="float: none;">${share.content}</p>
-                        #{/if}
-
-                    #{/if}
-                    #{elseif share.type==2}
-                        <p style="float:none; margin:0px;">
-                            <a href="${share.link}" class="commonLink" target="_blank">${share.link}</a>
-                        </p>
-                        <p  style="float:none;">${share.content}</p>
-                    #{/elseif}
-                    #{else}
-                            <p  style="float:none;">${share.content}</p>
-                    #{/else}
-                    <span id="commentContainer${share.id}">
-                        #{if share.getComments().size()}
-                            #{if share.getComments().size() >0}
-                                <div class="picture_lists viewAllComments" shareid="${share.id}">
-                                    <div class="messageIcon"></div> <a>View all ${share.getComments().size()}</a>
+                    <p  style="float:none;">${blog.content}</p>
+                    <span id="commentContainer${blog.id}">
+                        #{if blog.getComments().size()}
+                            #{if blog.getComments().size() >0}
+                                <div class="picture_lists viewAllComments" shareid="${blog.id}">
+                                    <div class="messageIcon"></div> <a>View all ${blog.getComments().size()}</a>
                                 </div>
                             #{/if}
-                            #{list items:share.getComments(), as:'comment'}
+                            #{list items:blog.getComments(), as:'comment'}
                             <div class="${comment_index>0 ? 'hide' : ''} picture_lists share_comment_list" id='comment${comment.id}' commentid='${comment.id}'>
                                 <img class='commentThumbPic' src="${comment.author.getProfileThumbPic()}" width='32' height='32'>
                                 <div class='commentRightText'>
@@ -60,27 +43,28 @@
                             #{/list}
                         #{/if}
                     </span>
-                    <div id="newsCommentContainer${share.id}" style="width:100%; padding-top: 3px;">
+                    <div id="newsCommentContainer${blog.id}" style="width:100%; padding-top: 3px;">
                         <p style="float:none;"><a class="shareCommentLink">Comment</a></p>
-                        <div class="share_comments" id="share_comments${share.id}">
+                        <div class="share_comments" id="share_comments${blog.id}">
                             <div>
                                 <img width="32" height="32" class="picture_formating" src="${_user.getProfileThumbPic()}">
                             </div>
-                            <div><input class="myPictureComment" id="myShareComment${share.id}" type="text"></div>
+                            <div><input class="myPictureComment" id="myShareComment${blog.id}" type="text"></div>
                             <div>
                                 <a class="Button shareCommentButton">Comment</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="deleteShareDiv" id="deleteShareDiv${share.id}"><div class="deleteComment"></div></div>
+                <div class="deleteShareDiv" id="deleteShareDiv${blog.id}"><div class="deleteComment"></div></div>
             </div>
         </div>
     #{/list}
 #{/if}
 #{else}
-    <p>You have not shared anything, please click share to update your latest news!</p>
+    <p>You have not commented anything! Comment here to update your latest news!</p>
 #{/else}
+</div>
 
 <script type="text/javascript">
 $(function() {
@@ -88,6 +72,7 @@ $(function() {
 });
 $(document).ready(function() {
     resetPagination();
+    initializeLoadingDialog();
     $('.deleteShareDiv').hide();
 
     $('.viewAllComments').click(function(){
@@ -97,13 +82,13 @@ $(document).ready(function() {
     $('.shareCommentButton').click(function(){
         waitingDialog({});
         var shareID = $(this).parent().parent().parent().parent().parent().parent().attr('shareID');
-        $.post('@{Profile.addComment()}',{shareID:shareID,content:$('#myShareComment'+shareID).val()},function(newShare){
+        $.post('@{FitnessBlogs.addComment()}',{blogID:shareID,content:$('#myShareComment'+shareID).val()},function(newShare){
             closeWaitingDialog();
             $('#commentContainer'+shareID).append("<div class='picture_lists share_comment_list' id='comment"+newShare.id+"' commentid='"+newShare.id+"'><img class='commentThumbPic' src='${_user.getProfileThumbPic()}' width='32' height='32'><div class='commentRightText'><span class='redText' style='margin-right:5px'>${_user.fullName()}</span>"+newShare.content+"<div id='deleteComment"+newShare.id+"' class='deleteCommentDiv'><div class='deleteComment'></div></div><div class='commentDate'>a few seconds ago</div></div><div class='clear'></div></div>");
             var id = newShare.id;
             $("#deleteComment"+id).click(function(){
                 $('#comment'+id).remove();
-                $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
+                $.post('@{FitnessBlogs.deleteComment()}', {commentID: id}, function(deleteComment){
                     $('#comment'+id).remove();
                 });
             });
@@ -136,7 +121,7 @@ $(document).ready(function() {
         var id = $(this).parent().parent().attr('commentid');
         $(this).unbind();
         $('#comment'+id).remove();
-        $.post('@{Profile.deleteComment()}', {commentID: id}, function(deleteComment){
+        $.post('@{FitnessBlogs.deleteComment()}', {commentID: id}, function(deleteComment){
             $('#comment'+id).remove();
             //closeWaitingDialog();
         });
@@ -153,7 +138,7 @@ $(document).ready(function() {
         var id = $(this).parent().parent().attr('shareid');
         $(this).unbind();
         $('#newsComments'+id).remove();
-        $.post('@{Profile.deleteShare()}', {id: id}, function(data){
+        $.post('@{FitnessBlogs.deleteBlog()}', {id: id}, function(data){
             $('#newsComments'+id).remove();
             closeWaitingDialog();
         });

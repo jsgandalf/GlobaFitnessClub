@@ -1,0 +1,21 @@
+#{extends 'FitnessBlogFrame.html' /}
+#{set title:'FitnessBlog' /}
+#{set 'moreScripts'}
+
+#{/set}
+
+
+<div class="ui-widget-content ui-corner-all" id="fitnessBlogContainer">
+
+    <h1>My Workout Sheets</h1>
+    <div class="workoutLinks">
+        <a href="@{'/public/documents/generalworkout.xlsx'}"><b>Blank Workout</b> (Excel)</a><br />
+        <a href="@{'/public/documents/workout.xlsx'}"><b>General Workout Plan</b>   (Excel)</a><br/ >
+        <a href="@{'/public/documents/workoutSheet.pdf'}"><b>Blank Workout</b> (PDF)</a><br/ >
+        <a href="@{'/public/documents/upperbody.pdf'}"><b>Upper-Body</b> (PDF)</a><br/ >
+        <a href="@{'/public/documents/lowerbody.pdf'}"><b>Lower-Body</b> (PDF)</a><br/ >
+    </div>
+</div>
+
+
+</div>

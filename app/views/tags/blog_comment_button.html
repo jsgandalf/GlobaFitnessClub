@@ -1,0 +1,101 @@
+<div class="shareDiv" style="width:100%">
+    <!--<div class="shareLinks"><span class="grey bold">Share Comment:</span> <a id="shareLink" class="commonLink upShareLink">Link</a> | <a id="sharePhoto" class="commonLink upShareLink">Photo</a> | <a id="shareVideo" class="commonLink upShareLink">Video</a></div>-->
+    <input class="shareInput" type="text" size="16" placeholder="I.e. Insanity workout 20 minutes!">
+    <a id="shareButton" class="Button">Comment</a>
+</div>
+
+<script type="text/javascript">
+    $(".shareInput").keypress(function(e) {
+        if(e.which == 13) {
+            $("#shareButton").click();
+        }
+    });
+    $('#shareButton').click(function(){
+        waitingDialog({});
+        $.post('@{FitnessBlogs.Blog()}',{content:$('.shareInput').val(),type:${_type}},function(newBlog){
+            var listAction = #{jsAction @FitnessBlogs.blog_comments(':type') /}
+            $('#blog_comments').load(listAction({type: ${_type}}),function(){
+                $('.shareInput').val("");
+                closeWaitingDialog();
+            });
+        },'json');
+    });
+
+    $('#shareLink').click(function(){
+        $("#dialog2").html('<p>Share a Link on your news page! For example type:<br /> http://www.mysite.com</p><p><table class="shareTables"><tr><td>Link:</td><td><input placeholder="http://www.mysite.com" class="shareInput" id="shareLinkInput" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input class="shareInput" id="shareLinkInputContent" type="text" size="16" value="" placeholder="Your message here"></td></tr></table><p>');
+        $("#dialog2").dialog({
+            width: 400,
+            height: 'auto',
+            title: "Share Link",
+            buttons: [
+                {
+                    text: "Cancel",
+                    click: function() { $(this).dialog("close"); }
+                },
+                {
+                    text: "Share",
+                    click: function() {
+                        $(this).dialog("close");
+                        waitingDialog({});
+                        $.post('@{Profile.shareLink()}',{link:$('#shareLinkInput').val(), message:$('#shareLinkInputContent').val()},function(newShare){
+                            $('#tabs-1').load("@{Profile.shareNews}",function(){
+                                closeWaitingDialog();
+                            });
+                        });
+                    }
+                }
+            ],
+            open: function(event, ui) { $('#shareLinkInput').focus(); },
+            modal: true
+        })
+    });
+    $('#sharePhoto').click(function(){
+        waitingDialog({});
+        $("#dialog2").load("@{Profile.sharePhotoDiv}", function(){
+            closeWaitingDialog();
+            $("#dialog2").dialog({
+               width: 'auto',
+               height: 500,
+               title: "Share Photo",
+               buttons: [
+                    {
+                        text: "Cancel",
+                        click: function() { $(this).dialog("close"); }
+                    }
+               ],
+               modal: true
+            })
+        });
+    });
+    $('#shareVideo').click(function(){
+        var src = "@{'/public/images/youtube_help.jpg'}";
+        $("#dialog2").html('<div style="display:inline-block; width:595px; margin: 0 auto;"><p>Share a Video on your news page from youtube! Simply click on the share button and copy and paste the link from the youtube video! Look at the example below.<br><br /><img src="'+src+'"></p><p><table class="shareTables"><tr><td>Link to this video:</td><td><input placeholder="http://youtu.be/1SEl5H8hwLw" class="shareInput" id="shareVideoInput" style="width:307px" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input style="width:307px" class="shareInput" id="shareVideoInputContent" placeholder="Type your message here." type="text" size="16" value=""></td></tr></table><p></div>');
+        $("#dialog2").dialog({
+            width: 700,
+            height: 'auto',
+            title: "Share Link",
+            buttons: [
+                {
+                    text: "Cancel",
+                    click: function() { $(this).dialog("close"); }
+                },
+                {
+                    text: "Share",
+                    click: function() {
+                        waitingDialog({});
+                        $(this).dialog("close");
+                        $.post('@{Profile.shareVideo()}',{video:$('#shareVideoInput').val(), message:$('#shareVideoInputContent').val()},function(newShare){
+                            $('#tabs-1').load("@{Profile.shareNews}",function(){
+                                closeWaitingDialog();
+                            });
+                        });
+                    }
+                }
+            ],
+            open: function(event, ui) { $('#shareLinkInput').focus(); },
+            modal: true
+        })
+    });
+
+    $(".fancybox").fancybox();
+</script>

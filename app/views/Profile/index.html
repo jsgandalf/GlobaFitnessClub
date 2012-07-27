@@ -213,7 +213,11 @@ $(document).ready(function() {
             });
         },'json');
     });
-
+    $(".shareInput").keypress(function(e) {
+        if(e.which == 13) {
+            $("#shareButton").click();
+        }
+    });
     $('#shareLink').click(function(){
         $("#dialog2").html('<p>Share a Link on your news page! For example type:<br /> http://www.mysite.com</p><p><table class="shareTables"><tr><td>Link:</td><td><input placeholder="http://www.mysite.com" class="shareInput" id="shareLinkInput" type="text" size="16" value=""></td></tr><tr><td>Message:</td><td><input class="shareInput" id="shareLinkInputContent" type="text" size="16" value="" placeholder="Your message here"></td></tr></table><p>');
         $("#dialog2").dialog({

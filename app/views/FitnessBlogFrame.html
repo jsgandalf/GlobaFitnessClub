@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+#{set title:'FitnessBlog' /}
+#{set 'moreScripts'}
+
+#{/set}
+#{set 'moreStyles'}
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+#{/set}
+<!--<h2 style="margin-bottom:27px; margin-left:0px; padding-left:20px;"><a style="color:#555454" href="@{index}">Settings</a></h2>-->
+<div class="profile_banner">
+    <div class="profile_banner_col1">
+        <div id="helper"></div>
+        <div class="left_pad">
+            <h1>Fitness Blog Help</h1>
+            <p>Welcome to Your fitness Blog, click on add post to create your first post! Edit, add, and create your fitness blog and track your goals</p>
+        </div>
+    </div>
+    <div class="profile_banner_col2">
+        <p class="pad_five">Maximize your efforts by creating a blog</p>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="sidebar" style="width:196px">
+<h3>My Blog</h3>
+    <ul class="sb_menu">
+        <li><a href="@{myWorkoutSheets()}">My Workout Sheets</a></li>
+        <li><a href="@{myFitnessEvaluation()}">My Fitness Evaluation</a></li>
+        <li><a href="@{myTrainersProfile()}">My Trainers Profile</a></li>
+        <li><a href="@{factOrFiction()}">Fact or Fiction</a></li>
+        <li><a href="@{motivationalQuotes()}">Motivational quotes</a></li>
+        <li><a href="@{generalKnowledge()}">General Knowledge</a></li>
+        <li class="last"><a href="@{trainingSessionInformation()}">Training/Session Information</a></li>
+    </ul>
+</div>
+
+<div class="fitness_blog_content">
+    #{doLayout /}
+</div>
+<div class="clear"></div>
+</div>
