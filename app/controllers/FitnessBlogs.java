@@ -6,10 +6,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import flexjson.JSONSerializer;
-import models.Blog;
-import models.Blog_comment;
-import models.FitnessBlog;
-import models.User;
+import models.*;
 import play.libs.Images;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -60,7 +57,8 @@ public class FitnessBlogs extends Controller{
     public static void motivationalQuotes(){
         User user = connected();
         List<Blog> blogs = Blog.find("author = ? and type = ?",user,2).fetch();
-        render(user,blogs);
+        List<Quotes> quotes = Quotes.find("author = ? or default_quote = ?",user,true).fetch();
+        render(user,blogs,quotes);
     }
     public static void generalKnowledge(){
         User user = connected();

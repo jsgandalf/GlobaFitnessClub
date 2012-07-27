@@ -5,14 +5,40 @@
 #{/set}
 
 
-<div class="ui-widget-content ui-corner-all" id="fitnessBlogContainer">
+<!--<div class="ui-widget-content ui-corner-all" id="fitnessBlogContainer">
 
     <h1>Motivational Quotes</h1>
 
+</div>-->
+<div id="gallery" class="ad-gallery ui-corner-all">
+    <div class="ad-image-wrapper">
+    </div>
+    <div class="ad-controls">
+    </div>
+    <div class="ad-nav">
+        <div class="ad-thumbs">
+            <ul class="ad-thumb-list">
+                #{list items:quotes, as:'quote'}
+                <li>
+                    <a href="${quote.path}">
+                        <img src="${quote.path}" class="image${quote_index} resize">
+                    </a>
+                </li>
+                #{/list}
+            </ul>
+        </div>
+    </div>
 </div>
+
 <div id="blog_comments">
     #{blog_comments blogs:blogs, user:user, type:2 /}
 </div>
 #{blog_comment_button user:user, type:2 /}
 
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        var galleries = $('.ad-gallery').adGallery();
+    });
+</script>

@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
-public class quotes extends Model {
+public class Quotes extends Model {
 
     @Required
     @ManyToOne
@@ -20,7 +20,7 @@ public class quotes extends Model {
 
     public Boolean default_quote;
 
-    public quotes(User author, String path) {
+    public Quotes(User author, String path) {
         this.author = author;
         this.path = path;
         this.creationDate = new Date();

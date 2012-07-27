@@ -2805,3 +2805,8 @@ font-weight:bold;
     background-color: #F7F4F4;
     border: 1px solid #DDDDDD;
 }
+
+.resize{
+    width:70px;
+    height:55px;
+}

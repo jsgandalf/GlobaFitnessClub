@@ -27,6 +27,10 @@ public class Blog extends Model {
     @Required
     public User author;
 
+    @ManyToOne
+    @Required
+    public Quotes quote;
+
     //1 for fact or fiction
     //2 for Motivational Quotes
     //3 General Knowledge

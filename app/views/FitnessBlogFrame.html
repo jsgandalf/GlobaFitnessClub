@@ -1,10 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'FitnessBlog' /}
 #{set 'moreScripts'}
-
+<!---Jquery Photo Gallery plugin --->
+<script type="text/javascript" src="@{'/public/javascripts/ADgallery/jquery.ad-gallery.min.js'}"></script>
 #{/set}
 #{set 'moreStyles'}
 <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/trainer.css'}" />
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/javascripts/ADgallery/jquery.ad-gallery.css'}" />
 #{/set}
 <!--<h2 style="margin-bottom:27px; margin-left:0px; padding-left:20px;"><a style="color:#555454" href="@{index}">Settings</a></h2>-->
 <div class="profile_banner">
