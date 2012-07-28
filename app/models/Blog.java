@@ -48,6 +48,13 @@ public class Blog extends Model {
         this.creationDate = new Date();
         this.type=type;
     }
+    public Blog(User author, String content, Integer type, Quotes quote) {
+        this.author = author;
+        this.content = content;
+        this.creationDate = new Date();
+        this.type=type;
+        this.quote = quote;
+    }
 
     public String toString() {
         return content.length() > 50 ? content.substring(0, 50) + "..." : content;

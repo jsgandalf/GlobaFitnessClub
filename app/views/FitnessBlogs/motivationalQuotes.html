@@ -7,9 +7,13 @@
 
 <!--<div class="ui-widget-content ui-corner-all" id="fitnessBlogContainer">
 
-    <h1>Motivational Quotes</h1>
+
 
 </div>-->
+<div style="text-align:center">
+    <h1>Motivational Quotes</h1>
+    <p style="font-size:14px;">Please select a motivational quote for your blog.</p>
+</div>
 <div id="gallery" class="ad-gallery ui-corner-all">
     <div class="ad-image-wrapper">
     </div>
@@ -21,7 +25,7 @@
                 #{list items:quotes, as:'quote'}
                 <li>
                     <a href="${quote.path}">
-                        <img src="${quote.path}" class="image${quote_index} resize">
+                        <img src="${quote.path}" index="${quote_index}" class="image${quote_index} resize" quoteid="${quote.id}" id="${quote.id}">
                     </a>
                 </li>
                 #{/list}
@@ -31,14 +35,43 @@
 </div>
 
 <div id="blog_comments">
-    #{blog_comments blogs:blogs, user:user, type:2 /}
+    #{blog_comments blogs:blogs, user:user, type:2,quote:quoteSelected /}
 </div>
-#{blog_comment_button user:user, type:2 /}
+#{blog_comment_button_quote user:user, type:2 /}
 
 </div>
 
 <script type="text/javascript">
+    sum = $("#${quoteSelected.id}").attr("index")-1;
+    window.location.hash = "ad-image-"+sum;
+
+    $(document).ready(function(){
+
+        $('.resize').click(function(){
+            id = $(this).attr("quoteid");
+            //waitingDialog({});
+            var listAction = #{jsAction @FitnessBlogs.blog_comments_quotes(':type',':quoteid') /}
+            $('#blog_comments').load(listAction({type: 2,quoteid:id}),function(){
+
+                //closeWaitingDialog();
+            });
+        });
+    });
     $(function() {
         var galleries = $('.ad-gallery').adGallery();
+        $(".ad-gallery").on("click", ".ad-image", function() {
+              $.fancybox.open({
+                href : $(this).find("img").attr("src"),
+                closeBtn: false,
+                closeClick : true,
+                openEffect : 'elastic',
+                openSpeed  : 150,
+                closeEffect : 'elastic',
+                closeSpeed  : 150,
+                helpers : {
+                  overlay : true
+                }
+              });
+        });
     });
 </script>

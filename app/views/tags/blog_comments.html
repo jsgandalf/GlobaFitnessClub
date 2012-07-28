@@ -3,7 +3,7 @@
     <div id="dialog3" title="Loading">Loading</div>
     <div id="loadingScreen"></div>
 </div>
-
+<span id="selectedQuoteID" quoteid="${_quote.id}"></span>
 <div class="ui-corner-all blog_comments_background">
 #{if _blogs.size()}
     #{list items:_blogs, as:'blog'}
@@ -17,7 +17,7 @@
                 </div>
                 <div class="newsCommentContainer">
                     <h2>${_user?.fullName()}</h2>
-                    <p  style="float:none;">${blog.content}</p>
+                    <p style="float:none;">${blog.content}</p>
                     <span id="commentContainer${blog.id}">
                         #{if blog.getComments().size()}
                             #{if blog.getComments().size() >0}

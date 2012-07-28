@@ -22,11 +22,14 @@ public class Quotes extends Model {
 
     public Boolean default_quote;
 
+    public Boolean selected;
+
     public Quotes(User author, String path) {
         this.author = author;
         this.creationDate = new Date();
         this.path = path;
         this.default_quote = false;
+        this.selected = true;
     }
 
 }

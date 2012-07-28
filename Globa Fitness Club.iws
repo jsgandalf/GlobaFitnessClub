@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/app/views/FitnessBlogs/motivationalQuotes.html" line="53" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="30e2db5d-4366-4c59-b920-cf3eb849ba1e" name="Default" comment="">
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\Good.JPG" afterPath="" />
@@ -10,7 +13,6 @@
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\SAM_0307.JPG" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\SAM_0705.JPG" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\SeanandcorriTouchedUp.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\app\models\quotes.java" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\dsc_0036.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\invite collage2.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\images\motivation\b (2).jpg" afterPath="" />
@@ -18,7 +20,13 @@
       <change type="DELETED" beforePath="C:\play-1.2.4\GlobaFitnessClub\public\javascripts\fullcalendar\jquery-ui-1.8.17.custom.min.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Globa Fitness Club.iws" afterPath="$PROJECT_DIR$/Globa Fitness Club.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/FitnessBlogs.java" afterPath="$PROJECT_DIR$/app/controllers/FitnessBlogs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Blog.java" afterPath="$PROJECT_DIR$/app/models/Blog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Quotes.java" afterPath="$PROJECT_DIR$/app/models/Quotes.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/FitnessBlogFrame.html" afterPath="$PROJECT_DIR$/app/views/FitnessBlogFrame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/FitnessBlogs/motivationalQuotes.html" afterPath="$PROJECT_DIR$/app/views/FitnessBlogs/motivationalQuotes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/blog_comments.html" afterPath="$PROJECT_DIR$/app/views/tags/blog_comments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.js" afterPath="$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.min.js" afterPath="$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.min.js" />
     </list>
     <ignored path="Globa Fitness Club.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,7 +87,16 @@
       <file leaf-file-name="motivationalQuotes.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogs/motivationalQuotes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="35" selection-start="489" selection-end="489" vertical-scroll-proportion="0.40332147">
+            <state line="50" column="38" selection-start="1364" selection-end="1371" vertical-scroll-proportion="0.5243179">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Selected.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/Selected.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="27" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -88,39 +105,10 @@
       <file leaf-file-name="FitnessBlogs.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/FitnessBlogs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="33" selection-start="1857" selection-end="1863" vertical-scroll-proportion="0.0">
+            <state line="69" column="97" selection-start="2303" selection-end="2303" vertical-scroll-proportion="-20.923077">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Quotes.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Quotes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="1" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Blog.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Blog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="25" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FitnessBlogFrame.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogFrame.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="82" selection-start="431" selection-end="431" vertical-scroll-proportion="-5.230769">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -128,16 +116,7 @@
       <file leaf-file-name="globa.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/globa.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2810" column="11" selection-start="51279" selection-end="51279" vertical-scroll-proportion="-29.807692">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blog_comment_button.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comment_button.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="56" selection-start="479" selection-end="479" vertical-scroll-proportion="-1.9615384">
+            <state line="2181" column="33" selection-start="41680" selection-end="41680" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -146,25 +125,34 @@
       <file leaf-file-name="blog_comments.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comments.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="4" selection-start="251" selection-end="282" vertical-scroll-proportion="-5.230769">
+            <state line="5" column="39" selection-start="212" selection-end="212" vertical-scroll-proportion="-1.6346154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.ad-gallery.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.css">
+      <file leaf-file-name="blog_comments_quotes.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogs/blog_comments_quotes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="14" selection-start="353" selection-end="353" vertical-scroll-proportion="-6.5384617">
+            <state line="0" column="62" selection-start="62" selection-end="62" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="example.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/Gallery/example/example.html">
+      <file leaf-file-name="blog_comment_button_quote.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comment_button_quote.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="10" selection-start="409" selection-end="482" vertical-scroll-proportion="-7.8461537">
+            <state line="16" column="105" selection-start="1071" selection-end="1076" vertical-scroll-proportion="-4.730769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Quotes.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/Quotes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="4" selection-start="316" selection-end="364" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -183,20 +171,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/Profile/index.html" />
-        <option value="$PROJECT_DIR$/app/views/tags/blog_comments.html" />
-        <option value="$PROJECT_DIR$/app/views/FitnessBlogs/generalKnowledge.html" />
-        <option value="$PROJECT_DIR$/app/views/FitnessBlogs/trainingSessionInformation.html" />
-        <option value="$PROJECT_DIR$/app/models/quotes.java" />
-        <option value="$USER_HOME$/Desktop/Gallery/example/example.html" />
         <option value="$PROJECT_DIR$/app/views/main.html" />
-        <option value="$PROJECT_DIR$/app/views/FitnessBlogFrame.html" />
         <option value="$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.css" />
         <option value="$PROJECT_DIR$/public/stylesheets/globa.css" />
-        <option value="$PROJECT_DIR$/app/views/tags/blog_comment_button.html" />
-        <option value="$PROJECT_DIR$/app/models/Blog.java" />
         <option value="$PROJECT_DIR$/app/models/Quote.java" />
+        <option value="$PROJECT_DIR$/app/views/FitnessBlogFrame.html" />
+        <option value="$PROJECT_DIR$/app/models/Blog.java" />
+        <option value="$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.min.js" />
+        <option value="$PROJECT_DIR$/app/views/tags/blog_comment_button.html" />
         <option value="$PROJECT_DIR$/app/models/Quotes.java" />
+        <option value="$PROJECT_DIR$/app/views/tags/blog_comments.html" />
+        <option value="$PROJECT_DIR$/app/views/FitnessBlogs/blog_comments_quotes.html" />
+        <option value="$PROJECT_DIR$/app/views/tags/blog_comment_button_quote.html" />
+        <option value="$PROJECT_DIR$/app/models/Selected.java" />
         <option value="$PROJECT_DIR$/app/controllers/FitnessBlogs.java" />
         <option value="$PROJECT_DIR$/app/views/FitnessBlogs/motivationalQuotes.html" />
       </list>
@@ -408,32 +396,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Globa Fitness Club" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Globa Fitness Club" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobaFitnessClub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="FitnessBlogs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -517,10 +479,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\FitnessBlogs" />
+      <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\tags" />
       <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views" />
       <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\FitnessBlog" />
       <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\Mails" />
-      <recent name="C:\play-1.2.4\GlobaFitnessClub\app\views\tags" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\play-1.2.4\GlobaFitnessClub\app\sms" />
@@ -694,13 +656,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14529915" sideWeight="0.4765625" order="0" side_tool="true" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20940171" sideWeight="0.4765625" order="0" side_tool="true" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -768,118 +730,118 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/tags/shareNews.html">
+    <entry file="file://$PROJECT_DIR$/app/views/Photos/showAlbum.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="23" selection-start="6676" selection-end="6676" vertical-scroll-proportion="0.89759034">
+        <state line="41" column="30" selection-start="2010" selection-end="2026" vertical-scroll-proportion="-22.615385">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Profile/index.html">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="29" selection-start="7829" selection-end="7837" vertical-scroll-proportion="0.43012047">
+        <state line="9" column="95" selection-start="420" selection-end="420" vertical-scroll-proportion="0.39534885">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogs/factOrFiction.html">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="208" selection-end="332" vertical-scroll-proportion="-7.8461537">
+        <state line="11" column="57" selection-start="436" selection-end="436" vertical-scroll-proportion="0.3325">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogs/generalKnowledge.html">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_04/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="210" selection-end="338" vertical-scroll-proportion="-7.8461537">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogs/trainingSessionInformation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="39" selection-start="346" selection-end="346" vertical-scroll-proportion="-9.807693">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="123" selection-start="2751" selection-end="2751" vertical-scroll-proportion="-7.8461537">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogFrame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="82" selection-start="431" selection-end="431" vertical-scroll-proportion="-5.230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Gallery/example/example.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="10" selection-start="409" selection-end="482" vertical-scroll-proportion="-7.8461537">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/globa.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2810" column="11" selection-start="51279" selection-end="51279" vertical-scroll-proportion="-29.807692">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comment_button.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="56" selection-start="479" selection-end="479" vertical-scroll-proportion="-1.9615384">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="4" selection-start="251" selection-end="282" vertical-scroll-proportion="-5.230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/ADgallery/jquery.ad-gallery.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="14" selection-start="353" selection-end="353" vertical-scroll-proportion="-6.5384617">
+        <state line="108" column="0" selection-start="4191" selection-end="4208" vertical-scroll-proportion="0.33256617">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Blog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="25" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0">
+        <state line="50" column="11" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.33256617">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/globa.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2181" column="33" selection-start="41680" selection-end="41680" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comment_button.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="85" selection-start="801" selection-end="801" vertical-scroll-proportion="0.28674698">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/display_pictures.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="4" selection-start="3914" selection-end="4575" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Photos/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.27046263">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Quotes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="1" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+        <state line="16" column="4" selection-start="316" selection-end="364" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Selected.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="27" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/FitnessBlogs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="33" selection-start="1857" selection-end="1863" vertical-scroll-proportion="0.0">
+        <state line="69" column="97" selection-start="2303" selection-end="2303" vertical-scroll-proportion="-20.923077">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="39" selection-start="212" selection-end="212" vertical-scroll-proportion="-1.6346154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogs/blog_comments_quotes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="62" selection-start="62" selection-end="62" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/blog_comment_button_quote.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="105" selection-start="1071" selection-end="1076" vertical-scroll-proportion="-4.730769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/FitnessBlogs/motivationalQuotes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="35" selection-start="489" selection-end="489" vertical-scroll-proportion="0.40332147">
+        <state line="50" column="38" selection-start="1364" selection-end="1371" vertical-scroll-proportion="0.5243179">
           <folding />
         </state>
       </provider>

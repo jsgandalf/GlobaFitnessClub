@@ -7,6 +7,7 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import flexjson.JSONSerializer;
 import models.*;
+import play.Logger;
 import play.libs.Images;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -56,9 +57,19 @@ public class FitnessBlogs extends Controller{
     }
     public static void motivationalQuotes(){
         User user = connected();
-        List<Blog> blogs = Blog.find("author = ? and type = ?",user,2).fetch();
+        Selected selected = Selected.find("author = ?",user).first();
+        Quotes quoteSelected;
+        if(selected == null){
+            quoteSelected = Quotes.find("author = ? or default_quote = ? order by id asc", user, true).first();
+            Logger.info(""+quoteSelected.id);
+        }else{
+            quoteSelected = Quotes.findById(selected.quote.id);
+            Logger.info("A log message"+quoteSelected.id);
+        }
         List<Quotes> quotes = Quotes.find("author = ? or default_quote = ?", user, true).fetch();
-        render(user,blogs, quotes);
+        List<Blog> blogs = Blog.find("author = ? and type = ? and quote = ?",user,2,quoteSelected).fetch();
+        Logger.info("A log new"+quoteSelected.id);
+        render(user,blogs, quotes, quoteSelected);
     }
     public static void generalKnowledge(){
         User user = connected();
@@ -95,12 +106,38 @@ public class FitnessBlogs extends Controller{
         JSONSerializer modelSerializer = new JSONSerializer().include("id","content").exclude("*");
         renderJSON(modelSerializer.serialize(newBlog));
     }
-
-    public static void blog_comments(Integer type){
+    public static void BlogQuote(String content, Integer type, Long quoteid){
         User user = connected();
-        List<Blog> blogs = Blog.find("author = ? and type = ?",user,type ).fetch();
-        render(blogs,user, type);
+        String success = "\"success\"";
+        if(content.equals("")||content==null){
+            success = "\"Please share your current status!\"";
+            renderJSON("{\"success\": " + success +"}");
+        }
+        Quotes quote = Quotes.findById(quoteid);
+        Blog newBlog = new Blog(user,content,type, quote);
+        newBlog.save();
+        JSONSerializer modelSerializer = new JSONSerializer().include("id","content").exclude("*");
+        renderJSON(modelSerializer.serialize(newBlog));
     }
+    public static void blog_comments(Integer type, Long quoteid){
+        User user = connected();
+        Quotes quote = Quotes.findById(quoteid);
+        List<Blog> blogs = Blog.find("author = ? and type = ? and quote = ?",user,type,quote).fetch();
+        render(blogs,user, type,quote);
+    }
+    public static void blog_comments_quotes(Integer type, Long quoteid){
+        User user = connected();
+        Quotes quote = Quotes.findById(quoteid);
+        List<Blog> blogs = Blog.find("author = ? and type = ? and quote = ?",user,type,quote).fetch();
+        Selected select = Selected.find("author = ?",user).first();
+        if(select==null)
+            select = new Selected(user,quote,true);
+        else
+            select.quote = quote;
+        select.save();
+        render(blogs,user, type,quote);
+    }
+
     public static void deleteBlog(Long id){
         Blog newBlog = Blog.findById(id);
         newBlog.deleteBlog();
